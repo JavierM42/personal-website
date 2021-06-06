@@ -20,32 +20,31 @@ const TextSwitcher: FC<Props> = ({ texts }: Props) => {
     );
   };
 
-  // FIXME doesn't work with line breaks
   // FIXME size changes jump
 
   return (
     <em
-      className={`relative text-gray-800`}
+      className="relative inline-block text-gray-800"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <span className="relative z-10">{texts[currentTextIndex]}</span>
       {isHovered && (
         <div
-          className="absolute shadow-lg rounded-xl -inset-x-12 -inset-y-6 bg-white flex items-center justify-between p-2"
+          className="absolute flex items-center justify-between p-2 bg-white shadow-lg rounded-xl -inset-x-12 -inset-y-2"
         >
           <button
-            className="rounded-full hover:shadow-md bg-white w-8 h-8 flex items-center justify-center focus:outline-none"
+            className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
             onClick={handlePrevious}
           >
             {/* TODO inline svg */}
             <img src="/chevron-left.svg"/>
           </button>
-          <div className="text-xs mt-16 text-gray-500">
+          <div className="mt-16 text-xs text-gray-500">
             {currentTextIndex + 1}/{texts.length}
           </div>
           <button
-            className="rounded-full hover:shadow-md bg-white w-8 h-8 flex items-center justify-center focus:outline-none"
+            className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
             onClick={handleNext}
           >
             {/* TODO inline svg */}
