@@ -44,8 +44,16 @@ const TextSwitcher: FC<Props> = ({ texts }: Props) => {
               {/* TODO inline svg */}
               <img src="/chevron-left.svg"/>
             </button>
-            <div className="text-xs">
-              {currentTextIndex + 1}/{texts.length}
+            <div className="flex items-center space-x-1">
+              {Array.from(Array(texts.length)).map((_, index) => (
+                <div
+                  key={index}
+                  className={classNames('rounded-full w-1.5 h-1.5', {
+                    'bg-gray-400': index === currentTextIndex,
+                    'bg-gray-200': index !== currentTextIndex
+                  })}
+                />
+              ))}
             </div>
             <button
               className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
