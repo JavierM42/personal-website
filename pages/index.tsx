@@ -17,7 +17,7 @@ export default function Home() {
         <h2 className="mb-20 text-4xl leading-loose text-center">
           I'm a{' '}
           <TextSwitcher texts={[
-            'full stack developer',
+            'full stack engineer',
             'web developer',
             'programmer',
             'human being who writes code'

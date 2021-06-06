@@ -21,6 +21,8 @@ const TextSwitcher: FC<Props> = ({ texts }: Props) => {
     );
   };
 
+  // TODO arrow bindings
+
   return (
     <em
       className="relative inline-block text-gray-800"
