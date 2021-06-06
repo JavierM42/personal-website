@@ -10,11 +10,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="mx-auto max-w-3xl flex flex-col items-center text-gray-500">
+      <main className="flex flex-col items-center max-w-3xl mx-auto text-gray-500">
         {/* TODO change for image when we have src */}
-        <div className="shadow-lg rounded-xl w-72 h-72 mt-24 mb-8" />
-        <h1 className="text-5xl text-center mb-20">Hi, Javi here.</h1>
-        <h2 className="text-4xl text-center leading-loose mb-20">
+        <div className="mt-24 mb-8 shadow-lg rounded-xl w-72 h-72" />
+        <h1 className="mb-20 text-5xl text-center">Hi, Javi here.</h1>
+        <h2 className="mb-20 text-4xl leading-loose text-center">
           I'm a{' '}
           <TextSwitcher texts={[
             'full stack developer',
@@ -22,8 +22,8 @@ export default function Home() {
             'programmer',
             'human being who writes code'
           ]} />{' '}
-          with a passion{' '}
-          <TextSwitcher texts={['for great user experiences']} />
+          with a passion for{' '}
+          <TextSwitcher texts={['great user experiences', 'cool animations', 'clean code']} />
           .
         </h2>
 
