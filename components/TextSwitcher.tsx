@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { FC, useState } from "react";
 
 type Props = {
@@ -20,36 +21,40 @@ const TextSwitcher: FC<Props> = ({ texts }: Props) => {
     );
   };
 
-  // FIXME size changes jump
-
   return (
     <em
       className="relative inline-block text-gray-800"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <span className="relative z-10">{texts[currentTextIndex]}</span>
+      <span
+        className={classNames({"relative z-20": isHovered })}
+      >
+        {texts[currentTextIndex]}
+      </span>
       {isHovered && (
         <div
-          className="absolute flex items-center justify-between p-2 bg-white shadow-lg rounded-xl -inset-x-12 -inset-y-2"
+          className="absolute top-0 z-10 bg-white shadow-lg -inset-x-1 rounded-xl -bottom-8"
         >
-          <button
-            className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
-            onClick={handlePrevious}
-          >
-            {/* TODO inline svg */}
-            <img src="/chevron-left.svg"/>
-          </button>
-          <div className="mt-16 text-xs text-gray-500">
-            {currentTextIndex + 1}/{texts.length}
+          <div className="absolute inset-x-0 bottom-0 flex items-center justify-center p-2 space-x-2 text-gray-500">
+            <button
+              className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
+              onClick={handlePrevious}
+            >
+              {/* TODO inline svg */}
+              <img src="/chevron-left.svg"/>
+            </button>
+            <div className="text-xs">
+              {currentTextIndex + 1}/{texts.length}
+            </div>
+            <button
+              className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
+              onClick={handleNext}
+            >
+              {/* TODO inline svg */}
+              <img src="/chevron-right.svg"/>
+            </button>
           </div>
-          <button
-            className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
-            onClick={handleNext}
-          >
-            {/* TODO inline svg */}
-            <img src="/chevron-right.svg"/>
-          </button>
         </div>
       )}
     </em>
