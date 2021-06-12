@@ -39,7 +39,7 @@ export default function Home() {
           while doing so.
         </p>
 
-        <main className="space-y-8">
+        <main className="mb-64 space-y-8">
           <p>
             I started playing around with ActionScript when I was twelve. I{' '}
             <em className="italic">loved</em>{' '}
