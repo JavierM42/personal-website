@@ -16,17 +16,17 @@ export default function Home() {
         <h1 className="mb-20 text-5xl text-center">Hi, Javi here.</h1>
         <h2 className="mb-20 text-4xl leading-loose text-center">
           I'm a{' '}
-          <TextSwitcher texts={[
-            'full stack engineer',
-            'web developer',
-            'programmer',
-            'human being who writes code'
+          <TextSwitcher options={[
+            { heading: 'full stack engineer' },
+            { heading: 'web developer' },
+            { heading: 'programmer' },
+            { heading: 'human being who writes code' }
           ]} />{' '}
           with a passion for{' '}
-          <TextSwitcher texts={[
-            'great user experiences',
-            'cool animations',
-            'clean code'
+          <TextSwitcher options={[
+            { heading: 'great user experiences' },
+            { heading: 'cool animations' },
+            { heading: 'clean code' }
           ]} />
           .
         </h2>
@@ -44,38 +44,38 @@ export default function Home() {
             I started playing around with ActionScript when I was twelve. I{' '}
             <em className="italic">loved</em>{' '}
             it. I'm now twenty-five and play around with{' '}
-            <TextSwitcher texts={[
-              'Javascript',
-              'React and Vue',
-              'Ruby on Rails',
-              'Elixir'
+            <TextSwitcher options={[
+              { heading: 'Javascript' },
+              { heading: 'React and Vue' },
+              { heading: 'Ruby on Rails' },
+              { heading: 'Elixir' }
             ]} />{' '}
             for a living. And I still love it.
           </p>
 
           <p>
             I'm currently wroking as a software engineer for{' '}
-            <TextSwitcher texts={['an innovative online school']} />.
+            <TextSwitcher options={[{ heading: 'an innovative online school' }]} />.
           </p>
 
           <p>
             Before that,{' '}
-            <TextSwitcher texts={[
-              'I helped build an app for remote agile retrospectives',
-              'I was project lead in an EdTech company',
-              'I built a website to help my local Magic: The Gathering community',
-              'I did my thesis on near-symmetrical graph drawing',
+            <TextSwitcher options={[
+              { heading: 'I helped build an app for remote agile retrospectives' },
+              { heading: 'I was project lead in an EdTech company' },
+              { heading: 'I built a website to help my local Magic: The Gathering community' },
+              { heading: 'I did my thesis on near-symmetrical graph drawing' },
             ]} />.
           </p>
 
           <p>
             In my spare time I{' '}
-            <TextSwitcher texts={[
-              'play piano and guitar', // somehow link YouTube covers?
-              "solve Rubik's cubes", // Definitely not a pro, but slowly getting my solve times lower.
-              'play Age of Empires II', // and sometimes other games, but mostly Age of Empires II.
-              'play boardgames',
-              'travel as much as I can'
+            <TextSwitcher options={[
+              { heading: 'play piano and guitar' }, // somehow link YouTube covers?
+              { heading: "solve Rubik' s cubes" }, // Definitely not a pro, but slowly getting my solve times lower.
+              { heading: 'play Age of Empires II' }, // and sometimes other games, but mostly Age of Empires II.
+              { heading: 'play boardgames' },
+              { heading: 'travel as much as I can' }
             ]} />.
           </p>
 

@@ -4,22 +4,25 @@ import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import DotPagination from "./DotPagination";
 
 type Props = {
-  texts: string[];
+  options: Array<{
+    heading: string;
+    body?: string;
+  }>;
 }
 
-const TextSwitcher: FC<Props> = ({ texts }: Props) => {
+const TextSwitcher: FC<Props> = ({ options }: Props) => {
   const [isHovered, setIsHovered] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
   const handlePrevious = () => {
     setCurrentTextIndex(
-      currentTextIndex === 0 ? texts.length - 1 : currentTextIndex - 1
+      currentTextIndex === 0 ? options.length - 1 : currentTextIndex - 1
     );
   };
 
   const handleNext = () => {
     setCurrentTextIndex(
-      currentTextIndex === texts.length - 1 ? 0 : currentTextIndex + 1
+      currentTextIndex === options.length - 1 ? 0 : currentTextIndex + 1
     );
   };
 
@@ -50,7 +53,7 @@ const TextSwitcher: FC<Props> = ({ texts }: Props) => {
     >
       <span className="relative z-20">
         {/* TODO since it's z-20 it collides with other open TextSwitchers */}
-        {texts[currentTextIndex]}
+        {options[currentTextIndex].heading}
       </span>
       <AnimatePresence>
         {isHovered && (
@@ -71,7 +74,7 @@ const TextSwitcher: FC<Props> = ({ texts }: Props) => {
                 <img src="/chevron-left.svg"/>
               </button>
               <DotPagination
-                numberOfPages={texts.length}
+                numberOfPages={options.length}
                 currentPageIndex={currentTextIndex}
               />
               <button
