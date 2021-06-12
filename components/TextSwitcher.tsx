@@ -51,40 +51,42 @@ const TextSwitcher: FC<Props> = ({ options }: Props) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <span className="relative z-20">
-        {/* TODO since it's z-20 it collides with other open TextSwitchers */}
-        {options[currentTextIndex].heading}
-      </span>
+      {options[currentTextIndex].heading}
       <AnimatePresence>
         {isHovered && (
           <motion.div
-            className="absolute top-0 z-10 bg-white shadow-lg -inset-x-1 rounded-xl -bottom-8"
+            className="absolute top-0 z-10 pt-10 overflow-hidden shadow-lg -inset-x-1 rounded-xl"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
           >
-            <div className="absolute inset-x-0 bottom-0 flex items-center justify-center p-2 space-x-2 text-gray-500">
-              <button
-                className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
-                onClick={handlePrevious}
-              >
-                {/* TODO animations */}
-                {/* TODO inline svg */}
-                <img src="/chevron-left.svg"/>
-              </button>
-              <DotPagination
-                numberOfPages={options.length}
-                currentPageIndex={currentTextIndex}
-              />
-              <button
-                className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
-                onClick={handleNext}
-              >
-                {/* TODO inline svg */}
-                {/* TODO animations */}
-                <img src="/chevron-right.svg"/>
-              </button>
+            <div className="p-2 bg-white">
+              <p className="text-sm text-gray-500">
+                {options[currentTextIndex].body}
+              </p>
+              <div className="flex items-center justify-center space-x-2 text-gray-500">
+                <button
+                  className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
+                  onClick={handlePrevious}
+                >
+                  {/* TODO animations */}
+                  {/* TODO inline svg */}
+                  <img src="/chevron-left.svg"/>
+                </button>
+                <DotPagination
+                  numberOfPages={options.length}
+                  currentPageIndex={currentTextIndex}
+                />
+                <button
+                  className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
+                  onClick={handleNext}
+                >
+                  {/* TODO inline svg */}
+                  {/* TODO animations */}
+                  <img src="/chevron-right.svg"/>
+                </button>
+              </div>
             </div>
           </motion.div>
         )}
