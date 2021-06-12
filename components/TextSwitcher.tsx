@@ -64,28 +64,30 @@ const TextSwitcher: FC<Props> = ({ options }: Props) => {
               <div className="space-y-3 text-sm text-gray-500">
                 {options[currentTextIndex].body}
               </div>
-              <div className="flex items-center justify-center space-x-2 text-gray-500">
-                <button
-                  className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
-                  onClick={handlePrevious}
-                >
-                  {/* TODO animations */}
-                  {/* TODO inline svg */}
-                  <img src="/chevron-left.svg"/>
-                </button>
-                <DotPagination
-                  numberOfPages={options.length}
-                  currentPageIndex={currentTextIndex}
-                />
-                <button
-                  className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
-                  onClick={handleNext}
-                >
-                  {/* TODO inline svg */}
-                  {/* TODO animations */}
-                  <img src="/chevron-right.svg"/>
-                </button>
-              </div>
+              {options.length > 1 && (
+                <div className="flex items-center justify-center space-x-2 text-gray-500">
+                  <button
+                    className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
+                    onClick={handlePrevious}
+                  >
+                    {/* TODO animations */}
+                    {/* TODO inline svg */}
+                    <img src="/chevron-left.svg"/>
+                  </button>
+                  <DotPagination
+                    numberOfPages={options.length}
+                    currentPageIndex={currentTextIndex}
+                  />
+                  <button
+                    className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
+                    onClick={handleNext}
+                  >
+                    {/* TODO inline svg */}
+                    {/* TODO animations */}
+                    <img src="/chevron-right.svg"/>
+                  </button>
+                </div>
+              )}
             </div>
           </motion.div>
         )}

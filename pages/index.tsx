@@ -55,7 +55,20 @@ export default function Home() {
 
           <p>
             I'm currently working as a software engineer for{' '}
-            <TextSwitcher options={[{ heading: 'an innovative online school' }]} />.
+            <TextSwitcher options={[{
+              heading: 'an innovative online school',
+              body: (
+                <p>
+                  <a href="https://joinprisma.com" target="_blank">
+                    {/* TODO best practices noopener noreferrer etc */}
+                    {/* TODO link styles, TBD */}
+                    Prisma
+                  </a>{' '}
+                  is an online school for kids aged 4-8...
+                  {/* TODO write real text */}
+                </p>
+              )
+            }]} />.
           </p>
 
           <p>
