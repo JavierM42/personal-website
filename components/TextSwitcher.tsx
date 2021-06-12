@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { FC, useCallback, useEffect, useState } from "react";
+import { AnimatePresence, motion } from 'framer-motion';
 
 type Props = {
   texts: string[];
@@ -46,44 +47,49 @@ const TextSwitcher: FC<Props> = ({ texts }: Props) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <span
-        className={classNames({"relative z-20": isHovered })}
-      >
+      <span className="relative z-20">
+        {/* TODO since it's z-20 it collides with other open TextSwitchers */}
         {texts[currentTextIndex]}
       </span>
-      {isHovered && (
-        <div
-          className="absolute top-0 z-10 bg-white shadow-lg -inset-x-1 rounded-xl -bottom-8"
-        >
-          <div className="absolute inset-x-0 bottom-0 flex items-center justify-center p-2 space-x-2 text-gray-500">
-            <button
-              className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
-              onClick={handlePrevious}
-            >
-              {/* TODO inline svg */}
-              <img src="/chevron-left.svg"/>
-            </button>
-            <div className="flex items-center space-x-1">
-              {Array.from(Array(texts.length)).map((_, index) => (
-                <div
-                  key={index}
-                  className={classNames('rounded-full w-1.5 h-1.5', {
-                    'bg-gray-400': index === currentTextIndex,
-                    'bg-gray-200': index !== currentTextIndex
-                  })}
-                />
-              ))}
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            className="absolute top-0 z-10 bg-white shadow-lg -inset-x-1 rounded-xl -bottom-8"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+          >
+            <div className="absolute inset-x-0 bottom-0 flex items-center justify-center p-2 space-x-2 text-gray-500">
+              <button
+                className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
+                onClick={handlePrevious}
+              >
+                {/* TODO inline svg */}
+                <img src="/chevron-left.svg"/>
+              </button>
+              <div className="flex items-center space-x-1">
+                {Array.from(Array(texts.length)).map((_, index) => (
+                  <div
+                    key={index}
+                    className={classNames('rounded-full w-1.5 h-1.5', {
+                      'bg-gray-400': index === currentTextIndex,
+                      'bg-gray-200': index !== currentTextIndex
+                    })}
+                  />
+                ))}
+              </div>
+              <button
+                className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
+                onClick={handleNext}
+              >
+                {/* TODO inline svg */}
+                <img src="/chevron-right.svg"/>
+              </button>
             </div>
-            <button
-              className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
-              onClick={handleNext}
-            >
-              {/* TODO inline svg */}
-              <img src="/chevron-right.svg"/>
-            </button>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </em>
   )
 };
