@@ -1,11 +1,11 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC, ReactNode, useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from 'framer-motion';
 import DotPagination from "./DotPagination";
 
 type Props = {
   options: Array<{
     heading: string;
-    body?: string;
+    body?: ReactNode;
   }>;
 }
 
@@ -61,9 +61,9 @@ const TextSwitcher: FC<Props> = ({ options }: Props) => {
             transition={{ duration: 0.15 }}
           >
             <div className="p-2 bg-white">
-              <p className="text-sm text-gray-500">
+              <div className="space-y-3 text-sm text-gray-500">
                 {options[currentTextIndex].body}
-              </p>
+              </div>
               <div className="flex items-center justify-center space-x-2 text-gray-500">
                 <button
                   className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"

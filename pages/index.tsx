@@ -63,7 +63,30 @@ export default function Home() {
             <TextSwitcher options={[
               {
                 heading: 'I helped build a web app for remote agile retrospectives',
-                body: "RetroAlly guides retrospectives, which can be a challenge when there isn't an expert moderator around. Born as an internal company project at Wyeworks, it's now becoming an actual product. I did most of the frontend implementation on RetroAlly and picked up some UX skills by working closely with the app's UX designer. I still try to help out in RetroAlly whenever my main project allows it."
+                body: (
+                  <>
+                    <p>
+                      <a href="https://retroally.com" target="_blank">
+                        {/* TODO best practices noopener noreferrer etc */}
+                        {/* TODO link styles, TBD */}
+                        RetroAlly
+                      </a>{' '}
+                      guides retrospectives, which can be a challenge when there isn't an expert moderator around.
+                    </p>
+                    <p>
+                      Born as an internal company project at{' '}
+                      <a href="https://wyeworks.com" target="_blank">
+                        {/* TODO best practices noopener noreferrer etc */}
+                        {/* TODO link styles, TBD */}
+                        Wyeworks
+                      </a>
+                      , it's now becoming an actual product.
+                    </p>
+                    <p>
+                      I did most of the frontend implementation on RetroAlly and picked up some UX skills by working closely with the app's UX designer. I still try to help out in RetroAlly whenever my main project allows it.
+                    </p>
+                  </>
+                )
               },
               { heading: 'I was project lead in an EdTech company' },
               { heading: 'I built a website to help my local Magic: The Gathering community' },
