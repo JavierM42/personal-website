@@ -1,6 +1,5 @@
-import classNames from "classnames";
 import { FC, useCallback, useEffect, useState } from "react";
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import DotPagination from "./DotPagination";
 
 type Props = {
