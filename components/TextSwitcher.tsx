@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { FC, KeyboardEventHandler, useCallback, useEffect, useRef, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 
 type Props = {
   texts: string[];
