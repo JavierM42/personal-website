@@ -1,6 +1,6 @@
-import { FC, ReactNode, useCallback, useEffect, useState } from "react";
+import { FC, ReactNode, useState } from "react";
 import { AnimatePresence, motion } from 'framer-motion';
-import DotPageIndicator from "./DotPageIndicator";
+import TextSwitcherPagination from "./TextSwitcherPagination";
 
 type Props = {
   options: Array<{
@@ -11,38 +11,7 @@ type Props = {
 
 const TextSwitcher: FC<Props> = ({ options }: Props) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
-
-  const handlePrevious = () => {
-    setCurrentTextIndex(
-      currentTextIndex === 0 ? options.length - 1 : currentTextIndex - 1
-    );
-  };
-
-  const handleNext = () => {
-    setCurrentTextIndex(
-      currentTextIndex === options.length - 1 ? 0 : currentTextIndex + 1
-    );
-  };
-
-  const handleKeydown = useCallback((event: KeyboardEvent) => {
-    switch (event.key) {
-      case "ArrowRight":
-        handleNext();
-        break;
-      case "ArrowLeft":
-        handlePrevious();
-        break;
-    }
-  }, [handleNext, handlePrevious]);
-  // TODO animate arrows when you use the keyboard
-
-  useEffect(() => {
-    if (isHovered) {
-      window.addEventListener('keydown', handleKeydown);
-      return () => window.removeEventListener('keydown', handleKeydown);
-    }
-  }, [isHovered, handleKeydown]);
+  const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
   return (
     <em
@@ -50,7 +19,7 @@ const TextSwitcher: FC<Props> = ({ options }: Props) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {options[currentTextIndex].heading}
+      {options[currentPageIndex].heading}
       <AnimatePresence>
         {isHovered && (
           <motion.div
@@ -62,32 +31,13 @@ const TextSwitcher: FC<Props> = ({ options }: Props) => {
           >
             <div className="p-2 bg-white">
               <div className="space-y-3 text-sm text-gray-500">
-                {options[currentTextIndex].body}
+                {options[currentPageIndex].body}
               </div>
-              {options.length > 1 && (
-                <div className="flex items-center justify-center space-x-2 text-gray-500">
-                  <button
-                    className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
-                    onClick={handlePrevious}
-                  >
-                    {/* TODO animations */}
-                    {/* TODO inline svg */}
-                    <img src="/chevron-left.svg"/>
-                  </button>
-                  <DotPageIndicator
-                    numberOfPages={options.length}
-                    currentPageIndex={currentTextIndex}
-                  />
-                  <button
-                    className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
-                    onClick={handleNext}
-                  >
-                    {/* TODO inline svg */}
-                    {/* TODO animations */}
-                    <img src="/chevron-right.svg"/>
-                  </button>
-                </div>
-              )}
+              {options.length > 1 && <TextSwitcherPagination
+                numberOfPages={options.length}
+                currentPageIndex={currentPageIndex}
+                setCurrentPageIndex={setCurrentPageIndex}
+              />}
             </div>
           </motion.div>
         )}
