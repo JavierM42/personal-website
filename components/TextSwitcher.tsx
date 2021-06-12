@@ -1,6 +1,6 @@
 import { FC, ReactNode, useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from 'framer-motion';
-import DotPagination from "./DotPagination";
+import DotPageIndicator from "./DotPageIndicator";
 
 type Props = {
   options: Array<{
@@ -74,7 +74,7 @@ const TextSwitcher: FC<Props> = ({ options }: Props) => {
                     {/* TODO inline svg */}
                     <img src="/chevron-left.svg"/>
                   </button>
-                  <DotPagination
+                  <DotPageIndicator
                     numberOfPages={options.length}
                     currentPageIndex={currentTextIndex}
                   />
