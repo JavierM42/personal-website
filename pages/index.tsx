@@ -10,7 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-center max-w-3xl mx-auto text-2xl text-gray-500">
+      <div className="flex flex-col items-center max-w-3xl mx-auto text-2xl text-gray-500">
         {/* TODO change for image when we have src */}
         <div className="mt-24 mb-8 shadow-lg rounded-xl w-72 h-72" />
         <h1 className="mb-20 text-5xl text-center">Hi, Javi here.</h1>
@@ -83,7 +83,7 @@ export default function Home() {
             Drop me a line at hello@javierm42.dev.
           </p>
         </main>
-      </main>
+      </div>
     </>
   )
 }
