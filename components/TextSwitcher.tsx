@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { FC, useCallback, useEffect, useState } from "react";
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 
 type Props = {
   texts: string[];
@@ -69,15 +69,19 @@ const TextSwitcher: FC<Props> = ({ texts }: Props) => {
                 <img src="/chevron-left.svg"/>
               </button>
               <div className="flex items-center space-x-1">
-                {Array.from(Array(texts.length)).map((_, index) => (
-                  <div
-                    key={index}
-                    className={classNames('rounded-full w-1.5 h-1.5', {
-                      'bg-gray-400': index === currentTextIndex,
-                      'bg-gray-200': index !== currentTextIndex
-                    })}
-                  />
-                ))}
+                <AnimateSharedLayout>
+                  {Array.from(Array(texts.length)).map((_, index) => (
+                    <div key={index} className="rounded-full w-1.5 h-1.5 bg-gray-200">
+                      {index === currentTextIndex && (
+                        <motion.div
+                          layoutId="selected-indicator"
+                          className="w-full h-full bg-gray-400 rounded-full"
+                          transition={{ duration: 0.1 }}
+                        />
+                      )}
+                    </div>
+                  ))}
+                </AnimateSharedLayout>
               </div>
               <button
                 className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
