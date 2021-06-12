@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { FC, useCallback, useEffect, useState } from "react";
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import DotPagination from "./DotPagination";
 
 type Props = {
   texts: string[];
@@ -68,21 +69,10 @@ const TextSwitcher: FC<Props> = ({ texts }: Props) => {
                 {/* TODO inline svg */}
                 <img src="/chevron-left.svg"/>
               </button>
-              <div className="flex items-center space-x-1">
-                <AnimateSharedLayout>
-                  {Array.from(Array(texts.length)).map((_, index) => (
-                    <div key={index} className="rounded-full w-1.5 h-1.5 bg-gray-200">
-                      {index === currentTextIndex && (
-                        <motion.div
-                          layoutId="selected-indicator"
-                          className="w-full h-full bg-gray-400 rounded-full"
-                          transition={{ duration: 0.1 }}
-                        />
-                      )}
-                    </div>
-                  ))}
-                </AnimateSharedLayout>
-              </div>
+              <DotPagination
+                numberOfPages={texts.length}
+                currentPageIndex={currentTextIndex}
+              />
               <button
                 className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
                 onClick={handleNext}
