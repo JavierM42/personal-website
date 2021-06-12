@@ -54,7 +54,7 @@ export default function Home() {
           </p>
 
           <p>
-            I'm currently wroking as a software engineer for{' '}
+            I'm currently working as a software engineer for{' '}
             <TextSwitcher options={[{ heading: 'an innovative online school' }]} />.
           </p>
 
