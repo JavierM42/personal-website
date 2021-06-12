@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { FC, useState } from "react";
+import { FC, KeyboardEventHandler, useCallback, useEffect, useRef, useState } from "react";
 
 type Props = {
   texts: string[];
@@ -21,7 +21,24 @@ const TextSwitcher: FC<Props> = ({ texts }: Props) => {
     );
   };
 
-  // TODO arrow bindings
+  const handleKeydown = useCallback((event: KeyboardEvent) => {
+    switch (event.key) {
+      case "ArrowRight":
+        handleNext();
+        break;
+      case "ArrowLeft":
+        handlePrevious();
+        break;
+    }
+  }, [handleNext, handlePrevious]);
+  // TODO animate arrows when you use the keyboard
+
+  useEffect(() => {
+    if (isHovered) {
+      window.addEventListener('keydown', handleKeydown);
+      return () => window.removeEventListener('keydown', handleKeydown);
+    }
+  }, [isHovered, handleKeydown]);
 
   return (
     <em
