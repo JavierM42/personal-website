@@ -66,6 +66,7 @@ const TextSwitcher: FC<Props> = ({ texts }: Props) => {
                 className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
                 onClick={handlePrevious}
               >
+                {/* TODO animations */}
                 {/* TODO inline svg */}
                 <img src="/chevron-left.svg"/>
               </button>
@@ -78,6 +79,7 @@ const TextSwitcher: FC<Props> = ({ texts }: Props) => {
                 onClick={handleNext}
               >
                 {/* TODO inline svg */}
+                {/* TODO animations */}
                 <img src="/chevron-right.svg"/>
               </button>
             </div>
