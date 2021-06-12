@@ -23,12 +23,29 @@ export default function Home() {
             'human being who writes code'
           ]} />{' '}
           with a passion for{' '}
-          <TextSwitcher texts={['great user experiences', 'cool animations', 'clean code']} />
+          <TextSwitcher texts={[
+            'great user experiences',
+            'cool animations',
+            'clean code'
+          ]} />
           .
         </h2>
 
-        <p className="text-2xl text-center">
+        <p className="mb-24 text-2xl text-center">
           I love to build things that work and look good while doing so.
+        </p>
+
+        <p className="text-2xl">
+          I started playing around with ActionScript when I was twelve. I{' '}
+          <em className="italic">loved</em>{' '}
+          it. I'm now twenty-five and play around with{' '}
+          <TextSwitcher texts={[
+            'Javascript',
+            'React and Vue',
+            'Ruby on Rails',
+            'Elixir'
+          ]} />{' '}
+          for a living. And I still love it.
         </p>
       </main>
     </>
