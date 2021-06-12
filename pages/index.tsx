@@ -32,10 +32,14 @@ export default function Home() {
         </h2>
 
         <p className="mb-24 text-center">
-          I love to build things that work and look good while doing so.
+          I love to build things that{' '}
+          <strong className="font-semibold">work</strong>{' '}
+          <em className="italic">and</em>{' '}
+          <strong className="font-semibold">look good</strong>{' '}
+          while doing so.
         </p>
 
-        <div>
+        <main className="space-y-8">
           <p>
             I started playing around with ActionScript when I was twelve. I{' '}
             <em className="italic">loved</em>{' '}
@@ -78,7 +82,7 @@ export default function Home() {
           <p>
             Drop me a line at hello@javierm42.dev.
           </p>
-        </div>
+        </main>
       </main>
     </>
   )
