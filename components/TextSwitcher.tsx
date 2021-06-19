@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from 'framer-motion';
 import TextSwitcherPagination from "./TextSwitcherPagination";
 import classNames from "classnames";
@@ -12,22 +12,53 @@ type Props = {
 }
 
 const TextSwitcher: FC<Props> = ({ size = '2xl', options }: Props) => {
-  const [isHovered, setIsHovered] = useState(false);
+  const ref = useRef<HTMLElement>(null);
+
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
+
+  const handleMouseLeave = () => {
+    if (!isFocused) {
+      setIsExpanded(false);
+    }
+  };
+
+  // TODO the outside-click effect does not really work without contexts to disable the hover effect of the others when you're focused on the expanded one
+  // handle clicks both inside and outside
+  useEffect(() => {
+    if (isExpanded) {
+      const handleClick = (event: MouseEvent) =>  {
+        if (ref.current?.contains(event.target as HTMLElement)) {
+          setIsFocused(true);
+        } else {
+          setIsFocused(false);
+          setIsExpanded(false);
+        }
+      };
+
+      document.addEventListener('click', handleClick);
+      return () => document.removeEventListener('click', handleClick);
+    }
+  }, [isExpanded, setIsExpanded, setIsFocused]);
+
+  // IDEA: backdrop blur the rest of the paragraphs?
 
   return (
     <em
+      ref={ref}
       className="relative inline-block text-gray-800"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => setIsExpanded(true)}
+      onMouseLeave={handleMouseLeave}
     >
       {options[currentPageIndex].heading}
       <AnimatePresence>
-        {isHovered && (
+        {isExpanded && (
           <motion.div
             className={classNames("absolute top-0 z-10 overflow-hidden shadow-lg -inset-x-1 rounded-xl", {
               'pt-10': size === '2xl',
-              'pt-14': size === '4xl',
+              'pt-16': size === '4xl',
             })}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
