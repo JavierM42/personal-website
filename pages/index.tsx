@@ -91,12 +91,31 @@ export default function Home() {
                       , it's now becoming an actual product.
                     </p>
                     <p>
-                      I did most of the frontend implementation on RetroAlly and picked up some UX skills by working closely with the app's UX designer. I still try to help out in RetroAlly whenever my main project allows it.
+                      I did most of the frontend implementation on RetroAlly and picked up some UX skills by working closely with the app's UX designer.
                     </p>
+                    <p>
+                      I still try to help out in RetroAlly whenever my main project allows it.
+                    </p>
+                    {/* TODO technologies with icons */}
                   </>
                 )
               },
-              { heading: 'I was a team leader in an EdTech company' },
+              {
+                heading: 'I was a team leader in an EdTech company',
+                body: (
+                  <>
+                    <p>
+                      I worked for more than a year as an engineer for <ExternalLink href="https://emeritus.org">Emeritus</ExternalLink>,{' '}
+                      where I became technical leader for their Referrals program.
+                    </p>
+                    <p>
+                      After integrating an external referrals provider as an A/B testing experiment, our three-person team migrated{' '}
+                      the system with no downtime to an in-house solution.
+                    </p>
+                    {/* TODO technologies with icons */}
+                  </>
+                )
+              },
               { heading: 'I built a website to help my local Magic: The Gathering community' },
               { heading: 'I did my thesis on near-symmetrical graph drawing' },
             ]} />.
