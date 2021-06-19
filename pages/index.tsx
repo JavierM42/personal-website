@@ -91,7 +91,8 @@ export default function Home() {
                       , it's now becoming an actual product.
                     </p>
                     <p>
-                      I did most of the frontend implementation on RetroAlly and picked up some UX skills by working closely with the app's UX designer.
+                      I did most of the frontend implementation on RetroAlly and picked up some UX skills by working closely with
+                      the app's UX designer.
                     </p>
                     <p>
                       I still try to help out in RetroAlly whenever my main project allows it.
@@ -109,14 +110,35 @@ export default function Home() {
                       where I became technical leader for their Referrals program.
                     </p>
                     <p>
-                      After integrating an external referrals provider as an A/B testing experiment, our three-person team migrated{' '}
+                      After integrating an external referrals provider as an A/B testing experiment, our three-person team migrated
                       the system with no downtime to an in-house solution.
                     </p>
                     {/* TODO technologies with icons */}
                   </>
                 )
               },
-              { heading: 'I built a website to help my local Magic: The Gathering community' },
+              {
+                heading: 'I built a website to help my local gaming community',
+                body: (
+                  <>
+                    <p>
+                      My local Magic: The Gathering community was using social media groups to trade cards, which wasn't very efficient since
+                      there's no easy way to sort or filter the posts.
+                    </p>
+                    <p>
+                      I built{' '}
+                      <ExternalLink href="http://www.mtgbarato.store">a simple website</ExternalLink>{' '}
+                      {/* TODO MTGBarato in english */}
+                      where everyone can to post their card inventory and wishlist for free, using APIs to fetch
+                      prices and provide filtering options.
+                    </p>
+                    <p>
+                      The community loved it and even organized a charity tournament to help pay for the server costs.
+                    </p>
+                    {/* TODO technologies with icons */}
+                  </>
+                )
+              },
               { heading: 'I did my thesis on near-symmetrical graph drawing' },
             ]} />.
           </p>
