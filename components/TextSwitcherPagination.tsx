@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { FC, useCallback, useEffect } from "react";
 import DotPageIndicator from "./DotPageIndicator";
 
@@ -5,9 +6,10 @@ type Props = {
   numberOfPages: number;
   currentPageIndex: number;
   onPageChange: (newIndex: number) => void;
+  className?: string;
 }
 
-const TextSwitcherPagination: FC<Props> = ({ numberOfPages, currentPageIndex, onPageChange }: Props) => {
+const TextSwitcherPagination: FC<Props> = ({ numberOfPages, currentPageIndex, onPageChange, className }: Props) => {
   const handlePrevious = () => {
     onPageChange(
       currentPageIndex === 0 ? numberOfPages - 1 : currentPageIndex - 1
@@ -38,7 +40,7 @@ const TextSwitcherPagination: FC<Props> = ({ numberOfPages, currentPageIndex, on
   }, [handleKeydown]);
 
   return (
-    <div className="flex items-center justify-center space-x-2 text-gray-500">
+    <div className={classNames("flex items-center justify-center space-x-2 text-gray-500", className)}>
       <button
         className="flex items-center justify-center w-8 h-8 bg-white rounded-full hover:shadow-md focus:outline-none"
         onClick={handlePrevious}

@@ -79,6 +79,7 @@ export default function Home() {
             <TextSwitcher options={[
               {
                 heading: 'I helped build a web app for remote agile retrospectives',
+                image: <img src="/retroally.png" />,
                 body: (
                   <>
                     <p>
@@ -207,6 +208,10 @@ export default function Home() {
             Drop me a line at hello@javierm42.dev.
           </p>
         </main>
+        <footer className="flex space-x-2 text-sm">
+          <ExternalLink href="https://www.linkedin.com/in/javierm42/">LinkedIn</ExternalLink>
+          <ExternalLink href="https://github.com/JavierM42">GitHub</ExternalLink>
+        </footer>
       </div>
     </>
   )
