@@ -123,13 +123,13 @@ export default function Home() {
                   <>
                     <p>
                       My local Magic: The Gathering community was using social media groups to trade cards, which wasn't very efficient since
-                      there's no easy way to sort or filter the posts.
+                      there's no easy way to filter or sort the posts.
                     </p>
                     <p>
                       I built{' '}
                       <ExternalLink href="http://www.mtgbarato.store">a simple website</ExternalLink>{' '}
                       {/* TODO MTGBarato in english */}
-                      where everyone can to post their card inventory and wishlist for free, using APIs to fetch
+                      where players can post their card inventory and wishlist for free, consuming APIs to fetch
                       prices and provide filtering options.
                     </p>
                     <p>
@@ -139,7 +139,25 @@ export default function Home() {
                   </>
                 )
               },
-              { heading: 'I did my thesis on near-symmetrical graph drawing' },
+              {
+                heading: 'I did my thesis on near-symmetrical graph drawing',
+                body: (
+                  <>
+                    <p>
+                      Based on{' '}
+                      <ExternalLink href="https://www.semanticscholar.org/paper/Detecting-almost-symmetries-of-graphs-Knueven-Ostrowski/1df41d5791ffd1dbe89c291526f36c02db633db4">a paper</ExternalLink>{' '}
+                      by Kneuven, Ostrowski and Pokutta, we implemented an algorithm and then a web app to automatically
+                      render graphs in a symmetrical or near-symmetrical representation.
+                    </p>
+                    <p>
+                      <ExternalLink href="https://graphsym.herokuapp.com/">GraphSym</ExternalLink> is available for free.{' '}
+                      <i className="italic">
+                        Since it's hosted on a free platform, initial load times may be slow.
+                      </i>
+                    </p>
+                  </>
+                )
+              },
             ]} />.
           </p>
 
