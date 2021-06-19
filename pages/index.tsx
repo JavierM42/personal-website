@@ -162,13 +162,44 @@ export default function Home() {
           </p>
 
           <p>
-            In my spare time I{' '}
+            In my spare time{' '}
             <TextSwitcher options={[
-              { heading: 'play piano and guitar' }, // somehow link YouTube covers?
-              { heading: "solve Rubik' s cubes" }, // Definitely not a pro, but slowly getting my solve times lower.
-              { heading: 'play Age of Empires II' }, // and sometimes other games, but mostly Age of Empires II.
-              { heading: 'play boardgames' },
-              { heading: 'travel as much as I can' }
+              {
+                heading: 'I play piano and guitar',
+                body: (
+                  <>
+                    <p>
+                      Nowadays I don't play as much, but in my early 20s I even filmed some covers and posted them on YouTube.
+                    </p>
+                    <p>
+                      Here's <ExternalLink href="https://www.youtube.com/watch?v=s9lLHWAfdAU">me playing Robot Rock by Daft Punk</ExternalLink> in 2016.
+                    </p>
+                  </>
+                )
+              },
+              {
+                heading: "I solve Rubik' s cubes",
+                // body: (
+                //   <p>
+                //     My solve times are at around 45s.
+                //   </p>
+                // )
+              },
+              {
+                heading: "I don't get tired of losing at videogames",
+                body: (
+                  <>
+                    <p>
+                      Well, mostly at Age of Empires II.
+                    </p>
+                    <p>
+                      During the pandemic I reconnected with my love for digital gaming, since it's a great way to keep in touch with friends.
+                    </p>
+                  </>
+                )
+              },
+              { heading: 'I play boardgames' },
+              { heading: 'I travel as much as I can' }
             ]} />.
           </p>
 
