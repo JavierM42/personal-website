@@ -96,7 +96,7 @@ export default function Home() {
                   </>
                 )
               },
-              { heading: 'I was project lead in an EdTech company' },
+              { heading: 'I was a team leader in an EdTech company' },
               { heading: 'I built a website to help my local Magic: The Gathering community' },
               { heading: 'I did my thesis on near-symmetrical graph drawing' },
             ]} />.
