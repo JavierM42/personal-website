@@ -10,24 +10,30 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col items-center max-w-3xl mx-auto text-2xl text-gray-500">
+      <div className="flex flex-col items-center max-w-3xl mx-auto text-2xl leading-loose text-gray-500">
         {/* TODO change for image when we have src */}
         <div className="mt-24 mb-8 shadow-lg rounded-xl w-72 h-72" />
         <h1 className="mb-20 text-5xl text-center">Hi, Javi here.</h1>
         <h2 className="mb-20 text-4xl leading-loose text-center">
           I'm a{' '}
-          <TextSwitcher options={[
-            { heading: 'full stack engineer' },
-            { heading: 'web developer' },
-            { heading: 'programmer' },
-            { heading: 'human being who writes code' }
-          ]} />{' '}
+          <TextSwitcher
+            size="4xl"
+            options={[
+              { heading: 'full stack engineer' },
+              { heading: 'web developer' },
+              { heading: 'programmer' },
+              { heading: 'human being who writes code' }
+            ]}
+          />{' '}
           with a passion for{' '}
-          <TextSwitcher options={[
-            { heading: 'great user experiences' },
-            { heading: 'cool animations' },
-            { heading: 'clean code' }
-          ]} />
+          <TextSwitcher
+            size="4xl"
+              options={[
+              { heading: 'great user experiences' },
+              { heading: 'cool animations' },
+              { heading: 'clean code' }
+            ]}
+          />
           .
         </h2>
 
