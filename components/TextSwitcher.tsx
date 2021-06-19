@@ -19,6 +19,11 @@ const TextSwitcher: FC<Props> = ({ size = '2xl', options }: Props) => {
 
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
+  const handlePageChange = (targetPage: number) => {
+    setIsFocused(true);
+    setCurrentPageIndex(targetPage);
+  }
+
   const handleMouseLeave = () => {
     if (!isFocused) {
       setIsExpanded(false);
@@ -72,7 +77,7 @@ const TextSwitcher: FC<Props> = ({ size = '2xl', options }: Props) => {
               {options.length > 1 && <TextSwitcherPagination
                 numberOfPages={options.length}
                 currentPageIndex={currentPageIndex}
-                setCurrentPageIndex={setCurrentPageIndex}
+                onPageChange={handlePageChange}
               />}
             </div>
           </motion.div>

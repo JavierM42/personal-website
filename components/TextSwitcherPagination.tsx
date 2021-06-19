@@ -4,18 +4,18 @@ import DotPageIndicator from "./DotPageIndicator";
 type Props = {
   numberOfPages: number;
   currentPageIndex: number;
-  setCurrentPageIndex: (newIndex: number) => void;
+  onPageChange: (newIndex: number) => void;
 }
 
-const TextSwitcherPagination: FC<Props> = ({ numberOfPages, currentPageIndex, setCurrentPageIndex }: Props) => {
+const TextSwitcherPagination: FC<Props> = ({ numberOfPages, currentPageIndex, onPageChange }: Props) => {
   const handlePrevious = () => {
-    setCurrentPageIndex(
+    onPageChange(
       currentPageIndex === 0 ? numberOfPages - 1 : currentPageIndex - 1
     );
   };
 
   const handleNext = () => {
-    setCurrentPageIndex(
+    onPageChange(
       currentPageIndex === numberOfPages - 1 ? 0 : currentPageIndex + 1
     );
   };
