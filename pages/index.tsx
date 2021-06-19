@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import TextSwitcher from '../components/TextSwitcher'
+import ExternalLink from '../components/ExternalLink';
 
 export default function Home() {
   return (
@@ -65,11 +66,7 @@ export default function Home() {
               heading: 'an innovative online school',
               body: (
                 <p>
-                  <a href="https://joinprisma.com" target="_blank">
-                    {/* TODO best practices noopener noreferrer etc */}
-                    {/* TODO link styles, TBD */}
-                    Prisma
-                  </a>{' '}
+                  <ExternalLink href="https://joinprisma.com">Prisma</ExternalLink>{' '}
                   is an online school for kids aged 4-8...
                   {/* TODO write real text */}
                 </p>
@@ -85,20 +82,12 @@ export default function Home() {
                 body: (
                   <>
                     <p>
-                      <a href="https://retroally.com" target="_blank">
-                        {/* TODO best practices noopener noreferrer etc */}
-                        {/* TODO link styles, TBD */}
-                        RetroAlly
-                      </a>{' '}
+                      <ExternalLink href="https://retroally.com">RetroAlly</ExternalLink>{' '}
                       guides retrospectives, which can be a challenge when there isn't an expert moderator around.
                     </p>
                     <p>
                       Born as an internal company project at{' '}
-                      <a href="https://wyeworks.com" target="_blank">
-                        {/* TODO best practices noopener noreferrer etc */}
-                        {/* TODO link styles, TBD */}
-                        Wyeworks
-                      </a>
+                      <ExternalLink href="https://wyeworks.com">Wyeworks</ExternalLink>
                       , it's now becoming an actual product.
                     </p>
                     <p>
