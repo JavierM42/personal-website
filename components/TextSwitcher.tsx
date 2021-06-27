@@ -82,23 +82,24 @@ const TextSwitcher: FC<Props> = ({ size = '2xl', options }: Props) => {
               className={classNames("absolute z-10 overflow-hidden origin-top shadow-lg -inset-x-1", {
                 '-top-4 pt-20 rounded-b-xl': size === '2xl' && currentPage.image,
                 '-top-8 pt-28 rounded-b-xl': size === '4xl' && currentPage.image,
-                'top-0 pt-16 rounded-xl': size === '2xl' && !currentPage.image,
-                'top-0 pt-20 rounded-xl': size === '4xl' && !currentPage.image,
+                'top-0 pt-12 rounded-xl': size === '2xl' && !currentPage.image,
+                'top-0 pt-16 rounded-xl': size === '4xl' && !currentPage.image,
               })}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
             >
-              <div className="p-2 bg-white">
-                <div className="max-w-lg mx-auto mb-4 space-y-3 text-sm text-gray-500">
-                  {currentPage.body}
-                </div>
+              <div className="p-2 space-y-6 bg-white">
+                {currentPage.body && (
+                  <div className="max-w-lg mx-auto mb-2 space-y-3 text-sm text-gray-500">
+                    {currentPage.body}
+                  </div>
+                )}
                 {options.length > 1 && <TextSwitcherPagination
                   numberOfPages={options.length}
                   currentPageIndex={currentPageIndex}
                   onPageChange={handlePageChange}
-                  className="mt-8"
                 />}
               </div>
             </motion.div>
