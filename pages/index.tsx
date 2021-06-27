@@ -64,11 +64,17 @@ export default function Home() {
             <TextSwitcher options={[{
               heading: 'an innovative online school',
               body: (
-                <p>
-                  <ExternalLink href="https://joinprisma.com">Prisma</ExternalLink>{' '}
-                  is an online school for kids aged 4-8...
-                  {/* TODO write real text */}
-                </p>
+                <>
+                  <p>
+                    <ExternalLink href="https://joinprisma.com">Prisma</ExternalLink>{' '}
+                    is an online school for kids from 4th to 8th grade.
+                  </p>
+                  <p>
+                    I'm working on their platform for live lessons.
+                    The biggest technical challenge is for the video call and the lesson slides to integrate seamlessly.
+                  </p>
+                  {/* TODO technologies with icons */}
+                </>
               )
             }]} />.
           </p>
