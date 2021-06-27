@@ -20,10 +20,9 @@ export default function Home() {
           <TextSwitcher
             size="4xl"
             options={[
-              { heading: 'full stack engineer' },
-              { heading: 'web developer' },
-              { heading: 'programmer' },
-              { heading: 'human being who writes code' }
+              { heading: 'full stack developer' },
+              { heading: 'software engineer' },
+              { heading: 'human being who codes' }
             ]}
           />{' '}
           with a passion for{' '}
@@ -92,7 +91,7 @@ export default function Home() {
                       , it's now becoming an actual product.
                     </p>
                     <p>
-                      I did most of the frontend implementation on RetroAlly and picked up some UX skills by working closely with
+                      I did most of the frontend work on RetroAlly and picked up some UX skills by working closely with
                       the app's UX designer.
                     </p>
                     <p>
@@ -108,7 +107,7 @@ export default function Home() {
                   <>
                     <p>
                       I worked for more than a year as an engineer for <ExternalLink href="https://emeritus.org">Emeritus</ExternalLink>,{' '}
-                      where I became technical leader for their Referrals program.
+                      where I became technical leader for their referrals program.
                     </p>
                     <p>
                       After integrating an external referrals provider as an A/B testing experiment, our three-person team migrated
@@ -130,11 +129,10 @@ export default function Home() {
                       I built{' '}
                       <ExternalLink href="http://www.mtgbarato.store">a simple website</ExternalLink>{' '}
                       {/* TODO MTGBarato in english */}
-                      where players can post their card inventory and wishlist for free, consuming APIs to fetch
-                      prices and provide filtering options.
+                      where players can post their card inventory and wishlist for free.
                     </p>
                     <p>
-                      The community loved it and even organized a charity tournament to help pay for the server costs.
+                      The community loved it! They even organized a charity tournament to help pay for the server costs.
                     </p>
                     {/* TODO technologies with icons */}
                   </>
@@ -151,7 +149,7 @@ export default function Home() {
                       render graphs in a symmetrical or near-symmetrical representation.
                     </p>
                     <p>
-                      <ExternalLink href="https://graphsym.herokuapp.com/">GraphSym</ExternalLink> is available for free.{' '}
+                      <ExternalLink href="https://graphsym.herokuapp.com/">GraphSym</ExternalLink> is available for free use.{' '}
                       <i className="italic">
                         Since it's hosted on a free platform, initial load times may be slow.
                       </i>
@@ -208,7 +206,7 @@ export default function Home() {
             Drop me a line at hello@javierm42.dev.
           </p>
         </main>
-        <footer className="flex space-x-2 text-sm">
+        <footer className="flex justify-center w-full space-x-2 text-sm">
           <ExternalLink href="https://www.linkedin.com/in/javierm42/">LinkedIn</ExternalLink>
           <ExternalLink href="https://github.com/JavierM42">GitHub</ExternalLink>
         </footer>

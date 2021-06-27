@@ -110,3 +110,7 @@ const TextSwitcher: FC<Props> = ({ size = '2xl', options }: Props) => {
 };
 
 export default TextSwitcher;
+
+// TODO Movement between pages is awkward because the text moves too.
+// Ideas: if the text was centered, the movement would feel pretty normal.
+// Move the text on hover?
