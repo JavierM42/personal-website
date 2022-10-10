@@ -91,6 +91,7 @@ export default function Home() {
                 />,
                 <NextLogo aria-label="Next.js" className="h-full" key="next" />,
               ]}
+              primaryColor="#6f22f8"
             />
             <WorkExperienceCard
               name={
@@ -130,6 +131,7 @@ export default function Home() {
                 <RubyLogo aria-label="Ruby" className="h-full" key="ruby" />,
                 <RailsLogo aria-label="Rails" className="h-full" key="rails" />,
               ]}
+              primaryColor="#006634"
             />
             <WorkExperienceCard
               name={
@@ -182,6 +184,7 @@ export default function Home() {
                   key="elixir"
                 />,
               ]}
+              primaryColor="#ff7645"
             />
           </ol>
 

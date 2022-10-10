@@ -1,5 +1,6 @@
 import { FC, ReactNode, useState } from "react";
 import classNames from "classnames";
+import { updateTheme } from "tailwind-material-colors/lib/updateTheme.esm";
 
 type Props = {
   name: ReactNode;
@@ -10,6 +11,7 @@ type Props = {
   expandedClass: string;
   dates: string;
   techs: ReactNode[];
+  primaryColor: string;
 };
 
 const WorkExperienceCard: FC<Props> = ({
@@ -21,8 +23,19 @@ const WorkExperienceCard: FC<Props> = ({
   expandedClass,
   dates,
   techs,
+  primaryColor,
 }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleOpen = () => {
+    updateTheme({ primary: primaryColor }, "class");
+    setIsExpanded(true);
+  };
+
+  const handleClose = () => {
+    updateTheme({ primary: "#0000ab" }, "class");
+    setIsExpanded(false);
+  };
 
   return (
     <li
@@ -33,10 +46,10 @@ const WorkExperienceCard: FC<Props> = ({
           ? ""
           : "flex items-center justify-between cursor-pointer h-14"
       )}
-      onClick={isExpanded ? undefined : () => setIsExpanded(true)}
+      onClick={isExpanded ? undefined : handleOpen}
     >
       <button
-        onClick={() => setIsExpanded((value) => !value)}
+        onClick={handleClose}
         className={classNames(
           "absolute left-2 top-2 rounded-md p-2",
           isExpanded ? buttonClass : "pointer-events-none"
