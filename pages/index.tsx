@@ -211,6 +211,7 @@ export default function Home() {
                 <TailwindLogo aria-label="Tailwind CSS" key="tailwind" />,
               ]}
               cta="Try it live on this page"
+              stripClass="bg-gradient-to-r from-red-container to-green-container via-purple-container"
             />
             <OpenSourceCard
               name="tailwind-material-surfaces"
@@ -220,6 +221,7 @@ export default function Home() {
                 <TailwindLogo aria-label="Tailwind CSS" key="tailwind" />,
               ]}
               cta="View on GitHub"
+              stripClass="bg-gradient-to-r to-primary-container-press from-primary"
             />
             <OpenSourceCard
               name="tailwind-mode-aware-colors"
@@ -229,6 +231,7 @@ export default function Home() {
                 <TailwindLogo aria-label="Tailwind CSS" key="tailwind" />,
               ]}
               cta="View on GitHub"
+              stripClass="bg-gradient-to-r from-tertiary-container-dark to-tertiary-container-light"
             />
             <OpenSourceCard
               name="MTGBarato"
@@ -237,9 +240,9 @@ export default function Home() {
               techs={[
                 <RubyLogo aria-label="Ruby" key="ruby" />,
                 <RailsLogo aria-label="Rails" key="rails" />,
-                <TailwindLogo aria-label="Tailwind CSS" key="tailwind" />,
               ]}
               cta="Read more"
+              stripClass="bg-[#f6ad55]"
             />
           </ol>
 

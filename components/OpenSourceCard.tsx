@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { FC, ReactNode, useState } from "react";
 
 type Props = {
@@ -6,6 +7,7 @@ type Props = {
   expandedContent: ReactNode;
   techs: ReactNode[];
   cta: string;
+  stripClass: string;
 };
 
 const OpenSourceCard: FC<Props> = ({
@@ -14,6 +16,7 @@ const OpenSourceCard: FC<Props> = ({
   expandedContent,
   techs,
   cta,
+  stripClass,
 }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -27,14 +30,14 @@ const OpenSourceCard: FC<Props> = ({
       <div className="flex justify-end h-5 gap-2">{techs}</div>
     </li>
   ) : (
-    <li
-      className="px-4 py-2 shadow bg-surface"
-      onClick={() => setIsExpanded(true)}
-    >
-      <div className="font-bold text-md">{name}</div>
-      {collapsedContent}
-      <div className="flex justify-end">
-        <button>{cta}</button>
+    <li className="shadow bg-surface" onClick={() => setIsExpanded(true)}>
+      <div className={classNames("h-3", stripClass)} />
+      <div className="px-4 py-2">
+        <div className="font-bold text-md">{name}</div>
+        {collapsedContent}
+        <div className="flex justify-end">
+          <button>{cta}</button>
+        </div>
       </div>
     </li>
   );
