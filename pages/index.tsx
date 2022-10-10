@@ -1,6 +1,20 @@
-import Head from 'next/head'
-import TextSwitcher from '../components/TextSwitcher'
-import ExternalLink from '../components/ExternalLink';
+import Head from "next/head";
+import ExternalLink from "../components/ExternalLink";
+import WorkExperienceCard from "../components/WorkExperienceCard";
+import ElixirLogo from "../assets/techs/elixir.svg";
+import NextLogo from "../assets/techs/nextjs.svg";
+import RailsLogo from "../assets/techs/rails.svg";
+import ReactLogo from "../assets/techs/react.svg";
+import RubyLogo from "../assets/techs/ruby.svg";
+import TailwindLogo from "../assets/techs/tailwind.svg";
+import TypescriptLogo from "../assets/techs/typescript.svg";
+import VueLogo from "../assets/techs/vue.svg";
+import Prisma from "../assets/companies/prisma.svg";
+import RetroAlly from "../assets/companies/retroally.svg";
+import WyeWorks from "../assets/companies/wyeworks.svg";
+import FormalEducationCard from "../components/FormalEducationCard";
+import OpenSourceCard from "../components/OpenSourceCard";
+import BlogPostCard from "../components/BlogPostCard";
 
 export default function Home() {
   return (
@@ -11,74 +25,247 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col items-center max-w-3xl mx-auto text-2xl leading-loose text-gray-500">
-        {/* TODO change for image when we have src */}
+      <div className="flex flex-col max-w-3xl mx-auto leading-loose text-on-background">
+        {/* TODO change for image when I have src */}
         <div className="mt-24 mb-8 shadow-lg rounded-xl w-72 h-72" />
-        <h1 className="mb-20 text-5xl text-center">Hi, Javi here.</h1>
-        <h2 className="mb-20 text-4xl leading-loose text-center">
-          I'm a{' '}
-          <TextSwitcher
-            size="4xl"
-            options={[
-              { heading: 'full stack developer' },
-              { heading: 'software engineer' },
-              { heading: 'human being who codes' }
-            ]}
-          />{' '}
-          with a passion for{' '}
-          <TextSwitcher
-            size="4xl"
-              options={[
-              { heading: 'great user experiences' },
-              { heading: 'cool animations' },
-              { heading: 'clean code' }
-            ]}
-          />
-          .
-        </h2>
-
-        <p className="mb-24 text-center">
-          I love to build things that{' '}
-          <strong className="font-semibold">work</strong>{' '}
-          <em className="italic">and</em>{' '}
-          <strong className="font-semibold">look good</strong>{' '}
-          while doing so.
+        <h1 className="mb-2 text-6xl font-bold text-primary">Hi, Javi here.</h1>
+        <p className="mb-20 text-2xl leading-loose">
+          I'm a frontend engineer with a passion for great user experiences.
+          {/* TODO & cool animations ;) */}
         </p>
 
         <main className="mb-64 space-y-8">
-          <p>
-            I started playing around with ActionScript when I was twelve. I{' '}
-            <em className="italic">loved</em>{' '}
-            it. I'm now twenty-five and play around with{' '}
-            <TextSwitcher options={[
-              { heading: 'Javascript' },
-              { heading: 'React and Vue' },
-              { heading: 'Ruby on Rails' },
-              { heading: 'Elixir' }
-            ]} />{' '}
-            for a living. And I still love it.
-          </p>
-
-          <p>
-            I'm currently working as a software engineer for{' '}
-            <TextSwitcher options={[{
-              heading: 'an innovative online school',
-              body: (
+          <h2>Work Experience</h2>
+          <ol className="grid grid-cols-1 gap-6">
+            <WorkExperienceCard
+              name={
+                <div className="flex items-center justify-center gap-1.5">
+                  <Prisma aria-label="Prisma" className="inline-block h-10" />
+                  at
+                  <WyeWorks
+                    aria-label="WyeWorks"
+                    className="inline-block h-5"
+                  />
+                </div>
+              }
+              collapsedTitle="An innovative online school"
+              content={
                 <>
                   <p>
-                    <ExternalLink href="https://joinprisma.com">Prisma</ExternalLink>{' '}
-                    is an online school for kids from 4th to 8th grade.
+                    I worked on a videoconferencing app with interactive lesson
+                    slides for the Prisma online school.
                   </p>
                   <p>
-                    I'm working on their platform for live lessons.
-                    The biggest technical challenge is for the video call and the lesson slides to integrate seamlessly.
+                    We faced challenges such as concurrent editing, rich text
+                    content, and sharing code between repositories with a
+                    components library.
                   </p>
-                  {/* TODO technologies with icons */}
+                  <p>
+                    Visit the{" "}
+                    <a
+                      href="legacy.joinprisma.com"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Prisma Case Study
+                    </a>{" "}
+                    page.
+                  </p>
                 </>
-              )
-            }]} />.
-          </p>
+              }
+              expandedClass="bg-purple-container"
+              collapsedClass="interactive-bg-purple-container"
+              dates="From 2020 to 2022"
+              techs={[
+                <ReactLogo aria-label="React" className="h-full" key="react" />,
+                <TypescriptLogo
+                  aria-label="TypeScript"
+                  className="h-full"
+                  key="ts"
+                />,
+                <TailwindLogo
+                  aria-label="Tailwind CSS"
+                  className="h-full"
+                  key="tailwind"
+                />,
+                <NextLogo aria-label="Next.js" className="h-full" key="next" />,
+              ]}
+            />
+            <WorkExperienceCard
+              name={
+                <div className="flex items-center justify-center gap-1.5">
+                  <img
+                    src="/img/emeritus.png"
+                    alt="Emeritus"
+                    className="inline-block h-10"
+                  />
+                  at
+                  <WyeWorks
+                    aria-label="WyeWorks"
+                    className="inline-block h-5"
+                  />
+                </div>
+              }
+              collapsedTitle="A large-scale EdTech company"
+              content={
+                <>
+                  <p>
+                    As part of a large team of about 30 engineers, we rebuilt a
+                    legacy system to manage course enrollments. We then tried to
+                    maximize growth with a series of A/B experiments.
+                  </p>
+                  <p>
+                    Later on, I led the three-person team that integrated a
+                    third-party referrals system and then migrated it to an
+                    in-house solution with no downtime.
+                  </p>
+                </>
+              }
+              expandedClass="bg-green-container"
+              collapsedClass="interactive-bg-green-container"
+              dates="From 2019 to 2020"
+              techs={[
+                <RubyLogo aria-label="Ruby" className="h-full" key="ruby" />,
+                <RailsLogo aria-label="Rails" className="h-full" key="rails" />,
+              ]}
+            />
+            <WorkExperienceCard
+              name={
+                <div className="flex items-center justify-center gap-1.5">
+                  <RetroAlly role="presentation" className="inline-block h-7" />
+                  RetroAlly at
+                  <WyeWorks
+                    aria-label="WyeWorks"
+                    className="inline-block h-5"
+                  />
+                </div>
+              }
+              collapsedTitle="A web app for remote retrospectives"
+              content={
+                <>
+                  <p>
+                    I helped to build RetroAlly, an app that allows agile teams
+                    to have remote retrospectives.
+                  </p>
+                  <p>
+                    Apart from developing, there I worked closely with a UX
+                    expert to broaden my skills in that field.
+                  </p>
+                  <p>
+                    Live at{" "}
+                    <a
+                      href="legacy.joinprisma.com"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      retroally.com
+                    </a>
+                  </p>
+                </>
+              }
+              expandedClass="bg-red-container"
+              collapsedClass="interactive-bg-red-container"
+              dates="2019"
+              techs={[
+                <VueLogo aria-label="Vue" className="h-full" key="vue" />,
+                <TailwindLogo
+                  aria-label="Tailwind CSS"
+                  className="h-full"
+                  key="tailwind"
+                />,
+                <ElixirLogo
+                  aria-label="Elixir"
+                  className="h-full"
+                  key="elixir"
+                />,
+              ]}
+            />
+          </ol>
 
+          <h2>Formal Education</h2>
+          <ol className="grid grid-cols-2 gap-6">
+            <FormalEducationCard
+              name="Engineering Degree in Computer Science"
+              content={<p>Universidad de la República (Uruguay)</p>}
+              dates={"From 2014 to 2019"}
+              universityLogo={undefined}
+            />
+            <FormalEducationCard
+              name="Object-Oriented Programmer"
+              content={<p>Universidad ORT Uruguay</p>}
+              dates={"From 2012 to 2014"}
+              universityLogo={undefined}
+            />
+          </ol>
+
+          <h2>Open Source</h2>
+          <ol className="grid grid-cols-2 gap-6">
+            <OpenSourceCard
+              name="tailwind-material-colors"
+              collapsedContent="A TailwindCSS Plugin to generate dynamic color themes with Material Design guidelines."
+              expandedContent={""}
+              techs={[
+                <TailwindLogo aria-label="Tailwind CSS" key="tailwind" />,
+              ]}
+              cta="Try it live on this page"
+            />
+            <OpenSourceCard
+              name="tailwind-material-surfaces"
+              collapsedContent="A TailwindCSS Plugin to get Material Design interaction states with a single class."
+              expandedContent={""}
+              techs={[
+                <TailwindLogo aria-label="Tailwind CSS" key="tailwind" />,
+              ]}
+              cta="View on GitHub"
+            />
+            <OpenSourceCard
+              name="tailwind-mode-aware-colors"
+              collapsedContent="A TailwindCSS Plugin to style light and dark modes with a single class."
+              expandedContent={""}
+              techs={[
+                <TailwindLogo aria-label="Tailwind CSS" key="tailwind" />,
+              ]}
+              cta="View on GitHub"
+            />
+            <OpenSourceCard
+              name="MTGBarato"
+              collapsedContent="I built a simple website to help my local gaming community."
+              expandedContent={""}
+              techs={[
+                <RubyLogo aria-label="Ruby" key="ruby" />,
+                <RailsLogo aria-label="Rails" key="rails" />,
+                <TailwindLogo aria-label="Tailwind CSS" key="tailwind" />,
+              ]}
+              cta="Read more"
+            />
+          </ol>
+
+          <h2>Blog posts</h2>
+          <ol className="grid grid-cols-2 gap-6">
+            {/* TODO los de tailwind */}
+            <BlogPostCard
+              title="Prioritizing High-leverage Activities"
+              summary="An opinion piece about productivity habits and considering automation for repetitive tasks. Inspired by the book The Effective Engineer by Edmond Lau."
+              url="https://www.wyeworks.com/blog/2022/09/26/prioritizing-high-leverage-activities/"
+            />
+            <BlogPostCard
+              title="Optimizing Expensive React Component Mounts"
+              summary="How we fixed a performance problem and improved metrics by 92% in a real-time React application."
+              url="https://www.wyeworks.com/blog/2022/09/12/optimizing-expensive-react-component-mounts/"
+            />
+            <BlogPostCard
+              title="Screenshot testing React Components with Viteshot"
+              summary="How and why I set up a GitHub action to take screenshots of components in the Prisma UI library."
+              url="https://www.wyeworks.com/blog/2022/03/16/screenshot-testing-react-components-with-viteshot/"
+            />
+            <BlogPostCard
+              title="Harnessing the power of repsonsive CSS grids"
+              summary="A fun experiment with a product pricing table that changed drastically between viewport sizes."
+              url="https://www.wyeworks.com/blog/2021/08/07/harnessing-the-power-of-responsive-css-grids/"
+            />
+          </ol>
+
+          {/* <p>
           <p>
             Before that,{' '}
             <TextSwitcher options={[
@@ -103,7 +290,6 @@ export default function Home() {
                     <p>
                       I still try to help out in RetroAlly whenever my main project allows it.
                     </p>
-                    {/* TODO technologies with icons */}
                   </>
                 )
               },
@@ -119,7 +305,6 @@ export default function Home() {
                       After integrating an external referrals provider as an A/B testing experiment, our three-person team migrated
                       the system with no downtime to an in-house solution.
                     </p>
-                    {/* TODO technologies with icons */}
                   </>
                 )
               },
@@ -134,13 +319,11 @@ export default function Home() {
                     <p>
                       I built{' '}
                       <ExternalLink href="http://www.mtgbarato.store">a simple website</ExternalLink>{' '}
-                      {/* TODO MTGBarato in english */}
                       where players can post their card inventory and wishlist for free.
                     </p>
                     <p>
                       The community loved it! They even organized a charity tournament to help pay for the server costs.
                     </p>
-                    {/* TODO technologies with icons */}
                   </>
                 )
               },
@@ -210,13 +393,17 @@ export default function Home() {
 
           <p>
             Drop me a line at hello@javierm42.dev.
-          </p>
+          </p> */}
         </main>
         <footer className="flex justify-center w-full space-x-2 text-sm">
-          <ExternalLink href="https://www.linkedin.com/in/javierm42/">LinkedIn</ExternalLink>
-          <ExternalLink href="https://github.com/JavierM42">GitHub</ExternalLink>
+          <ExternalLink href="https://www.linkedin.com/in/javierm42/">
+            LinkedIn
+          </ExternalLink>
+          <ExternalLink href="https://github.com/JavierM42">
+            GitHub
+          </ExternalLink>
         </footer>
       </div>
     </>
-  )
+  );
 }

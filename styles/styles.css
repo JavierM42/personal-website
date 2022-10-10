@@ -10,4 +10,13 @@ em {
 
 html {
   font-family: 'Open Sans', sans-serif;
+  @apply bg-background;
+}
+
+h2 {
+  @apply text-xl font-bold tracking-widest uppercase text-on-primary-container;
+}
+
+a {
+  @apply hover:underline text-primary;
 }
