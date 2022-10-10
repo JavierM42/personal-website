@@ -75,6 +75,7 @@ export default function Home() {
               }
               expandedClass="bg-purple-container"
               collapsedClass="interactive-bg-purple-container"
+              buttonClass="interactive-bg-purple-container"
               dates="From 2020 to 2022"
               techs={[
                 <ReactLogo aria-label="React" className="h-full" key="react" />,
@@ -123,6 +124,7 @@ export default function Home() {
               }
               expandedClass="bg-green-container"
               collapsedClass="interactive-bg-green-container"
+              buttonClass="interactive-bg-green-container"
               dates="From 2019 to 2020"
               techs={[
                 <RubyLogo aria-label="Ruby" className="h-full" key="ruby" />,
@@ -165,6 +167,7 @@ export default function Home() {
               }
               expandedClass="bg-red-container"
               collapsedClass="interactive-bg-red-container"
+              buttonClass="interactive-bg-red-container"
               dates="2019"
               techs={[
                 <VueLogo aria-label="Vue" className="h-full" key="vue" />,
