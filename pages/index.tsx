@@ -1,7 +1,5 @@
 import Head from "next/head";
-import RailsLogo from "../assets/techs/rails.svg";
-import RubyLogo from "../assets/techs/ruby.svg";
-import TailwindLogo from "../assets/techs/tailwind.svg";
+import GitHubLogo from "../assets/github.svg";
 import BlogPostCard from "../components/BlogPostCard";
 import ExternalLink from "../components/ExternalLink";
 import FormalEducationCard from "../components/FormalEducationCard";
@@ -50,42 +48,50 @@ export default function Home() {
           <ol className="grid grid-cols-2 gap-6">
             <OpenSourceCard
               name="tailwind-material-colors"
-              collapsedContent="A TailwindCSS Plugin to generate dynamic color themes with Material Design guidelines."
-              expandedContent={""}
-              techs={[
-                <TailwindLogo aria-label="Tailwind CSS" key="tailwind" />,
-              ]}
-              cta="Try it live on this page"
+              content="A TailwindCSS Plugin to generate dynamic color themes with Material Design guidelines."
+              expandedContent="TODO picker"
+              cta={
+                // TODO transition colors
+                <button className="px-6 py-3 text-sm font-bold rounded-lg shadow text-on-surface bg-gradient-to-r from-red-container to-green-container via-purple-container hover:from-red-container-hover hover:to-green-container-hover hover:via-purple-container-hover">
+                  Try it, live on this page
+                </button>
+              }
               stripClass="bg-gradient-to-r from-red-container to-green-container via-purple-container"
             />
             <OpenSourceCard
               name="tailwind-material-surfaces"
-              collapsedContent="A TailwindCSS Plugin to get Material Design interaction states with a single class."
-              expandedContent={""}
-              techs={[
-                <TailwindLogo aria-label="Tailwind CSS" key="tailwind" />,
-              ]}
-              cta="View on GitHub"
+              content="A TailwindCSS Plugin to get Material Design interaction states with a single class."
+              cta={
+                <a
+                  className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap"
+                  href="https://github.com/JavierM42/tailwind-material-surfaces"
+                  target="_blank"
+                >
+                  View on GitHub
+                  <GitHubLogo className="w-5 h-5" />
+                </a>
+              }
               stripClass="bg-gradient-to-r to-primary-container-press from-primary"
             />
             <OpenSourceCard
               name="tailwind-mode-aware-colors"
-              collapsedContent="A TailwindCSS Plugin to style light and dark modes with a single class."
-              expandedContent={""}
-              techs={[
-                <TailwindLogo aria-label="Tailwind CSS" key="tailwind" />,
-              ]}
-              cta="View on GitHub"
+              content="A TailwindCSS Plugin to style light and dark modes with a single class."
+              cta={
+                <a
+                  className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap"
+                  href="https://github.com/JavierM42/tailwind-mode-aware-colors"
+                  target="_blank"
+                >
+                  View on GitHub
+                  <GitHubLogo className="w-5 h-5" />
+                </a>
+              }
               stripClass="bg-gradient-to-r from-tertiary-container-dark to-tertiary-container-light"
             />
             <OpenSourceCard
               name="MTGBarato"
-              collapsedContent="I built a simple website to help my local gaming community."
+              content="I built a simple website to help my local gaming community."
               expandedContent={""}
-              techs={[
-                <RubyLogo aria-label="Ruby" key="ruby" />,
-                <RailsLogo aria-label="Rails" key="rails" />,
-              ]}
               cta="Read more"
               stripClass="bg-[#f6ad55]"
             />
