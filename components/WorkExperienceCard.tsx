@@ -1,6 +1,7 @@
 import { FC, ReactNode, useState } from "react";
 import classNames from "classnames";
 import { updateTheme } from "tailwind-material-colors/lib/updateTheme.esm";
+import { AnimatePresence, motion } from "framer-motion";
 
 type Props = {
   name: ReactNode;
@@ -42,9 +43,7 @@ const WorkExperienceCard: FC<Props> = ({
       className={classNames(
         "relative p-2 shadow",
         isExpanded ? expandedClass : collapsedClass,
-        isExpanded
-          ? ""
-          : "flex items-center justify-between cursor-pointer h-14"
+        !isExpanded && "cursor-pointer"
       )}
       onClick={isExpanded ? undefined : handleOpen}
     >
@@ -63,23 +62,39 @@ const WorkExperienceCard: FC<Props> = ({
           )}
         />
       </button>
-      {isExpanded ? (
-        <>
-          <div>{name}</div>
-          <div className="text-xs font-medium text-center text-outline">
-            {dates}
-          </div>
-          {content}
-          <div className="flex justify-end h-5 gap-2">{techs}</div>
-        </>
-      ) : (
-        <>
+      <div
+        className={classNames(
+          "flex items-center h-10",
+          isExpanded ? "justify-center" : "justify-between"
+        )}
+      >
+        {!isExpanded && (
           <div className="flex items-center text-lg font-bold pl-11">
             {collapsedTitle}
           </div>
-          <div>{name}</div>
-        </>
-      )}
+        )}
+        <div>{name}</div>
+      </div>
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            className="overflow-clip"
+            initial="collapsed"
+            animate="expanded"
+            exit="collapsed"
+            variants={{
+              collapsed: { opacity: 0, height: 0 },
+              expanded: { opacity: 1, height: "auto" },
+            }}
+          >
+            <div className="text-xs font-medium text-center text-outline">
+              {dates}
+            </div>
+            {content}
+            <div className="flex justify-end h-5 gap-2">{techs}</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </li>
   );
 };
