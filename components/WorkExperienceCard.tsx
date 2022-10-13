@@ -104,7 +104,7 @@ const WorkExperienceCard: FC<Props> = ({
       <AnimatePresence>
         {isExpanded && (
           <motion.div
-            className="overflow-clip"
+            className="px-12 overflow-clip"
             initial="collapsed"
             animate="expanded"
             exit="collapsed"
@@ -113,11 +113,11 @@ const WorkExperienceCard: FC<Props> = ({
               expanded: { opacity: 1, height: "auto" },
             }}
           >
-            <div className="text-xs font-medium text-center text-outline">
+            <div className="mb-4 text-xs font-medium text-center text-outline">
               {dates}
             </div>
             {content}
-            <div className="flex justify-end h-5 gap-2">{techs}</div>
+            <div className="flex justify-end h-5 gap-2 mt-8">{techs}</div>
           </motion.div>
         )}
       </AnimatePresence>
