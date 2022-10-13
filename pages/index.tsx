@@ -251,7 +251,12 @@ export default function Home() {
 
           <h2>Blog posts</h2>
           <ol className="grid grid-cols-2 gap-6">
-            {/* TODO los de tailwind */}
+            {/* TODO el otro de tailwind */}
+            <BlogPostCard
+              title="Mode-aware colors with Tailwind"
+              summary="The reasoning behind my tailwind-mode-aware-colors plugin and a quick look into its internals."
+              url="https://www.wyeworks.com/blog/2022/10/12/mode-aware-colors-with-tailwind-css/"
+            />
             <BlogPostCard
               title="Prioritizing High-leverage Activities"
               summary="An opinion piece about productivity habits and considering automation for repetitive tasks. Inspired by the book The Effective Engineer by Edmond Lau."
