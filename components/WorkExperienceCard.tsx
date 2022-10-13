@@ -62,18 +62,37 @@ const WorkExperienceCard: FC<Props> = ({
           )}
         />
       </button>
-      <div
-        className={classNames(
-          "flex items-center h-10",
-          isExpanded ? "justify-center" : "justify-between"
-        )}
-      >
-        {!isExpanded && (
-          <div className="flex items-center text-lg font-bold pl-11">
-            {collapsedTitle}
-          </div>
-        )}
-        <div>{name}</div>
+      <div className="grid h-10 grid-cols-1 grid-rows-1">
+        <AnimatePresence>
+          {!isExpanded && (
+            <div className="flex items-center w-full h-full col-start-1 row-start-1 pl-11">
+              <motion.div
+                className="text-lg font-bold"
+                initial="collapsed"
+                animate="expanded"
+                exit="collapsed"
+                variants={{
+                  collapsed: { opacity: 0 },
+                  expanded: { opacity: 1 },
+                }}
+              >
+                {collapsedTitle}
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+        <div className="relative w-full h-full col-start-1 row-start-1 pointer-events-none">
+          <motion.div
+            className="absolute px-2 top-1/2"
+            animate={isExpanded ? "center" : "right"}
+            variants={{
+              center: { right: "50%", x: "50%", y: "-50%" },
+              right: { right: "0%", x: "0%", y: "-50%" },
+            }}
+          >
+            {name}
+          </motion.div>
+        </div>
       </div>
       <AnimatePresence>
         {isExpanded && (
