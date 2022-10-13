@@ -62,7 +62,14 @@ const WorkExperienceCard: FC<Props> = ({
           )}
         />
       </button>
-      <div className="grid h-10 grid-cols-1 grid-rows-1">
+      <motion.div
+        className="grid grid-cols-1 grid-rows-1"
+        animate={isExpanded ? "expanded" : "collapsed"}
+        variants={{
+          expanded: { height: 60 },
+          collapsed: { height: 40 },
+        }}
+      >
         <AnimatePresence>
           {!isExpanded && (
             <div className="flex items-center w-full h-full col-start-1 row-start-1 pl-11">
@@ -72,8 +79,8 @@ const WorkExperienceCard: FC<Props> = ({
                 animate="expanded"
                 exit="collapsed"
                 variants={{
-                  collapsed: { opacity: 0 },
-                  expanded: { opacity: 1 },
+                  collapsed: { opacity: 0, y: "-25%" },
+                  expanded: { opacity: 1, y: "0%" },
                 }}
               >
                 {collapsedTitle}
@@ -86,14 +93,14 @@ const WorkExperienceCard: FC<Props> = ({
             className="absolute px-2 top-1/2"
             animate={isExpanded ? "center" : "right"}
             variants={{
-              center: { right: "50%", x: "50%", y: "-50%" },
+              center: { scale: 1.3, right: "50%", x: "50%", y: "-50%" },
               right: { right: "0%", x: "0%", y: "-50%" },
             }}
           >
             {name}
           </motion.div>
         </div>
-      </div>
+      </motion.div>
       <AnimatePresence>
         {isExpanded && (
           <motion.div
