@@ -10,6 +10,7 @@ import TailwindLogo from "../assets/techs/tailwind.svg";
 import TypescriptLogo from "../assets/techs/typescript.svg";
 import VueLogo from "../assets/techs/vue.svg";
 import WorkExperienceCard from "../components/WorkExperienceCard";
+
 export default function WorkExperienceCards() {
   return (
     <ol className="grid grid-cols-1 gap-6">
@@ -44,8 +45,8 @@ export default function WorkExperienceCards() {
             </p>
           </>
         }
-        expandedClass="bg-purple-container"
-        collapsedClass="interactive-bg-purple-container"
+        expandedClass="border-purple-container"
+        collapsedClass="border-purple-container hover:bg-purple/[0.04] active:bg-purple/[0.12]"
         buttonClass="interactive-bg-purple-container"
         dates="From 2020 to 2022"
         techs={[
@@ -79,25 +80,22 @@ export default function WorkExperienceCards() {
         collapsedTitle="A large-scale EdTech company"
         content={
           <>
+            <p>Emeritus offers online courses from top universities.</p>
             <p>
-              Emeritus offers online courses from top universities such as MIT
-              and Columbia Business School.
+              I was in a team of about 30 engineers, we rebuilt their legacy
+              system to manage course enrollments. After the initial release, we
+              ran a series of A/B experiments to increase conversion rates and
+              maximize growth.
             </p>
             <p>
-              As part of a large team of about 30 engineers, we rebuilt their
-              legacy system to manage course enrollments. After the initial
-              release, we ran a series of A/B experiments to increase conversion
-              rates and maximize growth.
-            </p>
-            <p>
-              As part of one of those experiments, I led the three-person team
-              that integrated a third-party referrals system and then migrated
-              it to an in-house solution with no downtime.
+              As part of one of those experiments, I led the three-person task
+              force that integrated a third-party referrals system and then
+              migrated it to an in-house solution with no downtime.
             </p>
           </>
         }
-        expandedClass="bg-green-container"
-        collapsedClass="interactive-bg-green-container"
+        expandedClass="border-green-container"
+        collapsedClass="border-green-container hover:bg-green/[0.04] active:bg-green/[0.12]"
         buttonClass="interactive-bg-green-container"
         dates="From 2019 to 2020"
         techs={[
@@ -134,8 +132,8 @@ export default function WorkExperienceCards() {
             </p>
           </>
         }
-        expandedClass="bg-red-container"
-        collapsedClass="interactive-bg-red-container"
+        expandedClass="border-red-container"
+        collapsedClass="border-red-container hover:bg-red/[0.04] active:bg-red/[0.12]"
         buttonClass="interactive-bg-red-container"
         dates="2019"
         techs={[

@@ -41,9 +41,9 @@ const WorkExperienceCard: FC<Props> = ({
   return (
     <li
       className={classNames(
-        "relative p-2 shadow",
+        "relative p-2 shadow bg-surface border-l-[10px]",
         isExpanded ? expandedClass : collapsedClass,
-        !isExpanded && "cursor-pointer"
+        !isExpanded && "shadow cursor-pointer"
       )}
       onClick={isExpanded ? undefined : handleOpen}
     >
@@ -63,14 +63,11 @@ const WorkExperienceCard: FC<Props> = ({
         />
       </button>
       <motion.div
-        className="grid grid-cols-1 grid-rows-1"
+        className="grid h-24 grid-cols-1 grid-rows-2 gap-4 sm:grid-rows-1 sm:h-10"
         animate={isExpanded ? "expanded" : "collapsed"}
-        variants={{
-          expanded: { height: 60 },
-          collapsed: { height: 40 },
-        }}
+        initial={false}
       >
-        <AnimatePresence>
+        <AnimatePresence initial={false}>
           {!isExpanded && (
             <div className="flex items-center w-full h-full col-start-1 row-start-1 pl-11">
               <motion.div
@@ -79,8 +76,8 @@ const WorkExperienceCard: FC<Props> = ({
                 animate="expanded"
                 exit="collapsed"
                 variants={{
-                  collapsed: { opacity: 0, y: "-25%" },
-                  expanded: { opacity: 1, y: "0%" },
+                  collapsed: { opacity: 0 },
+                  expanded: { opacity: 1 },
                 }}
               >
                 {collapsedTitle}
@@ -88,12 +85,13 @@ const WorkExperienceCard: FC<Props> = ({
             </div>
           )}
         </AnimatePresence>
-        <div className="relative w-full h-full col-start-1 row-start-1 pointer-events-none">
+        <div className="relative w-full h-full col-start-1 row-start-2 pointer-events-none sm:row-start-1">
           <motion.div
             className="absolute px-2 top-1/2"
+            initial={false}
             animate={isExpanded ? "center" : "right"}
             variants={{
-              center: { scale: 1.3, right: "50%", x: "50%", y: "-50%" },
+              center: { right: "50%", x: "50%", y: "-50%" },
               right: { right: "0%", x: "0%", y: "-50%" },
             }}
           >
@@ -104,7 +102,7 @@ const WorkExperienceCard: FC<Props> = ({
       <AnimatePresence>
         {isExpanded && (
           <motion.div
-            className="px-12 overflow-clip"
+            className="px-14 overflow-clip"
             initial="collapsed"
             animate="expanded"
             exit="collapsed"
@@ -113,11 +111,13 @@ const WorkExperienceCard: FC<Props> = ({
               expanded: { opacity: 1, height: "auto" },
             }}
           >
-            <div className="mb-4 text-xs font-medium text-center text-outline">
+            <div className="pt-4 text-xs font-medium text-center text-outline">
               {dates}
             </div>
+            <div className="flex justify-center h-5 gap-2 mt-2 mb-6 text-outline">
+              {techs}
+            </div>
             {content}
-            <div className="flex justify-end h-5 gap-2 mt-8">{techs}</div>
           </motion.div>
         )}
       </AnimatePresence>
