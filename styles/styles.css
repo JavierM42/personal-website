@@ -34,3 +34,13 @@ a {
   @apply w-5 h-5 rounded-full appearance-none cursor-pointer ring ring-surface;
   background: hsl(var(--hue) 100 50%);
 }
+
+@layer utilities {
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
