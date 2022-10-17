@@ -16,7 +16,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col max-w-3xl mx-auto leading-loose text-on-background">
+      <div className="flex flex-col max-w-3xl px-3 mx-auto leading-loose md:px-0 text-on-background">
         {/* TODO change for image when I have src */}
         <div className="mt-24 mb-8 shadow-lg rounded-xl w-72 h-72" />
         <h1 className="mb-2 text-6xl font-bold text-primary">Hi, Javi here.</h1>
@@ -25,28 +25,26 @@ export default function Home() {
           {/* TODO & cool animations ;) */}
         </p>
 
-        <main className="mb-64 space-y-8">
+        <main className="space-y-8">
           <h2>Work Experience</h2>
           <WorkExperienceCards />
 
           <h2>Formal Education</h2>
-          <ol className="grid grid-cols-2 gap-6">
+          <ol className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
             <FormalEducationCard
               name="Engineering Degree in Computer Science"
               content={<p>Universidad de la República (Uruguay)</p>}
               dates={"From 2014 to 2019"}
-              universityLogo={undefined}
             />
             <FormalEducationCard
               name="Object-Oriented Programmer"
               content={<p>Universidad ORT Uruguay</p>}
               dates={"From 2012 to 2014"}
-              universityLogo={undefined}
             />
           </ol>
 
           <h2>Open Source</h2>
-          <ol className="grid grid-cols-2 gap-6">
+          <ol className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
             <OpenSourceCard
               name="tailwind-material-colors"
               content="A TailwindCSS Plugin to generate dynamic color themes according to the Material Design guidelines."

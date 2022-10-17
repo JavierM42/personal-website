@@ -4,15 +4,9 @@ type Props = {
   name: string;
   content: ReactNode;
   dates: string;
-  universityLogo: ReactNode;
 };
 
-const FormalEducationCard: FC<Props> = ({
-  name,
-  content,
-  universityLogo,
-  dates,
-}: Props) => {
+const FormalEducationCard: FC<Props> = ({ name, content, dates }: Props) => {
   return (
     <li className="px-4 py-2 shadow bg-surface">
       <div className="font-bold text-md">{name}</div>
