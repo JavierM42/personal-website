@@ -24,3 +24,13 @@ a {
 * {
   @apply transition-colors;
 }
+
+.slider::-webkit-slider-thumb {
+  @apply w-5 h-5 rounded-full appearance-none cursor-pointer ring ring-surface;
+  background: hsl(var(--hue) 100% 50%);
+}
+
+.slider::-moz-range-thumb {
+  @apply w-5 h-5 rounded-full appearance-none cursor-pointer ring ring-surface;
+  background: hsl(var(--hue) 100 50%);
+}

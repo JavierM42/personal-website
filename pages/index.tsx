@@ -5,6 +5,7 @@ import BlogPostCard from "../components/BlogPostCard";
 import ExternalLink from "../components/ExternalLink";
 import FormalEducationCard from "../components/FormalEducationCard";
 import OpenSourceCard from "../components/OpenSourceCard";
+import TryDynamicColor from "../components/open_source/TryDynamicColor";
 import Grids from "../components/posts/Grids";
 import Leverage from "../components/posts/Leverage";
 import Portals from "../components/posts/Portals";
@@ -53,19 +54,13 @@ export default function Home() {
           <ol className="grid grid-cols-2 gap-6">
             <OpenSourceCard
               name="tailwind-material-colors"
-              content="A TailwindCSS Plugin to generate dynamic color themes with Material Design guidelines."
-              expandedContent="TODO picker"
-              cta={
-                // TODO transition colors
-                <button className="px-6 py-3 text-sm font-bold rounded-lg shadow text-on-surface bg-gradient-to-r from-red-container to-green-container via-purple-container hover:from-red-container-hover hover:to-green-container-hover hover:via-purple-container-hover">
-                  Try it, live on this page
-                </button>
-              }
+              content="A TailwindCSS Plugin to generate dynamic color themes according to the Material Design guidelines."
+              cta={<TryDynamicColor />}
               stripClass="bg-gradient-to-r from-red-container to-green-container via-purple-container"
             />
             <OpenSourceCard
               name="tailwind-material-surfaces"
-              content="A TailwindCSS Plugin to get Material Design interaction states with a single class."
+              content="A TailwindCSS Plugin that integrates Material Design interaction states into Tailwind."
               cta={
                 <a
                   className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap"
@@ -96,7 +91,6 @@ export default function Home() {
             <OpenSourceCard
               name="MTGBarato"
               content="I built a simple website to help my local gaming community."
-              expandedContent={""}
               cta="Read more"
               stripClass="bg-[#f6ad55]"
             />
