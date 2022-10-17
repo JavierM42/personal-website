@@ -124,17 +124,17 @@ export default function ModeAwareColors() {
       >
         <motion.polygon
           points="51,1 99,1 99,49 51,49"
-          className="fill-on-primary-container stroke-primary"
+          className="fill-primary stroke-on-primary-container"
           animate={dark}
         />
         <motion.polygon
           points="1,51 49,51 49,99, 1,99"
-          className="fill-primary-container stroke-primary"
+          className="fill-primary-container stroke-on-primary-container"
           animate={light}
         />
         <motion.polygon
           points="51,1 99,1 99,49 51,49"
-          className="fill-on-primary-container stroke-primary"
+          className="fill-primary stroke-on-primary-container"
           animate={darkTop}
         />
       </svg>

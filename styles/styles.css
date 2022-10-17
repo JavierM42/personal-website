@@ -8,9 +8,9 @@ em {
   font-style: normal;
 }
 
-html {
+body {
   font-family: "Open Sans", sans-serif;
-  @apply bg-primary-container/10;
+  @apply bg-background;
 }
 
 h2 {
