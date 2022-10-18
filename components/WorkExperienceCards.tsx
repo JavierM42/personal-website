@@ -4,6 +4,7 @@ import WyeWorks from "../assets/companies/wyeworks.svg";
 import ElixirLogo from "../assets/techs/elixir.svg";
 import NextLogo from "../assets/techs/nextjs.svg";
 import RailsLogo from "../assets/techs/rails.svg";
+import Emeritus from "../assets/companies/emeritus.svg";
 import ReactLogo from "../assets/techs/react.svg";
 import RubyLogo from "../assets/techs/ruby.svg";
 import TailwindLogo from "../assets/techs/tailwind.svg";
@@ -17,9 +18,15 @@ export default function WorkExperienceCards() {
       <WorkExperienceCard
         name={
           <div className="flex items-center gap-1.5">
-            <Prisma aria-label="Prisma" className="inline-block h-10" />
+            <Prisma
+              aria-label="Prisma"
+              className="inline-block h-10 text-[#7224F9] dark:text-primary"
+            />
             at
-            <WyeWorks aria-label="WyeWorks" className="inline-block h-5" />
+            <WyeWorks
+              aria-label="WyeWorks"
+              className="inline-block h-5 text-[#0B0B0B] dark:text-white"
+            />
           </div>
         }
         collapsedTitle="An innovative online school"
@@ -68,13 +75,15 @@ export default function WorkExperienceCards() {
       <WorkExperienceCard
         name={
           <div className="flex items-center gap-1.5">
-            <img
-              src="/img/emeritus.png"
-              alt="Emeritus"
-              className="inline-block h-10"
+            <Emeritus
+              aria-label="Emeritus"
+              className="inline-block h-10 text-[#040404] dark:text-white"
             />
             at
-            <WyeWorks aria-label="WyeWorks" className="inline-block h-5" />
+            <WyeWorks
+              aria-label="WyeWorks"
+              className="inline-block h-5 text-[#0B0B0B] dark:text-white"
+            />
           </div>
         }
         collapsedTitle="A large-scale EdTech company"
@@ -109,7 +118,10 @@ export default function WorkExperienceCards() {
           <div className="flex items-center gap-1.5">
             <RetroAlly role="presentation" className="inline-block h-7" />
             RetroAlly at
-            <WyeWorks aria-label="WyeWorks" className="inline-block h-5" />
+            <WyeWorks
+              aria-label="WyeWorks"
+              className="inline-block h-5 text-[#0B0B0B] dark:text-white"
+            />
           </div>
         }
         collapsedTitle="A web app for remote retrospectives"
