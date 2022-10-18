@@ -88,9 +88,18 @@ export default function Home() {
               />
               <OpenSourceCard
                 name="MTGBarato"
-                content="I built a simple website to help my local gaming community."
-                cta="Read more"
-                stripClass="bg-[#f6ad55]"
+                content="I built a simple web app to help my local trading card game community."
+                stripClass="bg-[#f6ad55] dark:bg-[#88501d]"
+                cta={
+                  <a
+                    className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap"
+                    href="https://github.com/JavierM42/mtgbarato"
+                    target="_blank"
+                  >
+                    View on GitHub
+                    <GitHubLogo className="w-5 h-5" />
+                  </a>
+                }
               />
             </ol>
 
