@@ -1,5 +1,6 @@
 import Prisma from "../assets/companies/prisma.svg";
 import RetroAlly from "../assets/companies/retroally.svg";
+import RetroAllyText from "../assets/companies/retroallytext.svg";
 import WyeWorks from "../assets/companies/wyeworks.svg";
 import ElixirLogo from "../assets/techs/elixir.svg";
 import NextLogo from "../assets/techs/nextjs.svg";
@@ -20,7 +21,7 @@ export default function WorkExperienceCards() {
           <div className="flex items-center gap-1.5">
             <Prisma
               aria-label="Prisma"
-              className="inline-block h-10 text-[#7224F9] dark:text-primary"
+              className="inline-block h-10 text-[#7224F9] dark:text-white"
             />
             at
             <WyeWorks
@@ -117,7 +118,12 @@ export default function WorkExperienceCards() {
         name={
           <div className="flex items-center gap-1.5">
             <RetroAlly role="presentation" className="inline-block h-7" />
-            RetroAlly at
+            <RetroAllyText
+              role="presentation"
+              aria-label="RetroAlly"
+              className="inline-block h-7 text-on-surface dark:text-white"
+            />
+            at
             <WyeWorks
               aria-label="WyeWorks"
               className="inline-block h-5 text-[#0B0B0B] dark:text-white"
