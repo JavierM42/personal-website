@@ -1,5 +1,5 @@
 import { AnimationControls, motion, useAnimation } from "framer-motion";
-import { Fragment, useEffect, useRef } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 
 const MOVE_DURATION = 0.5;
 
@@ -18,6 +18,8 @@ type Direction = "up" | "down" | "left" | "right";
 
 type VerticalLayer = "L" | "M" | "R";
 type HorizontalLayer = "U" | "E" | "D";
+
+type FaceColor = "red" | "orange" | "blue" | "green" | "yellow" | "white";
 
 const POLYGON_POINTS: Record<Square, string> = {
   topLeft: "21,21 21,39 39,39 39,21",
@@ -213,10 +215,16 @@ export default function RubikCube() {
     const direction = CARTESIAN_DIRECTIONS[layer][turnDirection];
     const squares = LAYER_SQUARES[layer];
 
+    const futureCubeState = getNewCubeState(layer, turnDirection);
+
     transientGroup.set(TRANSIENT_GROUP_INITIAL_STATE[direction]);
     transientA.current?.setAttribute("points", POLYGON_POINTS[squares[0]]);
     transientB.current?.setAttribute("points", POLYGON_POINTS[squares[1]]);
     transientC.current?.setAttribute("points", POLYGON_POINTS[squares[2]]);
+
+    transientA.current?.setAttribute("fill", futureCubeState.front[squares[0]]);
+    transientB.current?.setAttribute("fill", futureCubeState.front[squares[1]]);
+    transientC.current?.setAttribute("fill", futureCubeState.front[squares[2]]);
 
     squares.forEach(async (square) => {
       const control = CONTROLS[square];
@@ -251,6 +259,7 @@ export default function RubikCube() {
         transition: { duration: 0 },
       });
     }
+    setCubeState(futureCubeState);
   };
 
   const complexTurn = async () => {
@@ -260,12 +269,204 @@ export default function RubikCube() {
     await turn("U", "counterclockwise");
   };
 
+  const [cubeState, setCubeState] = useState<{
+    front: Record<Square, FaceColor>;
+    right: Record<Square, FaceColor>;
+    back: Record<Square, FaceColor>;
+    left: Record<Square, FaceColor>;
+    top: Record<Square, FaceColor>;
+    bottom: Record<Square, FaceColor>;
+  }>({
+    front: {
+      topLeft: "white",
+      topCenter: "white",
+      topRight: "white",
+      centerLeft: "white",
+      centerCenter: "white",
+      centerRight: "white",
+      bottomLeft: "white",
+      bottomCenter: "white",
+      bottomRight: "white",
+    },
+    right: {
+      topLeft: "green",
+      topCenter: "green",
+      topRight: "green",
+      centerLeft: "green",
+      centerCenter: "green",
+      centerRight: "green",
+      bottomLeft: "green",
+      bottomCenter: "green",
+      bottomRight: "green",
+    },
+    back: {
+      topLeft: "yellow",
+      topCenter: "yellow",
+      topRight: "yellow",
+      centerLeft: "yellow",
+      centerCenter: "yellow",
+      centerRight: "yellow",
+      bottomLeft: "yellow",
+      bottomCenter: "yellow",
+      bottomRight: "yellow",
+    },
+    left: {
+      topLeft: "blue",
+      topCenter: "blue",
+      topRight: "blue",
+      centerLeft: "blue",
+      centerCenter: "blue",
+      centerRight: "blue",
+      bottomLeft: "blue",
+      bottomCenter: "blue",
+      bottomRight: "blue",
+    },
+    top: {
+      topLeft: "red",
+      topCenter: "red",
+      topRight: "red",
+      centerLeft: "red",
+      centerCenter: "red",
+      centerRight: "red",
+      bottomLeft: "red",
+      bottomCenter: "red",
+      bottomRight: "red",
+    },
+    bottom: {
+      topLeft: "orange",
+      topCenter: "orange",
+      topRight: "orange",
+      centerLeft: "orange",
+      centerCenter: "orange",
+      centerRight: "orange",
+      bottomLeft: "orange",
+      bottomCenter: "orange",
+      bottomRight: "orange",
+    },
+  });
+
+  const getNewCubeState = (
+    layer: HorizontalLayer | VerticalLayer,
+    turnDirection: "clockwise" | "counterclockwise"
+  ) => {
+    const prime = turnDirection === "counterclockwise";
+    const s = cubeState;
+
+    return layer === "R"
+      ? {
+          ...s,
+          front: {
+            ...s.front,
+            topRight: prime ? s.top.topRight : s.bottom.topRight,
+            centerRight: prime ? s.top.centerRight : s.bottom.centerRight,
+            bottomRight: prime ? s.top.bottomRight : s.bottom.bottomRight,
+          },
+          top: {
+            ...s.top,
+            topRight: prime ? s.back.bottomLeft : s.front.topRight,
+            centerRight: prime ? s.back.centerLeft : s.front.centerRight,
+            bottomRight: prime ? s.back.topLeft : s.front.bottomRight,
+          },
+          back: {
+            ...s.back,
+            topLeft: prime ? s.bottom.bottomRight : s.top.bottomRight,
+            centerLeft: prime ? s.bottom.centerRight : s.top.centerRight,
+            bottomLeft: prime ? s.bottom.topRight : s.top.topRight,
+          },
+          bottom: {
+            ...s.bottom,
+            topRight: prime ? s.front.topRight : s.back.bottomLeft,
+            centerRight: prime ? s.front.centerRight : s.back.centerLeft,
+            bottomRight: prime ? s.front.bottomRight : s.back.topLeft,
+          },
+          right: {
+            topLeft: prime ? s.right.topRight : s.right.bottomRight,
+            topCenter: prime ? s.right.centerRight : s.right.centerLeft,
+            topRight: prime ? s.right.bottomRight : s.right.topLeft,
+            centerLeft: prime ? s.right.topCenter : s.right.bottomCenter,
+            centerCenter: s.right.centerCenter,
+            centerRight: prime ? s.right.bottomCenter : s.right.topCenter,
+            bottomLeft: prime ? s.right.topLeft : s.right.bottomRight,
+            bottomCenter: prime ? s.right.centerLeft : s.right.centerRight,
+            bottomRight: prime ? s.right.bottomLeft : s.right.topRight,
+          },
+        }
+      : layer === "L"
+      ? {
+          ...s,
+          front: {
+            ...s.front,
+            topLeft: prime ? s.bottom.topLeft : s.top.topLeft,
+            centerLeft: prime ? s.bottom.centerLeft : s.top.centerLeft,
+            bottomLeft: prime ? s.bottom.bottomLeft : s.top.bottomLeft,
+          },
+          top: {
+            ...s.top,
+            topLeft: prime ? s.front.topLeft : s.back.bottomRight,
+            centerLeft: prime ? s.front.centerLeft : s.back.centerRight,
+            bottomLeft: prime ? s.front.bottomLeft : s.back.topRight,
+          },
+          back: {
+            ...s.back,
+            topRight: prime ? s.top.bottomLeft : s.bottom.bottomLeft,
+            centerRight: prime ? s.top.centerLeft : s.bottom.centerLeft,
+            bottomRight: prime ? s.top.topLeft : s.bottom.topLeft,
+          },
+          bottom: {
+            ...s.bottom,
+            topLeft: prime ? s.back.bottomRight : s.front.topLeft,
+            centerLeft: prime ? s.back.centerRight : s.front.centerLeft,
+            bottomLeft: prime ? s.back.topRight : s.front.bottomLeft,
+          },
+          left: {
+            topLeft: prime ? s.left.topRight : s.left.bottomRight,
+            topCenter: prime ? s.left.centerRight : s.left.centerLeft,
+            topRight: prime ? s.left.bottomRight : s.left.topLeft,
+            centerLeft: prime ? s.left.topCenter : s.left.bottomCenter,
+            centerCenter: s.left.centerCenter,
+            centerRight: prime ? s.left.bottomCenter : s.left.topCenter,
+            bottomLeft: prime ? s.left.topLeft : s.left.bottomRight,
+            bottomCenter: prime ? s.left.centerLeft : s.left.centerRight,
+            bottomRight: prime ? s.left.bottomLeft : s.left.topRight,
+          },
+        }
+      : layer === "M"
+      ? {
+          ...s,
+          front: {
+            ...s.front,
+            topCenter: prime ? s.bottom.topCenter : s.top.topCenter,
+            centerCenter: prime ? s.bottom.centerCenter : s.top.centerCenter,
+            bottomCenter: prime ? s.bottom.bottomCenter : s.top.bottomCenter,
+          },
+          top: {
+            ...s.top,
+            topCenter: prime ? s.front.topCenter : s.back.bottomCenter,
+            centerCenter: prime ? s.front.centerCenter : s.back.centerCenter,
+            bottomCenter: prime ? s.front.bottomCenter : s.back.topCenter,
+          },
+          back: {
+            ...s.back,
+            topCenter: prime ? s.top.bottomCenter : s.bottom.bottomCenter,
+            centerCenter: prime ? s.top.centerCenter : s.bottom.centerCenter,
+            bottomCenter: prime ? s.top.topCenter : s.bottom.topCenter,
+          },
+          bottom: {
+            ...s.bottom,
+            topCenter: prime ? s.back.bottomCenter : s.front.topCenter,
+            centerCenter: prime ? s.back.centerCenter : s.front.centerCenter,
+            bottomCenter: prime ? s.back.topCenter : s.front.bottomCenter,
+          },
+        }
+      : s;
+  };
+
   return (
     <>
       <motion.svg
         stroke="currentColor"
         viewBox="0 0 100 100"
-        className="mx-auto border w-96 h-96 stroke-primary fill-primary-container"
+        className="mx-auto border w-96 h-96 stroke-outline"
         strokeWidth="1.5"
         strokeLinejoin="round"
         strokeLinecap="round"
@@ -287,23 +488,24 @@ export default function RubikCube() {
             key={square}
             animate={CONTROLS[square]}
             points={POLYGON_POINTS[square]}
+            fill={cubeState.front[square]}
           />
         ))}
         <motion.g animate={transientGroup}>
           <motion.polygon
             ref={transientA}
             points={POLYGON_POINTS["topLeft"]}
-            // className="fill-red-container stroke-red"
+            stroke="black"
           />
           <motion.polygon
             ref={transientB}
             points={POLYGON_POINTS["centerCenter"]}
-            // className="fill-red-container stroke-red"
+            stroke="black"
           />
           <motion.polygon
             ref={transientC}
             points={POLYGON_POINTS["bottomRight"]}
-            // className="fill-red-container stroke-red"
+            stroke="black"
           />
         </motion.g>
       </motion.svg>
