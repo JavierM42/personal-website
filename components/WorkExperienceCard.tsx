@@ -41,7 +41,7 @@ const WorkExperienceCard: FC<Props> = ({
   return (
     <li
       className={classNames(
-        "relative p-2 shadow bg-surface border-l-[10px]",
+        "relative p-2 shadow bg-surface border-l-[10px] rounded-lg",
         isExpanded ? expandedClass : collapsedClass,
         !isExpanded && "shadow cursor-pointer"
       )}

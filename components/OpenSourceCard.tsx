@@ -15,7 +15,7 @@ const OpenSourceCard: FC<Props> = ({
   stripClass,
 }: Props) => {
   return (
-    <li className="flex flex-col shadow bg-surface">
+    <li className="flex flex-col shadow rounded-xl bg-surface overflow-clip">
       <div className={classNames("h-3", stripClass)} />
       <div className="flex flex-col flex-1 px-4 pt-2 pb-4">
         <div className="mb-2 font-bold text-md">{name}</div>
