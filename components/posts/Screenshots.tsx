@@ -126,7 +126,7 @@ export default function Screenshots() {
           />
           <circle r="7" cx="54" cy="40" className="fill-surface" />
         </motion.g>
-        <g clip-path="url(#frame)">
+        <g clipPath="url(#frame)">
           <motion.polygon
             points="8,26 72,26 72,50, 8,50"
             className="fill-surface"
