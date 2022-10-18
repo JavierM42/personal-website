@@ -5,6 +5,7 @@ import BlogPostCards from "../components/BlogPostCards";
 import DarkModeToggle from "../components/DarkModeToggle";
 import ExternalLink from "../components/ExternalLink";
 import FormalEducationCard from "../components/FormalEducationCard";
+import RubikCube from "../components/hero/RubikCube";
 import OpenSourceCard from "../components/OpenSourceCard";
 import TryDynamicColor from "../components/open_source/TryDynamicColor";
 import WorkExperienceCards from "../components/WorkExperienceCards";
@@ -40,6 +41,8 @@ export default function Home() {
               {/* TODO & cool animations ;) */}
             </p>
           </header>
+
+          <RubikCube />
 
           <main className="space-y-8">
             <h2>Work Experience</h2>
