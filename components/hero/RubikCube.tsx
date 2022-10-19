@@ -78,7 +78,7 @@ const INITIAL_CUBE_STATE: {
   },
 };
 
-const MOVE_DURATION = 0.5;
+const MOVE_DURATION = 0.3;
 
 type Square =
   | "topLeft"
@@ -108,15 +108,15 @@ const FACE_CLASSNAME: Record<FaceColor, string> = {
 };
 
 const POLYGON_POINTS: Record<Square, string> = {
-  topLeft: "21,21 21,39 39,39 39,21",
-  centerLeft: "21,41 21,59 39,59 39,41",
-  bottomLeft: "21,61 21,79 39,79 39,61",
-  topCenter: "41,21 41,39 59,39 59,21",
-  centerCenter: "41,41 41,59 59,59 59,41",
-  bottomCenter: "41,61 41,79 59,79 59,61",
-  topRight: "61,21 61,39 79,39 79,21",
-  centerRight: "61,41 61,59 79,59 79,41",
-  bottomRight: "61,61 61,79 79,79 79,61",
+  topLeft: "20.5,20.5 20.5,39.5 39.5,39.5 39.5,20.5",
+  centerLeft: "20.5,40.5 20.5,59.5 39.5,59.5 39.5,40.5",
+  bottomLeft: "20.5,60.5 20.5,79.5 39.5,79.5 39.5,60.5",
+  topCenter: "40.5,20.5 40.5,39.5 59.5,39.5 59.5,20.5",
+  centerCenter: "40.5,40.5 40.5,59.5 59.5,59.5 59.5,40.5",
+  bottomCenter: "40.5,60.5 40.5,79.5 59.5,79.5 59.5,60.5",
+  topRight: "60.5,20.5 60.5,39.5 79.5,39.5 79.5,20.5",
+  centerRight: "60.5,40.5 60.5,59.5 79.5,59.5 79.5,40.5",
+  bottomRight: "60.5,60.5 60.5,79.5 79.5,79.5 79.5,60.5",
 };
 
 const HALF_TURNS: Record<Square, Record<Direction, any>> = {
@@ -640,8 +640,8 @@ export default function RubikCube() {
       <motion.svg
         stroke="currentColor"
         viewBox="0 0 100 100"
-        className="w-96 h-96 stroke-outline"
-        strokeWidth="1.5"
+        className="w-96 h-96 stroke-on-surface"
+        strokeWidth="0.5"
         strokeLinejoin="round"
         strokeLinecap="round"
       >
