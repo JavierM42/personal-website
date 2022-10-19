@@ -1,8 +1,13 @@
-import { AnimationControls, motion, useAnimation } from "framer-motion";
+import {
+  AnimatePresence,
+  AnimationControls,
+  motion,
+  useAnimation,
+} from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import ChevronRight from "../../public/chevron-right.svg";
 
-const INITIAL_CUBE_STATE: {
+const SOLVED_CUBE_STATE: {
   front: Record<Square, FaceColor>;
   right: Record<Square, FaceColor>;
   back: Record<Square, FaceColor>;
@@ -364,7 +369,7 @@ export default function RubikCube() {
     }, 70);
   };
 
-  const [cubeState, setCubeState] = useState(INITIAL_CUBE_STATE);
+  const [cubeState, setCubeState] = useState(SOLVED_CUBE_STATE);
 
   const getNewCubeState = (
     layer: HorizontalLayer | VerticalLayer,
@@ -496,9 +501,9 @@ export default function RubikCube() {
           },
           back: {
             ...s.back,
-            topLeft: prime ? s.right.topRight : s.left.topLeft,
+            topLeft: prime ? s.right.topLeft : s.left.topLeft,
             topCenter: prime ? s.right.topCenter : s.left.topCenter,
-            topRight: prime ? s.right.topLeft : s.left.topRight,
+            topRight: prime ? s.right.topRight : s.left.topRight,
           },
           right: {
             ...s.right,
@@ -588,6 +593,9 @@ export default function RubikCube() {
       : s;
   };
 
+  const [isRunningInitialAnimation, setIsRunningInitialAnimation] =
+    useState(true);
+
   const [pendingMoves, setPendingMoves] = useState<
     {
       layer: HorizontalLayer | VerticalLayer;
@@ -629,11 +637,10 @@ export default function RubikCube() {
   };
 
   useEffect(() => {
-    // FIXME does not work
-    if (JSON.stringify(cubeState) === JSON.stringify(INITIAL_CUBE_STATE)) {
-      setPerformedMoves([]);
+    if (pendingMoves.length === 0 && !isTurning) {
+      setIsRunningInitialAnimation(false);
     }
-  }, [cubeState]);
+  }, [pendingMoves, isTurning]);
 
   return (
     <div className="relative mx-auto w-fit h-fit">
@@ -699,113 +706,124 @@ export default function RubikCube() {
           />
         </motion.g>
       </motion.svg>
-      {[
-        {
-          left: "100%",
-          top: "30%",
-          layer: "U" as const,
-          direction: "counterclockwise" as const,
-          chevronRotation: 0,
-        },
-        {
-          left: "100%",
-          top: "50%",
-          layer: "E" as const,
-          direction: "clockwise" as const,
-          chevronRotation: 0,
-        },
-        {
-          left: "100%",
-          top: "70%",
-          layer: "D" as const,
-          direction: "clockwise" as const,
-          chevronRotation: 0,
-        },
-        {
-          left: "0%",
-          top: "30%",
-          layer: "U" as const,
-          direction: "clockwise" as const,
-          chevronRotation: 180,
-        },
-        {
-          left: "0%",
-          top: "50%",
-          layer: "E" as const,
-          direction: "counterclockwise" as const,
-          chevronRotation: 180,
-        },
-        {
-          left: "0%",
-          top: "70%",
-          layer: "D" as const,
-          direction: "counterclockwise" as const,
-          chevronRotation: 180,
-        },
-        {
-          left: "30%",
-          top: "100%",
-          layer: "L" as const,
-          direction: "clockwise" as const,
-          chevronRotation: 90,
-        },
-        {
-          left: "50%",
-          top: "100%",
-          layer: "M" as const,
-          direction: "clockwise" as const,
-          chevronRotation: 90,
-        },
-        {
-          left: "70%",
-          top: "100%",
-          layer: "R" as const,
-          direction: "counterclockwise" as const,
-          chevronRotation: 90,
-        },
-        {
-          left: "30%",
-          top: "0%",
-          layer: "L" as const,
-          direction: "counterclockwise" as const,
-          chevronRotation: -90,
-        },
-        {
-          left: "50%",
-          top: "0%",
-          layer: "M" as const,
-          direction: "counterclockwise" as const,
-          chevronRotation: -90,
-        },
-        {
-          left: "70%",
-          top: "0%",
-          layer: "R" as const,
-          direction: "clockwise" as const,
-          chevronRotation: -90,
-        },
-      ].map(({ left, top, layer, direction, chevronRotation }, index) => (
-        <button
-          key={index}
-          className="absolute flex items-center justify-center w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-lg focus:outline-none interactive-bg-primary-container"
-          style={{ left, top }}
-          onClick={() => queueMove(layer, direction)}
-        >
-          <ChevronRight
-            style={{ transform: `rotate(${chevronRotation}deg)` }}
-          />
-        </button>
-      ))}
-      {performedMoves.length ? (
-        <button
-          className="absolute flex items-center justify-center w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full focus:outline-none interactive-bg-primary-container"
-          style={{ left: "100%", top: "0%" }}
-          onClick={reset}
-          disabled={pendingMoves.length > 0}
-        >
-          R
-        </button>
-      ) : undefined}
+      <AnimatePresence>
+        {!isRunningInitialAnimation &&
+          [
+            {
+              left: "100%",
+              top: "30%",
+              layer: "U" as const,
+              direction: "counterclockwise" as const,
+              chevronRotation: 0,
+            },
+            {
+              left: "100%",
+              top: "50%",
+              layer: "E" as const,
+              direction: "clockwise" as const,
+              chevronRotation: 0,
+            },
+            {
+              left: "100%",
+              top: "70%",
+              layer: "D" as const,
+              direction: "clockwise" as const,
+              chevronRotation: 0,
+            },
+            {
+              left: "0%",
+              top: "30%",
+              layer: "U" as const,
+              direction: "clockwise" as const,
+              chevronRotation: 180,
+            },
+            {
+              left: "0%",
+              top: "50%",
+              layer: "E" as const,
+              direction: "counterclockwise" as const,
+              chevronRotation: 180,
+            },
+            {
+              left: "0%",
+              top: "70%",
+              layer: "D" as const,
+              direction: "counterclockwise" as const,
+              chevronRotation: 180,
+            },
+            {
+              left: "30%",
+              top: "100%",
+              layer: "L" as const,
+              direction: "clockwise" as const,
+              chevronRotation: 90,
+            },
+            {
+              left: "50%",
+              top: "100%",
+              layer: "M" as const,
+              direction: "clockwise" as const,
+              chevronRotation: 90,
+            },
+            {
+              left: "70%",
+              top: "100%",
+              layer: "R" as const,
+              direction: "counterclockwise" as const,
+              chevronRotation: 90,
+            },
+            {
+              left: "30%",
+              top: "0%",
+              layer: "L" as const,
+              direction: "counterclockwise" as const,
+              chevronRotation: -90,
+            },
+            {
+              left: "50%",
+              top: "0%",
+              layer: "M" as const,
+              direction: "counterclockwise" as const,
+              chevronRotation: -90,
+            },
+            {
+              left: "70%",
+              top: "0%",
+              layer: "R" as const,
+              direction: "clockwise" as const,
+              chevronRotation: -90,
+            },
+          ].map(({ left, top, layer, direction, chevronRotation }, index) => (
+            <motion.button
+              key={index}
+              className="absolute flex items-center justify-center w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-lg focus:outline-none interactive-bg-primary-container"
+              style={{ left, top }}
+              onClick={() => queueMove(layer, direction)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <ChevronRight
+                style={{ transform: `rotate(${chevronRotation}deg)` }}
+              />
+            </motion.button>
+          ))}
+        {!isRunningInitialAnimation && performedMoves.length ? (
+          <motion.button
+            className="absolute flex items-center justify-center w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full focus:outline-none interactive-bg-primary-container"
+            style={{ left: "100%", top: "0%" }}
+            onClick={reset}
+            disabled={pendingMoves.length > 0}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            R
+          </motion.button>
+        ) : undefined}
+      </AnimatePresence>
     </div>
   );
 }
