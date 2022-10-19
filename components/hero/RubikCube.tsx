@@ -752,11 +752,11 @@ export default function RubikCube() {
   }, [pendingMoves, isTurning]);
 
   return (
-    <div className="relative mx-auto w-fit h-fit">
+    <div className="relative m-5 w-fill h-fill">
       <motion.svg
         stroke="currentColor"
         viewBox="0 0 100 100"
-        className="w-96 h-96 stroke-on-surface"
+        className="w-full h-full stroke-on-surface"
         strokeWidth="0.5"
         strokeLinejoin="round"
         strokeLinecap="round"

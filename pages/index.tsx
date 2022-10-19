@@ -1,4 +1,4 @@
-import { motion, MotionConfig } from "framer-motion";
+import { motion } from "framer-motion";
 import Head from "next/head";
 import GitHubLogo from "../assets/github.svg";
 import BlogPostCards from "../components/BlogPostCards";
@@ -24,7 +24,7 @@ export default function Home() {
           <DarkModeToggle />
 
           <header>
-            <div className="mx-auto mt-24 mb-24">
+            <div className="max-w-full mx-auto mt-24 mb-12 w-[440px] aspect-square">
               <RubikCube />
             </div>
             <motion.div
