@@ -8,13 +8,24 @@ em {
   font-style: normal;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+}
+
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "PT Sans", sans-serif;
   @apply bg-background;
 }
 
 h2 {
-  @apply text-xl font-bold tracking-widest uppercase text-on-primary-container;
+  @apply text-xl tracking-widest uppercase text-on-primary-container;
 }
 
 a {

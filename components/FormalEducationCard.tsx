@@ -9,7 +9,7 @@ type Props = {
 const FormalEducationCard: FC<Props> = ({ name, content, dates }: Props) => {
   return (
     <li className="px-4 py-2 shadow dark:shadow-black/40 rounded-xl bg-surface">
-      <div className="font-bold text-md">{name}</div>
+      <h3 className="text-lg font-bold">{name}</h3>
       <div className="mb-4 text-xs font-medium text-outline">{dates}</div>
       {content}
     </li>

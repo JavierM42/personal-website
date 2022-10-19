@@ -69,7 +69,7 @@ const WorkExperienceCard: FC<Props> = ({
       >
         <AnimatePresence initial={false}>
           {!isExpanded && (
-            <div className="flex items-center w-full h-full col-start-1 row-start-1 pl-11">
+            <div className="flex items-center w-full h-full col-start-1 row-start-1 pl-11 font-[Nunito]">
               <motion.div
                 className="text-lg font-bold"
                 initial="collapsed"

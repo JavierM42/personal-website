@@ -17,6 +17,16 @@ export default function Home() {
         <title>JavierM42</title>
         <meta name="description" content="TODO" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=PT+Sans&display=swap"
+          rel="stylesheet"
+        />
       </Head>
 
       <div className="w-full bg-primary-container/10">
@@ -35,7 +45,7 @@ export default function Home() {
               <h1 className="z-10 mt-6 mb-2 text-6xl font-bold text-center text-primary">
                 Hi, Javi here.
               </h1>
-              <p className="mb-20 text-2xl leading-loose text-center">
+              <p className="mb-20 text-2xl leading-loose text-center text-on-primary-container/70">
                 I'm a frontend engineer with a passion for great user
                 experiences.
               </p>
@@ -73,7 +83,7 @@ export default function Home() {
                 content="A TailwindCSS Plugin that integrates Material Design interaction states into Tailwind."
                 cta={
                   <a
-                    className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap"
+                    className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap font-[Nunito]"
                     href="https://github.com/JavierM42/tailwind-material-surfaces"
                     target="_blank"
                   >
@@ -88,7 +98,7 @@ export default function Home() {
                 content="A TailwindCSS Plugin to style light and dark modes with a single class."
                 cta={
                   <a
-                    className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap"
+                    className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap font-[Nunito]"
                     href="https://github.com/JavierM42/tailwind-mode-aware-colors"
                     target="_blank"
                   >
@@ -104,7 +114,7 @@ export default function Home() {
                 stripClass="bg-[#f6ad55] dark:bg-[#88501d]"
                 cta={
                   <a
-                    className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap"
+                    className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap font-[Nunito]"
                     href="https://github.com/JavierM42/mtgbarato"
                     target="_blank"
                   >
