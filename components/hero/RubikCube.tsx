@@ -99,11 +99,11 @@ type HorizontalLayer = "U" | "E" | "D";
 type FaceColor = "red" | "orange" | "blue" | "green" | "yellow" | "white";
 
 const FACE_CLASSNAME: Record<FaceColor, string> = {
-  red: "fill-[#ff0000]",
-  orange: "fill-[#ff4444]",
-  blue: "fill-[#0000ff]",
-  green: "fill-[#00ff00]",
-  yellow: "fill-[#00ffff]",
+  red: "fill-[#ff7645]",
+  orange: "fill-[#f6ad55]",
+  blue: "fill-[#4751d8]",
+  green: "fill-[#04bc6c]",
+  yellow: "fill-[#f0e513]",
   white: "fill-[url(#javi)]",
 };
 
