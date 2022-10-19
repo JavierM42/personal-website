@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import GitHubLogo from "../assets/github.svg";
 import BlogPostCards from "../components/BlogPostCards";
 import DarkModeToggle from "../components/DarkModeToggle";
@@ -24,13 +23,8 @@ export default function Home() {
           <DarkModeToggle />
 
           <header>
-            <div className="mx-auto mt-24 shadow-lg rounded-xl w-72 h-72 overflow-clip">
-              <Image
-                src="/javi.png"
-                width="288"
-                height="288"
-                className="mix-blend-luminosity"
-              />
+            <div className="mx-auto mt-24 mb-24">
+              <RubikCube />
             </div>
             <h1 className="z-10 mt-6 mb-2 text-6xl font-bold text-center text-primary">
               Hi. <br />
@@ -41,8 +35,6 @@ export default function Home() {
               {/* TODO & cool animations ;) */}
             </p>
           </header>
-
-          <RubikCube />
 
           <main className="space-y-8">
             <h2>Work Experience</h2>

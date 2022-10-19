@@ -787,7 +787,7 @@ export default function RubikCube() {
       ].map(({ left, top, layer, direction, chevronRotation }, index) => (
         <button
           key={index}
-          className="absolute flex items-center justify-center w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full focus:outline-none interactive-bg-primary-container"
+          className="absolute flex items-center justify-center w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-lg focus:outline-none interactive-bg-primary-container"
           style={{ left, top }}
           onClick={() => queueMove(layer, direction)}
         >

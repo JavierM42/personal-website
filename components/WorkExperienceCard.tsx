@@ -2,6 +2,7 @@ import { FC, ReactNode, useState } from "react";
 import classNames from "classnames";
 import { updateTheme } from "tailwind-material-colors/lib/updateTheme.esm";
 import { AnimatePresence, motion } from "framer-motion";
+import ChevronRight from "../public/chevron-right.svg";
 
 type Props = {
   name: ReactNode;
@@ -54,8 +55,7 @@ const WorkExperienceCard: FC<Props> = ({
           isExpanded ? buttonClass : "pointer-events-none"
         )}
       >
-        <img
-          src="/chevron-right.svg"
+        <ChevronRight
           className={classNames(
             "h-6 transition-transform",
             isExpanded && "rotate-90"
