@@ -262,13 +262,6 @@ export default function RubikCube() {
     setCubeState(futureCubeState);
   };
 
-  const complexTurn = async () => {
-    await turn("R", "clockwise");
-    await turn("U", "clockwise");
-    await turn("R", "counterclockwise");
-    await turn("U", "counterclockwise");
-  };
-
   const [cubeState, setCubeState] = useState<{
     front: Record<Square, FaceColor>;
     right: Record<Square, FaceColor>;
@@ -380,7 +373,7 @@ export default function RubikCube() {
             bottomRight: prime ? s.front.bottomRight : s.back.topLeft,
           },
           right: {
-            topLeft: prime ? s.right.topRight : s.right.bottomRight,
+            topLeft: prime ? s.right.topRight : s.right.bottomLeft,
             topCenter: prime ? s.right.centerRight : s.right.centerLeft,
             topRight: prime ? s.right.bottomRight : s.right.topLeft,
             centerLeft: prime ? s.right.topCenter : s.right.bottomCenter,
@@ -419,7 +412,7 @@ export default function RubikCube() {
             bottomLeft: prime ? s.back.topRight : s.front.bottomLeft,
           },
           left: {
-            topLeft: prime ? s.left.topRight : s.left.bottomRight,
+            topLeft: prime ? s.left.topRight : s.left.bottomLeft,
             topCenter: prime ? s.left.centerRight : s.left.centerLeft,
             topRight: prime ? s.left.bottomRight : s.left.topLeft,
             centerLeft: prime ? s.left.topCenter : s.left.bottomCenter,
@@ -456,6 +449,112 @@ export default function RubikCube() {
             topCenter: prime ? s.back.bottomCenter : s.front.topCenter,
             centerCenter: prime ? s.back.centerCenter : s.front.centerCenter,
             bottomCenter: prime ? s.back.topCenter : s.front.bottomCenter,
+          },
+        }
+      : layer === "U"
+      ? {
+          ...s,
+          front: {
+            ...s.front,
+            topRight: prime ? s.left.topRight : s.right.topRight,
+            topCenter: prime ? s.left.topCenter : s.right.topCenter,
+            topLeft: prime ? s.left.topLeft : s.right.topLeft,
+          },
+          left: {
+            ...s.left,
+            topRight: prime ? s.back.topRight : s.front.topRight,
+            topCenter: prime ? s.back.topCenter : s.front.topCenter,
+            topLeft: prime ? s.back.topLeft : s.front.topLeft,
+          },
+          back: {
+            ...s.back,
+            topLeft: prime ? s.right.topRight : s.left.topLeft,
+            topCenter: prime ? s.right.topCenter : s.left.topCenter,
+            topRight: prime ? s.right.topLeft : s.left.topRight,
+          },
+          right: {
+            ...s.right,
+            topLeft: prime ? s.front.topLeft : s.back.topLeft,
+            topCenter: prime ? s.front.topCenter : s.back.topCenter,
+            topRight: prime ? s.front.topRight : s.back.topRight,
+          },
+          top: {
+            topLeft: prime ? s.top.topRight : s.top.bottomLeft,
+            topCenter: prime ? s.top.centerRight : s.top.centerLeft,
+            topRight: prime ? s.top.bottomRight : s.top.topLeft,
+            centerLeft: prime ? s.top.topCenter : s.top.bottomCenter,
+            centerCenter: s.top.centerCenter,
+            centerRight: prime ? s.top.bottomCenter : s.top.topCenter,
+            bottomLeft: prime ? s.top.topLeft : s.top.bottomRight,
+            bottomCenter: prime ? s.top.centerLeft : s.top.centerRight,
+            bottomRight: prime ? s.top.bottomLeft : s.top.topRight,
+          },
+        }
+      : layer === "D"
+      ? {
+          ...s,
+          front: {
+            ...s.front,
+            bottomLeft: prime ? s.right.bottomLeft : s.left.bottomLeft,
+            bottomCenter: prime ? s.right.bottomCenter : s.left.bottomCenter,
+            bottomRight: prime ? s.right.bottomRight : s.left.bottomRight,
+          },
+          left: {
+            ...s.left,
+            bottomLeft: prime ? s.front.bottomLeft : s.back.bottomLeft,
+            bottomCenter: prime ? s.front.bottomCenter : s.back.bottomCenter,
+            bottomRight: prime ? s.front.bottomRight : s.back.bottomRight,
+          },
+          back: {
+            ...s.back,
+            bottomLeft: prime ? s.left.bottomLeft : s.right.bottomLeft,
+            bottomCenter: prime ? s.left.bottomCenter : s.right.bottomCenter,
+            bottomRight: prime ? s.left.bottomRight : s.right.bottomRight,
+          },
+          right: {
+            ...s.right,
+            bottomLeft: prime ? s.back.bottomLeft : s.front.bottomLeft,
+            bottomCenter: prime ? s.back.bottomCenter : s.front.bottomCenter,
+            bottomRight: prime ? s.back.bottomRight : s.front.bottomRight,
+          },
+          bottom: {
+            topLeft: prime ? s.bottom.topRight : s.bottom.bottomLeft,
+            topCenter: prime ? s.bottom.centerRight : s.bottom.centerLeft,
+            topRight: prime ? s.bottom.bottomRight : s.bottom.topLeft,
+            centerLeft: prime ? s.bottom.topCenter : s.bottom.bottomCenter,
+            centerCenter: s.bottom.centerCenter,
+            centerRight: prime ? s.bottom.bottomCenter : s.bottom.topCenter,
+            bottomLeft: prime ? s.bottom.topLeft : s.bottom.bottomRight,
+            bottomCenter: prime ? s.bottom.centerLeft : s.bottom.centerRight,
+            bottomRight: prime ? s.bottom.bottomLeft : s.bottom.topRight,
+          },
+        }
+      : layer === "E"
+      ? {
+          ...s,
+          front: {
+            ...s.front,
+            centerLeft: prime ? s.right.centerLeft : s.left.centerLeft,
+            centerCenter: prime ? s.right.centerCenter : s.left.centerCenter,
+            centerRight: prime ? s.right.centerRight : s.left.centerRight,
+          },
+          left: {
+            ...s.left,
+            centerLeft: prime ? s.front.centerLeft : s.back.centerLeft,
+            centerCenter: prime ? s.front.centerCenter : s.back.centerCenter,
+            centerRight: prime ? s.front.centerRight : s.back.centerRight,
+          },
+          back: {
+            ...s.back,
+            centerLeft: prime ? s.left.centerLeft : s.right.centerLeft,
+            centerCenter: prime ? s.left.centerCenter : s.right.centerCenter,
+            centerRight: prime ? s.left.centerRight : s.right.centerRight,
+          },
+          right: {
+            ...s.right,
+            centerLeft: prime ? s.back.centerLeft : s.front.centerLeft,
+            centerCenter: prime ? s.back.centerCenter : s.front.centerCenter,
+            centerRight: prime ? s.back.centerRight : s.front.centerRight,
           },
         }
       : s;
@@ -518,9 +617,6 @@ export default function RubikCube() {
             </button>
           </Fragment>
         ))}
-      </div>
-      <div className="flex justify-center gap-2">
-        <button onClick={complexTurn}>Sexy Move!</button>
       </div>
     </>
   );
