@@ -6,6 +6,7 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import ChevronRight from "../../public/chevron-right.svg";
+import Reset from "../../assets/reset.svg";
 import { isEqual } from "lodash";
 
 const INITIAL_CUBE_STATE: typeof SOLVED_CUBE_STATE = {
@@ -927,7 +928,7 @@ export default function RubikCube() {
           ))}
         {!isRunningInitialAnimation && performedMoves.length ? (
           <motion.button
-            className="absolute flex items-center justify-center w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-lg focus:outline-none interactive-bg-primary-container"
+            className="absolute flex items-center justify-center w-10 h-10 px-2 -translate-x-1/2 -translate-y-1/2 rounded-lg focus:outline-none interactive-bg-primary-container"
             style={{ left: "100%", top: "0%" }}
             onClick={reset}
             disabled={pendingMoves.length > 0}
@@ -935,7 +936,7 @@ export default function RubikCube() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            R
+            <Reset />
           </motion.button>
         ) : undefined}
       </AnimatePresence>

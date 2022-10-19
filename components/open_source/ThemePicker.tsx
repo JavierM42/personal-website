@@ -4,7 +4,7 @@ import { updateTheme } from "tailwind-material-colors/lib/updateTheme.esm";
 import hsl from "hsl-to-hex";
 
 const ThemePicker = () => {
-  const [hue, setHue] = useState(160);
+  const [hue, setHue] = useState(83);
 
   useDebouncedEffect(
     () => {
