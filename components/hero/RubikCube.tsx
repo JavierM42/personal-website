@@ -2,6 +2,75 @@ import { AnimationControls, motion, useAnimation } from "framer-motion";
 import { Fragment, useEffect, useRef, useState } from "react";
 import ChevronRight from "../../public/chevron-right.svg";
 
+const INITIAL_CUBE_STATE = {
+  front: {
+    topLeft: "white",
+    topCenter: "white",
+    topRight: "white",
+    centerLeft: "white",
+    centerCenter: "white",
+    centerRight: "white",
+    bottomLeft: "white",
+    bottomCenter: "white",
+    bottomRight: "white",
+  },
+  right: {
+    topLeft: "green",
+    topCenter: "green",
+    topRight: "green",
+    centerLeft: "green",
+    centerCenter: "green",
+    centerRight: "green",
+    bottomLeft: "green",
+    bottomCenter: "green",
+    bottomRight: "green",
+  },
+  back: {
+    topLeft: "yellow",
+    topCenter: "yellow",
+    topRight: "yellow",
+    centerLeft: "yellow",
+    centerCenter: "yellow",
+    centerRight: "yellow",
+    bottomLeft: "yellow",
+    bottomCenter: "yellow",
+    bottomRight: "yellow",
+  },
+  left: {
+    topLeft: "blue",
+    topCenter: "blue",
+    topRight: "blue",
+    centerLeft: "blue",
+    centerCenter: "blue",
+    centerRight: "blue",
+    bottomLeft: "blue",
+    bottomCenter: "blue",
+    bottomRight: "blue",
+  },
+  top: {
+    topLeft: "red",
+    topCenter: "red",
+    topRight: "red",
+    centerLeft: "red",
+    centerCenter: "red",
+    centerRight: "red",
+    bottomLeft: "red",
+    bottomCenter: "red",
+    bottomRight: "red",
+  },
+  bottom: {
+    topLeft: "orange",
+    topCenter: "orange",
+    topRight: "orange",
+    centerLeft: "orange",
+    centerCenter: "orange",
+    centerRight: "orange",
+    bottomLeft: "orange",
+    bottomCenter: "orange",
+    bottomRight: "orange",
+  },
+};
+
 const MOVE_DURATION = 0.5;
 
 type Square =
@@ -209,10 +278,13 @@ export default function RubikCube() {
     transientGroup.set({ scaleY: 0 });
   }, []);
 
+  const [isTurning, setIsTurning] = useState(false);
+
   const turn = async (
     layer: HorizontalLayer | VerticalLayer,
     turnDirection: "clockwise" | "counterclockwise"
   ) => {
+    setIsTurning(true);
     const direction = CARTESIAN_DIRECTIONS[layer][turnDirection];
     const squares = LAYER_SQUARES[layer];
 
@@ -261,6 +333,9 @@ export default function RubikCube() {
       });
     }
     setCubeState(futureCubeState);
+    setTimeout(() => {
+      setIsTurning(false);
+    }, 70);
   };
 
   const [cubeState, setCubeState] = useState<{
@@ -270,74 +345,7 @@ export default function RubikCube() {
     left: Record<Square, FaceColor>;
     top: Record<Square, FaceColor>;
     bottom: Record<Square, FaceColor>;
-  }>({
-    front: {
-      topLeft: "white",
-      topCenter: "white",
-      topRight: "white",
-      centerLeft: "white",
-      centerCenter: "white",
-      centerRight: "white",
-      bottomLeft: "white",
-      bottomCenter: "white",
-      bottomRight: "white",
-    },
-    right: {
-      topLeft: "green",
-      topCenter: "green",
-      topRight: "green",
-      centerLeft: "green",
-      centerCenter: "green",
-      centerRight: "green",
-      bottomLeft: "green",
-      bottomCenter: "green",
-      bottomRight: "green",
-    },
-    back: {
-      topLeft: "yellow",
-      topCenter: "yellow",
-      topRight: "yellow",
-      centerLeft: "yellow",
-      centerCenter: "yellow",
-      centerRight: "yellow",
-      bottomLeft: "yellow",
-      bottomCenter: "yellow",
-      bottomRight: "yellow",
-    },
-    left: {
-      topLeft: "blue",
-      topCenter: "blue",
-      topRight: "blue",
-      centerLeft: "blue",
-      centerCenter: "blue",
-      centerRight: "blue",
-      bottomLeft: "blue",
-      bottomCenter: "blue",
-      bottomRight: "blue",
-    },
-    top: {
-      topLeft: "red",
-      topCenter: "red",
-      topRight: "red",
-      centerLeft: "red",
-      centerCenter: "red",
-      centerRight: "red",
-      bottomLeft: "red",
-      bottomCenter: "red",
-      bottomRight: "red",
-    },
-    bottom: {
-      topLeft: "orange",
-      topCenter: "orange",
-      topRight: "orange",
-      centerLeft: "orange",
-      centerCenter: "orange",
-      centerRight: "orange",
-      bottomLeft: "orange",
-      bottomCenter: "orange",
-      bottomRight: "orange",
-    },
-  });
+  }>(INITIAL_CUBE_STATE);
 
   const getNewCubeState = (
     layer: HorizontalLayer | VerticalLayer,
@@ -561,6 +569,52 @@ export default function RubikCube() {
       : s;
   };
 
+  const [pendingMoves, setPendingMoves] = useState<
+    {
+      layer: HorizontalLayer | VerticalLayer;
+      direction: "clockwise" | "counterclockwise";
+    }[]
+  >([]);
+
+  const [performedMoves, setPerformedMoves] = useState<
+    {
+      layer: HorizontalLayer | VerticalLayer;
+      direction: "clockwise" | "counterclockwise";
+    }[]
+  >([]);
+
+  useEffect(() => {
+    if (pendingMoves.length && !isTurning) {
+      const [move, ...rest] = pendingMoves;
+      turn(move.layer, move.direction);
+      setPendingMoves(rest);
+      setPerformedMoves((moves) => [move, ...moves]);
+    }
+  }, [pendingMoves, isTurning]);
+
+  const queueMove = (
+    layer: HorizontalLayer | VerticalLayer,
+    direction: "clockwise" | "counterclockwise"
+  ) => {
+    setPendingMoves((moves) => [...moves, { layer, direction }]);
+  };
+
+  const reset = () => {
+    setPendingMoves(
+      performedMoves.map((move) => ({
+        layer: move.layer,
+        direction:
+          move.direction === "clockwise" ? "counterclockwise" : "clockwise",
+      }))
+    );
+  };
+
+  useEffect(() => {
+    if (JSON.stringify(cubeState) === JSON.stringify(INITIAL_CUBE_STATE)) {
+      setPerformedMoves([]);
+    }
+  }, [cubeState]);
+
   return (
     <div className="relative mx-auto w-fit h-fit">
       <motion.svg
@@ -693,13 +747,23 @@ export default function RubikCube() {
           key={index}
           className="absolute flex items-center justify-center w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full interactive-bg-primary-container"
           style={{ left, top }}
-          onClick={() => turn(layer, direction)}
+          onClick={() => queueMove(layer, direction)}
         >
           <ChevronRight
             style={{ transform: `rotate(${chevronRotation}deg)` }}
           />
         </button>
       ))}
+      {performedMoves.length ? (
+        <button
+          className="absolute flex items-center justify-center w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full interactive-bg-primary-container"
+          style={{ left: "100%", top: "0%" }}
+          onClick={reset}
+          disabled={pendingMoves.length > 0}
+        >
+          R
+        </button>
+      ) : undefined}
     </div>
   );
 }
