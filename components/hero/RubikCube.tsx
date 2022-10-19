@@ -1,5 +1,6 @@
 import { AnimationControls, motion, useAnimation } from "framer-motion";
 import { Fragment, useEffect, useRef, useState } from "react";
+import ChevronRight from "../../public/chevron-right.svg";
 
 const MOVE_DURATION = 0.5;
 
@@ -561,11 +562,11 @@ export default function RubikCube() {
   };
 
   return (
-    <>
+    <div className="relative mx-auto w-fit h-fit">
       <motion.svg
         stroke="currentColor"
         viewBox="0 0 100 100"
-        className="mx-auto border w-96 h-96 stroke-outline"
+        className="w-96 h-96 stroke-outline"
         strokeWidth="1.5"
         strokeLinejoin="round"
         strokeLinecap="round"
@@ -591,33 +592,114 @@ export default function RubikCube() {
           />
         ))}
         <motion.g animate={transientGroup}>
-          <motion.polygon
-            ref={transientA}
-            points={POLYGON_POINTS["topLeft"]}
-            stroke="black"
-          />
+          <motion.polygon ref={transientA} points={POLYGON_POINTS["topLeft"]} />
           <motion.polygon
             ref={transientB}
             points={POLYGON_POINTS["centerCenter"]}
-            stroke="black"
           />
           <motion.polygon
             ref={transientC}
             points={POLYGON_POINTS["bottomRight"]}
-            stroke="black"
           />
         </motion.g>
       </motion.svg>
-      <div className="flex justify-center gap-2">
-        {(["U", "E", "D", "L", "M", "R"] as const).map((layer) => (
-          <Fragment key={layer}>
-            <button onClick={() => turn(layer, "clockwise")}>{layer}</button>
-            <button onClick={() => turn(layer, "counterclockwise")}>
-              {layer}'
-            </button>
-          </Fragment>
-        ))}
-      </div>
-    </>
+      {[
+        {
+          left: "100%",
+          top: "30%",
+          layer: "U" as const,
+          direction: "counterclockwise" as const,
+          chevronRotation: 0,
+        },
+        {
+          left: "100%",
+          top: "50%",
+          layer: "E" as const,
+          direction: "clockwise" as const,
+          chevronRotation: 0,
+        },
+        {
+          left: "100%",
+          top: "70%",
+          layer: "D" as const,
+          direction: "clockwise" as const,
+          chevronRotation: 0,
+        },
+        {
+          left: "0%",
+          top: "30%",
+          layer: "U" as const,
+          direction: "clockwise" as const,
+          chevronRotation: 180,
+        },
+        {
+          left: "0%",
+          top: "50%",
+          layer: "E" as const,
+          direction: "counterclockwise" as const,
+          chevronRotation: 180,
+        },
+        {
+          left: "0%",
+          top: "70%",
+          layer: "D" as const,
+          direction: "counterclockwise" as const,
+          chevronRotation: 180,
+        },
+        {
+          left: "30%",
+          top: "100%",
+          layer: "L" as const,
+          direction: "clockwise" as const,
+          chevronRotation: 90,
+        },
+        {
+          left: "50%",
+          top: "100%",
+          layer: "M" as const,
+          direction: "clockwise" as const,
+          chevronRotation: 90,
+        },
+        {
+          left: "70%",
+          top: "100%",
+          layer: "R" as const,
+          direction: "counterclockwise" as const,
+          chevronRotation: 90,
+        },
+        {
+          left: "30%",
+          top: "0%",
+          layer: "L" as const,
+          direction: "counterclockwise" as const,
+          chevronRotation: -90,
+        },
+        {
+          left: "50%",
+          top: "0%",
+          layer: "M" as const,
+          direction: "counterclockwise" as const,
+          chevronRotation: -90,
+        },
+        {
+          left: "70%",
+          top: "0%",
+          layer: "R" as const,
+          direction: "clockwise" as const,
+          chevronRotation: -90,
+        },
+      ].map(({ left, top, layer, direction, chevronRotation }, index) => (
+        <button
+          key={index}
+          className="absolute flex items-center justify-center w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full interactive-bg-primary-container"
+          style={{ left, top }}
+          onClick={() => turn(layer, direction)}
+        >
+          <ChevronRight
+            style={{ transform: `rotate(${chevronRotation}deg)` }}
+          />
+        </button>
+      ))}
+    </div>
   );
 }
