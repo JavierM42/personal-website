@@ -1,8 +1,15 @@
 import { AnimationControls, motion, useAnimation } from "framer-motion";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ChevronRight from "../../public/chevron-right.svg";
 
-const INITIAL_CUBE_STATE = {
+const INITIAL_CUBE_STATE: {
+  front: Record<Square, FaceColor>;
+  right: Record<Square, FaceColor>;
+  back: Record<Square, FaceColor>;
+  left: Record<Square, FaceColor>;
+  top: Record<Square, FaceColor>;
+  bottom: Record<Square, FaceColor>;
+} = {
   front: {
     topLeft: "white",
     topCenter: "white",
@@ -338,14 +345,7 @@ export default function RubikCube() {
     }, 70);
   };
 
-  const [cubeState, setCubeState] = useState<{
-    front: Record<Square, FaceColor>;
-    right: Record<Square, FaceColor>;
-    back: Record<Square, FaceColor>;
-    left: Record<Square, FaceColor>;
-    top: Record<Square, FaceColor>;
-    bottom: Record<Square, FaceColor>;
-  }>(INITIAL_CUBE_STATE);
+  const [cubeState, setCubeState] = useState(INITIAL_CUBE_STATE);
 
   const getNewCubeState = (
     layer: HorizontalLayer | VerticalLayer,
