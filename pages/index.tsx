@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Head from "next/head";
 import GitHubLogo from "../assets/github.svg";
+import LinkedInLogo from "../assets/linkedin.svg";
 import BlogPostCards from "../components/BlogPostCards";
 import DarkModeToggle from "../components/DarkModeToggle";
 import ExternalLink from "../components/ExternalLink";
@@ -288,12 +289,18 @@ export default function Home() {
             Drop me a line at hello@javierm42.dev.
           </p> */}
           </main>
-          <footer className="flex justify-center w-full space-x-2 text-sm">
-            <ExternalLink href="https://www.linkedin.com/in/javierm42/">
-              LinkedIn
+          <footer className="flex items-center justify-center w-full h-20 mt-20 space-x-2 text-sm">
+            <ExternalLink
+              href="https://github.com/JavierM42"
+              className="flex items-center justify-center w-12 h-12 rounded-full text-primary hover:bg-primary-container-hover/30"
+            >
+              <GitHubLogo className="w-8 h-8" />
             </ExternalLink>
-            <ExternalLink href="https://github.com/JavierM42">
-              GitHub
+            <ExternalLink
+              href="https://www.linkedin.com/in/javierm42/"
+              className="flex items-center justify-center w-12 h-12 rounded-full text-primary hover:bg-primary-container-hover/30"
+            >
+              <LinkedInLogo className="w-6 h-6" />
             </ExternalLink>
           </footer>
         </div>
