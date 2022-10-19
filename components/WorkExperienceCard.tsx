@@ -35,7 +35,7 @@ const WorkExperienceCard: FC<Props> = ({
   };
 
   const handleClose = () => {
-    updateTheme({ primary: "#0000ab" }, "class");
+    updateTheme({ primary: "#416900" }, "class");
     setIsExpanded(false);
   };
 
