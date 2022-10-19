@@ -7,6 +7,75 @@ import {
 import { useEffect, useRef, useState } from "react";
 import ChevronRight from "../../public/chevron-right.svg";
 
+const INITIAL_CUBE_STATE: typeof SOLVED_CUBE_STATE = {
+  front: {
+    topLeft: "orange",
+    topCenter: "orange",
+    topRight: "yellow",
+    centerLeft: "white",
+    centerCenter: "green",
+    centerRight: "red",
+    bottomLeft: "green",
+    bottomCenter: "blue",
+    bottomRight: "yellow",
+  },
+  right: {
+    topLeft: "blue",
+    topCenter: "white",
+    topRight: "yellow",
+    centerLeft: "green",
+    centerCenter: "red",
+    centerRight: "orange",
+    bottomLeft: "orange",
+    bottomCenter: "blue",
+    bottomRight: "red",
+  },
+  back: {
+    topLeft: "red",
+    topCenter: "yellow",
+    topRight: "white",
+    centerLeft: "white",
+    centerCenter: "blue",
+    centerRight: "yellow",
+    bottomLeft: "white",
+    bottomCenter: "white",
+    bottomRight: "white",
+  },
+  left: {
+    topLeft: "orange",
+    topCenter: "yellow",
+    topRight: "yellow",
+    centerLeft: "red",
+    centerCenter: "orange",
+    centerRight: "red",
+    bottomLeft: "orange",
+    bottomCenter: "green",
+    bottomRight: "red",
+  },
+  top: {
+    topLeft: "green",
+    topCenter: "blue",
+    topRight: "green",
+    centerLeft: "green",
+    centerCenter: "white",
+    centerRight: "blue",
+    bottomLeft: "blue",
+    bottomCenter: "yellow",
+    bottomRight: "red",
+  },
+  bottom: {
+    topLeft: "white",
+    topCenter: "red",
+    topRight: "green",
+    centerLeft: "orange",
+    centerCenter: "yellow",
+    centerRight: "orange",
+    bottomLeft: "blue",
+    bottomCenter: "green",
+    bottomRight: "blue",
+  },
+};
+
 const SOLVED_CUBE_STATE: {
   front: Record<Square, FaceColor>;
   right: Record<Square, FaceColor>;
@@ -83,7 +152,8 @@ const SOLVED_CUBE_STATE: {
   },
 };
 
-const MOVE_DURATION = 0.3;
+const MOVE_DURATION = 0.4;
+const AUTOMATIC_MOVE_DURATION = 0.2;
 
 type Square =
   | "topLeft"
@@ -303,7 +373,8 @@ export default function RubikCube() {
 
   const turn = async (
     layer: HorizontalLayer | VerticalLayer,
-    turnDirection: "clockwise" | "counterclockwise"
+    turnDirection: "clockwise" | "counterclockwise",
+    duration = MOVE_DURATION
   ) => {
     setIsTurning(true);
     const direction = CARTESIAN_DIRECTIONS[layer][turnDirection];
@@ -334,24 +405,24 @@ export default function RubikCube() {
       const control = CONTROLS[square];
       await control.start({
         ...HALF_TURNS[square][direction],
-        transition: { duration: MOVE_DURATION / 2, ease: "easeIn" },
+        transition: { duration: duration / 2, ease: "easeIn" },
       });
       control.start({
         ...FULL_TURNS[square][direction],
-        transition: { duration: MOVE_DURATION / 2, ease: "easeOut" },
+        transition: { duration: duration / 2, ease: "easeOut" },
       });
     });
 
     await transientGroup.start({
       ...TRANSIENT_GROUP_HALF_TURN[direction],
-      transition: { duration: MOVE_DURATION / 2, ease: "easeIn" },
+      transition: { duration: duration / 2, ease: "easeIn" },
     });
     await transientGroup.start({
       x: "0%",
       y: "0%",
       scaleX: 1,
       scaleY: 1,
-      transition: { duration: MOVE_DURATION / 2, ease: "easeOut" },
+      transition: { duration: duration / 2, ease: "easeOut" },
     });
     for (const square of squares) {
       // hack, if using set we get an ugly white flash
@@ -369,7 +440,7 @@ export default function RubikCube() {
     }, 70);
   };
 
-  const [cubeState, setCubeState] = useState(SOLVED_CUBE_STATE);
+  const [cubeState, setCubeState] = useState(INITIAL_CUBE_STATE);
 
   const getNewCubeState = (
     layer: HorizontalLayer | VerticalLayer,
@@ -600,8 +671,44 @@ export default function RubikCube() {
     {
       layer: HorizontalLayer | VerticalLayer;
       direction: "clockwise" | "counterclockwise";
+      duration?: number;
     }[]
-  >([]);
+  >([
+    {
+      layer: "U",
+      direction: "counterclockwise",
+      duration: AUTOMATIC_MOVE_DURATION,
+    },
+    {
+      layer: "M",
+      direction: "counterclockwise",
+      duration: AUTOMATIC_MOVE_DURATION,
+    },
+    {
+      layer: "M",
+      direction: "counterclockwise",
+      duration: AUTOMATIC_MOVE_DURATION,
+    },
+    { layer: "D", direction: "clockwise", duration: AUTOMATIC_MOVE_DURATION },
+    { layer: "L", direction: "clockwise", duration: AUTOMATIC_MOVE_DURATION },
+    {
+      layer: "U",
+      direction: "counterclockwise",
+      duration: AUTOMATIC_MOVE_DURATION,
+    },
+    { layer: "R", direction: "clockwise", duration: AUTOMATIC_MOVE_DURATION },
+    { layer: "D", direction: "clockwise", duration: AUTOMATIC_MOVE_DURATION },
+    {
+      layer: "E",
+      direction: "counterclockwise",
+      duration: AUTOMATIC_MOVE_DURATION,
+    },
+    {
+      layer: "M",
+      direction: "counterclockwise",
+      duration: AUTOMATIC_MOVE_DURATION,
+    },
+  ]);
 
   const [performedMoves, setPerformedMoves] = useState<
     {
@@ -612,18 +719,19 @@ export default function RubikCube() {
 
   useEffect(() => {
     if (pendingMoves.length && !isTurning) {
-      const [move, ...rest] = pendingMoves;
-      turn(move.layer, move.direction);
+      const [{ layer, direction, duration }, ...rest] = pendingMoves;
+      turn(layer, direction, duration);
       setPendingMoves(rest);
-      setPerformedMoves((moves) => [move, ...moves]);
+      setPerformedMoves((moves) => [{ layer, direction }, ...moves]);
     }
   }, [pendingMoves, isTurning]);
 
   const queueMove = (
     layer: HorizontalLayer | VerticalLayer,
-    direction: "clockwise" | "counterclockwise"
+    direction: "clockwise" | "counterclockwise",
+    duration?: number
   ) => {
-    setPendingMoves((moves) => [...moves, { layer, direction }]);
+    setPendingMoves((moves) => [...moves, { layer, direction, duration }]);
   };
 
   const reset = () => {
@@ -632,6 +740,7 @@ export default function RubikCube() {
         layer: move.layer,
         direction:
           move.direction === "clockwise" ? "counterclockwise" : "clockwise",
+        duration: AUTOMATIC_MOVE_DURATION,
       }))
     );
   };
@@ -651,6 +760,9 @@ export default function RubikCube() {
         strokeWidth="0.5"
         strokeLinejoin="round"
         strokeLinecap="round"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
       >
         <defs>
           <pattern
@@ -802,7 +914,7 @@ export default function RubikCube() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 1 }}
+              transition={{ duration: 1.5, delay: 0.5 }}
             >
               <ChevronRight
                 style={{ transform: `rotate(${chevronRotation}deg)` }}

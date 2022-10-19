@@ -1,3 +1,4 @@
+import { motion, MotionConfig } from "framer-motion";
 import Head from "next/head";
 import GitHubLogo from "../assets/github.svg";
 import BlogPostCards from "../components/BlogPostCards";
@@ -26,14 +27,19 @@ export default function Home() {
             <div className="mx-auto mt-24 mb-24">
               <RubikCube />
             </div>
-            <h1 className="z-10 mt-6 mb-2 text-6xl font-bold text-center text-primary">
-              Hi. <br />
-              Javi here.
-            </h1>
-            <p className="mb-20 text-2xl leading-loose text-center">
-              I'm a frontend engineer with a passion for great user experiences.
-              {/* TODO & cool animations ;) */}
-            </p>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 2, delay: 3 }}
+            >
+              <h1 className="z-10 mt-6 mb-2 text-6xl font-bold text-center text-primary">
+                Hi, Javi here.
+              </h1>
+              <p className="mb-20 text-2xl leading-loose text-center">
+                I'm a frontend engineer with a passion for great user
+                experiences.
+              </p>
+            </motion.div>
           </header>
 
           <main className="space-y-8">
