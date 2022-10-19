@@ -98,6 +98,15 @@ type HorizontalLayer = "U" | "E" | "D";
 
 type FaceColor = "red" | "orange" | "blue" | "green" | "yellow" | "white";
 
+const FACE_CLASSNAME: Record<FaceColor, string> = {
+  red: "fill-[#ff0000]",
+  orange: "fill-[#ff4444]",
+  blue: "fill-[#0000ff]",
+  green: "fill-[#00ff00]",
+  yellow: "fill-[#00ffff]",
+  white: "fill-[url(#javi)]",
+};
+
 const POLYGON_POINTS: Record<Square, string> = {
   topLeft: "21,21 21,39 39,39 39,21",
   centerLeft: "21,41 21,59 39,59 39,41",
@@ -302,9 +311,19 @@ export default function RubikCube() {
     transientB.current?.setAttribute("points", POLYGON_POINTS[squares[1]]);
     transientC.current?.setAttribute("points", POLYGON_POINTS[squares[2]]);
 
-    transientA.current?.setAttribute("fill", futureCubeState.front[squares[0]]);
-    transientB.current?.setAttribute("fill", futureCubeState.front[squares[1]]);
-    transientC.current?.setAttribute("fill", futureCubeState.front[squares[2]]);
+    transientA.current?.removeAttribute("class");
+    transientB.current?.removeAttribute("class");
+    transientC.current?.removeAttribute("class");
+
+    transientA.current?.classList.add(
+      FACE_CLASSNAME[futureCubeState.front[squares[0]]]
+    );
+    transientB.current?.classList.add(
+      FACE_CLASSNAME[futureCubeState.front[squares[1]]]
+    );
+    transientC.current?.classList.add(
+      FACE_CLASSNAME[futureCubeState.front[squares[2]]]
+    );
 
     squares.forEach(async (square) => {
       const control = CONTROLS[square];
@@ -610,6 +629,7 @@ export default function RubikCube() {
   };
 
   useEffect(() => {
+    // FIXME does not work
     if (JSON.stringify(cubeState) === JSON.stringify(INITIAL_CUBE_STATE)) {
       setPerformedMoves([]);
     }
@@ -625,6 +645,28 @@ export default function RubikCube() {
         strokeLinejoin="round"
         strokeLinecap="round"
       >
+        <defs>
+          <pattern
+            id="javi"
+            patternUnits="userSpaceOnUse"
+            width="100"
+            height="100"
+          >
+            <polygon
+              points="20,20 20,80 80,80 80,20"
+              className="fill-primary-container/10"
+            />
+            <image
+              href="/javi.png"
+              x="20"
+              y="20"
+              width="60"
+              height="60"
+              className="mix-blend-luminosity"
+            />
+          </pattern>
+        </defs>
+
         {(
           [
             "topLeft",
@@ -642,7 +684,7 @@ export default function RubikCube() {
             key={square}
             animate={CONTROLS[square]}
             points={POLYGON_POINTS[square]}
-            fill={cubeState.front[square]}
+            className={FACE_CLASSNAME[cubeState.front[square]]}
           />
         ))}
         <motion.g animate={transientGroup}>
@@ -745,7 +787,7 @@ export default function RubikCube() {
       ].map(({ left, top, layer, direction, chevronRotation }, index) => (
         <button
           key={index}
-          className="absolute flex items-center justify-center w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full interactive-bg-primary-container"
+          className="absolute flex items-center justify-center w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full focus:outline-none interactive-bg-primary-container"
           style={{ left, top }}
           onClick={() => queueMove(layer, direction)}
         >
@@ -756,7 +798,7 @@ export default function RubikCube() {
       ))}
       {performedMoves.length ? (
         <button
-          className="absolute flex items-center justify-center w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full interactive-bg-primary-container"
+          className="absolute flex items-center justify-center w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full focus:outline-none interactive-bg-primary-container"
           style={{ left: "100%", top: "0%" }}
           onClick={reset}
           disabled={pendingMoves.length > 0}
