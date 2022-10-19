@@ -42,9 +42,9 @@ const WorkExperienceCard: FC<Props> = ({
   return (
     <li
       className={classNames(
-        "relative p-2 shadow bg-surface border-l-[10px] rounded-lg",
+        "relative p-2 shadow dark:shadow-black/40 bg-surface border-l-[10px] rounded-lg",
         isExpanded ? expandedClass : collapsedClass,
-        !isExpanded && "shadow cursor-pointer"
+        !isExpanded && "cursor-pointer"
       )}
       onClick={isExpanded ? undefined : handleOpen}
     >

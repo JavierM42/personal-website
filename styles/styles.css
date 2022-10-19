@@ -44,3 +44,7 @@ a {
     display: none;
   }
 }
+
+p {
+  @apply mb-4;
+}
