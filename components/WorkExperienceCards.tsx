@@ -46,7 +46,11 @@ export default function WorkExperienceCards() {
             </p>
             <p>
               Visit the{" "}
-              <a href="legacy.joinprisma.com" target="_blank" rel="noreferrer">
+              <a
+                href="https://legacy.joinprisma.com"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Prisma Case Study
               </a>{" "}
               page.
@@ -143,7 +147,7 @@ export default function WorkExperienceCards() {
             </p>
             <p>
               Live at{" "}
-              <a href="legacy.joinprisma.com" target="_blank" rel="noreferrer">
+              <a href="https://retroally.com" target="_blank" rel="noreferrer">
                 retroally.com
               </a>
               .
