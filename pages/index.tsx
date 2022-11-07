@@ -16,7 +16,6 @@ export default function Home() {
     <>
       <Head>
         <title>JavierM42</title>
-        <meta name="description" content="TODO" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
