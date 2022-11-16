@@ -139,6 +139,21 @@ export default function Home() {
                 stripClass="bg-gradient-to-r from-tertiary-container-dark to-tertiary-container-light"
               />
               <OpenSourceCard
+                name="react-line-wrapping-input"
+                content="A customizable input-like component with line wrapping and autosizing."
+                cta={
+                  <a
+                    className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap font-[Nunito]"
+                    href="https://github.com/JavierM42/react-line-wrapping-input"
+                    target="_blank"
+                  >
+                    View on GitHub
+                    <GitHubLogo className="w-5 h-5" />
+                  </a>
+                }
+                stripClass="bg-gradient-to-r from-outline to-outline/20"
+              />
+              <OpenSourceCard
                 name="MTGBarato"
                 content="I built a simple web app to help my local trading card game community."
                 stripClass="bg-[#f6ad55] dark:bg-[#88501d]"
