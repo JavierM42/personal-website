@@ -10,6 +10,7 @@ import RubikCube from "../components/hero/RubikCube";
 import OpenSourceCard from "../components/OpenSourceCard";
 import TryDynamicColor from "../components/open_source/TryDynamicColor";
 import WorkExperienceCards from "../components/WorkExperienceCards";
+import LineWrappingInput from "react-line-wrapping-input";
 
 export default function Home() {
   return (
@@ -139,8 +140,15 @@ export default function Home() {
                 stripClass="bg-gradient-to-r from-tertiary-container-dark to-tertiary-container-light"
               />
               <OpenSourceCard
-                name="react-line-wrapping-input"
-                content="A customizable input-like component with line wrapping and autosizing."
+                name={
+                  <LineWrappingInput
+                    value="react-line-wrapping-input"
+                    placeholder="react-line-wrapping-input"
+                    containerClassName="-m-1 rounded-md border border-outline/20 hover:border-outline/60 focus-within:border-outline/60 transition-colors"
+                    className="p-1 bg-transparent focus:outline-none"
+                  />
+                }
+                content="☝️ A customizable input-like component with line wrapping and autosizing."
                 cta={
                   <a
                     className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap font-[Nunito]"
