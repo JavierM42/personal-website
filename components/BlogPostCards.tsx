@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import BlogPostCard from "../components/BlogPostCard";
 import Grids from "../components/posts/Grids";
 import Leverage from "../components/posts/Leverage";
@@ -19,7 +18,7 @@ export default function BlogPostCards() {
       <BlogPostCard
         illustration={<InteractiveSurfaces />}
         title="Material interaction states with Tailwind"
-        summary="A deep dive into my plugin to style buttons with Tailwind."
+        summary="A deep dive into my plugin to style interactive surfaces with Tailwind according to the Material Design guidelines."
         url="https://www.wyeworks.com/blog/2022/11/15/material-interaction-states-with-tailwind/"
       />
       <BlogPostCard
