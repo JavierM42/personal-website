@@ -162,6 +162,21 @@ export default function Home() {
                 stripClass="bg-gradient-to-r from-outline to-outline/20"
               />
               <OpenSourceCard
+                name="react-selection-manager"
+                content="A tiny selection management library with shift key range selection support."
+                cta={
+                  <a
+                    className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap font-[Nunito]"
+                    href="https://github.com/JavierM42/react-selection-manager"
+                    target="_blank"
+                  >
+                    View on GitHub
+                    <GitHubLogo className="w-5 h-5" />
+                  </a>
+                }
+                stripClass="bg-gradient-to-r to-secondary-container from-primary/40"
+              />
+              <OpenSourceCard
                 name="MTGBarato"
                 content="I built a simple web app to help my local trading card game community."
                 stripClass="bg-[#f6ad55] dark:bg-[#88501d]"
