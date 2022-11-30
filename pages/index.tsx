@@ -320,13 +320,14 @@ export default function Home() {
               { heading: 'I play boardgames' },
               { heading: 'I travel as much as I can' }
             ]} />.
-          </p>
-
-          <p>
-            Drop me a line at hello@javierm42.dev.
           </p> */}
+
+            <p className="mt-10 text-center">
+              Drop me a line at{" "}
+              <a href="mailto:hi@javiermorales.dev">hi@javiermorales.dev</a> ✉️
+            </p>
           </main>
-          <footer className="flex items-center justify-center w-full h-20 mt-20 space-x-2 text-sm">
+          <footer className="flex items-center justify-center w-full h-20 space-x-2 text-sm">
             <ExternalLink
               href="https://github.com/JavierM42"
               className="flex items-center justify-center w-12 h-12 rounded-full text-primary hover:bg-primary-container-hover/30"
