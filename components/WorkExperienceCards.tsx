@@ -91,7 +91,7 @@ export default function WorkExperienceCards() {
             />
           </div>
         }
-        collapsedTitle="A large-scale EdTech company"
+        collapsedTitle="An online education platform"
         content={
           <>
             <p>Emeritus offers online courses from top universities.</p>
