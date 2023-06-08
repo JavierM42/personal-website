@@ -11,6 +11,8 @@ import TailwindLogo from "../assets/techs/tailwind.svg";
 import TypescriptLogo from "../assets/techs/typescript.svg";
 import VueLogo from "../assets/techs/vue.svg";
 import ChevronRight from "../public/chevron-right.svg";
+import WithTooltip from "./WithTooltip";
+import { FloatingDelayGroup } from "@floating-ui/react";
 
 type Tech =
   | "React"
@@ -144,10 +146,18 @@ const WorkExperienceCard: FC<Props> = ({
               {dates}
             </div>
             <div className="flex justify-center h-5 gap-2 mt-2 mb-6 text-outline">
-              {techs.map((tech) => {
-                const Logo = TECH_LOGOS[tech];
-                return <Logo aria-label={tech} className="h-full" />;
-              })}
+              <FloatingDelayGroup delay={300}>
+                {techs.map((tech) => {
+                  const Logo = TECH_LOGOS[tech];
+                  return (
+                    <WithTooltip text={tech} key={tech}>
+                      <span>
+                        <Logo aria-label={tech} className="h-full" />
+                      </span>
+                    </WithTooltip>
+                  );
+                })}
+              </FloatingDelayGroup>
             </div>
             {content}
           </motion.div>
