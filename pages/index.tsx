@@ -11,6 +11,7 @@ import OpenSourceCard from "../components/OpenSourceCard";
 import TryDynamicColor from "../components/open_source/TryDynamicColor";
 import WorkExperienceCards from "../components/WorkExperienceCards";
 import LineWrappingInput from "react-line-wrapping-input";
+import WithTooltip from "../components/WithTooltip";
 
 export default function Home() {
   return (
@@ -195,133 +196,6 @@ export default function Home() {
 
             <h2>Blog posts</h2>
             <BlogPostCards />
-
-            {/* <p>
-          <p>
-            Before that,{' '}
-            <TextSwitcher options={[
-              {
-                heading: 'I helped build a web app for remote agile retrospectives',
-                image: <img src="/retroally.png" />,
-                body: (
-                  <>
-                    <p>
-                      <ExternalLink href="https://retroally.com">RetroAlly</ExternalLink>{' '}
-                      guides retrospectives, which can be a challenge when there isn't an expert moderator around.
-                    </p>
-                    <p>
-                      Born as an internal company project at{' '}
-                      <ExternalLink href="https://wyeworks.com">Wyeworks</ExternalLink>
-                      , it's now becoming an actual product.
-                    </p>
-                    <p>
-                      I did most of the frontend work on RetroAlly and picked up some UX skills by working closely with
-                      the app's UX designer.
-                    </p>
-                    <p>
-                      I still try to help out in RetroAlly whenever my main project allows it.
-                    </p>
-                  </>
-                )
-              },
-              {
-                heading: 'I was a team leader in an EdTech company',
-                body: (
-                  <>
-                    <p>
-                      I worked for more than a year as an engineer for <ExternalLink href="https://emeritus.org">Emeritus</ExternalLink>,{' '}
-                      where I became technical leader for their referrals program.
-                    </p>
-                    <p>
-                      After integrating an external referrals provider as an A/B testing experiment, our three-person team migrated
-                      the system with no downtime to an in-house solution.
-                    </p>
-                  </>
-                )
-              },
-              {
-                heading: 'I built a website to help my local gaming community',
-                body: (
-                  <>
-                    <p>
-                      My local Magic: The Gathering community was using social media groups to trade cards, which wasn't very efficient since
-                      there's no easy way to filter or sort the posts.
-                    </p>
-                    <p>
-                      I built{' '}
-                      <ExternalLink href="http://www.mtgbarato.store">a simple website</ExternalLink>{' '}
-                      where players can post their card inventory and wishlist for free.
-                    </p>
-                    <p>
-                      The community loved it! They even organized a charity tournament to help pay for the server costs.
-                    </p>
-                  </>
-                )
-              },
-              {
-                heading: 'I did my thesis on near-symmetrical graph drawing',
-                body: (
-                  <>
-                    <p>
-                      Based on{' '}
-                      <ExternalLink href="https://www.semanticscholar.org/paper/Detecting-almost-symmetries-of-graphs-Knueven-Ostrowski/1df41d5791ffd1dbe89c291526f36c02db633db4">a paper</ExternalLink>{' '}
-                      by Kneuven, Ostrowski and Pokutta, we implemented an algorithm and then a web app to automatically
-                      render graphs in a symmetrical or near-symmetrical representation.
-                    </p>
-                    <p>
-                      <ExternalLink href="https://graphsym.herokuapp.com/">GraphSym</ExternalLink> is available for free use.{' '}
-                      <i className="italic">
-                        Since it's hosted on a free platform, initial load times may be slow.
-                      </i>
-                    </p>
-                  </>
-                )
-              },
-            ]} />.
-          </p>
-
-          <p>
-            In my spare time{' '}
-            <TextSwitcher options={[
-              {
-                heading: 'I play piano and guitar',
-                body: (
-                  <>
-                    <p>
-                      Nowadays I don't play as much, but in my early 20s I even filmed some covers and posted them on YouTube.
-                    </p>
-                    <p>
-                      Here's <ExternalLink href="https://www.youtube.com/watch?v=s9lLHWAfdAU">me playing Robot Rock by Daft Punk</ExternalLink> in 2016.
-                    </p>
-                  </>
-                )
-              },
-              {
-                heading: "I solve Rubik' s cubes",
-                // body: (
-                //   <p>
-                //     My solve times are at around 45s.
-                //   </p>
-                // )
-              },
-              {
-                heading: "I don't get tired of losing at videogames",
-                body: (
-                  <>
-                    <p>
-                      Well, mostly at Age of Empires II.
-                    </p>
-                    <p>
-                      During the pandemic I reconnected with my love for digital gaming, since it's a great way to keep in touch with friends.
-                    </p>
-                  </>
-                )
-              },
-              { heading: 'I play boardgames' },
-              { heading: 'I travel as much as I can' }
-            ]} />.
-          </p> */}
-
             <p className="mt-10 text-center">
               Drop me a line at{" "}
               <a href="mailto:hi@javiermorales.dev">hi@javiermorales.dev</a> ✉️
@@ -331,12 +205,14 @@ export default function Home() {
             <ExternalLink
               href="https://github.com/JavierM42"
               className="flex items-center justify-center w-12 h-12 rounded-full text-primary hover:bg-primary-container-hover/30"
+              tooltip="GitHub @JavierM42"
             >
               <GitHubLogo className="w-8 h-8" />
             </ExternalLink>
             <ExternalLink
               href="https://www.linkedin.com/in/javierm42/"
               className="flex items-center justify-center w-12 h-12 rounded-full text-primary hover:bg-primary-container-hover/30"
+              tooltip="LinkedIn /javierm42"
             >
               <LinkedInLogo className="w-6 h-6" />
             </ExternalLink>

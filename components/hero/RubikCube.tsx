@@ -8,6 +8,8 @@ import { useEffect, useRef, useState } from "react";
 import ChevronRight from "../../public/chevron-right.svg";
 import Reset from "../../assets/reset.svg";
 import { isEqual } from "lodash";
+import WithTooltip from "../WithTooltip";
+import { Placement } from "@floating-ui/react";
 
 const INITIAL_CUBE_STATE: typeof SOLVED_CUBE_STATE = {
   front: {
@@ -832,6 +834,7 @@ export default function RubikCube() {
               layer: "U" as const,
               direction: "counterclockwise" as const,
               chevronRotation: 0,
+              tooltipPlacement: "right",
             },
             {
               left: "100%",
@@ -839,6 +842,7 @@ export default function RubikCube() {
               layer: "E" as const,
               direction: "clockwise" as const,
               chevronRotation: 0,
+              tooltipPlacement: "right",
             },
             {
               left: "100%",
@@ -846,6 +850,7 @@ export default function RubikCube() {
               layer: "D" as const,
               direction: "clockwise" as const,
               chevronRotation: 0,
+              tooltipPlacement: "right",
             },
             {
               left: "0%",
@@ -853,6 +858,7 @@ export default function RubikCube() {
               layer: "U" as const,
               direction: "clockwise" as const,
               chevronRotation: 180,
+              tooltipPlacement: "left",
             },
             {
               left: "0%",
@@ -860,6 +866,7 @@ export default function RubikCube() {
               layer: "E" as const,
               direction: "counterclockwise" as const,
               chevronRotation: 180,
+              tooltipPlacement: "left",
             },
             {
               left: "0%",
@@ -867,6 +874,7 @@ export default function RubikCube() {
               layer: "D" as const,
               direction: "counterclockwise" as const,
               chevronRotation: 180,
+              tooltipPlacement: "left",
             },
             {
               left: "30%",
@@ -874,6 +882,7 @@ export default function RubikCube() {
               layer: "L" as const,
               direction: "clockwise" as const,
               chevronRotation: 90,
+              tooltipPlacement: "left",
             },
             {
               left: "50%",
@@ -881,6 +890,7 @@ export default function RubikCube() {
               layer: "M" as const,
               direction: "clockwise" as const,
               chevronRotation: 90,
+              tooltipPlacement: "top",
             },
             {
               left: "70%",
@@ -888,6 +898,7 @@ export default function RubikCube() {
               layer: "R" as const,
               direction: "counterclockwise" as const,
               chevronRotation: 90,
+              tooltipPlacement: "right",
             },
             {
               left: "30%",
@@ -895,6 +906,7 @@ export default function RubikCube() {
               layer: "L" as const,
               direction: "counterclockwise" as const,
               chevronRotation: -90,
+              tooltipPlacement: "left",
             },
             {
               left: "50%",
@@ -902,6 +914,7 @@ export default function RubikCube() {
               layer: "M" as const,
               direction: "counterclockwise" as const,
               chevronRotation: -90,
+              tooltipPlacement: "top",
             },
             {
               left: "70%",
@@ -909,35 +922,58 @@ export default function RubikCube() {
               layer: "R" as const,
               direction: "clockwise" as const,
               chevronRotation: -90,
+              tooltipPlacement: "right",
             },
-          ].map(({ left, top, layer, direction, chevronRotation }, index) => (
+          ].map(
+            (
+              {
+                left,
+                top,
+                layer,
+                direction,
+                chevronRotation,
+                tooltipPlacement,
+              },
+              index
+            ) => (
+              <WithTooltip
+                text="Try moving the cube!"
+                key={index}
+                placement={tooltipPlacement as Placement}
+              >
+                <motion.button
+                  className="absolute flex items-center justify-center w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-lg focus:outline-none interactive-bg-primary-container"
+                  style={{ left, top }}
+                  onClick={() => queueMove(layer, direction)}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1.5, delay: 0.5 }}
+                  aria-label={`Perform move ${layer}${
+                    direction === "counterclockwise" ? "'" : ""
+                  }`}
+                >
+                  <ChevronRight
+                    style={{ transform: `rotate(${chevronRotation}deg)` }}
+                  />
+                </motion.button>
+              </WithTooltip>
+            )
+          )}
+        {!isRunningInitialAnimation && performedMoves.length ? (
+          <WithTooltip text="Reset" placement="right">
             <motion.button
-              key={index}
-              className="absolute flex items-center justify-center w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-lg focus:outline-none interactive-bg-primary-container"
-              style={{ left, top }}
-              onClick={() => queueMove(layer, direction)}
+              className="absolute flex items-center justify-center w-10 h-10 px-2 -translate-x-1/2 -translate-y-1/2 rounded-lg focus:outline-none interactive-bg-primary-container"
+              style={{ left: "100%", top: "0%" }}
+              onClick={reset}
+              disabled={pendingMoves.length > 0}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 1.5, delay: 0.5 }}
             >
-              <ChevronRight
-                style={{ transform: `rotate(${chevronRotation}deg)` }}
-              />
+              <Reset />
             </motion.button>
-          ))}
-        {!isRunningInitialAnimation && performedMoves.length ? (
-          <motion.button
-            className="absolute flex items-center justify-center w-10 h-10 px-2 -translate-x-1/2 -translate-y-1/2 rounded-lg focus:outline-none interactive-bg-primary-container"
-            style={{ left: "100%", top: "0%" }}
-            onClick={reset}
-            disabled={pendingMoves.length > 0}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <Reset />
-          </motion.button>
+          </WithTooltip>
         ) : undefined}
       </AnimatePresence>
     </div>
