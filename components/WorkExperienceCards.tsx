@@ -1,4 +1,5 @@
 import Prisma from "../assets/companies/prisma.svg";
+import ClearSession from "../assets/companies/clearsession.svg";
 import RetroAlly from "../assets/companies/retroally.svg";
 import RetroAllyText from "../assets/companies/retroallytext.svg";
 import WyeWorks from "../assets/companies/wyeworks.svg";
@@ -16,6 +17,59 @@ import WorkExperienceCard from "../components/WorkExperienceCard";
 export default function WorkExperienceCards() {
   return (
     <ol className="grid grid-cols-1 gap-6">
+      <WorkExperienceCard
+        name={
+          <div className="flex items-center gap-1.5">
+            <ClearSession
+              role="Presentation"
+              className="inline-block h-6 -mr-0.5"
+            />
+            <span className="text-2xl font-bold leading-none text-blue dark:text-white">
+              ClearSession
+            </span>
+            at
+            <WyeWorks
+              aria-label="WyeWorks"
+              className="inline-block h-5 text-[#0B0B0B] dark:text-white"
+            />
+          </div>
+        }
+        collapsedTitle="A health app focused on communication"
+        content={
+          <>
+            <p>
+              ClearSession improves how patients and healthcare providers
+              interact, focusing on data visualization and clear communcation of
+              outcomes.
+            </p>
+            <p>
+              I joined the team in late 2022, about six months after development
+              started, and have worked there since then. Interesting technical
+              aspects of the project include working with HTML canvas and
+              recording user actions to replay at a later time.
+            </p>
+          </>
+        }
+        expandedClass="border-blue-container"
+        collapsedClass="border-blue-container hover:bg-blue/[0.04] active:bg-blue/[0.12]"
+        buttonClass="interactive-bg-blue-container"
+        dates="2022 - present"
+        techs={[
+          <ReactLogo aria-label="React" className="h-full" key="react" />,
+          <TypescriptLogo
+            aria-label="TypeScript"
+            className="h-full"
+            key="ts"
+          />,
+          <TailwindLogo
+            aria-label="Tailwind CSS"
+            className="h-full"
+            key="tailwind"
+          />,
+          <NextLogo aria-label="Next.js" className="h-full" key="next" />,
+        ]}
+        primaryColor="#2972f1"
+      />
       <WorkExperienceCard
         name={
           <div className="flex items-center gap-1.5">
@@ -45,22 +99,22 @@ export default function WorkExperienceCards() {
               editor.
             </p>
             <p>
-              Visit the{" "}
+              There's more information on the{" "}
               <a
                 href="https://legacy.joinprisma.com"
                 target="_blank"
                 rel="noreferrer"
               >
-                Prisma Case Study
-              </a>{" "}
-              page.
+                Prisma Case Study site
+              </a>
+              .
             </p>
           </>
         }
         expandedClass="border-purple-container"
         collapsedClass="border-purple-container hover:bg-purple/[0.04] active:bg-purple/[0.12]"
         buttonClass="interactive-bg-purple-container"
-        dates="From 2020 to 2022"
+        dates="2020 - 2022"
         techs={[
           <ReactLogo aria-label="React" className="h-full" key="react" />,
           <TypescriptLogo
@@ -111,7 +165,7 @@ export default function WorkExperienceCards() {
         expandedClass="border-green-container"
         collapsedClass="border-green-container hover:bg-green/[0.04] active:bg-green/[0.12]"
         buttonClass="interactive-bg-green-container"
-        dates="From 2019 to 2020"
+        dates="2019 - 2020"
         techs={[
           <RubyLogo aria-label="Ruby" className="h-full" key="ruby" />,
           <RailsLogo aria-label="Rails" className="h-full" key="rails" />,

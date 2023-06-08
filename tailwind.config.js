@@ -11,5 +11,6 @@ module.exports = withMaterialColors(
     purple: { hex: "#6f22f8", harmonize: false },
     green: { hex: "#006634", harmonize: false },
     red: { hex: "#ff7645", harmonize: false },
+    blue: { hex: "#2972f1", harmonize: false },
   }
 );
