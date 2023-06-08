@@ -174,7 +174,7 @@ export default function Home() {
               />
               <OpenSourceCard
                 name="react-selection-manager"
-                content="A tiny selection management library with shift key range selection support."
+                content="A tiny selection management library with support for keyboard modifiers."
                 cta={
                   <a
                     className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap font-[Nunito]"
