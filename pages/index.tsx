@@ -85,10 +85,20 @@ export default function Home() {
           </header>
 
           <main className="space-y-8">
-            <h2>Work Experience</h2>
+            <div>
+              <h2 className="inline">Work Experience</h2>
+              <span className="ml-1 text-xs tracking-wider uppercase text-on-surface-variant">
+                2019 - present
+              </span>
+            </div>
             <WorkExperienceCards />
 
-            <h2>Formal Education</h2>
+            <div>
+              <h2 className="inline">Formal Education</h2>
+              <span className="ml-1 text-xs tracking-wider text-on-surface-variant">
+                2012 - 2019
+              </span>
+            </div>
             <ol className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
               <FormalEducationCard
                 name="Engineering Degree in Computer Science"
