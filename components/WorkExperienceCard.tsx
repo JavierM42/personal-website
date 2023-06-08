@@ -1,8 +1,37 @@
-import { FC, ReactNode, useState } from "react";
 import classNames from "classnames";
-import { updateTheme } from "tailwind-material-colors/lib/updateTheme.esm";
 import { AnimatePresence, motion } from "framer-motion";
+import { FC, ReactNode, SVGProps, useState } from "react";
+import { updateTheme } from "tailwind-material-colors/lib/updateTheme.esm";
+import ElixirLogo from "../assets/techs/elixir.svg";
+import NextLogo from "../assets/techs/nextjs.svg";
+import RailsLogo from "../assets/techs/rails.svg";
+import ReactLogo from "../assets/techs/react.svg";
+import RubyLogo from "../assets/techs/ruby.svg";
+import TailwindLogo from "../assets/techs/tailwind.svg";
+import TypescriptLogo from "../assets/techs/typescript.svg";
+import VueLogo from "../assets/techs/vue.svg";
 import ChevronRight from "../public/chevron-right.svg";
+
+type Tech =
+  | "React"
+  | "Ruby"
+  | "TailwindCSS"
+  | "TypeScript"
+  | "Elixir"
+  | "NextJS"
+  | "Vue"
+  | "Rails";
+
+const TECH_LOGOS: Record<Tech, FC<SVGProps<SVGElement>>> = {
+  React: ReactLogo,
+  Ruby: RubyLogo,
+  TailwindCSS: TailwindLogo,
+  TypeScript: TypescriptLogo,
+  Elixir: ElixirLogo,
+  NextJS: NextLogo,
+  Vue: VueLogo,
+  Rails: RailsLogo,
+};
 
 type Props = {
   name: ReactNode;
@@ -12,7 +41,7 @@ type Props = {
   buttonClass: string;
   expandedClass: string;
   dates: string;
-  techs: ReactNode[];
+  techs: Tech[];
   primaryColor: string;
 };
 
@@ -115,7 +144,10 @@ const WorkExperienceCard: FC<Props> = ({
               {dates}
             </div>
             <div className="flex justify-center h-5 gap-2 mt-2 mb-6 text-outline">
-              {techs}
+              {techs.map((tech) => {
+                const Logo = TECH_LOGOS[tech];
+                return <Logo aria-label={tech} className="h-full" />;
+              })}
             </div>
             {content}
           </motion.div>

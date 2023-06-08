@@ -1,17 +1,9 @@
-import Prisma from "../assets/companies/prisma.svg";
 import ClearSession from "../assets/companies/clearsession.svg";
+import Emeritus from "../assets/companies/emeritus.svg";
+import Prisma from "../assets/companies/prisma.svg";
 import RetroAlly from "../assets/companies/retroally.svg";
 import RetroAllyText from "../assets/companies/retroallytext.svg";
 import WyeWorks from "../assets/companies/wyeworks.svg";
-import ElixirLogo from "../assets/techs/elixir.svg";
-import NextLogo from "../assets/techs/nextjs.svg";
-import RailsLogo from "../assets/techs/rails.svg";
-import Emeritus from "../assets/companies/emeritus.svg";
-import ReactLogo from "../assets/techs/react.svg";
-import RubyLogo from "../assets/techs/ruby.svg";
-import TailwindLogo from "../assets/techs/tailwind.svg";
-import TypescriptLogo from "../assets/techs/typescript.svg";
-import VueLogo from "../assets/techs/vue.svg";
 import WorkExperienceCard from "../components/WorkExperienceCard";
 
 export default function WorkExperienceCards() {
@@ -54,20 +46,7 @@ export default function WorkExperienceCards() {
         collapsedClass="border-blue-container hover:bg-blue/[0.04] active:bg-blue/[0.12]"
         buttonClass="interactive-bg-blue-container"
         dates="2022 - present"
-        techs={[
-          <ReactLogo aria-label="React" className="h-full" key="react" />,
-          <TypescriptLogo
-            aria-label="TypeScript"
-            className="h-full"
-            key="ts"
-          />,
-          <TailwindLogo
-            aria-label="Tailwind CSS"
-            className="h-full"
-            key="tailwind"
-          />,
-          <NextLogo aria-label="Next.js" className="h-full" key="next" />,
-        ]}
+        techs={["React", "TypeScript", "TailwindCSS", "NextJS"]}
         primaryColor="#2972f1"
       />
       <WorkExperienceCard
@@ -115,20 +94,7 @@ export default function WorkExperienceCards() {
         collapsedClass="border-purple-container hover:bg-purple/[0.04] active:bg-purple/[0.12]"
         buttonClass="interactive-bg-purple-container"
         dates="2020 - 2022"
-        techs={[
-          <ReactLogo aria-label="React" className="h-full" key="react" />,
-          <TypescriptLogo
-            aria-label="TypeScript"
-            className="h-full"
-            key="ts"
-          />,
-          <TailwindLogo
-            aria-label="Tailwind CSS"
-            className="h-full"
-            key="tailwind"
-          />,
-          <NextLogo aria-label="Next.js" className="h-full" key="next" />,
-        ]}
+        techs={["React", "TypeScript", "TailwindCSS", "NextJS"]}
         primaryColor="#6f22f8"
       />
       <WorkExperienceCard
@@ -166,10 +132,7 @@ export default function WorkExperienceCards() {
         collapsedClass="border-green-container hover:bg-green/[0.04] active:bg-green/[0.12]"
         buttonClass="interactive-bg-green-container"
         dates="2019 - 2020"
-        techs={[
-          <RubyLogo aria-label="Ruby" className="h-full" key="ruby" />,
-          <RailsLogo aria-label="Rails" className="h-full" key="rails" />,
-        ]}
+        techs={["Ruby", "Rails"]}
         primaryColor="#006634"
       />
       <WorkExperienceCard
@@ -212,15 +175,7 @@ export default function WorkExperienceCards() {
         collapsedClass="border-red-container hover:bg-red/[0.04] active:bg-red/[0.12]"
         buttonClass="interactive-bg-red-container"
         dates="2019"
-        techs={[
-          <VueLogo aria-label="Vue" className="h-full" key="vue" />,
-          <TailwindLogo
-            aria-label="Tailwind CSS"
-            className="h-full"
-            key="tailwind"
-          />,
-          <ElixirLogo aria-label="Elixir" className="h-full" key="elixir" />,
-        ]}
+        techs={["Vue", "TailwindCSS", "Elixir"]}
         primaryColor="#ff7645"
       />
     </ol>
