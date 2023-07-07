@@ -7,6 +7,8 @@ type Props = {
   url: string;
 };
 
+export const BLOG_POST_CARD_WIDTH = 372;
+
 const BlogPostCard: FC<Props> = ({
   illustration,
   title,
