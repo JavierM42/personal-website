@@ -21,7 +21,7 @@ button {
 
 body {
   font-family: "PT Sans", sans-serif;
-  @apply bg-background;
+  @apply bg-background overflow-x-clip;
 }
 
 h2 {
