@@ -45,7 +45,7 @@ export default function WorkExperienceCards() {
         expandedClass="border-blue-container"
         collapsedClass="border-blue-container hover:bg-blue/[0.04] active:bg-blue/[0.12]"
         buttonClass="interactive-bg-blue-container"
-        dates="2022 - present"
+        dates="2022 - 2023"
         techs={["React", "TypeScript", "TailwindCSS", "NextJS"]}
         primaryColor="#2972f1"
       />
