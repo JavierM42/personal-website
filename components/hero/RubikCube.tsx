@@ -198,60 +198,62 @@ const POLYGON_POINTS: Record<Square, string> = {
   bottomRight: "60.5,60.5 60.5,79.5 79.5,79.5 79.5,60.5",
 };
 
+const HALF_TURN_SCALE = 0.70716;
+const HT_HALF_TILE = 7.071; // size of half a tile in a half turn movement
 const HALF_TURNS: Record<Square, Record<Direction, any>> = {
   topLeft: {
-    up: { y: `-${20 - 20 / 3}%`, scaleY: 2 / 3 },
-    down: { y: `${20 + 20 / 3}%`, scaleY: 2 / 3 },
-    left: { x: `-${20 - 20 / 3}%`, scaleX: 2 / 3 },
-    right: { x: `${20 + 20 / 3}%`, scaleX: 2 / 3 },
+    up: { y: `${20 - 5 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    down: { y: `${20 + HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    left: { x: `${20 - 5 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    right: { x: `${20 + HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
   },
   topCenter: {
-    up: { y: `-${20 - 20 / 3}%`, scaleY: 2 / 3 },
-    down: { y: `${20 + 20 / 3}%`, scaleY: 2 / 3 },
-    left: { x: "-20%", scaleX: 2 / 3 },
-    right: { x: "20%", scaleX: 2 / 3 },
+    up: { y: `${20 - 5 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    down: { y: `${20 + HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    left: { x: `${-3 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    right: { x: `${3 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
   },
   topRight: {
-    up: { y: `-${20 - 20 / 3}%`, scaleY: 2 / 3 },
-    down: { y: `${20 + 20 / 3}%`, scaleY: 2 / 3 },
-    left: { x: `-${20 + 20 / 3}%`, scaleX: 2 / 3 },
-    right: { x: `${20 - 20 / 3}%`, scaleX: 2 / 3 },
+    up: { y: `${20 - 5 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    down: { y: `${20 + HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    left: { x: `${-20 - HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    right: { x: `${-20 + 5 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
   },
   centerLeft: {
-    up: { y: `-20%`, scaleY: 2 / 3 },
-    down: { y: "20%", scaleY: 2 / 3 },
-    left: { x: `-${20 - 20 / 3}%`, scaleX: 2 / 3 },
-    right: { x: `${20 + 20 / 3}%`, scaleX: 2 / 3 },
+    up: { y: `${-3 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    down: { y: `${3 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    left: { x: `${20 - 5 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    right: { x: `${20 + HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
   },
   centerCenter: {
-    up: { y: `-20%`, scaleY: 2 / 3 },
-    down: { y: "20%", scaleY: 2 / 3 },
-    left: { x: "-20%", scaleX: 2 / 3 },
-    right: { x: "20%", scaleX: 2 / 3 },
+    up: { y: `${-3 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    down: { y: `${3 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    left: { x: `${-3 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    right: { x: `${3 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
   },
   centerRight: {
-    up: { y: `-20%`, scaleY: 2 / 3 },
-    down: { y: "20%", scaleY: 2 / 3 },
-    left: { x: `-${20 + 20 / 3}%`, scaleX: 2 / 3 },
-    right: { x: `${20 - 20 / 3}%`, scaleX: 2 / 3 },
+    up: { y: `${-3 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    down: { y: `${3 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    left: { x: `${-20 - HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    right: { x: `${-20 + 5 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
   },
   bottomLeft: {
-    up: { y: `-${20 + 20 / 3}%`, scaleY: 2 / 3 },
-    down: { y: `${20 - 20 / 3}%`, scaleY: 2 / 3 },
-    left: { x: `-${20 - 20 / 3}%`, scaleX: 2 / 3 },
-    right: { x: `${20 + 20 / 3}%`, scaleX: 2 / 3 },
+    up: { y: `${-20 - HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    down: { y: `${-20 + 5 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    left: { x: `${20 - 5 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    right: { x: `${20 + HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
   },
   bottomCenter: {
-    up: { y: `-${20 + 20 / 3}%`, scaleY: 2 / 3 },
-    down: { y: `${20 - 20 / 3}%`, scaleY: 2 / 3 },
-    left: { x: "-20%", scaleX: 2 / 3 },
-    right: { x: "20%", scaleX: 2 / 3 },
+    up: { y: `${-20 - HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    down: { y: `${-20 + 5 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    left: { x: `${-3 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    right: { x: `${3 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
   },
   bottomRight: {
-    up: { y: `-${20 + 20 / 3}%`, scaleY: 2 / 3 },
-    down: { y: `${20 - 20 / 3}%`, scaleY: 2 / 3 },
-    left: { x: `-${20 + 20 / 3}%`, scaleX: 2 / 3 },
-    right: { x: `${20 - 20 / 3}%`, scaleX: 2 / 3 },
+    up: { y: `${-20 - HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    down: { y: `${-20 + 5 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
+    left: { x: `${-20 - HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    right: { x: `${-20 + 5 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
   },
 };
 
@@ -320,10 +322,30 @@ const TRANSIENT_GROUP_INITIAL_STATE: Record<Direction, any> = {
 };
 
 const TRANSIENT_GROUP_HALF_TURN: Record<Direction, any> = {
-  left: { x: "20%", y: "0%", scaleX: 2 / 3, scaleY: 1 },
-  right: { x: "-20%", y: "0%", scaleX: 2 / 3, scaleY: 1 },
-  up: { x: "0%", y: "20%", scaleX: 1, scaleY: 2 / 3 },
-  down: { x: "0%", y: "-20%", scaleX: 1, scaleY: 2 / 3 },
+  left: {
+    x: `${3 * HT_HALF_TILE}%`,
+    y: "0%",
+    scaleX: HALF_TURN_SCALE,
+    scaleY: 1,
+  },
+  right: {
+    x: `${-3 * HT_HALF_TILE}%`,
+    y: "0%",
+    scaleX: HALF_TURN_SCALE,
+    scaleY: 1,
+  },
+  up: {
+    x: "0%",
+    y: `${3 * HT_HALF_TILE}%`,
+    scaleX: 1,
+    scaleY: HALF_TURN_SCALE,
+  },
+  down: {
+    x: "0%",
+    y: `${-3 * HT_HALF_TILE}%`,
+    scaleX: 1,
+    scaleY: HALF_TURN_SCALE,
+  },
 };
 
 const LAYER_SQUARES: Record<
