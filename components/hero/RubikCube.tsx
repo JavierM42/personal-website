@@ -203,12 +203,15 @@ const TILE_CENTERS: Record<Tile, Position> = {
   bottomRight: { x: 70, y: 70 },
 };
 
-const TILE_SIZE = 19;
+const TILE_SIZE = 20;
+const TILE_SPACING = 1;
 const tilePath: (tile: Tile) => string = (tile) => {
-  const center = TILE_CENTERS[tile];
-  return `M${center.x - TILE_SIZE / 2},${
-    center.y - TILE_SIZE / 2
-  }h${TILE_SIZE}v${TILE_SIZE}h-${TILE_SIZE}z`;
+  const center = tileCenter(tile);
+  return `M${center.x - (TILE_SIZE - TILE_SPACING) / 2},${
+    center.y - (TILE_SIZE - TILE_SPACING) / 2
+  }h${TILE_SIZE - TILE_SPACING}v${TILE_SIZE - TILE_SPACING}h-${
+    TILE_SIZE - TILE_SPACING
+  }z`;
 };
 
 const HALF_TURN_SCALE = 0.70716;
