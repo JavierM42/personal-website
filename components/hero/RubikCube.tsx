@@ -81,12 +81,12 @@ const INITIAL_CUBE_STATE: typeof SOLVED_CUBE_STATE = {
 };
 
 const SOLVED_CUBE_STATE: {
-  front: Record<Square, FaceColor>;
-  right: Record<Square, FaceColor>;
-  back: Record<Square, FaceColor>;
-  left: Record<Square, FaceColor>;
-  top: Record<Square, FaceColor>;
-  bottom: Record<Square, FaceColor>;
+  front: Record<Tile, FaceColor>;
+  right: Record<Tile, FaceColor>;
+  back: Record<Tile, FaceColor>;
+  left: Record<Tile, FaceColor>;
+  top: Record<Tile, FaceColor>;
+  bottom: Record<Tile, FaceColor>;
 } = {
   front: {
     topLeft: "white",
@@ -159,7 +159,7 @@ const SOLVED_CUBE_STATE: {
 const MOVE_DURATION = 0.4;
 const AUTOMATIC_MOVE_DURATION = 0.2;
 
-type Square =
+type Tile =
   | "topLeft"
   | "topCenter"
   | "topRight"
@@ -186,21 +186,34 @@ const FACE_CLASSNAME: Record<FaceColor, string> = {
   white: "fill-[url(#javi)]",
 };
 
-const POLYGON_POINTS: Record<Square, string> = {
-  topLeft: "20.5,20.5 20.5,39.5 39.5,39.5 39.5,20.5",
-  centerLeft: "20.5,40.5 20.5,59.5 39.5,59.5 39.5,40.5",
-  bottomLeft: "20.5,60.5 20.5,79.5 39.5,79.5 39.5,60.5",
-  topCenter: "40.5,20.5 40.5,39.5 59.5,39.5 59.5,20.5",
-  centerCenter: "40.5,40.5 40.5,59.5 59.5,59.5 59.5,40.5",
-  bottomCenter: "40.5,60.5 40.5,79.5 59.5,79.5 59.5,60.5",
-  topRight: "60.5,20.5 60.5,39.5 79.5,39.5 79.5,20.5",
-  centerRight: "60.5,40.5 60.5,59.5 79.5,59.5 79.5,40.5",
-  bottomRight: "60.5,60.5 60.5,79.5 79.5,79.5 79.5,60.5",
+type Position = {
+  x: number;
+  y: number;
+};
+
+const TILE_CENTERS: Record<Tile, Position> = {
+  topLeft: { x: 30, y: 30 },
+  topCenter: { x: 50, y: 30 },
+  topRight: { x: 70, y: 30 },
+  centerLeft: { x: 30, y: 50 },
+  centerCenter: { x: 50, y: 50 },
+  centerRight: { x: 70, y: 50 },
+  bottomLeft: { x: 30, y: 70 },
+  bottomCenter: { x: 50, y: 70 },
+  bottomRight: { x: 70, y: 70 },
+};
+
+const TILE_SIZE = 19;
+const tilePath: (tile: Tile) => string = (tile) => {
+  const center = TILE_CENTERS[tile];
+  return `M${center.x - TILE_SIZE / 2},${
+    center.y - TILE_SIZE / 2
+  }h${TILE_SIZE}v${TILE_SIZE}h-${TILE_SIZE}z`;
 };
 
 const HALF_TURN_SCALE = 0.70716;
 const HT_HALF_TILE = 7.071; // size of half a tile in a half turn movement
-const HALF_TURNS: Record<Square, Record<Direction, any>> = {
+const HALF_TURNS: Record<Tile, Record<Direction, any>> = {
   topLeft: {
     up: { y: `${20 - 5 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
     down: { y: `${20 + HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
@@ -257,7 +270,7 @@ const HALF_TURNS: Record<Square, Record<Direction, any>> = {
   },
 };
 
-const FULL_TURNS: Record<Square, Record<Direction, any>> = {
+const FULL_TURNS: Record<Tile, Record<Direction, any>> = {
   topLeft: {
     up: { y: `-10%`, scaleY: 0 },
     down: { y: `50%`, scaleY: 0 },
@@ -348,17 +361,15 @@ const TRANSIENT_GROUP_HALF_TURN: Record<Direction, any> = {
   },
 };
 
-const LAYER_SQUARES: Record<
-  HorizontalLayer | VerticalLayer,
-  [Square, Square, Square]
-> = {
-  U: ["topLeft", "topCenter", "topRight"],
-  E: ["centerLeft", "centerCenter", "centerRight"],
-  D: ["bottomLeft", "bottomCenter", "bottomRight"],
-  L: ["topLeft", "centerLeft", "bottomLeft"],
-  M: ["topCenter", "centerCenter", "bottomCenter"],
-  R: ["topRight", "centerRight", "bottomRight"],
-};
+const LAYER_TILES: Record<HorizontalLayer | VerticalLayer, [Tile, Tile, Tile]> =
+  {
+    U: ["topLeft", "topCenter", "topRight"],
+    E: ["centerLeft", "centerCenter", "centerRight"],
+    D: ["bottomLeft", "bottomCenter", "bottomRight"],
+    L: ["topLeft", "centerLeft", "bottomLeft"],
+    M: ["topCenter", "centerCenter", "bottomCenter"],
+    R: ["topRight", "centerRight", "bottomRight"],
+  };
 
 const CARTESIAN_DIRECTIONS: Record<
   HorizontalLayer | VerticalLayer,
@@ -379,7 +390,7 @@ export default function RubikCube() {
   const transientB = useRef<SVGPolygonElement>(null);
   const transientC = useRef<SVGPolygonElement>(null);
 
-  const CONTROLS: Record<Square, AnimationControls> = {
+  const CONTROLS: Record<Tile, AnimationControls> = {
     topLeft: useAnimation(),
     topCenter: useAnimation(),
     topRight: useAnimation(),
@@ -404,37 +415,37 @@ export default function RubikCube() {
   ) => {
     setIsTurning(true);
     const direction = CARTESIAN_DIRECTIONS[layer][turnDirection];
-    const squares = LAYER_SQUARES[layer];
+    const tiles = LAYER_TILES[layer];
 
     const futureCubeState = getNewCubeState(layer, turnDirection);
 
     transientGroup.set(TRANSIENT_GROUP_INITIAL_STATE[direction]);
-    transientA.current?.setAttribute("points", POLYGON_POINTS[squares[0]]);
-    transientB.current?.setAttribute("points", POLYGON_POINTS[squares[1]]);
-    transientC.current?.setAttribute("points", POLYGON_POINTS[squares[2]]);
+    transientA.current?.setAttribute("d", tilePath(tiles[0]));
+    transientB.current?.setAttribute("d", tilePath(tiles[1]));
+    transientC.current?.setAttribute("d", tilePath(tiles[2]));
 
     transientA.current?.removeAttribute("class");
     transientB.current?.removeAttribute("class");
     transientC.current?.removeAttribute("class");
 
     transientA.current?.classList.add(
-      FACE_CLASSNAME[futureCubeState.front[squares[0]]]
+      FACE_CLASSNAME[futureCubeState.front[tiles[0]]]
     );
     transientB.current?.classList.add(
-      FACE_CLASSNAME[futureCubeState.front[squares[1]]]
+      FACE_CLASSNAME[futureCubeState.front[tiles[1]]]
     );
     transientC.current?.classList.add(
-      FACE_CLASSNAME[futureCubeState.front[squares[2]]]
+      FACE_CLASSNAME[futureCubeState.front[tiles[2]]]
     );
 
-    squares.forEach(async (square) => {
-      const control = CONTROLS[square];
+    tiles.forEach(async (tile) => {
+      const control = CONTROLS[tile];
       await control.start({
-        ...HALF_TURNS[square][direction],
+        ...HALF_TURNS[tile][direction],
         transition: { duration: duration / 2, ease: "easeIn" },
       });
       control.start({
-        ...FULL_TURNS[square][direction],
+        ...FULL_TURNS[tile][direction],
         transition: { duration: duration / 2, ease: "easeOut" },
       });
     });
@@ -450,9 +461,9 @@ export default function RubikCube() {
       scaleY: 1,
       transition: { duration: duration / 2, ease: "easeOut" },
     });
-    for (const square of squares) {
+    for (const tile of tiles) {
       // hack, if using set we get an ugly white flash
-      await CONTROLS[square].start({
+      await CONTROLS[tile].start({
         x: "0%",
         y: "0%",
         scaleX: 1,
@@ -827,24 +838,18 @@ export default function RubikCube() {
             "bottomCenter",
             "bottomRight",
           ] as const
-        ).map((square) => (
-          <motion.polygon
-            key={square}
-            animate={CONTROLS[square]}
-            points={POLYGON_POINTS[square]}
-            className={FACE_CLASSNAME[cubeState.front[square]]}
+        ).map((tile) => (
+          <motion.path
+            key={tile}
+            animate={CONTROLS[tile]}
+            d={tilePath(tile)}
+            className={FACE_CLASSNAME[cubeState.front[tile]]}
           />
         ))}
         <motion.g animate={transientGroup}>
-          <motion.polygon ref={transientA} points={POLYGON_POINTS["topLeft"]} />
-          <motion.polygon
-            ref={transientB}
-            points={POLYGON_POINTS["centerCenter"]}
-          />
-          <motion.polygon
-            ref={transientC}
-            points={POLYGON_POINTS["bottomRight"]}
-          />
+          <motion.path ref={transientA} d={tilePath("topLeft")} />
+          <motion.path ref={transientB} d={tilePath("centerCenter")} />
+          <motion.path ref={transientC} d={tilePath("bottomRight")} />
         </motion.g>
       </motion.svg>
       <AnimatePresence>
