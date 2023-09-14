@@ -146,6 +146,13 @@ const TILE_CENTERS: Record<Tile, Position> = {
   bottomRight: { x: 70, y: 70 },
 };
 
+const tileCenter = (tile: Tile) => TILE_CENTERS[tile];
+
+const tileOffsetFromCenter = (tile: Tile) => ({
+  x: tileCenter(tile).x - 50,
+  y: tileCenter(tile).y - 50,
+});
+
 const TILE_SIZE = 20;
 const TILE_SPACING = 1;
 const tilePath: (tile: Tile) => string = (tile) => {
@@ -159,61 +166,94 @@ const tilePath: (tile: Tile) => string = (tile) => {
 
 const HALF_TURN_SCALE = 0.70716;
 const HT_HALF_TILE = 7.071; // size of half a tile in a half turn movement
-const HALF_TURNS: Record<Tile, Record<Direction, any>> = {
+const HALF_TURNS: Record<
+  Tile,
+  Record<Direction, { x?: string; y?: string }>
+> = {
   topLeft: {
-    up: { y: `${20 - 5 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    down: { y: `${20 + HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    left: { x: `${20 - 5 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
-    right: { x: `${20 + HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    up: { y: `${-tileOffsetFromCenter("topLeft").y - 5 * HT_HALF_TILE}%` },
+    down: { y: `${-tileOffsetFromCenter("topLeft").y + HT_HALF_TILE}%` },
+    left: { x: `${-tileOffsetFromCenter("topLeft").x - 5 * HT_HALF_TILE}%` },
+    right: { x: `${-tileOffsetFromCenter("topLeft").x + HT_HALF_TILE}%` },
   },
   topCenter: {
-    up: { y: `${20 - 5 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    down: { y: `${20 + HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    left: { x: `${-3 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
-    right: { x: `${3 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    up: { y: `${-tileOffsetFromCenter("topCenter").y - 5 * HT_HALF_TILE}%` },
+    down: { y: `${-tileOffsetFromCenter("topCenter").y + HT_HALF_TILE}%` },
+    left: { x: `${-tileOffsetFromCenter("topCenter").x - 3 * HT_HALF_TILE}%` },
+    right: { x: `${-tileOffsetFromCenter("topCenter").x + 3 * HT_HALF_TILE}%` },
   },
   topRight: {
-    up: { y: `${20 - 5 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    down: { y: `${20 + HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    left: { x: `${-20 - HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
-    right: { x: `${-20 + 5 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    up: { y: `${-tileOffsetFromCenter("topRight").y - 5 * HT_HALF_TILE}%` },
+    down: { y: `${-tileOffsetFromCenter("topRight").y + HT_HALF_TILE}%` },
+    left: { x: `${-tileOffsetFromCenter("topRight").x - HT_HALF_TILE}%` },
+    right: { x: `${-tileOffsetFromCenter("topRight").x + 5 * HT_HALF_TILE}%` },
   },
   centerLeft: {
-    up: { y: `${-3 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    down: { y: `${3 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    left: { x: `${20 - 5 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
-    right: { x: `${20 + HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    up: { y: `${-3 * HT_HALF_TILE}%` },
+    down: { y: `${3 * HT_HALF_TILE}%` },
+    left: { x: `${-tileOffsetFromCenter("centerLeft").x - 5 * HT_HALF_TILE}%` },
+    right: { x: `${-tileOffsetFromCenter("centerLeft").x + HT_HALF_TILE}%` },
   },
   centerCenter: {
-    up: { y: `${-3 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    down: { y: `${3 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    left: { x: `${-3 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
-    right: { x: `${3 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    up: { y: `${-3 * HT_HALF_TILE}%` },
+    down: { y: `${3 * HT_HALF_TILE}%` },
+    left: { x: `${-3 * HT_HALF_TILE}%` },
+    right: { x: `${3 * HT_HALF_TILE}%` },
   },
   centerRight: {
-    up: { y: `${-3 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    down: { y: `${3 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    left: { x: `${-20 - HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
-    right: { x: `${-20 + 5 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    up: { y: `${-3 * HT_HALF_TILE}%` },
+    down: { y: `${3 * HT_HALF_TILE}%` },
+    left: { x: `${-tileOffsetFromCenter("centerRight").x - HT_HALF_TILE}%` },
+    right: {
+      x: `${-tileOffsetFromCenter("centerRight").x + 5 * HT_HALF_TILE}%`,
+    },
   },
   bottomLeft: {
-    up: { y: `${-20 - HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    down: { y: `${-20 + 5 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    left: { x: `${20 - 5 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
-    right: { x: `${20 + HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    up: { y: `${-tileOffsetFromCenter("bottomLeft").y - HT_HALF_TILE}%` },
+    down: { y: `${-tileOffsetFromCenter("bottomLeft").y + 5 * HT_HALF_TILE}%` },
+    left: { x: `${-tileOffsetFromCenter("bottomLeft").x - 5 * HT_HALF_TILE}%` },
+    right: { x: `${-tileOffsetFromCenter("bottomLeft").x + HT_HALF_TILE}%` },
   },
   bottomCenter: {
-    up: { y: `${-20 - HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    down: { y: `${-20 + 5 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    left: { x: `${-3 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
-    right: { x: `${3 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    up: { y: `${-tileOffsetFromCenter("bottomCenter").y - HT_HALF_TILE}%` },
+    down: {
+      y: `${-tileOffsetFromCenter("bottomCenter").y + 5 * HT_HALF_TILE}%`,
+    },
+    left: {
+      x: `${-tileOffsetFromCenter("bottomCenter").x - 3 * HT_HALF_TILE}%`,
+    },
+    right: {
+      x: `${-tileOffsetFromCenter("bottomCenter").x + 3 * HT_HALF_TILE}%`,
+    },
   },
   bottomRight: {
-    up: { y: `${-20 - HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    down: { y: `${-20 + 5 * HT_HALF_TILE}%`, scaleY: HALF_TURN_SCALE },
-    left: { x: `${-20 - HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
-    right: { x: `${-20 + 5 * HT_HALF_TILE}%`, scaleX: HALF_TURN_SCALE },
+    up: { y: `${-tileOffsetFromCenter("bottomRight").y - HT_HALF_TILE}%` },
+    down: {
+      y: `${-tileOffsetFromCenter("bottomRight").y + 5 * HT_HALF_TILE}%`,
+    },
+    left: { x: `${-tileOffsetFromCenter("bottomRight").x - HT_HALF_TILE}%` },
+    right: {
+      x: `${-tileOffsetFromCenter("bottomRight").x + 5 * HT_HALF_TILE}%`,
+    },
   },
+};
+
+const halfTurnScale: (direction: Direction) => {
+  scaleX?: number;
+  scaleY?: number;
+} = (direction) =>
+  ["up", "down"].includes(direction)
+    ? { scaleY: HALF_TURN_SCALE }
+    : { scaleX: HALF_TURN_SCALE };
+
+const halfTurnTransform: (
+  tile: Tile,
+  direction: Direction
+) => { x?: string; y?: string; scaleX?: number; scaleY?: number } = (
+  tile,
+  direction
+) => {
+  return { ...HALF_TURNS[tile][direction], ...halfTurnScale(direction) };
 };
 
 const FULL_TURNS: Record<Tile, Record<Direction, any>> = {
@@ -387,7 +427,7 @@ export default function RubikCube() {
     tiles.forEach(async (tile) => {
       const control = CONTROLS[tile];
       await control.start({
-        ...HALF_TURNS[tile][direction],
+        ...halfTurnTransform(tile, direction),
         transition: { duration: duration / 2, ease: "easeIn" },
       });
       control.start({
