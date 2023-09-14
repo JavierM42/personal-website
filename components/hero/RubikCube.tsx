@@ -7,11 +7,12 @@ import {
 import { useEffect, useRef, useState } from "react";
 import ChevronRight from "../../public/chevron-right.svg";
 import Reset from "../../assets/reset.svg";
-import { isEqual } from "lodash";
 import WithTooltip from "../WithTooltip";
 import { Placement } from "@floating-ui/react";
 
-const INITIAL_CUBE_STATE: typeof SOLVED_CUBE_STATE = {
+type CubeState = Record<Face, Record<Tile, FaceColor>>;
+
+const INITIAL_CUBE_STATE: CubeState = {
   front: {
     topLeft: "orange",
     topCenter: "orange",
@@ -80,81 +81,23 @@ const INITIAL_CUBE_STATE: typeof SOLVED_CUBE_STATE = {
   },
 };
 
-const SOLVED_CUBE_STATE: {
-  front: Record<Tile, FaceColor>;
-  right: Record<Tile, FaceColor>;
-  back: Record<Tile, FaceColor>;
-  left: Record<Tile, FaceColor>;
-  top: Record<Tile, FaceColor>;
-  bottom: Record<Tile, FaceColor>;
-} = {
-  front: {
-    topLeft: "white",
-    topCenter: "white",
-    topRight: "white",
-    centerLeft: "white",
-    centerCenter: "white",
-    centerRight: "white",
-    bottomLeft: "white",
-    bottomCenter: "white",
-    bottomRight: "white",
-  },
-  right: {
-    topLeft: "green",
-    topCenter: "green",
-    topRight: "green",
-    centerLeft: "green",
-    centerCenter: "green",
-    centerRight: "green",
-    bottomLeft: "green",
-    bottomCenter: "green",
-    bottomRight: "green",
-  },
-  back: {
-    topLeft: "yellow",
-    topCenter: "yellow",
-    topRight: "yellow",
-    centerLeft: "yellow",
-    centerCenter: "yellow",
-    centerRight: "yellow",
-    bottomLeft: "yellow",
-    bottomCenter: "yellow",
-    bottomRight: "yellow",
-  },
-  left: {
-    topLeft: "blue",
-    topCenter: "blue",
-    topRight: "blue",
-    centerLeft: "blue",
-    centerCenter: "blue",
-    centerRight: "blue",
-    bottomLeft: "blue",
-    bottomCenter: "blue",
-    bottomRight: "blue",
-  },
-  top: {
-    topLeft: "red",
-    topCenter: "red",
-    topRight: "red",
-    centerLeft: "red",
-    centerCenter: "red",
-    centerRight: "red",
-    bottomLeft: "red",
-    bottomCenter: "red",
-    bottomRight: "red",
-  },
-  bottom: {
-    topLeft: "orange",
-    topCenter: "orange",
-    topRight: "orange",
-    centerLeft: "orange",
-    centerCenter: "orange",
-    centerRight: "orange",
-    bottomLeft: "orange",
-    bottomCenter: "orange",
-    bottomRight: "orange",
-  },
+type Face = "front" | "right" | "back" | "left" | "top" | "bottom";
+
+const SOLVED_COLOR: Record<Face, FaceColor> = {
+  front: "white",
+  right: "green",
+  back: "yellow",
+  left: "blue",
+  top: "red",
+  bottom: "orange",
 };
+
+const isSolved: (cubeState: CubeState) => boolean = (cubeState) =>
+  Object.entries(cubeState).every(([face, tiles]) =>
+    Object.entries(tiles).every(
+      ([, color]) => color === SOLVED_COLOR[face as Face]
+    )
+  );
 
 const MOVE_DURATION = 0.4;
 const AUTOMATIC_MOVE_DURATION = 0.2;
@@ -788,7 +731,7 @@ export default function RubikCube() {
   useEffect(() => {
     if (pendingMoves.length === 0 && !isTurning) {
       setIsRunningInitialAnimation(false);
-      if (isEqual(cubeState, SOLVED_CUBE_STATE)) {
+      if (isSolved(cubeState)) {
         setPerformedMoves([]);
       }
     }
