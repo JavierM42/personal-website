@@ -256,61 +256,37 @@ const halfTurnTransform: (
   return { ...HALF_TURNS[tile][direction], ...halfTurnScale(direction) };
 };
 
-const FULL_TURNS: Record<Tile, Record<Direction, any>> = {
-  topLeft: {
-    up: { y: `-10%`, scaleY: 0 },
-    down: { y: `50%`, scaleY: 0 },
-    left: { x: `-10%`, scaleX: 0 },
-    right: { x: `50%`, scaleX: 0 },
-  },
-  topCenter: {
-    up: { y: `-10%`, scaleY: 0 },
-    down: { y: `50%`, scaleY: 0 },
-    left: { x: "-30%", scaleX: 0 },
-    right: { x: "30%", scaleX: 0 },
-  },
-  topRight: {
-    up: { y: `-10%`, scaleY: 0 },
-    down: { y: `50%`, scaleY: 0 },
-    left: { x: `-50%`, scaleX: 0 },
-    right: { x: `10%`, scaleX: 0 },
-  },
-  centerLeft: {
-    up: { y: `-30%`, scaleY: 0 },
-    down: { y: "30%", scaleY: 0 },
-    left: { x: `-10%`, scaleX: 0 },
-    right: { x: `50%`, scaleX: 0 },
-  },
-  centerCenter: {
-    up: { y: `-30%`, scaleY: 0 },
-    down: { y: "30%", scaleY: 0 },
-    left: { x: "-30%", scaleX: 0 },
-    right: { x: "30%", scaleX: 0 },
-  },
-  centerRight: {
-    up: { y: `-30%`, scaleY: 0 },
-    down: { y: "30%", scaleY: 0 },
-    left: { x: `-50%`, scaleX: 0 },
-    right: { x: `10%`, scaleX: 0 },
-  },
-  bottomLeft: {
-    up: { y: `-50%`, scaleY: 0 },
-    down: { y: `10%`, scaleY: 0 },
-    left: { x: `-10%`, scaleX: 0 },
-    right: { x: `50%`, scaleX: 0 },
-  },
-  bottomCenter: {
-    up: { y: `-50%`, scaleY: 0 },
-    down: { y: `10%`, scaleY: 0 },
-    left: { x: "-30%", scaleX: 0 },
-    right: { x: "30%", scaleX: 0 },
-  },
-  bottomRight: {
-    up: { y: `-50%`, scaleY: 0 },
-    down: { y: `10%`, scaleY: 0 },
-    left: { x: `-50%`, scaleX: 0 },
-    right: { x: `10%`, scaleX: 0 },
-  },
+const fullTurnScale: (direction: Direction) => {
+  scaleX?: number;
+  scaleY?: number;
+} = (direction) =>
+  ["up", "down"].includes(direction) ? { scaleY: 0 } : { scaleX: 0 };
+
+const fullTurnTranslation: (
+  tile: Tile,
+  direction: Direction
+) => { x?: string; y?: string } = (tile, direction) =>
+  ["up", "down"].includes(direction)
+    ? {
+        y: `${-tileOffsetFromCenter(tile).y + (direction == "up" ? -30 : 30)}%`,
+      }
+    : {
+        x: `${
+          -tileOffsetFromCenter(tile).x + (direction === "left" ? -30 : 30)
+        }%`,
+      };
+
+const fullTurnTransform: (
+  tile: Tile,
+  direction: Direction
+) => { x?: string; y?: string; scaleX?: number; scaleY?: number } = (
+  tile,
+  direction
+) => {
+  return {
+    ...fullTurnTranslation(tile, direction),
+    ...fullTurnScale(direction),
+  };
 };
 
 const TRANSIENT_GROUP_INITIAL_STATE: Record<Direction, any> = {
@@ -431,7 +407,7 @@ export default function RubikCube() {
         transition: { duration: duration / 2, ease: "easeIn" },
       });
       control.start({
-        ...FULL_TURNS[tile][direction],
+        ...fullTurnTransform(tile, direction),
         transition: { duration: duration / 2, ease: "easeOut" },
       });
     });
