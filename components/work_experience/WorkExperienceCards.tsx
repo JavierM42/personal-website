@@ -1,10 +1,10 @@
-import ClearSession from "../assets/companies/clearsession.svg";
-import Emeritus from "../assets/companies/emeritus.svg";
-import Prisma from "../assets/companies/prisma.svg";
-import RetroAlly from "../assets/companies/retroally.svg";
-import RetroAllyText from "../assets/companies/retroallytext.svg";
-import WyeWorks from "../assets/companies/wyeworks.svg";
-import WorkExperienceCard from "../components/WorkExperienceCard";
+import ClearSession from "../../assets/companies/clearsession.svg";
+import Emeritus from "../../assets/companies/emeritus.svg";
+import Prisma from "../../assets/companies/prisma.svg";
+import RetroAlly from "../../assets/companies/retroally.svg";
+import RetroAllyText from "../../assets/companies/retroallytext.svg";
+import WyeWorks from "../../assets/companies/wyeworks.svg";
+import WorkExperienceCard from "./WorkExperienceCard";
 
 export default function WorkExperienceCards() {
   return (

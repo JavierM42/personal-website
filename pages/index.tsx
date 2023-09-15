@@ -9,9 +9,9 @@ import FormalEducationCard from "../components/FormalEducationCard";
 import RubikCube from "../components/hero/RubikCube";
 import OpenSourceCard from "../components/OpenSourceCard";
 import TryDynamicColor from "../components/open_source/TryDynamicColor";
-import WorkExperienceCards from "../components/WorkExperienceCards";
 import LineWrappingInput from "react-line-wrapping-input";
 import WithTooltip from "../components/WithTooltip";
+import WorkExperienceCards from "../components/work_experience/WorkExperienceCards";
 
 export default function Home() {
   return (
