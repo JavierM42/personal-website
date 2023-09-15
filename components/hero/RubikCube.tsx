@@ -155,13 +155,49 @@ const tileOffsetFromCenter = (tile: Tile) => ({
 
 const TILE_SIZE = 20;
 const TILE_SPACING = 1;
+const SMALL_TILE_RADIUS = 0.5;
+const LARGE_TILE_RADIUS = 3;
 const tilePath: (tile: Tile) => string = (tile) => {
   const center = tileCenter(tile);
-  return `M${center.x - (TILE_SIZE - TILE_SPACING) / 2},${
+  const topLeftRadius = [
+    "centerCenter",
+    "centerRight",
+    "bottomCenter",
+  ].includes(tile)
+    ? LARGE_TILE_RADIUS
+    : SMALL_TILE_RADIUS;
+  const topRightRadius = [
+    "centerCenter",
+    "centerLeft",
+    "bottomCenter",
+  ].includes(tile)
+    ? LARGE_TILE_RADIUS
+    : SMALL_TILE_RADIUS;
+  const bottomLeftRadius = [
+    "centerCenter",
+    "topCenter",
+    "centerRight",
+  ].includes(tile)
+    ? LARGE_TILE_RADIUS
+    : SMALL_TILE_RADIUS;
+  const bottomRightRadius = [
+    "centerCenter",
+    "centerLeft",
+    "topCenter",
+  ].includes(tile)
+    ? LARGE_TILE_RADIUS
+    : SMALL_TILE_RADIUS;
+  return `M${center.x - (TILE_SIZE - TILE_SPACING) / 2 + topLeftRadius},${
     center.y - (TILE_SIZE - TILE_SPACING) / 2
-  }h${TILE_SIZE - TILE_SPACING}v${TILE_SIZE - TILE_SPACING}h-${
-    TILE_SIZE - TILE_SPACING
-  }z`;
+  }h${
+    TILE_SIZE - TILE_SPACING - topLeftRadius - topRightRadius
+  }a${topRightRadius} ${topRightRadius} 0 0 1 ${topRightRadius} ${topRightRadius}v${
+    TILE_SIZE - TILE_SPACING - topRightRadius - bottomRightRadius
+  }a${bottomRightRadius} ${bottomRightRadius} 0 0 1 ${-bottomRightRadius} ${bottomRightRadius}h-${
+    TILE_SIZE - TILE_SPACING - bottomRightRadius - bottomLeftRadius
+  }a${bottomLeftRadius} ${bottomLeftRadius} 0 0 1 ${-bottomLeftRadius} ${-bottomLeftRadius}v${
+    -TILE_SIZE + TILE_SPACING + bottomLeftRadius + topLeftRadius
+  }a${topLeftRadius} ${topLeftRadius} 0 0 1 ${topLeftRadius} ${-topLeftRadius}z`;
 };
 
 const HALF_TURN_SCALE = 0.70716;
@@ -292,8 +328,8 @@ const fullTurnTransform: (
 const TRANSIENT_GROUP_INITIAL_STATE: Record<Direction, any> = {
   left: { x: "30%", y: "0%", scaleX: 0, scaleY: 1 },
   right: { x: "-30%", y: "0%", scaleX: 0, scaleY: 1 },
-  up: { x: "0%", y: "30%", scaleX: 1, scaleY: 0 },
-  down: { x: "0%", y: "-30%", scaleX: 1, scaleY: 0 },
+  up: { x: "0%", y: "50%", scaleX: 1, scaleY: 0 },
+  down: { x: "0%", y: "-10%", scaleX: 1, scaleY: 0 },
 };
 
 const TRANSIENT_GROUP_HALF_TURN: Record<Direction, any> = {
@@ -317,7 +353,7 @@ const TRANSIENT_GROUP_HALF_TURN: Record<Direction, any> = {
   },
   down: {
     x: "0%",
-    y: `${-3 * HT_HALF_TILE}%`,
+    y: `${10 - 3 * HT_HALF_TILE}%`,
     scaleX: 1,
     scaleY: HALF_TURN_SCALE,
   },
@@ -759,7 +795,7 @@ export default function RubikCube() {
         stroke="currentColor"
         viewBox="0 0 100 100"
         className="w-full h-full stroke-on-surface"
-        strokeWidth="0.5"
+        strokeWidth="0.3"
         strokeLinejoin="round"
         strokeLinecap="round"
         initial={{ opacity: 0 }}
