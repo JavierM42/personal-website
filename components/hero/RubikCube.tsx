@@ -7,9 +7,9 @@ import {
 import { useEffect, useRef, useState } from "react";
 import ChevronRight from "../../public/chevron-right.svg";
 import Reset from "../../assets/reset.svg";
-import WithTooltip from "../WithTooltip";
 import { Placement } from "@floating-ui/react";
 import { SquareButton } from "../SquareButton";
+import { useRubikFavicon } from "./useRubikFavicon";
 
 type CubeState = Record<Face, Record<Tile, FaceColor>>;
 
@@ -103,7 +103,7 @@ const isSolved: (cubeState: CubeState) => boolean = (cubeState) =>
 const MOVE_DURATION = 0.4;
 const AUTOMATIC_MOVE_DURATION = 0.2;
 
-type Tile =
+export type Tile =
   | "topLeft"
   | "topCenter"
   | "topRight"
@@ -119,7 +119,13 @@ type Direction = "up" | "down" | "left" | "right";
 type VerticalLayer = "L" | "M" | "R";
 type HorizontalLayer = "U" | "E" | "D";
 
-type FaceColor = "red" | "orange" | "blue" | "green" | "yellow" | "white";
+export type FaceColor =
+  | "red"
+  | "orange"
+  | "blue"
+  | "green"
+  | "yellow"
+  | "white";
 
 const FACE_CLASSNAME: Record<FaceColor, string> = {
   red: "fill-[#ff7645]",
@@ -789,6 +795,8 @@ export default function RubikCube() {
       }
     }
   }, [pendingMoves, isTurning]);
+
+  useRubikFavicon(cubeState.front);
 
   return (
     <div className="relative m-5 w-fill h-fill">
