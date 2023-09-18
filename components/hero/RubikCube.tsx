@@ -9,6 +9,7 @@ import ChevronRight from "../../public/chevron-right.svg";
 import Reset from "../../assets/reset.svg";
 import WithTooltip from "../WithTooltip";
 import { Placement } from "@floating-ui/react";
+import { SquareButton } from "../SquareButton";
 
 type CubeState = Record<Face, Record<Tile, FaceColor>>;
 
@@ -961,44 +962,34 @@ export default function RubikCube() {
               },
               index
             ) => (
-              <WithTooltip
-                text="Try moving the cube!"
+              <SquareButton
+                tooltip="Try moving the cube!"
                 key={index}
-                placement={tooltipPlacement as Placement}
+                tooltipPlacement={tooltipPlacement as Placement}
+                className="absolute -translate-x-1/2 -translate-y-1/2"
+                style={{ left, top }}
+                onClick={() => queueMove(layer, direction)}
+                label={`Perform move ${layer}${
+                  direction === "counterclockwise" ? "'" : ""
+                }`}
               >
-                <motion.button
-                  className="absolute flex items-center justify-center w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-lg focus:outline-none interactive-bg-primary-container"
-                  style={{ left, top }}
-                  onClick={() => queueMove(layer, direction)}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 1.5, delay: 0.5 }}
-                  aria-label={`Perform move ${layer}${
-                    direction === "counterclockwise" ? "'" : ""
-                  }`}
-                >
-                  <ChevronRight
-                    style={{ transform: `rotate(${chevronRotation}deg)` }}
-                  />
-                </motion.button>
-              </WithTooltip>
+                <ChevronRight
+                  style={{ transform: `rotate(${chevronRotation}deg)` }}
+                />
+              </SquareButton>
             )
           )}
         {!isRunningInitialAnimation && performedMoves.length ? (
-          <WithTooltip text="Reset" placement="right">
-            <motion.button
-              className="absolute flex items-center justify-center w-10 h-10 px-2 -translate-x-1/2 -translate-y-1/2 rounded-lg focus:outline-none interactive-bg-primary-container"
-              style={{ left: "100%", top: "0%" }}
-              onClick={reset}
-              disabled={pendingMoves.length > 0}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <Reset />
-            </motion.button>
-          </WithTooltip>
+          <SquareButton
+            label="Reset"
+            tooltipPlacement="right"
+            className="absolute -translate-x-1/2 -translate-y-1/2"
+            style={{ left: "100%", top: "0%" }}
+            onClick={reset}
+            disabled={pendingMoves.length > 0}
+          >
+            <Reset className="w-6 h-6" />
+          </SquareButton>
         ) : undefined}
       </AnimatePresence>
     </div>
