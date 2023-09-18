@@ -6,6 +6,7 @@ import ExternalLink from "../components/ExternalLink";
 import RubikCube from "../components/hero/RubikCube";
 import WorkExperienceCards from "../components/work_experience/WorkExperienceCards";
 import OpenSourceCards from "../components/open_source/OpenSourceCards";
+import { SectionHeader } from "../components/SectionHeader";
 
 export default function Home() {
   return (
@@ -31,25 +32,26 @@ export default function Home() {
             </motion.div>
           </header>
 
-          <main className="max-w-full space-y-8 overflow-x-visible">
-              <h2 id="work-experience" className="inline scroll-mt-16">
-                My Work
-              </h2>
+          <main className="max-w-full mt-48 space-y-48 overflow-x-visible">
             <div>
+              <SectionHeader id="work-experience" heading="My work" />
               <WorkExperienceCards />
             </div>
-            <h2 id="open-source" className="scroll-mt-16">
-              Open Source
-            </h2>
+            <div>
+              <SectionHeader id="open-source" heading="Open Source" />
             <OpenSourceCards />
-            <h2 id="blog" className="scroll-mt-16">
-              Blog posts
-            </h2>
+            </div>
+            <div>
+              <SectionHeader id="blog" heading="Blog posts" />
             <BlogPostCards />
+            </div>
+            <div>
             <p className="mt-10 text-center">
               Drop me a line at{" "}
-              <a href="mailto:hi@javiermorales.dev">hi@javiermorales.dev</a> ✉️
+                <a href="mailto:hi@javiermorales.dev">hi@javiermorales.dev</a>{" "}
+                ✉️
             </p>
+            </div>
           </main>
           <footer className="flex items-center justify-center w-full h-20 space-x-2 text-sm">
             <ExternalLink

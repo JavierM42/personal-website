@@ -30,7 +30,7 @@ export default function BlogPostCards() {
     <>
       <ol
         ref={containerRef}
-        className="w-screen [&>*]:align-top [&>*]:inline-block overflow-x-auto pb-4 snap-x snap-mandatory ml-[50%] -translate-x-1/2 whitespace-nowrap px-[calc(50vw-50%)] scrollbar-none"
+        className="w-screen [&>*]:align-top [&>*]:inline-block overflow-x-auto pb-8 snap-x snap-mandatory ml-[50%] -translate-x-1/2 whitespace-nowrap px-[calc(50vw-50%)] scrollbar-none"
       >
         <BlogPostCard
           illustration={<Leverage />}
@@ -69,7 +69,7 @@ export default function BlogPostCards() {
           url="https://www.wyeworks.com/blog/2021/08/07/harnessing-the-power-of-responsive-css-grids/"
         />
       </ol>
-      <div className="flex justify-center gap-8 -translate-y-4">
+      <div className="flex justify-center gap-8 mt-4 -translate-y-4">
         <WithTooltip text="Scroll left">
           <button
             className="flex items-center justify-center w-10 h-10 rounded-lg focus:outline-none interactive-bg-primary-container"

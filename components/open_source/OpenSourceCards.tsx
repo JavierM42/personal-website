@@ -5,7 +5,7 @@ import TryDynamicColor from "./TryDynamicColor";
 
 export default function OpenSourceCards() {
   return (
-    <ol className="grid grid-cols-1 gap-8 lg:p-0 md:grid-cols-2 lg:gap-12">
+    <ol className="relative z-10 grid grid-cols-1 gap-8 lg:p-0 md:grid-cols-2 lg:gap-12">
       <OpenSourceCard
         name="tailwind-material-colors"
         content="A TailwindCSS Plugin to generate dynamic color themes according to the Material Design guidelines."
