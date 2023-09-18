@@ -17,14 +17,16 @@ const spring = {
 type Props = {
   children: ReactNode;
   disablePerspective: boolean;
+  initialPerspective?: { x: number; y: number };
 };
 
 const PerspectiveCard: FC<Props> = ({
   children,
   disablePerspective,
+  initialPerspective = { x: 0, y: 0 },
 }: Props) => {
-  const [rotateXaxis, setRotateXaxis] = useState(0);
-  const [rotateYaxis, setRotateYaxis] = useState(0);
+  const [rotateXaxis, setRotateXaxis] = useState(initialPerspective.x);
+  const [rotateYaxis, setRotateYaxis] = useState(initialPerspective.y);
   const ref = useRef<HTMLDivElement>(null);
 
   const handleMouseMove: MouseEventHandler<HTMLDivElement> = (event) => {
@@ -44,8 +46,8 @@ const PerspectiveCard: FC<Props> = ({
   };
 
   const handleMouseEnd = () => {
-    setRotateXaxis(0);
-    setRotateYaxis(0);
+    setRotateXaxis(initialPerspective.x);
+    setRotateYaxis(initialPerspective.y);
   };
 
   const dx = useSpring(0, spring);

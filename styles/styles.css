@@ -20,7 +20,7 @@ button {
 }
 
 html {
-  @apply w-screen overflow-x-clip;
+  @apply w-screen overflow-x-clip scroll-smooth;
 }
 
 body {

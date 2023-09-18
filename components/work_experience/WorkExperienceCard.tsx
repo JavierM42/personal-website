@@ -61,6 +61,7 @@ type Props = {
   isThumbnail: boolean;
   onExpand?: () => void;
   hoverGradientStops: string;
+  initialPerspective?: { x: number; y: number };
 };
 
 const WorkExperienceCard: FC<Props> = ({
@@ -75,6 +76,7 @@ const WorkExperienceCard: FC<Props> = ({
   isThumbnail,
   onExpand,
   hoverGradientStops,
+  initialPerspective,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
@@ -84,7 +86,10 @@ const WorkExperienceCard: FC<Props> = ({
 
   return (
     <li className="contents">
-      <PerspectiveCard disablePerspective={isExpanded}>
+      <PerspectiveCard
+        disablePerspective={isExpanded}
+        initialPerspective={initialPerspective}
+      >
         <div
           className={classNames(
             "w-full h-full relative shadow-xl bg-surface rounded-3xl min-h-min min-w-0",

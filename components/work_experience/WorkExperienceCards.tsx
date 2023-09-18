@@ -145,6 +145,7 @@ export default function WorkExperienceCards() {
           setExpandedCardIndex(0);
         }}
         hoverGradientStops="from-blue/20 to-blue/0"
+        initialPerspective={{ x: 1, y: 6 }}
       />
       <WorkExperienceCard
         icon={{
@@ -237,6 +238,7 @@ export default function WorkExperienceCards() {
           setExpandedCardIndex(1);
         }}
         hoverGradientStops="from-purple/20 to-purple/0"
+        initialPerspective={{ x: 1, y: -10 }}
       />
       <WorkExperienceCard
         icon={{
@@ -315,6 +317,7 @@ export default function WorkExperienceCards() {
           setExpandedCardIndex(2);
         }}
         hoverGradientStops="from-green/20 to-green/0"
+        initialPerspective={{ x: -2, y: 6 }}
       />
       <WorkExperienceCard
         icon={{
@@ -397,6 +400,7 @@ export default function WorkExperienceCards() {
           setExpandedCardIndex(3);
         }}
         hoverGradientStops="from-red/20 to-red/0"
+        initialPerspective={{ x: -2, y: -10 }}
       />
     </ol>
   );
