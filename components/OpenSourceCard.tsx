@@ -6,6 +6,7 @@ type Props = {
   content: string;
   cta: ReactNode;
   stripClass: string;
+  className?: string;
 };
 
 const OpenSourceCard: FC<Props> = ({
@@ -13,9 +14,15 @@ const OpenSourceCard: FC<Props> = ({
   content,
   cta,
   stripClass,
+  className,
 }: Props) => {
   return (
-    <li className="flex flex-col shadow dark:shadow-black/40 rounded-xl bg-surface overflow-clip">
+    <li
+      className={classNames(
+        "flex flex-col shadow-xl rounded-2xl bg-surface overflow-clip",
+        className
+      )}
+    >
       <div className={classNames("h-3", stripClass)} />
       <div className="flex flex-col flex-1 p-4">
         <h3 className="mb-4 text-lg font-bold">{name}</h3>

@@ -14,10 +14,8 @@ import WorkExperienceCards from "../components/work_experience/WorkExperienceCar
 export default function Home() {
   return (
     <>
-      <div className="w-full bg-primary-container/5">
-        <div className="flex flex-col max-w-4xl px-3 mx-auto leading-loose md:px-0 text-on-background">
-          <DarkModeToggle />
-
+      <div className="w-full px-4 bg-primary-container/5">
+        <div className="flex flex-col max-w-4xl mx-auto leading-loose text-on-background">
           <header>
             <div className="max-w-full mx-auto mt-24 mb-12 w-[440px] aspect-square">
               <RubikCube />
@@ -39,10 +37,9 @@ export default function Home() {
 
           <main className="max-w-full space-y-8 overflow-x-visible">
             <div>
-              <h2 className="inline">Work Experience</h2>
-              <span className="ml-1 text-xs tracking-wider uppercase text-on-surface-variant">
-                2019 - present
-              </span>
+              <h2 id="work-experience" className="inline scroll-mt-16">
+                My Work
+              </h2>
             </div>
             <div>
               <WorkExperienceCards />
@@ -67,13 +64,16 @@ export default function Home() {
               />
             </ol>
 
-            <h2>Open Source</h2>
-            <ol className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
+            <h2 id="open-source" className="scroll-mt-16">
+              Open Source
+            </h2>
+            <ol className="grid grid-cols-1 gap-8 lg:p-0 md:grid-cols-2 lg:gap-12">
               <OpenSourceCard
                 name="tailwind-material-colors"
                 content="A TailwindCSS Plugin to generate dynamic color themes according to the Material Design guidelines."
                 cta={<TryDynamicColor />}
                 stripClass="bg-gradient-to-r from-red-container to-green-container via-purple-container"
+                className="shadow-primary-container/40"
               />
               <OpenSourceCard
                 name="tailwind-material-surfaces"
@@ -89,6 +89,7 @@ export default function Home() {
                   </a>
                 }
                 stripClass="bg-gradient-to-r to-primary-container-press from-primary"
+                className="shadow-primary/20"
               />
               <OpenSourceCard
                 name="tailwind-mode-aware-colors"
@@ -104,6 +105,7 @@ export default function Home() {
                   </a>
                 }
                 stripClass="bg-gradient-to-r from-tertiary-container-dark to-tertiary-container-light"
+                className="shadow-tertiary/20"
               />
               <OpenSourceCard
                 name={
@@ -126,6 +128,7 @@ export default function Home() {
                   </a>
                 }
                 stripClass="bg-gradient-to-r from-outline to-outline/20"
+                className="shadow-outline/20"
               />
               <OpenSourceCard
                 name="react-selection-manager"
@@ -141,11 +144,13 @@ export default function Home() {
                   </a>
                 }
                 stripClass="bg-gradient-to-r to-secondary-container from-primary/40"
+                className="shadow-secondary-container/80"
               />
               <OpenSourceCard
                 name="MTGBarato"
                 content="I built a simple web app to help my local trading card game community."
                 stripClass="bg-[#f6ad55] dark:bg-[#88501d]"
+                className="shadow-[#f6ad55]/20"
                 cta={
                   <a
                     className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap font-[Nunito]"
@@ -159,7 +164,9 @@ export default function Home() {
               />
             </ol>
 
-            <h2>Blog posts</h2>
+            <h2 id="blog" className="scroll-mt-16">
+              Blog posts
+            </h2>
             <BlogPostCards />
             <p className="mt-10 text-center">
               Drop me a line at{" "}
