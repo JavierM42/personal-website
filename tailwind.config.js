@@ -10,6 +10,10 @@ module.exports = withMaterialColors(
         backgroundImage: {
           "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         },
+        boxShadow: {
+          lg: "0 0px 15px -1px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+          xl: "0 0px 25px -3px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+        },
       },
     },
   },

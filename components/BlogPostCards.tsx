@@ -8,6 +8,7 @@ import InteractiveSurfaces from "./posts/InteractiveSurfaces";
 import ModeAwareColors from "./posts/ModeAwareColors";
 import ChevronRight from "../public/chevron-right.svg";
 import { useEffect, useRef, useState } from "react";
+import { SquareButton } from "./SquareButton";
 
 export default function BlogPostCards() {
   const containerRef = useRef<HTMLOListElement>(null);
@@ -70,24 +71,20 @@ export default function BlogPostCards() {
         />
       </ol>
       <div className="flex justify-center gap-8 mt-4 -translate-y-4">
-        <WithTooltip text="Scroll left">
-          <button
-            className="flex items-center justify-center w-10 h-10 rounded-lg focus:outline-none interactive-bg-primary-container"
-            onClick={goPrevious}
-            aria-label="Scroll left"
-          >
-            <ChevronRight className="rotate-180" />
-          </button>
-        </WithTooltip>
-        <WithTooltip text="Scroll right">
-          <button
-            className="flex items-center justify-center w-10 h-10 rounded-lg focus:outline-none interactive-bg-primary-container"
-            onClick={goNext}
-            aria-label="Scroll right"
-          >
-            <ChevronRight />
-          </button>
-        </WithTooltip>
+        <SquareButton
+          onClick={goPrevious}
+          label="Scroll left"
+          tooltipPlacement="left"
+        >
+          <ChevronRight className="rotate-180" />
+        </SquareButton>
+        <SquareButton
+          tooltipPlacement="right"
+          onClick={goNext}
+          label="Scroll right"
+        >
+          <ChevronRight />
+        </SquareButton>
       </div>
     </>
   );
