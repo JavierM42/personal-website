@@ -19,9 +19,13 @@ button {
   font-weight: 700;
 }
 
+html {
+  @apply w-screen overflow-x-clip;
+}
+
 body {
   font-family: "PT Sans", sans-serif;
-  @apply bg-background overflow-x-clip;
+  @apply bg-background;
 }
 
 h2 {
@@ -58,4 +62,8 @@ a {
 
 p {
   @apply mb-4;
+}
+
+aside {
+  @apply italic;
 }

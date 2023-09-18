@@ -105,7 +105,7 @@ const WorkExperienceCard: FC<Props> = ({
             <motion.div
               initial={false}
               layout
-              className="absolute z-10 block w-24 h-24 pointer-events-none"
+              className="absolute z-10 block w-12 h-12 pointer-events-none sm:w-24 sm:h-24"
               animate={
                 isThumbnail ? icon.placement.centered : icon.placement.popping
               }
@@ -113,7 +113,7 @@ const WorkExperienceCard: FC<Props> = ({
               {icon.node}
             </motion.div>
           )}
-          <div className="absolute h-[calc(100%-4px)] inset-0.5 overflow-clip rounded-3xl flex flex-col items-center p-8 justify-center min-h-fit">
+          <div className="absolute h-[calc(100%-4px)] inset-0.5 overflow-clip rounded-3xl flex flex-col items-center px-2 py-4 md:p-8 justify-center min-h-fit">
             {!isExpanded && isHovering && (
               <motion.div
                 className="absolute inset-0 flex items-center justify-center pointer-events-none"
@@ -143,7 +143,7 @@ const WorkExperienceCard: FC<Props> = ({
                     {name}
                   </motion.div>
                   <motion.div
-                    className="font-[Nunito] text-lg whitespace-nowrap"
+                    className="font-[Nunito] text-sm sm:text-lg whitespace-nowrap mb-2"
                     layout
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -156,7 +156,7 @@ const WorkExperienceCard: FC<Props> = ({
             </AnimatePresence>
             {isExpanded && (
               <motion.div
-                className="flex-1 w-full overflow-auto"
+                className="flex-1 w-full mb-10 overflow-auto sm:mb-0"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.3 }}
@@ -169,40 +169,42 @@ const WorkExperienceCard: FC<Props> = ({
               </motion.div>
             )}
           </div>
-          <FloatingDelayGroup delay={200}>
-            <AnimatePresence>
-              {isExpanded &&
-                techs?.map((tech, index) => {
-                  const Logo = TECH_LOGOS[tech.name];
-                  return (
-                    <WithTooltip text={tech.name} key={tech.name}>
-                      <motion.div
-                        className="absolute w-6 h-6 text-on-primary-container/70"
-                        initial={{
-                          opacity: 0,
-                          zIndex: -1,
-                          ...tech.placementInitial,
-                        }}
-                        animate={{
-                          opacity: 1,
-                          ...tech.placement,
-                          transition: {
-                            delay: index * 0.08,
-                            duration: 0.4,
-                            ease: "easeOut",
-                          },
-                          zIndex: -1,
-                          transitionEnd: { zIndex: 1 },
-                        }}
-                        exit={{ opacity: 0 }}
-                      >
-                        <Logo aria-label={tech.name} className="h-full" />
-                      </motion.div>
-                    </WithTooltip>
-                  );
-                })}
-            </AnimatePresence>
-          </FloatingDelayGroup>
+          <div className="absolute inset-x-0 flex items-center justify-center gap-4 mt-4 sm:contents bottom-4 sm:mt-0">
+            <FloatingDelayGroup delay={200}>
+              <AnimatePresence>
+                {isExpanded &&
+                  techs?.map((tech, index) => {
+                    const Logo = TECH_LOGOS[tech.name];
+                    return (
+                      <WithTooltip text={tech.name} key={tech.name}>
+                        <motion.div
+                          className="w-6 h-6 sm:absolute text-on-primary-container/70"
+                          initial={{
+                            opacity: 0,
+                            zIndex: -1,
+                            ...tech.placementInitial,
+                          }}
+                          animate={{
+                            opacity: 1,
+                            ...tech.placement,
+                            transition: {
+                              delay: index * 0.08,
+                              duration: 0.4,
+                              ease: "easeOut",
+                            },
+                            zIndex: -1,
+                            transitionEnd: { zIndex: 1 },
+                          }}
+                          exit={{ opacity: 0 }}
+                        >
+                          <Logo aria-label={tech.name} className="h-full" />
+                        </motion.div>
+                      </WithTooltip>
+                    );
+                  })}
+              </AnimatePresence>
+            </FloatingDelayGroup>
+          </div>
         </div>
       </PerspectiveCard>
     </li>

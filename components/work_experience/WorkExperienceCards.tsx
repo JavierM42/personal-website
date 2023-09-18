@@ -36,23 +36,31 @@ export default function WorkExperienceCards() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
-  // TODO responsive
-
   return (
     <ol
       id="work-experience-cards"
       className={classNames(
-        "grid gap-12 transition-all duration-300 aspect-[16/10] mb-32",
+        "grid mx-auto max-w-[calc(100vw-80px)] sm:max-w-[480px] lg:max-w-none lg:p-0 gap-12 transition-all duration-300 lg:aspect-[16/10] mb-32 grid-cols-[1fr]",
         {
-          "grid-cols-[1fr_1fr]": expandedCardIndex === null,
-          "grid-cols-[4fr_1fr]":
+          "lg:grid-cols-[1fr_1fr]": expandedCardIndex === null,
+          "grid-rows-[300px_300px_300px_300px]": expandedCardIndex === null,
+          // Manually adjusted height
+          "grid-rows-[546px_224px_224px_224px] sm:grid-rows-[420px_260px_260px_260px]":
+            expandedCardIndex === 0,
+          "grid-rows-[188px_636px_188px_188px] sm:grid-rows-[250px_450px_250px_250px]":
+            expandedCardIndex === 1,
+          "grid-rows-[205px_205px_585px_205px] sm:grid-rows-[270px_270px_450px_270px]":
+            expandedCardIndex === 2,
+          "grid-rows-[240px_240px_240px_480px] sm:grid-rows-[270px_270px_270px_390px]":
+            expandedCardIndex === 3,
+          "lg:grid-cols-[4fr_1fr]":
             expandedCardIndex !== null && expandedCardIndex % 2 === 0,
-          "grid-cols-[1fr_4fr]":
+          "lg:grid-cols-[1fr_4fr]":
             expandedCardIndex !== null && expandedCardIndex % 2 === 1,
-          "grid-rows-[1fr_1fr]": expandedCardIndex === null,
-          "grid-rows-[3fr_1fr]":
+          "lg:grid-rows-[1fr_1fr]": expandedCardIndex === null,
+          "lg:grid-rows-[3fr_1fr]":
             expandedCardIndex !== null && expandedCardIndex < 4 / 2,
-          "grid-rows-[1fr_3fr]":
+          "lg:grid-rows-[1fr_3fr]":
             expandedCardIndex !== null && expandedCardIndex >= 4 / 2,
         }
       )}

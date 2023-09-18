@@ -37,7 +37,7 @@ export default function Home() {
             </motion.div>
           </header>
 
-          <main className="space-y-8">
+          <main className="max-w-full space-y-8 overflow-x-visible">
             <div>
               <h2 className="inline">Work Experience</h2>
               <span className="ml-1 text-xs tracking-wider uppercase text-on-surface-variant">
