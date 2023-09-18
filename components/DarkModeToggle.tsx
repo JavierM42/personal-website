@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { SquareButton } from "./SquareButton";
 
 type ColorScheme = "light" | "dark";
 
@@ -47,16 +48,17 @@ export default function DarkModeToggle() {
   }, [colorScheme]);
 
   return (
-    <button
-      className="hidden sm:block fixed w-12 h-12 p-1 rounded-lg top-2 right-2 hover:bg-on-primary-container/[.12] active:bg-on-primary-container/[.16] transtiion-colors focus:outline-none"
+    <SquareButton
+      label="Toggle dark mode"
       onClick={() =>
         setUserColorScheme(colorScheme === "dark" ? "light" : "dark")
       }
+      tooltipPlacement="left"
     >
       <motion.svg
         viewBox="0 0 40 40"
-        strokeWidth="1.5"
-        className="stroke-on-primary-container"
+        strokeWidth="2.5"
+        className="w-6 h-6 stroke-primary"
         strokeLinecap="round"
         animate={colorScheme}
         fill="none"
@@ -159,6 +161,6 @@ export default function DarkModeToggle() {
           }}
         />
       </motion.svg>
-    </button>
+    </SquareButton>
   );
 }

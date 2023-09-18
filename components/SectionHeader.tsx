@@ -7,7 +7,7 @@ type Props = {
 
 export const SectionHeader: FC<Props> = ({ id, heading }) => {
   return (
-    <h2 id={id} className="relative mb-8 scroll-mt-20 text-on-surface">
+    <h2 id={id} className="relative mb-8 scroll-mt-24 text-on-surface">
       {heading}
       <div
         role="presentation"
