@@ -143,7 +143,7 @@ const WorkExperienceCard: FC<Props> = ({
                     {name}
                   </motion.div>
                   <motion.div
-                    className="font-[Nunito] text-sm sm:text-lg whitespace-nowrap mb-2"
+                    className="font-[Nunito] text-sm sm:text-base text-on-surface/80 whitespace-nowrap mb-2"
                     layout
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

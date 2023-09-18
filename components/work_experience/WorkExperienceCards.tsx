@@ -88,13 +88,13 @@ export default function WorkExperienceCards() {
         }}
         name={
           <div className="flex items-center gap-1.5">
-            <span className="text-2xl font-bold leading-none text-blue dark:text-white">
+            <span className="-mt-1 text-[25px] font-bold leading-none text-blue dark:text-white">
               ClearSession
             </span>
-            at
+            <span className="-mb-0.5">at</span>
             <WyeWorks
               aria-label="WyeWorks"
-              className="inline-block h-5 text-[#0B0B0B] dark:text-white"
+              className="h-4 text-[#0B0B0B] dark:text-white"
             />
           </div>
         }
@@ -171,12 +171,12 @@ export default function WorkExperienceCards() {
           <div className="flex items-center gap-1.5">
             <Prisma
               aria-label="Prisma"
-              className="inline-block h-10 text-[#7224F9] dark:text-white"
+              className="inline-block h-9 -mt-1 text-[#7224F9] dark:text-white"
             />
-            at
+            <span className="-mb-0.5">at</span>
             <WyeWorks
               aria-label="WyeWorks"
-              className="inline-block h-5 text-[#0B0B0B] dark:text-white"
+              className="inline-block h-4 text-[#0B0B0B] dark:text-white"
             />
           </div>
         }
@@ -268,13 +268,13 @@ export default function WorkExperienceCards() {
           <div className="flex items-center gap-1.5">
             <Emeritus
               aria-label="Emeritus"
-              className="inline-block h-10 text-[#04bc6c] dark:text-white"
-              viewBox="126 0 274 126"
+              className="inline-block h-[18px] text-[#04bc6c] dark:text-white -mt-px"
+              viewBox="126 43 270 45"
             />
-            at
+            <span className="-mb-0.5">at</span>
             <WyeWorks
               aria-label="WyeWorks"
-              className="inline-block h-5 text-[#0B0B0B] dark:text-white"
+              className="inline-block h-4 text-[#0B0B0B] dark:text-white"
             />
           </div>
         }
@@ -342,12 +342,12 @@ export default function WorkExperienceCards() {
             <RetroAllyText
               role="presentation"
               aria-label="RetroAlly"
-              className="inline-block h-7 text-on-surface dark:text-white"
+              className="inline-block -mt-[3px] h-8 text-red dark:text-white"
             />
-            at
+            <span className="-mb-0.5">at</span>
             <WyeWorks
               aria-label="WyeWorks"
-              className="inline-block h-5 text-[#0B0B0B] dark:text-white"
+              className="inline-block h-4 text-[#0B0B0B] dark:text-white"
             />
           </div>
         }
