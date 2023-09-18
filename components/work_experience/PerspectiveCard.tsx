@@ -52,12 +52,13 @@ const PerspectiveCard: FC<Props> = ({
   const dy = useSpring(0, spring);
 
   useEffect(() => {
-    dx.set(disablePerspective ? 0 : rotateXaxis * 2);
-    dy.set(disablePerspective ? 0 : -rotateYaxis / 2);
+    dx.set(disablePerspective ? 0 : -rotateXaxis * 2);
+    dy.set(disablePerspective ? 0 : rotateYaxis / 2);
   }, [rotateXaxis, rotateYaxis, disablePerspective]);
 
   return (
     <motion.div
+      className="block"
       transition={spring}
       style={{
         perspective: "1200px",
@@ -69,11 +70,11 @@ const PerspectiveCard: FC<Props> = ({
         onMouseMove={disablePerspective ? undefined : handleMouseMove}
         onMouseLeave={disablePerspective ? undefined : handleMouseEnd}
         transition={spring}
-        className="w-full h-full"
+        className="block w-full h-full"
         style={{ rotateX: dx, rotateY: dy }}
       >
         <div
-          className="w-full h-full"
+          className="block w-full h-full"
           style={{
             perspective: "1200px",
             transformStyle: "preserve-3d",
@@ -81,12 +82,13 @@ const PerspectiveCard: FC<Props> = ({
         >
           <motion.div
             transition={spring}
-            className="absolute w-full h-full"
+            className="absolute block w-full h-full"
             style={{ backfaceVisibility: "hidden" }}
           >
             {children}
           </motion.div>
           <motion.div
+            className="block"
             initial={{ rotateY: 180 }}
             transition={spring}
             style={{

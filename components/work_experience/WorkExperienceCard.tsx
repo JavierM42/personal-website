@@ -1,7 +1,12 @@
+import { FloatingDelayGroup } from "@floating-ui/react";
 import classNames from "classnames";
-import { AnimatePresence, motion } from "framer-motion";
-import { FC, ReactNode, SVGProps, useState } from "react";
-import { updateTheme } from "tailwind-material-colors/lib/updateTheme.esm";
+import {
+  AnimatePresence,
+  TargetAndTransition,
+  motion,
+  useMotionValue,
+} from "framer-motion";
+import { FC, ReactNode, SVGProps, useRef, useState } from "react";
 import ElixirLogo from "../../assets/techs/elixir.svg";
 import NextLogo from "../../assets/techs/nextjs.svg";
 import RailsLogo from "../../assets/techs/rails.svg";
@@ -10,9 +15,8 @@ import RubyLogo from "../../assets/techs/ruby.svg";
 import TailwindLogo from "../../assets/techs/tailwind.svg";
 import TypescriptLogo from "../../assets/techs/typescript.svg";
 import VueLogo from "../../assets/techs/vue.svg";
-import ChevronRight from "../../public/chevron-right.svg";
 import WithTooltip from "../WithTooltip";
-import { FloatingDelayGroup } from "@floating-ui/react";
+import PerspectiveCard from "./PerspectiveCard";
 
 type Tech =
   | "React"
@@ -37,132 +41,170 @@ const TECH_LOGOS: Record<Tech, FC<SVGProps<SVGElement>>> = {
 
 type Props = {
   name: ReactNode;
+  icon?: {
+    node: ReactNode;
+    placement: {
+      popping: TargetAndTransition;
+      centered: TargetAndTransition;
+    };
+  };
   collapsedTitle: string;
   content: ReactNode;
-  collapsedClass: string;
-  buttonClass: string;
-  expandedClass: string;
+  className: string;
   dates: string;
-  techs: Tech[];
-  primaryColor: string;
+  techs?: {
+    name: Tech;
+    placementInitial: TargetAndTransition;
+    placement: TargetAndTransition;
+  }[];
+  isExpanded: boolean;
+  isThumbnail: boolean;
+  onExpand?: () => void;
+  hoverGradientStops: string;
 };
 
 const WorkExperienceCard: FC<Props> = ({
   name,
+  icon,
   collapsedTitle,
   content,
-  collapsedClass,
-  buttonClass,
-  expandedClass,
+  className,
   dates,
   techs,
-  primaryColor,
+  isExpanded,
+  isThumbnail,
+  onExpand,
+  hoverGradientStops,
 }: Props) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const [isHovering, setIsHovering] = useState(false);
 
-  const handleOpen = () => {
-    updateTheme({ primary: primaryColor }, "class");
-    setIsExpanded(true);
-  };
-
-  const handleClose = () => {
-    updateTheme({ primary: "#416900" }, "class");
-    setIsExpanded(false);
-  };
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
   return (
-    <li
-      className={classNames(
-        "relative p-2 shadow dark:shadow-black/40 bg-surface border-l-[10px] rounded-lg",
-        isExpanded ? expandedClass : collapsedClass,
-        !isExpanded && "cursor-pointer"
-      )}
-      onClick={isExpanded ? undefined : handleOpen}
-    >
-      <button
-        onClick={handleClose}
-        className={classNames(
-          "absolute left-2 top-2 rounded-md p-2",
-          isExpanded ? buttonClass : "pointer-events-none"
-        )}
-      >
-        <ChevronRight
+    <li className="contents">
+      <PerspectiveCard disablePerspective={isExpanded}>
+        <div
           className={classNames(
-            "h-6 transition-transform",
-            isExpanded && "rotate-90"
+            "w-full h-full relative shadow-xl bg-surface rounded-3xl min-h-min min-w-0",
+            !isExpanded && "cursor-pointer",
+            className
           )}
-        />
-      </button>
-      <motion.div
-        className="grid h-24 grid-cols-1 grid-rows-2 gap-4 sm:grid-rows-1 sm:h-10"
-        animate={isExpanded ? "expanded" : "collapsed"}
-        initial={false}
-      >
-        <AnimatePresence initial={false}>
-          {!isExpanded && (
-            <div className="flex items-center w-full h-full col-start-1 row-start-1 pl-11 font-[Nunito]">
+          onClick={isExpanded ? undefined : onExpand}
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
+          onMouseMove={(event) => {
+            const clientRect = ref.current!.getBoundingClientRect()!;
+            mouseX.set(event.clientX - clientRect.left - clientRect.width / 2);
+            mouseY.set(event.clientY - clientRect.top - clientRect.height / 2);
+          }}
+          ref={ref}
+        >
+          {icon && (
+            <motion.div
+              initial={false}
+              layout
+              className="absolute z-10 block w-24 h-24 pointer-events-none"
+              animate={
+                isThumbnail ? icon.placement.centered : icon.placement.popping
+              }
+            >
+              {icon.node}
+            </motion.div>
+          )}
+          <div className="absolute h-[calc(100%-4px)] inset-0.5 overflow-clip rounded-3xl flex flex-col items-center p-8 justify-center min-h-fit">
+            {!isExpanded && isHovering && (
               <motion.div
-                className="text-lg font-bold"
-                initial="collapsed"
-                animate="expanded"
-                exit="collapsed"
-                variants={{
-                  collapsed: { opacity: 0 },
-                  expanded: { opacity: 1 },
-                }}
+                className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                style={{ x: mouseX, y: mouseY }}
               >
-                {collapsedTitle}
+                <div
+                  className={classNames(
+                    "w-56 h-56 bg-gradient-radial",
+                    hoverGradientStops
+                  )}
+                  style={{
+                    filter: "blur(40px)",
+                  }}
+                />
               </motion.div>
-            </div>
-          )}
-        </AnimatePresence>
-        <div className="relative w-full h-full col-start-1 row-start-2 pointer-events-none sm:row-start-1">
-          <motion.div
-            className="absolute px-2 top-1/2"
-            initial={false}
-            animate={isExpanded ? "center" : "right"}
-            variants={{
-              center: { right: "50%", x: "50%", y: "-50%" },
-              right: { right: "0%", x: "0%", y: "-50%" },
-            }}
-          >
-            {name}
-          </motion.div>
-        </div>
-      </motion.div>
-      <AnimatePresence>
-        {isExpanded && (
-          <motion.div
-            className="px-14 overflow-clip"
-            initial="collapsed"
-            animate="expanded"
-            exit="collapsed"
-            variants={{
-              collapsed: { opacity: 0, height: 0 },
-              expanded: { opacity: 1, height: "auto" },
-            }}
-          >
-            <div className="pt-4 text-xs font-medium text-center text-outline">
-              {dates}
-            </div>
-            <div className="flex justify-center h-5 gap-2 mt-2 mb-6 text-outline">
-              <FloatingDelayGroup delay={300}>
-                {techs.map((tech) => {
-                  const Logo = TECH_LOGOS[tech];
+            )}
+            <AnimatePresence initial={false}>
+              {!isThumbnail && (
+                <>
+                  <motion.div
+                    className="mb-6"
+                    layout
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    {name}
+                  </motion.div>
+                  <motion.div
+                    className="font-[Nunito] text-lg whitespace-nowrap"
+                    layout
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    {collapsedTitle}
+                  </motion.div>
+                </>
+              )}
+            </AnimatePresence>
+            {isExpanded && (
+              <motion.div
+                className="flex-1 w-full overflow-auto"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.3 }}
+                layout
+              >
+                <div className="pt-4 text-xs font-medium text-center text-outline">
+                  {dates}
+                </div>
+                {content}
+              </motion.div>
+            )}
+          </div>
+          <FloatingDelayGroup delay={200}>
+            <AnimatePresence>
+              {isExpanded &&
+                techs?.map((tech, index) => {
+                  const Logo = TECH_LOGOS[tech.name];
                   return (
-                    <WithTooltip text={tech} key={tech}>
-                      <span>
-                        <Logo aria-label={tech} className="h-full" />
-                      </span>
+                    <WithTooltip text={tech.name} key={tech.name}>
+                      <motion.div
+                        className="absolute w-6 h-6 text-on-primary-container/70"
+                        initial={{
+                          opacity: 0,
+                          zIndex: -1,
+                          ...tech.placementInitial,
+                        }}
+                        animate={{
+                          opacity: 1,
+                          ...tech.placement,
+                          transition: {
+                            delay: index * 0.08,
+                            duration: 0.4,
+                            ease: "easeOut",
+                          },
+                          zIndex: -1,
+                          transitionEnd: { zIndex: 1 },
+                        }}
+                        exit={{ opacity: 0 }}
+                      >
+                        <Logo aria-label={tech.name} className="h-full" />
+                      </motion.div>
                     </WithTooltip>
                   );
                 })}
-              </FloatingDelayGroup>
-            </div>
-            {content}
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </AnimatePresence>
+          </FloatingDelayGroup>
+        </div>
+      </PerspectiveCard>
     </li>
   );
 };

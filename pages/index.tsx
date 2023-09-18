@@ -1,23 +1,21 @@
 import { motion } from "framer-motion";
-import Head from "next/head";
+import LineWrappingInput from "react-line-wrapping-input";
 import GitHubLogo from "../assets/github.svg";
 import LinkedInLogo from "../assets/linkedin.svg";
 import BlogPostCards from "../components/BlogPostCards";
 import DarkModeToggle from "../components/DarkModeToggle";
 import ExternalLink from "../components/ExternalLink";
 import FormalEducationCard from "../components/FormalEducationCard";
-import RubikCube from "../components/hero/RubikCube";
 import OpenSourceCard from "../components/OpenSourceCard";
+import RubikCube from "../components/hero/RubikCube";
 import TryDynamicColor from "../components/open_source/TryDynamicColor";
-import LineWrappingInput from "react-line-wrapping-input";
-import WithTooltip from "../components/WithTooltip";
 import WorkExperienceCards from "../components/work_experience/WorkExperienceCards";
 
 export default function Home() {
   return (
     <>
-      <div className="w-full bg-primary-container/10">
-        <div className="flex flex-col max-w-3xl px-3 mx-auto leading-loose md:px-0 text-on-background">
+      <div className="w-full bg-primary-container/5">
+        <div className="flex flex-col max-w-4xl px-3 mx-auto leading-loose md:px-0 text-on-background">
           <DarkModeToggle />
 
           <header>
@@ -46,7 +44,9 @@ export default function Home() {
                 2019 - present
               </span>
             </div>
-            <WorkExperienceCards />
+            <div>
+              <WorkExperienceCards />
+            </div>
 
             <div>
               <h2 className="inline">Formal Education</h2>

@@ -5,6 +5,13 @@ module.exports = withMaterialColors(
     content: ["components/**/*", "pages/**/*"],
     darkMode: "class",
     plugins: [],
+    theme: {
+      extend: {
+        backgroundImage: {
+          "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        },
+      },
+    },
   },
   {
     primary: "#416900",
