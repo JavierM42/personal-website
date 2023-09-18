@@ -115,7 +115,7 @@ const WithTooltip: FC<WithTooltipProps> = ({
                   ? { duration: 0.1 }
                   : { type: "spring", damping: 20, stiffness: 300 }
               }
-              className="z-50 pointer-events-none px-4 py-2 shadow rounded-md bg-on-surface text-surface text-sm max-w-[236px] w-max"
+              className="z-50 pointer-events-none px-4 py-2 shadow-lg rounded-md bg-surface/40 backdrop-blur-lg text-on-surface text-sm max-w-[236px] w-max"
               {...getFloatingProps({
                 ref: refs.setFloating,
                 style: {
