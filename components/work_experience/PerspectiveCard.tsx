@@ -58,6 +58,11 @@ const PerspectiveCard: FC<Props> = ({
     dy.set(disablePerspective ? 0 : rotateYaxis / 2);
   }, [rotateXaxis, rotateYaxis, disablePerspective]);
 
+  useEffect(() => {
+    setRotateXaxis(initialPerspective.x);
+    setRotateYaxis(initialPerspective.y);
+  }, [initialPerspective]);
+
   return (
     <motion.div
       className="block"

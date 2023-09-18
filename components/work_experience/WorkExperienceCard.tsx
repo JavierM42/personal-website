@@ -88,7 +88,7 @@ const WorkExperienceCard: FC<Props> = ({
     <li className="contents">
       <PerspectiveCard
         disablePerspective={isExpanded}
-        initialPerspective={initialPerspective}
+        initialPerspective={isThumbnail ? { x: 0, y: 0 } : initialPerspective}
       >
         <div
           className={classNames(
