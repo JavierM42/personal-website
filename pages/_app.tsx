@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>JavierM42</title>
+        <title>Javier Morales</title>
         <link id="favicon" rel="icon" href="/favicon/favicon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
