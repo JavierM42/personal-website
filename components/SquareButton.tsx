@@ -26,7 +26,7 @@ export const SquareButton: FC<Props> = ({
       <motion.button
         {...(props as any)}
         className={classNames(
-          "flex items-center justify-center w-10 h-10 shadow-lg rounded-xl focus:outline-none hover:bg-primary-container/10 text-primary backdrop-blur-sm shadow-primary-container",
+          "flex items-center justify-center w-10 h-10 shadow-lg rounded-xl focus:outline-none hover:bg-primary-container/10 active:bg-primary-container/20 focus-visible:ring ring-primary-container text-primary backdrop-blur-sm shadow-primary-container transition-colors",
           className
         )}
         initial={{ opacity: 0 }}
