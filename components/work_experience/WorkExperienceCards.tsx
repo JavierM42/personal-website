@@ -92,7 +92,7 @@ export default function WorkExperienceCards() {
       >
         <WorkExperienceCard
           icon={{
-            node: <ClearSession role="Presentation" />,
+            node: <ClearSession role="presentation" />,
             placement: {
               centered: {
                 top: "50%",
