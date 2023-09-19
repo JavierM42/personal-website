@@ -27,11 +27,7 @@ export default function Home() {
             <div className="max-w-full mx-auto mt-24 mb-12 w-[440px] aspect-square">
               <RubikCube />
             </div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 2, delay: 3 }}
-            >
+            <div>
               <h1 className="z-10 mt-6 mb-2 text-6xl font-bold text-center text-primary">
                 Hi, Javi here.
               </h1>
@@ -39,7 +35,7 @@ export default function Home() {
                 I'm a software engineer with a passion for great user
                 experiences.
               </p>
-            </motion.div>
+            </div>
           </header>
 
           <main className="max-w-full mt-48 space-y-48 overflow-x-visible">
