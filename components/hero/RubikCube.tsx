@@ -823,9 +823,6 @@ export default function RubikCube() {
           strokeWidth="0.3"
           strokeLinejoin="round"
           strokeLinecap="round"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
         >
           <defs>
             <pattern
@@ -870,9 +867,9 @@ export default function RubikCube() {
             />
           ))}
           <motion.g animate={transientGroup}>
-            <motion.path ref={transientA} d={tilePath("topLeft")} />
-            <motion.path ref={transientB} d={tilePath("centerCenter")} />
-            <motion.path ref={transientC} d={tilePath("bottomRight")} />
+            <motion.path ref={transientA} d="" />
+            <motion.path ref={transientB} d="" />
+            <motion.path ref={transientC} d="" />
           </motion.g>
         </motion.svg>
         <AnimatePresence>

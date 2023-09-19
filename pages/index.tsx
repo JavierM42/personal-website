@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import GitHubLogo from "../assets/github.svg";
 import LinkedInLogo from "../assets/linkedin.svg";
 import BlogPostCards from "../components/BlogPostCards";
