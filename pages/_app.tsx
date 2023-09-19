@@ -21,6 +21,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <meta name="theme-color" content="#ffffff"></meta>
+        <meta
+          name="description"
+          content="I'm Javi, a software engineer with a passion for great user experiences."
+        ></meta>
       </Head>
       <Component {...pageProps} />
       <Analytics />
