@@ -19,7 +19,7 @@ export const NavBar: FC = () => {
           <a href="#open-source">Open Source</a>
           <a href="#blog">Blog</a>
           <div className="relative">
-            <a href="#dev-notes">Dev notes</a>
+            <a href="#dev-notes">Dev Notes</a>
             <DevNote className="absolute w-48 top-6 -left-24 -rotate-[6deg]">
               Anchor link targets use the scroll-margin CSS property so the
               sticky nav doesn't get in the way.
