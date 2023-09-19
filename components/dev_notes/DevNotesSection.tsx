@@ -17,8 +17,14 @@ export const DevNotesSection: FC = () => {
         techniques I've learned through the years, as well as some new browser
         features.
       </p>
-      <p>Toggle the switch to show floating developer notes.</p>
-      <div className="flex justify-center w-full">
+      <p className="block lg:hidden">
+        To see the dev notes, please use a larger screen. I'm sorry for the
+        incovenience.
+      </p>
+      <p className="hidden lg:block">
+        Toggle the switch to show floating developer notes.
+      </p>
+      <div className="justify-center hidden w-full lg:flex">
         <Switch
           tooltip={showDevNotes ? "Hide dev notes" : "Show dev notes"}
           tooltipPlacement="right"
