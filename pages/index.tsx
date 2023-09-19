@@ -36,7 +36,7 @@ export default function Home() {
                 Hi, Javi here.
               </h1>
               <p className="mb-20 text-2xl leading-loose text-center text-on-primary-container/70">
-                I'm a frontend engineer with a passion for great user
+                I'm a software engineer with a passion for great user
                 experiences.
               </p>
             </motion.div>
