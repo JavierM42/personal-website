@@ -69,7 +69,7 @@ const PerspectiveCard: FC<Props> = ({
       transition={spring}
       style={{
         perspective: "1200px",
-        transformStyle: "preserve-3d",
+        transformStyle: "flat",
       }}
     >
       <motion.div
@@ -84,7 +84,7 @@ const PerspectiveCard: FC<Props> = ({
           className="block w-full h-full"
           style={{
             perspective: "1200px",
-            transformStyle: "preserve-3d",
+            transformStyle: "flat",
           }}
         >
           <motion.div
