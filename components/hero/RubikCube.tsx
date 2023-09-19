@@ -392,9 +392,9 @@ const CARTESIAN_DIRECTIONS: Record<
 export default function RubikCube() {
   const transientGroup = useAnimation();
 
-  const transientA = useRef<SVGPolygonElement>(null);
-  const transientB = useRef<SVGPolygonElement>(null);
-  const transientC = useRef<SVGPolygonElement>(null);
+  const transientA = useRef<SVGPathElement>(null);
+  const transientB = useRef<SVGPathElement>(null);
+  const transientC = useRef<SVGPathElement>(null);
 
   const CONTROLS: Record<Tile, AnimationControls> = {
     topLeft: useAnimation(),

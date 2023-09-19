@@ -187,7 +187,7 @@ const WorkExperienceCard: FC<Props> = ({
                           initial={{
                             opacity: 0,
                             zIndex: -1,
-                            ...tech.placementInitial,
+                            ...(tech.placementInitial as any),
                           }}
                           animate={{
                             opacity: 1,
