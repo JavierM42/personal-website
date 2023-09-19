@@ -71,7 +71,7 @@ export default function WorkExperienceCards() {
             // Manually adjusted height
             "grid-rows-[546px_224px_224px_224px] sm:grid-rows-[420px_260px_260px_260px]":
               expandedCardIndex === 0,
-            "grid-rows-[188px_636px_188px_188px] sm:grid-rows-[250px_450px_250px_250px]":
+            "grid-rows-[208px_576px_208px_208px] sm:grid-rows-[270px_390px_270px_270px]":
               expandedCardIndex === 1,
             "grid-rows-[205px_205px_585px_205px] sm:grid-rows-[270px_270px_450px_270px]":
               expandedCardIndex === 2,
