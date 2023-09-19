@@ -9,7 +9,7 @@ import ChevronRight from "../../public/chevron-right.svg";
 import Reset from "../../assets/reset.svg";
 import { Placement } from "@floating-ui/react";
 import { SquareButton } from "../SquareButton";
-import { useRubikFavicon } from "./useRubikFavicon";
+import { RubikFavicon } from "./RubikFavicon";
 import { DevNote } from "../dev_notes/DevNote";
 
 type CubeState = Record<Face, Record<Tile, FaceColor>>;
@@ -797,225 +797,226 @@ export default function RubikCube() {
     }
   }, [pendingMoves, isTurning]);
 
-  useRubikFavicon(cubeState.front);
-
   return (
-    <div className="relative m-5 w-fill h-fill">
-      <DevNote className="absolute w-48 top-80 left-[calc(100%-64px)] rotate-[-6deg]">
-        There are no 3D graphics on the cube, it's all 2D transforms on inline
-        SVG paths. And lots of math.
-      </DevNote>
-      <DevNote className="absolute w-72 top-64 -left-56 rotate-[3deg]">
-        There's a small mistake on the cube state tracking which doesn't match
-        how a real cube works. Did you notice it?
-        <hr className="w-full h-px my-1 border-outline/30" />
-        Answer:
-        <span className="text-tertiary-container selection:on-tertiary-container selection:bg-on-tertiary-container">
-          I'm not keeping track of rotation, so my picture always shows my face
-          in the upright orientation.
-        </span>{" "}
-        (highlight the invisible text to read it).
-      </DevNote>
-      <motion.svg
-        stroke="currentColor"
-        viewBox="0 0 100 100"
-        className="w-full h-full stroke-on-surface"
-        strokeWidth="0.3"
-        strokeLinejoin="round"
-        strokeLinecap="round"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <defs>
-          <pattern
-            id="javi"
-            patternUnits="userSpaceOnUse"
-            width="100"
-            height="100"
-          >
-            <polygon
-              points="20,20 20,80 80,80 80,20"
-              className="fill-primary-container/10"
-            />
-            <image
-              href="/javi.png"
-              x="20"
-              y="20"
-              width="60"
-              height="60"
-              className="mix-blend-luminosity"
-            />
-          </pattern>
-        </defs>
+    <>
+      <RubikFavicon face={cubeState.front} />
+      <div className="relative m-5 w-fill h-fill">
+        <DevNote className="absolute w-48 top-80 left-[calc(100%-64px)] rotate-[-6deg]">
+          There are no 3D graphics on the cube, it's all 2D transforms on inline
+          SVG paths. And lots of math.
+        </DevNote>
+        <DevNote className="absolute w-72 top-64 -left-56 rotate-[3deg]">
+          There's a small mistake on the cube state tracking which doesn't match
+          how a real cube works. Did you notice it?
+          <hr className="w-full h-px my-1 border-outline/30" />
+          Answer:
+          <span className="text-tertiary-container selection:on-tertiary-container selection:bg-on-tertiary-container">
+            I'm not keeping track of rotation, so my picture always shows my
+            face in the upright orientation.
+          </span>{" "}
+          (highlight the invisible text to read it).
+        </DevNote>
+        <motion.svg
+          stroke="currentColor"
+          viewBox="0 0 100 100"
+          className="w-full h-full stroke-on-surface"
+          strokeWidth="0.3"
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <defs>
+            <pattern
+              id="javi"
+              patternUnits="userSpaceOnUse"
+              width="100"
+              height="100"
+            >
+              <polygon
+                points="20,20 20,80 80,80 80,20"
+                className="fill-primary-container/10"
+              />
+              <image
+                href="/javi.png"
+                x="20"
+                y="20"
+                width="60"
+                height="60"
+                className="mix-blend-luminosity"
+              />
+            </pattern>
+          </defs>
 
-        {(
-          [
-            "topLeft",
-            "topCenter",
-            "topRight",
-            "centerLeft",
-            "centerCenter",
-            "centerRight",
-            "bottomLeft",
-            "bottomCenter",
-            "bottomRight",
-          ] as const
-        ).map((tile) => (
-          <motion.path
-            key={tile}
-            animate={CONTROLS[tile]}
-            d={tilePath(tile)}
-            className={FACE_CLASSNAME[cubeState.front[tile]]}
-          />
-        ))}
-        <motion.g animate={transientGroup}>
-          <motion.path ref={transientA} d={tilePath("topLeft")} />
-          <motion.path ref={transientB} d={tilePath("centerCenter")} />
-          <motion.path ref={transientC} d={tilePath("bottomRight")} />
-        </motion.g>
-      </motion.svg>
-      <AnimatePresence>
-        {!isRunningInitialAnimation &&
-          [
-            {
-              left: "100%",
-              top: "30%",
-              layer: "U" as const,
-              direction: "counterclockwise" as const,
-              chevronRotation: 0,
-              tooltipPlacement: "right",
-            },
-            {
-              left: "100%",
-              top: "50%",
-              layer: "E" as const,
-              direction: "clockwise" as const,
-              chevronRotation: 0,
-              tooltipPlacement: "right",
-            },
-            {
-              left: "100%",
-              top: "70%",
-              layer: "D" as const,
-              direction: "clockwise" as const,
-              chevronRotation: 0,
-              tooltipPlacement: "right",
-            },
-            {
-              left: "0%",
-              top: "30%",
-              layer: "U" as const,
-              direction: "clockwise" as const,
-              chevronRotation: 180,
-              tooltipPlacement: "left",
-            },
-            {
-              left: "0%",
-              top: "50%",
-              layer: "E" as const,
-              direction: "counterclockwise" as const,
-              chevronRotation: 180,
-              tooltipPlacement: "left",
-            },
-            {
-              left: "0%",
-              top: "70%",
-              layer: "D" as const,
-              direction: "counterclockwise" as const,
-              chevronRotation: 180,
-              tooltipPlacement: "left",
-            },
-            {
-              left: "30%",
-              top: "100%",
-              layer: "L" as const,
-              direction: "clockwise" as const,
-              chevronRotation: 90,
-              tooltipPlacement: "left",
-            },
-            {
-              left: "50%",
-              top: "100%",
-              layer: "M" as const,
-              direction: "clockwise" as const,
-              chevronRotation: 90,
-              tooltipPlacement: "top",
-            },
-            {
-              left: "70%",
-              top: "100%",
-              layer: "R" as const,
-              direction: "counterclockwise" as const,
-              chevronRotation: 90,
-              tooltipPlacement: "right",
-            },
-            {
-              left: "30%",
-              top: "0%",
-              layer: "L" as const,
-              direction: "counterclockwise" as const,
-              chevronRotation: -90,
-              tooltipPlacement: "left",
-            },
-            {
-              left: "50%",
-              top: "0%",
-              layer: "M" as const,
-              direction: "counterclockwise" as const,
-              chevronRotation: -90,
-              tooltipPlacement: "top",
-            },
-            {
-              left: "70%",
-              top: "0%",
-              layer: "R" as const,
-              direction: "clockwise" as const,
-              chevronRotation: -90,
-              tooltipPlacement: "right",
-            },
-          ].map(
-            (
+          {(
+            [
+              "topLeft",
+              "topCenter",
+              "topRight",
+              "centerLeft",
+              "centerCenter",
+              "centerRight",
+              "bottomLeft",
+              "bottomCenter",
+              "bottomRight",
+            ] as const
+          ).map((tile) => (
+            <motion.path
+              key={tile}
+              animate={CONTROLS[tile]}
+              d={tilePath(tile)}
+              className={FACE_CLASSNAME[cubeState.front[tile]]}
+            />
+          ))}
+          <motion.g animate={transientGroup}>
+            <motion.path ref={transientA} d={tilePath("topLeft")} />
+            <motion.path ref={transientB} d={tilePath("centerCenter")} />
+            <motion.path ref={transientC} d={tilePath("bottomRight")} />
+          </motion.g>
+        </motion.svg>
+        <AnimatePresence>
+          {!isRunningInitialAnimation &&
+            [
               {
-                left,
-                top,
-                layer,
-                direction,
-                chevronRotation,
-                tooltipPlacement,
+                left: "100%",
+                top: "30%",
+                layer: "U" as const,
+                direction: "counterclockwise" as const,
+                chevronRotation: 0,
+                tooltipPlacement: "right",
               },
-              index
-            ) => (
-              <SquareButton
-                tooltip="Try moving the cube!"
-                key={index}
-                tooltipPlacement={tooltipPlacement as Placement}
-                className="absolute -translate-x-1/2 -translate-y-1/2"
-                style={{ left, top }}
-                onClick={() => queueMove(layer, direction)}
-                label={`Perform move ${layer}${
-                  direction === "counterclockwise" ? "'" : ""
-                }`}
-              >
-                <ChevronRight
-                  style={{ transform: `rotate(${chevronRotation}deg)` }}
-                />
-              </SquareButton>
-            )
-          )}
-        {!isRunningInitialAnimation && performedMoves.length ? (
-          <SquareButton
-            label="Reset"
-            tooltipPlacement="right"
-            className="absolute -translate-x-1/2 -translate-y-1/2"
-            style={{ left: "100%", top: "0%" }}
-            onClick={reset}
-            disabled={pendingMoves.length > 0}
-          >
-            <Reset className="w-6 h-6" />
-          </SquareButton>
-        ) : undefined}
-      </AnimatePresence>
-    </div>
+              {
+                left: "100%",
+                top: "50%",
+                layer: "E" as const,
+                direction: "clockwise" as const,
+                chevronRotation: 0,
+                tooltipPlacement: "right",
+              },
+              {
+                left: "100%",
+                top: "70%",
+                layer: "D" as const,
+                direction: "clockwise" as const,
+                chevronRotation: 0,
+                tooltipPlacement: "right",
+              },
+              {
+                left: "0%",
+                top: "30%",
+                layer: "U" as const,
+                direction: "clockwise" as const,
+                chevronRotation: 180,
+                tooltipPlacement: "left",
+              },
+              {
+                left: "0%",
+                top: "50%",
+                layer: "E" as const,
+                direction: "counterclockwise" as const,
+                chevronRotation: 180,
+                tooltipPlacement: "left",
+              },
+              {
+                left: "0%",
+                top: "70%",
+                layer: "D" as const,
+                direction: "counterclockwise" as const,
+                chevronRotation: 180,
+                tooltipPlacement: "left",
+              },
+              {
+                left: "30%",
+                top: "100%",
+                layer: "L" as const,
+                direction: "clockwise" as const,
+                chevronRotation: 90,
+                tooltipPlacement: "left",
+              },
+              {
+                left: "50%",
+                top: "100%",
+                layer: "M" as const,
+                direction: "clockwise" as const,
+                chevronRotation: 90,
+                tooltipPlacement: "top",
+              },
+              {
+                left: "70%",
+                top: "100%",
+                layer: "R" as const,
+                direction: "counterclockwise" as const,
+                chevronRotation: 90,
+                tooltipPlacement: "right",
+              },
+              {
+                left: "30%",
+                top: "0%",
+                layer: "L" as const,
+                direction: "counterclockwise" as const,
+                chevronRotation: -90,
+                tooltipPlacement: "left",
+              },
+              {
+                left: "50%",
+                top: "0%",
+                layer: "M" as const,
+                direction: "counterclockwise" as const,
+                chevronRotation: -90,
+                tooltipPlacement: "top",
+              },
+              {
+                left: "70%",
+                top: "0%",
+                layer: "R" as const,
+                direction: "clockwise" as const,
+                chevronRotation: -90,
+                tooltipPlacement: "right",
+              },
+            ].map(
+              (
+                {
+                  left,
+                  top,
+                  layer,
+                  direction,
+                  chevronRotation,
+                  tooltipPlacement,
+                },
+                index
+              ) => (
+                <SquareButton
+                  tooltip="Try moving the cube!"
+                  key={index}
+                  tooltipPlacement={tooltipPlacement as Placement}
+                  className="absolute -translate-x-1/2 -translate-y-1/2"
+                  style={{ left, top }}
+                  onClick={() => queueMove(layer, direction)}
+                  label={`Perform move ${layer}${
+                    direction === "counterclockwise" ? "'" : ""
+                  }`}
+                >
+                  <ChevronRight
+                    style={{ transform: `rotate(${chevronRotation}deg)` }}
+                  />
+                </SquareButton>
+              )
+            )}
+          {!isRunningInitialAnimation && performedMoves.length ? (
+            <SquareButton
+              label="Reset"
+              tooltipPlacement="right"
+              className="absolute -translate-x-1/2 -translate-y-1/2"
+              style={{ left: "100%", top: "0%" }}
+              onClick={reset}
+              disabled={pendingMoves.length > 0}
+            >
+              <Reset className="w-6 h-6" />
+            </SquareButton>
+          ) : undefined}
+        </AnimatePresence>
+      </div>
+    </>
   );
 }

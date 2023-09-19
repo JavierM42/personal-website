@@ -16,11 +16,12 @@ export default function Home() {
     <>
       <div className="w-full px-4 bg-primary-container/5">
         <div className="flex flex-col max-w-4xl pt-16 mx-auto leading-loose text-on-background">
-          <DevNote className="absolute w-48 top-20 left-12 rotate-[-3deg]">
-            The favicon tracks the cube state with a <code>useEffect</code>. As
-            the state changes, it builds svg markup, converts it to base64 and
-            sets it as the URL for the <code>{"<link rel=“icon”>"}</code>{" "}
-            element in the <code>{"<head>"}</code>.
+          <DevNote className="absolute w-60 top-20 left-12 rotate-[-3deg]">
+            The favicon tracks the cube state (<i>with declarative syntax!</i>).
+            <br />
+            As the state changes, a <code>{"next/head"}</code> block receives it
+            as a prop and updates SVG markup inside a{" "}
+            <code>{"<link rel=“icon”>"}</code> element.
           </DevNote>
           <header>
             <NavBar />
