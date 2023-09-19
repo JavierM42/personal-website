@@ -167,7 +167,7 @@ const WorkExperienceCard: FC<Props> = ({
                 transition={{ delay: 0.2, duration: 0.3 }}
                 layout
               >
-                <div className="pt-4 text-xs font-medium text-center text-outline">
+                <div className="pt-4 text-xs font-medium text-center text-on-surface/80">
                   {dates}
                 </div>
                 {content}
