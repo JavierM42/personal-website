@@ -40,7 +40,7 @@ export default function Home() {
 
           <main className="max-w-full mt-48 space-y-48 overflow-x-visible">
             <div className="relative">
-              <SectionHeader id="work-experience" heading="My work" />
+              <SectionHeader id="work-experience" heading="Work" />
               <DevNote className="absolute w-56 -top-12 left-32 rotate-[-3deg]">
                 When a card is clicked, the <code>grid-template-columns</code>{" "}
                 and <code>grid-template-rows</code> properties of the grid
