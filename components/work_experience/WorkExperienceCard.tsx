@@ -96,7 +96,10 @@ const WorkExperienceCard: FC<Props> = ({
             !isExpanded && "cursor-pointer",
             className
           )}
-          onClick={isExpanded ? undefined : onExpand}
+          onClick={(e) => {
+            e.stopPropagation();
+            if (!isExpanded) onExpand?.();
+          }}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
           onMouseMove={(event) => {
@@ -136,15 +139,16 @@ const WorkExperienceCard: FC<Props> = ({
               </motion.div>
             )}
             {!isExpanded && (
-              <div
+              <button
                 className={classNames(
-                  "block lg:hidden absolute z-20 bottom-6 interactive-bg-surface shadow-lg px-4 py-2 rounded-xl pointer-events-none font-[Nunito]",
+                  "block lg:hidden absolute z-20 bottom-6 interactive-bg-surface shadow-lg px-4 py-2 rounded-xl",
                   className,
                   initialPerspective.y < 0 ? "left-6" : "right-6"
                 )}
+                onClick={onExpand}
               >
                 Read more
-              </div>
+              </button>
             )}
             <AnimatePresence initial={false}>
               {!isThumbnail && (

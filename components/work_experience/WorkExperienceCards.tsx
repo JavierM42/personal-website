@@ -18,18 +18,12 @@ export default function WorkExperienceCards() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        !(event.target as HTMLElement).matches(
-          "#work-experience-cards li, #work-experience-cards li *"
-        )
-      ) {
-        setExpandedCardIndex((value) => {
-          if (value !== null) {
-            updateTheme({ primary: "#416900" }, "class");
-          }
-          return null;
-        });
-      }
+      setExpandedCardIndex((value) => {
+        if (value !== null) {
+          updateTheme({ primary: "#416900" }, "class");
+        }
+        return null;
+      });
     };
 
     document.addEventListener("click", handleClickOutside);
