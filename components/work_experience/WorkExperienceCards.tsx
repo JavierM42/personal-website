@@ -211,13 +211,11 @@ export default function WorkExperienceCards() {
             <>
               <p>
                 I worked on a videoconferencing app with interactive lesson
-                slides for the Prisma online school.
-              </p>
-              <p>
-                We built the application from scratch as well as a UI library to
-                be used throughout the Prisma ecosystem. We faced challenges
-                such as concurrent editing, screensharing, real-time updates and
-                implementing a rich text editor.
+                slides for the Prisma online school. We built the application
+                from scratch as well as a UI library to be used throughout the
+                Prisma ecosystem. We faced challenges such as concurrent
+                editing, screensharing, real-time updates and implementing a
+                rich text editor.
               </p>
               <p>
                 There's more information on the{" "}
@@ -226,7 +224,7 @@ export default function WorkExperienceCards() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Prisma Case Study site
+                  Prisma Case Study website
                 </a>
                 .
               </p>
