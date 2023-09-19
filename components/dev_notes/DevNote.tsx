@@ -27,7 +27,7 @@ export const DevNote: FC<Props> = ({ children, className }) => {
           <motion.svg
             viewBox="-1 -1 12 12"
             className="stroke-current"
-            stroke-width={1.5}
+            strokeWidth={1.5}
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
