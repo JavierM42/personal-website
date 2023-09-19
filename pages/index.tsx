@@ -3,17 +3,27 @@ import GitHubLogo from "../assets/github.svg";
 import LinkedInLogo from "../assets/linkedin.svg";
 import BlogPostCards from "../components/BlogPostCards";
 import ExternalLink from "../components/ExternalLink";
-import RubikCube from "../components/hero/RubikCube";
-import WorkExperienceCards from "../components/work_experience/WorkExperienceCards";
-import OpenSourceCards from "../components/open_source/OpenSourceCards";
 import { SectionHeader } from "../components/SectionHeader";
+import { DevNote } from "../components/dev_notes/DevNote";
+import { DevNotesSection } from "../components/dev_notes/DevNotesSection";
+import RubikCube from "../components/hero/RubikCube";
+import { NavBar } from "../components/nav/NavBar";
+import OpenSourceCards from "../components/open_source/OpenSourceCards";
+import WorkExperienceCards from "../components/work_experience/WorkExperienceCards";
 
 export default function Home() {
   return (
     <>
       <div className="w-full px-4 bg-primary-container/5">
-        <div className="flex flex-col max-w-4xl mx-auto leading-loose text-on-background">
+        <div className="flex flex-col max-w-4xl pt-16 mx-auto leading-loose text-on-background">
+          <DevNote className="absolute w-48 top-20 left-12 rotate-[-3deg]">
+            The favicon tracks the cube state with a <code>useEffect</code>. As
+            the state changes, it builds svg markup, converts it to base64 and
+            sets it as the URL for the <code>{"<link rel=“icon”>"}</code>{" "}
+            element in the <code>{"<head>"}</code>.
+          </DevNote>
           <header>
+            <NavBar />
             <div className="max-w-full mx-auto mt-24 mb-12 w-[440px] aspect-square">
               <RubikCube />
             </div>
@@ -33,24 +43,34 @@ export default function Home() {
           </header>
 
           <main className="max-w-full mt-48 space-y-48 overflow-x-visible">
-            <div>
+            <div className="relative">
               <SectionHeader id="work-experience" heading="My work" />
+              <DevNote className="absolute w-56 -top-12 left-32 rotate-[-3deg]">
+                When a card is clicked, the <code>grid-template-columns</code>{" "}
+                and <code>grid-template-rows</code> properties of the grid
+                change. Support for animation of these properties was recently
+                added by modern browsers.
+              </DevNote>
               <WorkExperienceCards />
             </div>
             <div>
               <SectionHeader id="open-source" heading="Open Source" />
-            <OpenSourceCards />
+              <OpenSourceCards />
             </div>
             <div>
               <SectionHeader id="blog" heading="Blog posts" />
-            <BlogPostCards />
+              <BlogPostCards />
             </div>
             <div>
-            <p className="mt-10 text-center">
-              Drop me a line at{" "}
+              <SectionHeader id="dev-notes" heading="Dev notes" />
+              <DevNotesSection />
+            </div>
+            <div>
+              <p className="mt-10 text-center">
+                Drop me a line at{" "}
                 <a href="mailto:hi@javiermorales.dev">hi@javiermorales.dev</a>{" "}
                 ✉️
-            </p>
+              </p>
             </div>
           </main>
           <footer className="flex items-center justify-center w-full h-20 space-x-2 text-sm">

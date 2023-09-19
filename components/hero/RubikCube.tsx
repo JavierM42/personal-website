@@ -10,6 +10,7 @@ import Reset from "../../assets/reset.svg";
 import { Placement } from "@floating-ui/react";
 import { SquareButton } from "../SquareButton";
 import { useRubikFavicon } from "./useRubikFavicon";
+import { DevNote } from "../dev_notes/DevNote";
 
 type CubeState = Record<Face, Record<Tile, FaceColor>>;
 
@@ -800,6 +801,21 @@ export default function RubikCube() {
 
   return (
     <div className="relative m-5 w-fill h-fill">
+      <DevNote className="absolute w-48 top-80 left-[calc(100%-64px)] rotate-[-6deg]">
+        There are no 3D graphics on the cube, it's all 2D transforms on inline
+        SVG paths. And lots of math.
+      </DevNote>
+      <DevNote className="absolute w-72 top-64 -left-56 rotate-[3deg]">
+        There's a small mistake on the cube state tracking which doesn't match
+        how a real cube works. Did you notice it?
+        <hr className="w-full h-px my-1 border-outline/30" />
+        Answer:
+        <span className="text-tertiary-container selection:on-tertiary-container selection:bg-on-tertiary-container">
+          I'm not keeping track of rotation, so my picture always shows my face
+          in the upright orientation.
+        </span>{" "}
+        (highlight the invisible text to read it).
+      </DevNote>
       <motion.svg
         stroke="currentColor"
         viewBox="0 0 100 100"

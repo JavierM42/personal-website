@@ -1,14 +1,14 @@
+import { useRef } from "react";
 import BlogPostCard, { BLOG_POST_CARD_WIDTH } from "../components/BlogPostCard";
 import Grids from "../components/posts/Grids";
 import Leverage from "../components/posts/Leverage";
 import Portals from "../components/posts/Portals";
 import Screenshots from "../components/posts/Screenshots";
-import WithTooltip from "./WithTooltip";
+import ChevronRight from "../public/chevron-right.svg";
+import { SquareButton } from "./SquareButton";
+import { DevNote } from "./dev_notes/DevNote";
 import InteractiveSurfaces from "./posts/InteractiveSurfaces";
 import ModeAwareColors from "./posts/ModeAwareColors";
-import ChevronRight from "../public/chevron-right.svg";
-import { useEffect, useRef, useState } from "react";
-import { SquareButton } from "./SquareButton";
 
 export default function BlogPostCards() {
   const containerRef = useRef<HTMLOListElement>(null);
@@ -28,7 +28,11 @@ export default function BlogPostCards() {
   }
 
   return (
-    <>
+    <div className="relative">
+      <DevNote className="absolute w-64 -top-14 left-1/2 rotate-[-3deg]">
+        I used <code>framer-motion</code> for these animations, with some simple
+        SVG paths and sometimes a mask.
+      </DevNote>
       <ol
         ref={containerRef}
         className="w-screen [&>*]:align-top [&>*]:inline-block overflow-x-auto pb-8 snap-x snap-mandatory ml-[50%] -translate-x-1/2 whitespace-nowrap px-[calc(50vw-50%)] scrollbar-none"
@@ -86,6 +90,6 @@ export default function BlogPostCards() {
           <ChevronRight />
         </SquareButton>
       </div>
-    </>
+    </div>
   );
 }

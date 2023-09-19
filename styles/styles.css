@@ -67,3 +67,7 @@ p {
 aside {
   @apply italic;
 }
+
+code {
+  @apply rounded bg-on-surface/10;
+}
