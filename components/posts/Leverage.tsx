@@ -14,16 +14,16 @@ export default function Leverage() {
     await lever.start({
       rotate: "-10deg",
       transition: {
-        duration: 0.95,
+        duration: 0.6,
         ease: "easeIn",
       },
     });
     await lever.start({
       rotate: "25deg",
       transition: {
-        duration: 1.2,
+        duration: 1.5,
         ease: "easeOut",
-        delay: 1.85,
+        delay: 1.9,
       },
     });
   };
