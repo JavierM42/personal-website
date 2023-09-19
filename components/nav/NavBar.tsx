@@ -1,12 +1,9 @@
+import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/router";
 import { FC } from "react";
 import DarkModeToggle from "../DarkModeToggle";
-import { DevNote } from "../dev_notes/DevNote";
-import { useDevNotesState } from "../dev_notes/useDevNotesState";
-import { SquareButton } from "../SquareButton";
-import { omit } from "lodash";
-import { useRouter } from "next/router";
-import { AnimatePresence, motion } from "framer-motion";
 import Switch from "../Switch";
+import { DevNote } from "../dev_notes/DevNote";
 
 export const NavBar: FC = () => {
   const router = useRouter();
@@ -17,15 +14,17 @@ export const NavBar: FC = () => {
         <a href="#" className="font-[Nunito] text-lg">
           javiermorales.dev
         </a>
-        <a href="#work-experience">Work</a>
-        <a href="#open-source">Open Source</a>
-        <a href="#blog">Blog</a>
-        <div className="relative">
-          <a href="#dev-notes">Dev notes</a>
-          <DevNote className="absolute w-48 top-6 -left-24 -rotate-[6deg]">
-            Anchor link targets use the scroll-margin CSS property so the sticky
-            nav doesn't get in the way.
-          </DevNote>
+        <div className="hidden md:contents">
+          <a href="#work-experience">Work</a>
+          <a href="#open-source">Open Source</a>
+          <a href="#blog">Blog</a>
+          <div className="relative">
+            <a href="#dev-notes">Dev notes</a>
+            <DevNote className="absolute w-48 top-6 -left-24 -rotate-[6deg]">
+              Anchor link targets use the scroll-margin CSS property so the
+              sticky nav doesn't get in the way.
+            </DevNote>
+          </div>
         </div>
       </div>
       <AnimatePresence>
