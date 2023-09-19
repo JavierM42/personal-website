@@ -18,7 +18,6 @@ export default function WorkExperienceCards() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      console.log(event.target);
       if (
         !(event.target as HTMLElement).matches(
           "#work-experience-cards li, #work-experience-cards li *"

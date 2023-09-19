@@ -76,7 +76,7 @@ const WorkExperienceCard: FC<Props> = ({
   isThumbnail,
   onExpand,
   hoverGradientStops,
-  initialPerspective,
+  initialPerspective = { x: 0, y: 0 },
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
@@ -134,6 +134,17 @@ const WorkExperienceCard: FC<Props> = ({
                   }}
                 />
               </motion.div>
+            )}
+            {!isExpanded && (
+              <div
+                className={classNames(
+                  "block lg:hidden absolute z-20 bottom-6 interactive-bg-surface shadow-lg px-4 py-2 rounded-xl pointer-events-none font-[Nunito]",
+                  className,
+                  initialPerspective.y < 0 ? "left-6" : "right-6"
+                )}
+              >
+                Read more
+              </div>
             )}
             <AnimatePresence initial={false}>
               {!isThumbnail && (
