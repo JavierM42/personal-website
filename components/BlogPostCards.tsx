@@ -74,7 +74,7 @@ export default function BlogPostCards() {
           url="https://www.wyeworks.com/blog/2021/08/07/harnessing-the-power-of-responsive-css-grids/"
         />
       </ol>
-      <div className="flex justify-center gap-8 mt-4 -translate-y-4">
+      <div className="relative flex justify-center gap-8 mt-4 -translate-y-4">
         <SquareButton
           onClick={goPrevious}
           label="Scroll left"
@@ -89,6 +89,12 @@ export default function BlogPostCards() {
         >
           <ChevronRight />
         </SquareButton>
+        <DevNote className="absolute w-72 -top-8 left-[calc(50%-360px)] rotate-[3deg]">
+          The cards don't need any Javascript. CSS <code>scroll-snap</code> can
+          snap elements to the center of their container. The buttons do need
+          some scripting, but they simply scroll a certain number of pixels and
+          don't need to track state.
+        </DevNote>
       </div>
     </div>
   );
