@@ -73,14 +73,14 @@ export default function Home() {
             <ExternalLink
               href="https://github.com/JavierM42"
               className="flex items-center justify-center w-12 h-12 rounded-full text-primary hover:bg-primary-container-hover/30"
-              tooltip="GitHub @JavierM42"
+              label="GitHub @JavierM42"
             >
               <GitHubLogo className="w-8 h-8" />
             </ExternalLink>
             <ExternalLink
               href="https://www.linkedin.com/in/javierm42/"
               className="flex items-center justify-center w-12 h-12 rounded-full text-primary hover:bg-primary-container-hover/30"
-              tooltip="LinkedIn /javierm42"
+              label="LinkedIn /javierm42"
             >
               <LinkedInLogo className="w-6 h-6" />
             </ExternalLink>

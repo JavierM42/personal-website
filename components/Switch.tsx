@@ -33,6 +33,7 @@ const Switch: FC<Props> = ({
         role="switch"
         aria-checked={isOn}
         onClick={onClick}
+        aria-label="Toggle dark mode"
       >
         <motion.div
           role="presentation"

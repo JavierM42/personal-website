@@ -6,21 +6,22 @@ type Props = {
   href: string;
   children: ReactNode;
   className?: string;
-  tooltip?: string;
+  label?: string;
 };
 
 const ExternalLink: FC<Props> = ({
   href,
   children,
   className,
-  tooltip,
+  label,
 }: Props) => (
-  <WithTooltip text={tooltip || null}>
+  <WithTooltip text={label || null}>
     <a
       href={href}
       rel="noopener"
       target="_blank"
       className={classNames(className, "underline")}
+      aria-label={label}
     >
       {children}
     </a>

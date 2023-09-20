@@ -9,6 +9,7 @@ type Props = {
   stripClass: string;
   className?: string;
   rotateY?: number;
+  notes?: ReactNode;
 };
 
 const OpenSourceCard: FC<Props> = ({
@@ -18,9 +19,10 @@ const OpenSourceCard: FC<Props> = ({
   stripClass,
   className,
   rotateY,
+  notes,
 }: Props) => {
   return (
-    <li className="contents">
+    <li className={notes ? "relative" : "contents"}>
       <PerspectiveScrollCard y={rotateY}>
         <div
           className={classNames(
@@ -36,6 +38,7 @@ const OpenSourceCard: FC<Props> = ({
           </div>
         </div>
       </PerspectiveScrollCard>
+      {notes}
     </li>
   );
 };

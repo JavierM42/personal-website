@@ -49,43 +49,43 @@ export default function OpenSourceCards() {
         className="shadow-tertiary/20"
         rotateY={5}
       />
-      <div className="relative">
-        <OpenSourceCard
-          name={
-            <LineWrappingInput
-              value="react-line-wrapping-input"
-              placeholder="react-line-wrapping-input"
-              containerClassName="-m-1 rounded-md border border-outline/20 hover:border-outline/60 focus-within:border-outline/60 transition-colors"
-              className="p-1 bg-transparent focus:outline-none"
-            />
-          }
-          content="☝️ A customizable input-like component with line wrapping and autosizing."
-          cta={
-            <a
-              className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap font-[Nunito]"
-              href="https://github.com/JavierM42/react-line-wrapping-input"
-              target="_blank"
-            >
-              View on GitHub
-              <GitHubLogo className="w-5 h-5" />
-            </a>
-          }
-          stripClass="bg-gradient-to-r from-outline to-outline/20"
-          className="shadow-outline/20"
-          rotateY={-5}
-        />
-        <DevNote className="absolute w-72 top-20 -right-14 rotate-[4deg]">
-          Too often I needed an input field that wraps when it gets to a certain
-          size, so I did some research and found a{" "}
+      <OpenSourceCard
+        name={
+          <LineWrappingInput
+            value="react-line-wrapping-input"
+            placeholder="react-line-wrapping-input"
+            containerClassName="-m-1 rounded-md border border-outline/20 hover:border-outline/60 focus-within:border-outline/60 transition-colors"
+            className="p-1 bg-transparent focus:outline-none"
+          />
+        }
+        content="☝️ A customizable input-like component with line wrapping and autosizing."
+        cta={
           <a
-            href="https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas"
+            className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap font-[Nunito]"
+            href="https://github.com/JavierM42/react-line-wrapping-input"
             target="_blank"
           >
-            nice technique
+            View on GitHub
+            <GitHubLogo className="w-5 h-5" />
           </a>
-          , which I then abstracted into a library.
-        </DevNote>
-      </div>
+        }
+        stripClass="bg-gradient-to-r from-outline to-outline/20"
+        className="shadow-outline/20"
+        rotateY={-5}
+        notes={
+          <DevNote className="absolute w-72 top-20 -right-14 rotate-[4deg]">
+            Too often I needed an input field that wraps when it gets to a
+            certain size, so I did some research and found a{" "}
+            <a
+              href="https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas"
+              target="_blank"
+            >
+              nice technique
+            </a>
+            , which I then abstracted into a library.
+          </DevNote>
+        }
+      />
       <OpenSourceCard
         name="react-selection-manager"
         content="A tiny selection management library with support for keyboard modifiers."
