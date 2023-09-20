@@ -1,14 +1,9 @@
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, useReducedMotion } from "framer-motion";
 import { useEffect } from "react";
 
 export default function Leverage() {
   const cube = useAnimation();
   const lever = useAnimation();
-
-  useEffect(() => {
-    cube.set({ rotate: "8deg" });
-    lever.set({ originX: "50%", originY: "90%", rotate: "25deg" });
-  }, []);
 
   const animateLever = async () => {
     await lever.start({
@@ -49,9 +44,13 @@ export default function Leverage() {
     animateCube();
   };
 
+  const shouldReduceMotion = useReducedMotion();
+
   useEffect(() => {
-    animate();
-  }, []);
+    if (!shouldReduceMotion) {
+      animate();
+    }
+  }, [shouldReduceMotion]);
 
   return (
     <div className="relative z-10 w-48 h-48">
@@ -63,9 +62,20 @@ export default function Leverage() {
         strokeLinejoin="round"
         strokeLinecap="round"
       >
-        <motion.line x1="01" x2="70" y1="90" y2="90" animate={lever} />
+        <motion.line
+          x1="01"
+          x2="70"
+          y1="90"
+          y2="90"
+          style={{ originX: "50%", originY: "90%", rotate: "25deg" }}
+          animate={lever}
+        />
         <polygon points="45,99 50,90 55,99" fill="none" />
-        <motion.polygon points="89,97 89,76 68,76 68,97" animate={cube} />
+        <motion.polygon
+          points="89,97 89,76 68,76 68,97"
+          style={{ rotate: "8deg" }}
+          animate={cube}
+        />
       </svg>
     </div>
   );

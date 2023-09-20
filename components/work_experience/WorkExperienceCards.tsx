@@ -58,7 +58,7 @@ export default function WorkExperienceCards() {
       <ol
         id="work-experience-cards"
         className={classNames(
-          "grid mx-auto max-w-[calc(100vw-80px)] sm:max-w-[480px] lg:max-w-none lg:p-0 gap-12 transition-all duration-300 lg:aspect-[16/10] mb-32 grid-cols-[1fr]",
+          "grid mx-auto max-w-[calc(100vw-80px)] sm:max-w-[480px] lg:max-w-none lg:p-0 gap-12 transition-all motion-reduce:transition-none duration-300 lg:aspect-[16/10] mb-32 grid-cols-[1fr]",
           {
             "lg:grid-cols-[1fr_1fr]": expandedCardIndex === null,
             "grid-rows-[300px_300px_300px_300px]": expandedCardIndex === null,

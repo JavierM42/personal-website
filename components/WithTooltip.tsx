@@ -15,7 +15,7 @@ import {
   useMergeRefs,
   useRole,
 } from "@floating-ui/react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { uniqueId } from "lodash";
 import {
   cloneElement,
@@ -92,6 +92,8 @@ const WithTooltip: FC<WithTooltipProps> = ({
     ...(elementRef ? [elementRef] : []),
   ]);
 
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <>
       {cloneElement(
@@ -106,7 +108,7 @@ const WithTooltip: FC<WithTooltipProps> = ({
         <AnimatePresence>
           {open && !isDisabled && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.85 }}
+              initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
               transition={

@@ -1,4 +1,4 @@
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, useReducedMotion } from "framer-motion";
 import { useEffect } from "react";
 
 export default function InteractiveSurfaces() {
@@ -7,32 +7,6 @@ export default function InteractiveSurfaces() {
   const content = useAnimation();
 
   const animate = async () => {
-    base.start({
-      rotateX: "45deg",
-      rotateZ: "45deg",
-      y: "17%",
-      transition: {
-        duration: 1.2,
-        delay: 1,
-      },
-    });
-    state.start({
-      rotateX: "45deg",
-      rotateZ: "45deg",
-      transition: {
-        duration: 1.2,
-        delay: 1,
-      },
-    });
-    await content.start({
-      rotateX: "45deg",
-      rotateZ: "45deg",
-      y: "-17%",
-      transition: {
-        duration: 1.2,
-        delay: 1,
-      },
-    });
     base.start({
       rotateX: "0deg",
       rotateZ: "0deg",
@@ -59,12 +33,42 @@ export default function InteractiveSurfaces() {
         delay: 1,
       },
     });
+    base.start({
+      rotateX: "45deg",
+      rotateZ: "45deg",
+      y: "17%",
+      transition: {
+        duration: 1.2,
+        delay: 1,
+      },
+    });
+    state.start({
+      rotateX: "45deg",
+      rotateZ: "45deg",
+      transition: {
+        duration: 1.2,
+        delay: 1,
+      },
+    });
+    await content.start({
+      rotateX: "45deg",
+      rotateZ: "45deg",
+      y: "-17%",
+      transition: {
+        duration: 1.2,
+        delay: 1,
+      },
+    });
     animate();
   };
 
+  const shouldReduceMotion = useReducedMotion();
+
   useEffect(() => {
-    animate();
-  }, []);
+    if (!shouldReduceMotion) {
+      animate();
+    }
+  }, [shouldReduceMotion]);
 
   return (
     <div className="relative z-10 w-48 h-48">
@@ -79,11 +83,13 @@ export default function InteractiveSurfaces() {
         <motion.polygon
           points="26,26 26,74 74,74 74,26"
           className="fill-primary-container stroke-primary"
+          style={{rotateX: "45deg", rotateZ: "45deg", y: "17%"}}
           animate={base}
         />
         <motion.polygon
           points="26,26 26,74 74,74 74,26"
           className="fill-on-primary-container/[.16] stroke-primary"
+          style={{rotateX: "45deg", rotateZ: "45deg"}}
           animate={state}
         />
         <motion.circle
@@ -91,6 +97,7 @@ export default function InteractiveSurfaces() {
           cx="50"
           cy="50"
           className="fill-primary stroke-primary"
+          style={{rotateX: "45deg", rotateZ: "45deg", y: "-17%"}}
           animate={content}
         />
       </svg>

@@ -1,4 +1,9 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { FC, ReactNode, useRef } from "react";
 
 const spring = {
@@ -23,6 +28,7 @@ const PerspectiveScrollCard: FC<Props> = ({ children, y = 0 }: Props) => {
   const dx = useTransform(
     () => -scrollYProgress.get() * STRENGTH + STRENGTH / 2
   );
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <motion.div
@@ -37,7 +43,11 @@ const PerspectiveScrollCard: FC<Props> = ({ children, y = 0 }: Props) => {
         ref={ref}
         transition={spring}
         className="block w-full h-max"
-        style={{ rotateX: dx, rotateY: y }}
+        style={
+          shouldReduceMotion
+            ? { rotateX: 0, rotateY: 0 }
+            : { rotateX: dx, rotateY: y }
+        }
       >
         <div
           className="block w-full h-max"

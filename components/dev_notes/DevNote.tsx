@@ -1,7 +1,7 @@
 import { FC, ReactNode, useState } from "react";
 import { useDevNotesState } from "./useDevNotesState";
 import classNames from "classnames";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 type Props = {
   children: ReactNode;
@@ -11,6 +11,8 @@ type Props = {
 export const DevNote: FC<Props> = ({ children, className }) => {
   const showDevNotes = useDevNotesState();
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const shouldReduceMotion = useReducedMotion();
 
   return showDevNotes ? (
     <div
@@ -40,6 +42,7 @@ export const DevNote: FC<Props> = ({ children, className }) => {
                 minus: { opacity: 0, x: 2 },
                 code: { opacity: 1, x: 0 },
               }}
+              transition={shouldReduceMotion ? { duration: 0 } : undefined}
             />
             {/* slash */}
             <motion.path
@@ -48,6 +51,7 @@ export const DevNote: FC<Props> = ({ children, className }) => {
                 minus: { rotate: 71.56505 },
                 code: { rotate: 0 },
               }}
+              transition={shouldReduceMotion ? { duration: 0 } : undefined}
             />
             {/* close */}
             <motion.path
@@ -56,6 +60,7 @@ export const DevNote: FC<Props> = ({ children, className }) => {
                 minus: { opacity: 0, x: -2 },
                 code: { opacity: 1, x: 0 },
               }}
+              transition={shouldReduceMotion ? { duration: 0 } : undefined}
             />
           </motion.svg>
         </button>
@@ -63,9 +68,9 @@ export const DevNote: FC<Props> = ({ children, className }) => {
           {isExpanded && (
             <motion.div
               className="w-full h-full p-4 origin-top-right rounded shadow-xl bg-tertiary-container"
-              initial={{ opacity: 0, scale: 0 }}
+              initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0 }}
+              exit={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0 }}
             >
               {children}
             </motion.div>

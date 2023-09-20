@@ -3,6 +3,7 @@ import {
   AnimationControls,
   motion,
   useAnimation,
+  useReducedMotion,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import ChevronRight from "../../public/chevron-right.svg";
@@ -390,6 +391,7 @@ const CARTESIAN_DIRECTIONS: Record<
 };
 
 export default function RubikCube() {
+  const shouldReduceMotion = useReducedMotion();
   const transientGroup = useAnimation();
 
   const transientA = useRef<SVGPathElement>(null);
@@ -425,48 +427,53 @@ export default function RubikCube() {
 
     const futureCubeState = getNewCubeState(layer, turnDirection);
 
-    transientGroup.set(TRANSIENT_GROUP_INITIAL_STATE[direction]);
-    transientA.current?.setAttribute("d", tilePath(tiles[0]));
-    transientB.current?.setAttribute("d", tilePath(tiles[1]));
-    transientC.current?.setAttribute("d", tilePath(tiles[2]));
+    if (!shouldReduceMotion) {
+      transientGroup.set(TRANSIENT_GROUP_INITIAL_STATE[direction]);
+      transientA.current?.setAttribute("d", tilePath(tiles[0]));
+      transientB.current?.setAttribute("d", tilePath(tiles[1]));
+      transientC.current?.setAttribute("d", tilePath(tiles[2]));
 
-    transientA.current?.removeAttribute("class");
-    transientB.current?.removeAttribute("class");
-    transientC.current?.removeAttribute("class");
+      transientA.current?.removeAttribute("class");
+      transientB.current?.removeAttribute("class");
+      transientC.current?.removeAttribute("class");
 
-    transientA.current?.classList.add(
-      FACE_CLASSNAME[futureCubeState.front[tiles[0]]]
-    );
-    transientB.current?.classList.add(
-      FACE_CLASSNAME[futureCubeState.front[tiles[1]]]
-    );
-    transientC.current?.classList.add(
-      FACE_CLASSNAME[futureCubeState.front[tiles[2]]]
-    );
+      transientA.current?.classList.add(
+        FACE_CLASSNAME[futureCubeState.front[tiles[0]]]
+      );
+      transientB.current?.classList.add(
+        FACE_CLASSNAME[futureCubeState.front[tiles[1]]]
+      );
+      transientC.current?.classList.add(
+        FACE_CLASSNAME[futureCubeState.front[tiles[2]]]
+      );
 
-    tiles.forEach(async (tile) => {
-      const control = CONTROLS[tile];
-      await control.start({
-        ...halfTurnTransform(tile, direction),
+      tiles.forEach(async (tile) => {
+        const control = CONTROLS[tile];
+        await control.start({
+          ...halfTurnTransform(tile, direction),
+          transition: { duration: duration / 2, ease: "easeIn" },
+        });
+        control.start({
+          ...fullTurnTransform(tile, direction),
+          transition: {
+            duration: shouldReduceMotion ? 0 : duration / 2,
+            ease: "easeOut",
+          },
+        });
+      });
+
+      await transientGroup.start({
+        ...TRANSIENT_GROUP_HALF_TURN[direction],
         transition: { duration: duration / 2, ease: "easeIn" },
       });
-      control.start({
-        ...fullTurnTransform(tile, direction),
+      await transientGroup.start({
+        x: "0%",
+        y: "0%",
+        scaleX: 1,
+        scaleY: 1,
         transition: { duration: duration / 2, ease: "easeOut" },
       });
-    });
-
-    await transientGroup.start({
-      ...TRANSIENT_GROUP_HALF_TURN[direction],
-      transition: { duration: duration / 2, ease: "easeIn" },
-    });
-    await transientGroup.start({
-      x: "0%",
-      y: "0%",
-      scaleX: 1,
-      scaleY: 1,
-      transition: { duration: duration / 2, ease: "easeOut" },
-    });
+    }
     for (const tile of tiles) {
       // hack, if using set we get an ugly white flash
       await CONTROLS[tile].start({
@@ -477,10 +484,12 @@ export default function RubikCube() {
         transition: { duration: 0 },
       });
     }
+
     setCubeState(futureCubeState);
-    setTimeout(() => {
-      setIsTurning(false);
-    }, 70);
+    setTimeout(
+      () => setIsTurning(false),
+      shouldReduceMotion ? duration * 1000 : 70
+    );
   };
 
   const [cubeState, setCubeState] = useState(INITIAL_CUBE_STATE);
@@ -873,133 +882,140 @@ export default function RubikCube() {
           </motion.g>
         </motion.svg>
         <AnimatePresence>
-          {!isRunningInitialAnimation &&
-            [
-              {
-                left: "100%",
-                top: "30%",
-                layer: "U" as const,
-                direction: "counterclockwise" as const,
-                chevronRotation: 0,
-                tooltipPlacement: "right",
-              },
-              {
-                left: "100%",
-                top: "50%",
-                layer: "E" as const,
-                direction: "clockwise" as const,
-                chevronRotation: 0,
-                tooltipPlacement: "right",
-              },
-              {
-                left: "100%",
-                top: "70%",
-                layer: "D" as const,
-                direction: "clockwise" as const,
-                chevronRotation: 0,
-                tooltipPlacement: "right",
-              },
-              {
-                left: "0%",
-                top: "30%",
-                layer: "U" as const,
-                direction: "clockwise" as const,
-                chevronRotation: 180,
-                tooltipPlacement: "left",
-              },
-              {
-                left: "0%",
-                top: "50%",
-                layer: "E" as const,
-                direction: "counterclockwise" as const,
-                chevronRotation: 180,
-                tooltipPlacement: "left",
-              },
-              {
-                left: "0%",
-                top: "70%",
-                layer: "D" as const,
-                direction: "counterclockwise" as const,
-                chevronRotation: 180,
-                tooltipPlacement: "left",
-              },
-              {
-                left: "30%",
-                top: "100%",
-                layer: "L" as const,
-                direction: "clockwise" as const,
-                chevronRotation: 90,
-                tooltipPlacement: "left",
-              },
-              {
-                left: "50%",
-                top: "100%",
-                layer: "M" as const,
-                direction: "clockwise" as const,
-                chevronRotation: 90,
-                tooltipPlacement: "top",
-              },
-              {
-                left: "70%",
-                top: "100%",
-                layer: "R" as const,
-                direction: "counterclockwise" as const,
-                chevronRotation: 90,
-                tooltipPlacement: "right",
-              },
-              {
-                left: "30%",
-                top: "0%",
-                layer: "L" as const,
-                direction: "counterclockwise" as const,
-                chevronRotation: -90,
-                tooltipPlacement: "left",
-              },
-              {
-                left: "50%",
-                top: "0%",
-                layer: "M" as const,
-                direction: "counterclockwise" as const,
-                chevronRotation: -90,
-                tooltipPlacement: "top",
-              },
-              {
-                left: "70%",
-                top: "0%",
-                layer: "R" as const,
-                direction: "clockwise" as const,
-                chevronRotation: -90,
-                tooltipPlacement: "right",
-              },
-            ].map(
-              (
+          {!isRunningInitialAnimation && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              {[
                 {
-                  left,
-                  top,
-                  layer,
-                  direction,
-                  chevronRotation,
-                  tooltipPlacement,
+                  left: "100%",
+                  top: "30%",
+                  layer: "U" as const,
+                  direction: "counterclockwise" as const,
+                  chevronRotation: 0,
+                  tooltipPlacement: "right",
                 },
-                index
-              ) => (
-                <SquareButton
-                  tooltip="Try moving the cube!"
-                  key={index}
-                  tooltipPlacement={tooltipPlacement as Placement}
-                  className="absolute -translate-x-1/2 -translate-y-1/2"
-                  style={{ left, top }}
-                  onClick={() => queueMove(layer, direction)}
-                  label={`Perform move ${layer}${
-                    direction === "counterclockwise" ? "'" : ""
-                  }`}
-                >
-                  <ChevronRight
-                    style={{ transform: `rotate(${chevronRotation}deg)` }}
-                  />
-                </SquareButton>
-              )
-            )}
+                {
+                  left: "100%",
+                  top: "50%",
+                  layer: "E" as const,
+                  direction: "clockwise" as const,
+                  chevronRotation: 0,
+                  tooltipPlacement: "right",
+                },
+                {
+                  left: "100%",
+                  top: "70%",
+                  layer: "D" as const,
+                  direction: "clockwise" as const,
+                  chevronRotation: 0,
+                  tooltipPlacement: "right",
+                },
+                {
+                  left: "0%",
+                  top: "30%",
+                  layer: "U" as const,
+                  direction: "clockwise" as const,
+                  chevronRotation: 180,
+                  tooltipPlacement: "left",
+                },
+                {
+                  left: "0%",
+                  top: "50%",
+                  layer: "E" as const,
+                  direction: "counterclockwise" as const,
+                  chevronRotation: 180,
+                  tooltipPlacement: "left",
+                },
+                {
+                  left: "0%",
+                  top: "70%",
+                  layer: "D" as const,
+                  direction: "counterclockwise" as const,
+                  chevronRotation: 180,
+                  tooltipPlacement: "left",
+                },
+                {
+                  left: "30%",
+                  top: "100%",
+                  layer: "L" as const,
+                  direction: "clockwise" as const,
+                  chevronRotation: 90,
+                  tooltipPlacement: "left",
+                },
+                {
+                  left: "50%",
+                  top: "100%",
+                  layer: "M" as const,
+                  direction: "clockwise" as const,
+                  chevronRotation: 90,
+                  tooltipPlacement: "top",
+                },
+                {
+                  left: "70%",
+                  top: "100%",
+                  layer: "R" as const,
+                  direction: "counterclockwise" as const,
+                  chevronRotation: 90,
+                  tooltipPlacement: "right",
+                },
+                {
+                  left: "30%",
+                  top: "0%",
+                  layer: "L" as const,
+                  direction: "counterclockwise" as const,
+                  chevronRotation: -90,
+                  tooltipPlacement: "left",
+                },
+                {
+                  left: "50%",
+                  top: "0%",
+                  layer: "M" as const,
+                  direction: "counterclockwise" as const,
+                  chevronRotation: -90,
+                  tooltipPlacement: "top",
+                },
+                {
+                  left: "70%",
+                  top: "0%",
+                  layer: "R" as const,
+                  direction: "clockwise" as const,
+                  chevronRotation: -90,
+                  tooltipPlacement: "right",
+                },
+              ].map(
+                (
+                  {
+                    left,
+                    top,
+                    layer,
+                    direction,
+                    chevronRotation,
+                    tooltipPlacement,
+                  },
+                  index
+                ) => (
+                  <SquareButton
+                    tooltip="Try moving the cube!"
+                    key={index}
+                    tooltipPlacement={tooltipPlacement as Placement}
+                    className="absolute -translate-x-1/2 -translate-y-1/2"
+                    style={{ left, top }}
+                    onClick={() => queueMove(layer, direction)}
+                    label={`Perform move ${layer}${
+                      direction === "counterclockwise" ? "'" : ""
+                    }`}
+                  >
+                    <ChevronRight
+                      style={{ transform: `rotate(${chevronRotation}deg)` }}
+                    />
+                  </SquareButton>
+                )
+              )}
+            </motion.div>
+          )}
           {!isRunningInitialAnimation && performedMoves.length ? (
             <SquareButton
               label="Reset"

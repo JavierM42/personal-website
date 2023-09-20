@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { SquareButton } from "./SquareButton";
 
@@ -47,6 +47,8 @@ export default function DarkModeToggle() {
     }
   }, [colorScheme]);
 
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <SquareButton
       label="Toggle dark mode"
@@ -72,6 +74,7 @@ export default function DarkModeToggle() {
             light: { r: 10 },
             dark: { r: 19 },
           }}
+          transition={shouldReduceMotion ? { duration: 0 } : undefined}
         />
         <motion.path
           d="M19,1.25 a 14 19 0 0 1 0 37.5"
@@ -79,6 +82,7 @@ export default function DarkModeToggle() {
             light: { opacity: 0 },
             dark: { opacity: 1 },
           }}
+          transition={shouldReduceMotion ? { duration: 0 } : undefined}
         />
         <motion.line
           x1="20"
@@ -89,6 +93,7 @@ export default function DarkModeToggle() {
             light: { opacity: 1 },
             dark: { opacity: 0 },
           }}
+          transition={shouldReduceMotion ? { duration: 0 } : undefined}
         />
         <motion.line
           x1="10.5"
@@ -99,6 +104,7 @@ export default function DarkModeToggle() {
             light: { opacity: 1 },
             dark: { opacity: 0 },
           }}
+          transition={shouldReduceMotion ? { duration: 0 } : undefined}
         />
         <motion.line
           x1="7"
@@ -109,6 +115,7 @@ export default function DarkModeToggle() {
             light: { opacity: 1 },
             dark: { opacity: 0 },
           }}
+          transition={shouldReduceMotion ? { duration: 0 } : undefined}
         />
         <motion.line
           x1="10.5"
@@ -119,6 +126,7 @@ export default function DarkModeToggle() {
             light: { opacity: 1 },
             dark: { opacity: 0 },
           }}
+          transition={shouldReduceMotion ? { duration: 0 } : undefined}
         />
         <motion.line
           x1="20"
@@ -129,6 +137,7 @@ export default function DarkModeToggle() {
             light: { opacity: 1 },
             dark: { opacity: 0 },
           }}
+          transition={shouldReduceMotion ? { duration: 0 } : undefined}
         />
         <motion.line
           x1="29.5"
@@ -139,6 +148,7 @@ export default function DarkModeToggle() {
             light: { opacity: 1 },
             dark: { opacity: 0 },
           }}
+          transition={shouldReduceMotion ? { duration: 0 } : undefined}
         />
         <motion.line
           x1="33"
@@ -149,6 +159,7 @@ export default function DarkModeToggle() {
             light: { opacity: 1 },
             dark: { opacity: 0 },
           }}
+          transition={shouldReduceMotion ? { duration: 0 } : undefined}
         />
         <motion.line
           x1="29.5"
@@ -159,6 +170,7 @@ export default function DarkModeToggle() {
             light: { opacity: 1 },
             dark: { opacity: 0 },
           }}
+          transition={shouldReduceMotion ? { duration: 0 } : undefined}
         />
       </motion.svg>
     </SquareButton>

@@ -5,6 +5,7 @@ import {
   TargetAndTransition,
   motion,
   useMotionValue,
+  useReducedMotion,
 } from "framer-motion";
 import { FC, ReactNode, SVGProps, useRef, useState } from "react";
 import ElixirLogo from "../../assets/techs/elixir.svg";
@@ -83,6 +84,7 @@ const WorkExperienceCard: FC<Props> = ({
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <li className="contents">
@@ -111,8 +113,8 @@ const WorkExperienceCard: FC<Props> = ({
         >
           {icon && (
             <motion.div
+              key={shouldReduceMotion ? `${isThumbnail}` : undefined}
               initial={false}
-              layout
               className="absolute z-10 block w-12 h-12 pointer-events-none sm:w-24 sm:h-24"
               animate={
                 isThumbnail ? icon.placement.centered : icon.placement.popping
@@ -125,7 +127,10 @@ const WorkExperienceCard: FC<Props> = ({
             {!isExpanded && isHovering && (
               <motion.div
                 className="absolute inset-0 flex items-center justify-center pointer-events-none"
-                style={{ x: mouseX, y: mouseY }}
+                style={{
+                  x: shouldReduceMotion ? 0 : mouseX,
+                  y: shouldReduceMotion ? 0 : mouseY,
+                }}
               >
                 <div
                   className={classNames(
@@ -155,19 +160,19 @@ const WorkExperienceCard: FC<Props> = ({
                 <>
                   <motion.div
                     className="mb-6"
-                    layout
-                    initial={{ opacity: 0 }}
+                    layout={!shouldReduceMotion}
+                    initial={shouldReduceMotion ? undefined : { opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                    exit={shouldReduceMotion ? undefined : { opacity: 0 }}
                   >
                     {name}
                   </motion.div>
                   <motion.div
                     className="font-[Nunito] text-sm sm:text-base text-on-surface/80 whitespace-nowrap mb-2"
-                    layout
-                    initial={{ opacity: 0 }}
+                    layout={!shouldReduceMotion}
+                    initial={shouldReduceMotion ? undefined : { opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                    exit={shouldReduceMotion ? undefined : { opacity: 0 }}
                   >
                     {collapsedTitle}
                   </motion.div>
@@ -177,7 +182,7 @@ const WorkExperienceCard: FC<Props> = ({
             {isExpanded && (
               <motion.div
                 className="flex-1 w-full mb-10 overflow-auto sm:mb-0"
-                initial={{ opacity: 0 }}
+                initial={shouldReduceMotion ? undefined : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.3 }}
                 layout
@@ -208,14 +213,14 @@ const WorkExperienceCard: FC<Props> = ({
                             opacity: 1,
                             ...tech.placement,
                             transition: {
-                              delay: index * 0.08,
-                              duration: 0.4,
+                              delay: shouldReduceMotion ? 0 : index * 0.08,
+                              duration: shouldReduceMotion ? 0 : 0.4,
                               ease: "easeOut",
                             },
                             zIndex: -1,
                             transitionEnd: { zIndex: 1 },
                           }}
-                          exit={{ opacity: 0 }}
+                          exit={shouldReduceMotion ? undefined : { opacity: 0 }}
                         >
                           <Logo aria-label={tech.name} className="h-full" />
                         </motion.div>

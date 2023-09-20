@@ -1,4 +1,4 @@
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, useReducedMotion } from "framer-motion";
 import { useEffect } from "react";
 
 export default function Portals() {
@@ -49,9 +49,13 @@ export default function Portals() {
     animateCube2();
   };
 
+  const shouldReduceMotion = useReducedMotion();
+
   useEffect(() => {
-    animate();
-  }, []);
+    if (!shouldReduceMotion) {
+      animate();
+    }
+  }, [shouldReduceMotion]);
 
   return (
     <div className="relative z-10 w-48 h-48">

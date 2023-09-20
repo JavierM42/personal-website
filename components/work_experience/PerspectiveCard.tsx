@@ -1,4 +1,4 @@
-import { motion, useSpring } from "framer-motion";
+import { motion, useReducedMotion, useSpring } from "framer-motion";
 import {
   FC,
   MouseEventHandler,
@@ -25,6 +25,7 @@ const PerspectiveCard: FC<Props> = ({
   disablePerspective,
   initialPerspective = { x: 0, y: 0 },
 }: Props) => {
+  const shouldReduceMotion = useReducedMotion();
   const [rotateXaxis, setRotateXaxis] = useState(initialPerspective.x);
   const [rotateYaxis, setRotateYaxis] = useState(initialPerspective.y);
   const ref = useRef<HTMLDivElement>(null);
@@ -74,11 +75,18 @@ const PerspectiveCard: FC<Props> = ({
     >
       <motion.div
         ref={ref}
-        onMouseMove={disablePerspective ? undefined : handleMouseMove}
-        onMouseLeave={disablePerspective ? undefined : handleMouseEnd}
+        onMouseMove={
+          disablePerspective || shouldReduceMotion ? undefined : handleMouseMove
+        }
+        onMouseLeave={
+          disablePerspective || shouldReduceMotion ? undefined : handleMouseEnd
+        }
         transition={spring}
         className="block w-full h-full"
-        style={{ rotateX: dx, rotateY: dy }}
+        style={{
+          rotateX: shouldReduceMotion ? 0 : dx,
+          rotateY: shouldReduceMotion ? 0 : dy,
+        }}
       >
         <div
           className="block w-full h-full"

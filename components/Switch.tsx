@@ -1,6 +1,6 @@
 import { Placement } from "@floating-ui/react";
 import classNames from "classnames";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { FC, MouseEventHandler } from "react";
 import WithTooltip from "./WithTooltip";
 
@@ -17,6 +17,8 @@ const Switch: FC<Props> = ({
   tooltip,
   tooltipPlacement,
 }: Props) => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <WithTooltip text={tooltip} placement={tooltipPlacement}>
       <div
@@ -35,7 +37,7 @@ const Switch: FC<Props> = ({
         <motion.div
           role="presentation"
           layout="position"
-          transition={{ duration: 0.3 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.3 }}
           className="w-8 h-8 p-1.5 rounded-full shadow-md bg-surface dark:bg-surface-hover text-tertiary"
         >
           <motion.svg
@@ -46,13 +48,15 @@ const Switch: FC<Props> = ({
             strokeLinecap="round"
             strokeLinejoin="round"
             transition={{ duration: 0.3 }}
-            animate={{ rotate: isOn ? 180 : 0 }}
+            animate={
+              shouldReduceMotion ? undefined : { rotate: isOn ? 180 : 0 }
+            }
           >
-            {/* open */}
+            {/* < */}
             <path d="M2,3 l-2,2 l2,2" />
-            {/* slash */}
+            {/* / */}
             <path d="M6,2 l-2,6" />
-            {/* close */}
+            {/* > */}
             <path d="M8,3 l2,2 l-2,2" />
           </motion.svg>
         </motion.div>
