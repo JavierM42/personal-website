@@ -21,7 +21,7 @@
   "devDependencies": {
     "@types/lodash": "^4.14.188",
     "@types/node": "18.8.3",
-    "@types/react": "17.0.9",
+    "@types/react": "^18.0.0",
     "autoprefixer": "^10.2.6",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "hsl-to-hex": "^1.0.0",

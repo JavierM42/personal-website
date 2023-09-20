@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useState, useId } from "react";
 import { useDevNotesState } from "./useDevNotesState";
 import classNames from "classnames";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
@@ -13,6 +13,7 @@ export const DevNote: FC<Props> = ({ children, className }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const shouldReduceMotion = useReducedMotion();
+  const noteId = useId();
 
   return showDevNotes ? (
     <div
@@ -25,6 +26,9 @@ export const DevNote: FC<Props> = ({ children, className }) => {
             isExpanded && "opacity-0 group-hover:opacity-100"
           )}
           onClick={() => setIsExpanded((value) => !value)}
+          aria-label="Dev note"
+          aria-expanded={isExpanded}
+          aria-controls={noteId}
         >
           <motion.svg
             viewBox="-1 -1 12 12"
@@ -64,18 +68,20 @@ export const DevNote: FC<Props> = ({ children, className }) => {
             />
           </motion.svg>
         </button>
-        <AnimatePresence>
-          {isExpanded && (
-            <motion.div
-              className="w-full h-full p-4 origin-top-right rounded shadow-xl bg-tertiary-container"
-              initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0 }}
-            >
-              {children}
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <div id={noteId}>
+          <AnimatePresence>
+            {isExpanded && (
+              <motion.div
+                className="w-full h-full p-4 origin-top-right rounded shadow-xl bg-tertiary-container"
+                initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0 }}
+              >
+                {children}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   ) : null;

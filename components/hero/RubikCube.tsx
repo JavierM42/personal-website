@@ -845,7 +845,7 @@ export default function RubikCube() {
                 className="fill-primary-container/10"
               />
               <image
-                href="/javi.png"
+                href="/javi.jpg"
                 x="20"
                 y="20"
                 width="60"
