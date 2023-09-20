@@ -13,6 +13,7 @@ export default function OpenSourceCards() {
         cta={<TryDynamicColor />}
         stripClass="bg-gradient-to-r from-red-container to-green-container via-purple-container"
         className="shadow-primary-container/40"
+        rotateY={3}
       />
       <OpenSourceCard
         name="tailwind-material-surfaces"
@@ -29,6 +30,7 @@ export default function OpenSourceCards() {
         }
         stripClass="bg-gradient-to-r to-primary-container-press from-primary"
         className="shadow-primary/20"
+        rotateY={-3}
       />
       <OpenSourceCard
         name="tailwind-mode-aware-colors"
@@ -43,8 +45,9 @@ export default function OpenSourceCards() {
             <GitHubLogo className="w-5 h-5" />
           </a>
         }
-        stripClass="bg-gradient-to-r from-tertiary-container-dark to-tertiary-container-light"
+        stripClass="bg-gradient-to-l from-tertiary-container-dark to-tertiary-container-light"
         className="shadow-tertiary/20"
+        rotateY={5}
       />
       <div className="relative">
         <OpenSourceCard
@@ -69,6 +72,7 @@ export default function OpenSourceCards() {
           }
           stripClass="bg-gradient-to-r from-outline to-outline/20"
           className="shadow-outline/20"
+          rotateY={-5}
         />
         <DevNote className="absolute w-72 top-20 -right-14 rotate-[4deg]">
           Too often I needed an input field that wraps when it gets to a certain
@@ -95,8 +99,9 @@ export default function OpenSourceCards() {
             <GitHubLogo className="w-5 h-5" />
           </a>
         }
-        stripClass="bg-gradient-to-r to-secondary-container from-primary/40"
+        stripClass="bg-gradient-to-l to-secondary-container from-primary/40"
         className="shadow-secondary-container/80"
+        rotateY={3}
       />
       <OpenSourceCard
         name="MTGBarato"
@@ -113,6 +118,7 @@ export default function OpenSourceCards() {
             <GitHubLogo className="w-5 h-5" />
           </a>
         }
+        rotateY={-3}
       />
     </ol>
   );
