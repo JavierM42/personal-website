@@ -44,8 +44,21 @@ export const DevNotesSection: FC = () => {
           />
         </div>
       </div>
-      <div className="flex justify-center w-full h-24 mt-12">
-        <DevNote className="w-64 rotate-[-3deg] h-fit">
+      <div className="flex justify-center w-full h-24 gap-8 mt-12">
+        <DevNote className="w-48 rotate-[3deg] h-fit">
+          Tech stack:
+          <ul className="pl-4 list-disc">
+            <li>React</li>
+            <li>NextJS</li>
+            <li>TypeScript</li>
+            <li>TailwindCSS</li>
+            <li>Framer Motion</li>
+            <li>Floating UI</li>
+            <li>A couple of my libraries</li>
+            <li>Hosted on Vercel</li>
+          </ul>
+        </DevNote>
+        <DevNote className="w-64 rotate-[-3deg] h-fit -mt-4">
           I'm a fan of motion animations, but not everyone is. This website
           supports the <code>prefers-reduced-motion</code> feature, which
           disables almost all the animations when set to <code>reduce</code>.
