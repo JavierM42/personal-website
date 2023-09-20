@@ -44,8 +44,8 @@ export const DevNotesSection: FC = () => {
           />
         </div>
       </div>
-      <div className="flex justify-center w-full h-24 gap-8 mt-12">
-        <DevNote className="w-48 rotate-[3deg] h-fit">
+      <div className="flex justify-center w-full h-24 gap-10 mt-12">
+        <DevNote className="w-48 rotate-[-2deg] h-fit -mt-5">
           Tech stack:
           <ul className="pl-4 list-disc">
             <li>React</li>
@@ -58,10 +58,17 @@ export const DevNotesSection: FC = () => {
             <li>Hosted on Vercel</li>
           </ul>
         </DevNote>
+        <DevNote className="w-64 rotate-[1deg] h-fit">
+          NextJS does most of the heavy lifting regarding performance. As of my
+          last check, Lighthouse performance scores were 99 on desktop and 85 on
+          mobile. The latter is not ideal and definitely something to improve
+          upon.
+        </DevNote>
         <DevNote className="w-64 rotate-[-3deg] h-fit -mt-4">
           I'm a fan of motion animations, but not everyone is. This website
           supports the <code>prefers-reduced-motion</code> feature, which
-          disables almost all the animations when set to <code>reduce</code>.
+          disables all but some opacity-based animations when set to{" "}
+          <code>reduce</code>.
         </DevNote>
       </div>
     </>
