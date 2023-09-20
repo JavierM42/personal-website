@@ -4,6 +4,7 @@ import { FC } from "react";
 import DarkModeToggle from "../DarkModeToggle";
 import Switch from "../Switch";
 import { DevNote } from "../dev_notes/DevNote";
+import Link from "next/link";
 
 export const NavBar: FC = () => {
   const router = useRouter();
@@ -34,24 +35,16 @@ export const NavBar: FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <Switch
-              tooltip="Hide dev notes"
-              tooltipPlacement="left"
-              isOn={router.query.notes === "true"}
-              onClick={() => {
-                router.push(
-                  {
-                    ...router,
-                    query: {
-                      ...router.query,
-                      notes: router.query.notes === "true" ? false : true,
-                    },
-                  },
-                  undefined,
-                  { scroll: false }
-                );
-              }}
-            />
+            <Link
+              href={`?notes=${router.query.notes !== "true"}`}
+              scroll={false}
+            >
+              <Switch
+                tooltip="Hide dev notes"
+                tooltipPlacement="left"
+                isOn={router.query.notes === "true"}
+              />
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

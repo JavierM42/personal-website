@@ -3,9 +3,9 @@ import { FC } from "react";
 import Switch from "../Switch";
 import { DevNote } from "./DevNote";
 import { useDevNotesState } from "./useDevNotesState";
+import Link from "next/link";
 
 export const DevNotesSection: FC = () => {
-  const router = useRouter();
   const showDevNotes = useDevNotesState();
 
   return (
@@ -24,24 +24,13 @@ export const DevNotesSection: FC = () => {
           Toggle the switch to show floating developer notes.
         </p>
         <div className="justify-center hidden w-full lg:flex">
-          <Switch
-            tooltip={showDevNotes ? "Hide dev notes" : "Show dev notes"}
-            tooltipPlacement="right"
-            isOn={showDevNotes}
-            onClick={() => {
-              router.push(
-                {
-                  ...router,
-                  query: {
-                    ...router.query,
-                    notes: router.query.notes === "true" ? false : true,
-                  },
-                },
-                undefined,
-                { scroll: false }
-              );
-            }}
-          />
+          <Link href={`?notes=${!showDevNotes}`} scroll={false}>
+            <Switch
+              tooltip={showDevNotes ? "Hide dev notes" : "Show dev notes"}
+              tooltipPlacement="right"
+              isOn={showDevNotes}
+            />
+          </Link>
         </div>
       </div>
       <div className="flex justify-center w-full h-24 gap-10 mt-12">
