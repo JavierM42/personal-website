@@ -60,9 +60,9 @@ export const DevNotesSection: FC = () => {
         </DevNote>
         <DevNote className="w-64 rotate-[1deg] h-fit">
           NextJS does most of the heavy lifting regarding performance. As of my
-          last check, Lighthouse performance scores were 99 on desktop and 85 on
-          mobile. The latter is not ideal and definitely something to improve
-          upon.
+          last check, Lighthouse page load performance scores were 99 on desktop
+          and 85 on mobile. The latter is not ideal and definitely something to
+          improve upon.
         </DevNote>
         <DevNote className="w-64 rotate-[-3deg] h-fit -mt-4">
           I'm a fan of motion animations, but not everyone is. This website
