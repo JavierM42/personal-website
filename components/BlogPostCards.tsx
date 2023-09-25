@@ -36,6 +36,12 @@ export default function BlogPostCards() {
       <ol
         ref={containerRef}
         className="w-screen [&>*]:align-top [&>*]:inline-block overflow-x-auto pb-8 snap-x snap-mandatory ml-[50%] -translate-x-1/2 whitespace-nowrap px-[calc(50vw-50%)] scrollbar-none"
+        style={{
+          WebkitMaskImage:
+            "linear-gradient(to right, rgba(0 0 0/0), black 12%, black 88%, rgba(0 0 0 /0) 100%)",
+          maskImage:
+            "linear-gradient(to right, rgba(0 0 0/0), black 12%, black 88%, rgba(0 0 0 /0) 100%)",
+        }}
       >
         <BlogPostCard
           illustration={<Leverage />}
