@@ -8,10 +8,11 @@ import {
 import { useEffect, useRef, useState } from "react";
 import ChevronRight from "../../public/chevron-right.svg";
 import Reset from "../../assets/reset.svg";
-import { Placement } from "@floating-ui/react";
+import { Placement, useMergeRefs } from "@floating-ui/react";
 import { SquareButton } from "../SquareButton";
 import { RubikFavicon } from "./RubikFavicon";
 import { DevNote } from "../dev_notes/DevNote";
+import { useSwipeable } from "react-swipeable";
 
 type CubeState = Record<Face, Record<Tile, FaceColor>>;
 
@@ -806,6 +807,51 @@ export default function RubikCube() {
     }
   }, [pendingMoves, isTurning]);
 
+  const swipeableBoxRef = useRef<HTMLDivElement>(null);
+  const { ref: swipeableRef, ...swipeHandlers } = useSwipeable({
+    onSwiped: ({ dir, initial }) => {
+      const box = swipeableBoxRef.current;
+      if (box) {
+        const boxRect = box.getBoundingClientRect();
+        const xLayer = Math.floor(
+          ((initial[0] - boxRect.left) / boxRect.width) * 3
+        );
+        const yLayer = Math.floor(
+          ((initial[1] - boxRect.top) / boxRect.height) * 3
+        );
+        const layerIndex = ["Up", "Down"].includes(dir) ? xLayer : yLayer;
+        // Record of direction, layer that returns the appropriate move
+        const MOVES = {
+          Up: [
+            { layer: "L", direction: "counterclockwise" },
+            { layer: "M", direction: "counterclockwise" },
+            { layer: "R", direction: "clockwise" },
+          ],
+          Down: [
+            { layer: "L", direction: "clockwise" },
+            { layer: "M", direction: "clockwise" },
+            { layer: "R", direction: "counterclockwise" },
+          ],
+          Left: [
+            { layer: "U", direction: "clockwise" },
+            { layer: "E", direction: "counterclockwise" },
+            { layer: "D", direction: "counterclockwise" },
+          ],
+          Right: [
+            { layer: "U", direction: "counterclockwise" },
+            { layer: "E", direction: "clockwise" },
+            { layer: "D", direction: "clockwise" },
+          ],
+        } as const;
+        const { layer, direction } = MOVES[dir][layerIndex];
+        queueMove(layer, direction);
+      }
+    },
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
+  const combinedSwipeableRef = useMergeRefs([swipeableRef, swipeableBoxRef]);
+
   return (
     <>
       <RubikFavicon face={cubeState.front} />
@@ -814,7 +860,7 @@ export default function RubikCube() {
           There are no 3D graphics on the cube, it's all 2D transforms on inline
           SVG paths. And lots of math.
         </DevNote>
-        <DevNote className="absolute w-72 top-64 -left-56 rotate-[3deg]">
+        <DevNote className="absolute w-72 top-40 -left-56 rotate-[3deg]">
           There's a small mistake on the cube state tracking which doesn't match
           how a real cube works. Did you notice it?
           <hr className="w-full h-px my-1 border-outline/30" />
@@ -824,6 +870,11 @@ export default function RubikCube() {
             face in the upright orientation.
           </span>{" "}
           (highlight the invisible text to read it).
+        </DevNote>
+        <DevNote className="absolute left-5 w-72 top-[372px] rotate-[1deg]">
+          You can swipe to perform moves! Native JS support for gestures isn't
+          great yet, so I'm using <code>react-swipeable</code> on an invisible
+          container on top of the SVG graphics.
         </DevNote>
         <motion.svg
           stroke="currentColor"
@@ -1029,6 +1080,12 @@ export default function RubikCube() {
             </SquareButton>
           ) : undefined}
         </AnimatePresence>
+        {/* swipe box */}
+        <div
+          className="w-[60%] h-[60%] absolute left-[20%] top-[20%]"
+          ref={combinedSwipeableRef}
+          {...swipeHandlers}
+        />
       </div>
     </>
   );
