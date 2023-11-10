@@ -5,11 +5,11 @@ import WorkExperienceCard from "../WorkExperienceCard";
 
 const EmeritusCard = ({
   isExpanded,
-  isThumbnail,
+  isOtherExpanded,
   onExpand,
 }: {
   isExpanded: boolean;
-  isThumbnail: boolean;
+  isOtherExpanded: boolean;
   onExpand: () => void;
 }) => (
   <WorkExperienceCard
@@ -83,7 +83,7 @@ const EmeritusCard = ({
       },
     ]}
     isExpanded={isExpanded}
-    isThumbnail={isThumbnail}
+    isThumbnail={isOtherExpanded}
     onExpand={() => {
       updateTheme({ primary: "#006634" }, "class");
       onExpand();

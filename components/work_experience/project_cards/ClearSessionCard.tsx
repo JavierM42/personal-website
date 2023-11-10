@@ -5,11 +5,11 @@ import WorkExperienceCard from "../WorkExperienceCard";
 
 const ClearSessionCard = ({
   isExpanded,
-  isThumbnail,
+  isOtherExpanded,
   onExpand,
 }: {
   isExpanded: boolean;
-  isThumbnail: boolean;
+  isOtherExpanded: boolean;
   onExpand: () => void;
 }) => (
   <WorkExperienceCard
@@ -84,7 +84,7 @@ const ClearSessionCard = ({
       },
     ]}
     isExpanded={isExpanded}
-    isThumbnail={isThumbnail}
+    isThumbnail={isOtherExpanded}
     onExpand={() => {
       updateTheme({ primary: "#2972f1" }, "class");
       onExpand();

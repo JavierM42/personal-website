@@ -6,11 +6,11 @@ import WorkExperienceCard from "../WorkExperienceCard";
 
 const PrismaCard = ({
   isExpanded,
-  isThumbnail,
+  isOtherExpanded,
   onExpand,
 }: {
   isExpanded: boolean;
-  isThumbnail: boolean;
+  isOtherExpanded: boolean;
   onExpand: () => void;
 }) => (
   <WorkExperienceCard
@@ -95,7 +95,7 @@ const PrismaCard = ({
       },
     ]}
     isExpanded={isExpanded}
-    isThumbnail={isThumbnail}
+    isThumbnail={isOtherExpanded}
     onExpand={() => {
       updateTheme({ primary: "#6f22f8" }, "class");
       onExpand();

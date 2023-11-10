@@ -6,11 +6,11 @@ import WorkExperienceCard from "../WorkExperienceCard";
 
 const RetroAllyCard = ({
   isExpanded,
-  isThumbnail,
+  isOtherExpanded,
   onExpand,
 }: {
   isExpanded: boolean;
-  isThumbnail: boolean;
+  isOtherExpanded: boolean;
   onExpand: () => void;
 }) => (
   <WorkExperienceCard
@@ -88,7 +88,7 @@ const RetroAllyCard = ({
       },
     ]}
     isExpanded={isExpanded}
-    isThumbnail={isThumbnail}
+    isThumbnail={isOtherExpanded}
     onExpand={() => {
       updateTheme({ primary: "#ff7645" }, "class");
       onExpand();
