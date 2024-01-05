@@ -1,11 +1,12 @@
+import { useCallback, useState } from "react";
 import { updateTheme } from "tailwind-material-colors/lib/updateTheme.esm";
 import { DevNote } from "../dev_notes/DevNote";
 import ExpandableGridList from "./ExpandableGridList";
+import MoreButton from "./MoreButton";
 import ClearSessionCard from "./project_cards/ClearSessionCard";
 import EmeritusCard from "./project_cards/EmeritusCard";
 import PrismaCard from "./project_cards/PrismaCard";
 import RetroAllyCard from "./project_cards/RetroAllyCard";
-import { useCallback, useState } from "react";
 
 const resetTheme = () => updateTheme({ primary: "#416900" }, "class");
 
@@ -18,7 +19,7 @@ export default function WorkExperienceCards() {
   }, []);
 
   return (
-    <>
+    <div className="mb-32">
       <DevNote className="absolute w-64 top-40 -right-24 rotate-[6deg]">
         {isAnyCardExpanded ? (
           <>
@@ -44,11 +45,12 @@ export default function WorkExperienceCards() {
       </DevNote>
       <ExpandableGridList
         id="work-experience-cards"
-        className="mx-auto max-w-[calc(100vw-80px)] sm:max-w-[480px] lg:max-w-none lg:p-0 gap-12 mb-32"
+        className="mx-auto max-w-[calc(100vw-80px)] sm:max-w-[480px] lg:max-w-none lg:p-0 gap-12"
         items={[ClearSessionCard, PrismaCard, EmeritusCard, RetroAllyCard]}
         onExpand={() => setIsAnyCardExpanded(true)}
         onCollapseAll={onCollapseAll}
       />
-    </>
+      <MoreButton />
+    </div>
   );
 }
