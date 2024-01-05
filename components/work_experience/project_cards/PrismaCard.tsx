@@ -71,7 +71,7 @@ const PrismaCard = ({
       </>
     }
     className="shadow-purple/10 border-purple-container"
-    dates="2020 - 2022"
+    dates="October 2020 - September 2022"
     techs={[
       {
         name: "TypeScript",

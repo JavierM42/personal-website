@@ -69,7 +69,7 @@ const RetroAllyCard = ({
       </>
     }
     className="shadow-red/10 border-red-container"
-    dates="2019"
+    dates="April 2019 - September 2020"
     techs={[
       {
         name: "TailwindCSS",

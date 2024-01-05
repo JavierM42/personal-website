@@ -69,7 +69,7 @@ const EmeritusCard = ({
       </>
     }
     className="shadow-green/10 border-green-container"
-    dates="2019 - 2020"
+    dates="May 2019 - October 2020"
     techs={[
       {
         name: "Ruby",

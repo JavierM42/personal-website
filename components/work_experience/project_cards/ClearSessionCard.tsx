@@ -60,7 +60,7 @@ const ClearSessionCard = ({
       </>
     }
     className="shadow-blue/10 border-blue-container"
-    dates="2022 - 2023"
+    dates="November 2022 - August 2023"
     techs={[
       {
         name: "TypeScript",
