@@ -26,7 +26,7 @@ const OpenSourceCard: FC<Props> = ({
       <PerspectiveScrollCard y={rotateY}>
         <div
           className={classNames(
-            "flex flex-col shadow-xl rounded-2xl bg-surface overflow-clip",
+          "flex flex-col shadow-xl rounded-2xl bg-surface/40 overflow-clip",
             className
           )}
         >

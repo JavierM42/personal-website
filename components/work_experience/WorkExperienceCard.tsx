@@ -93,7 +93,7 @@ const WorkExperienceCard: FC<Props> = ({
           hoverGradientStops={hoverGradientStops}
           disabled={isExpanded}
           className={classNames(
-            "w-full h-full shadow-xl bg-surface rounded-3xl min-h-min min-w-0",
+            "w-full h-full shadow-xl bg-surface/40 rounded-3xl min-h-min min-w-0",
             !isExpanded && "cursor-pointer",
             className
           )}

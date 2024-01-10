@@ -114,7 +114,7 @@ const PerspectiveCard: FC<Props> = ({
               position: "absolute",
             }}
           >
-            <div className="w-full h-full bg-surface" />
+            <div className="w-full h-full" />
           </motion.div>
         </div>
       </motion.div>
