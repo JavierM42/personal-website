@@ -26,7 +26,7 @@ const Switch: FC<Props> = ({
           "rounded-full flex shadow-lg shadow-tertiary-container w-[72px] p-1 cursor-pointer",
           {
             "justify-end interactive-bg-tertiary": isOn,
-            "interactive-bg-surface hover:bg-tertiary-container active:bg-tertiary-container-press":
+            "interactive-bg-surface bg-opacity-70 hover:bg-tertiary-container/50 active:bg-tertiary-container-press/50":
               !isOn,
           }
         )}
