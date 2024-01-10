@@ -73,14 +73,14 @@ export default function Home() {
           <footer className="flex items-center justify-center w-full h-20 space-x-2 text-sm">
             <ExternalLink
               href="https://github.com/JavierM42"
-              className="flex items-center justify-center w-12 h-12 rounded-full text-primary hover:bg-primary-container-hover/30"
+              className="flex items-center justify-center w-12 h-12 transition-colors rounded-full text-primary hover:bg-surface/40"
               label="GitHub @JavierM42"
             >
               <GitHubLogo className="w-8 h-8" />
             </ExternalLink>
             <ExternalLink
               href="https://www.linkedin.com/in/javierm42/"
-              className="flex items-center justify-center w-12 h-12 rounded-full text-primary hover:bg-primary-container-hover/30"
+              className="flex items-center justify-center w-12 h-12 transition-colors rounded-full text-primary hover:bg-surface/40"
               label="LinkedIn /javierm42"
             >
               <LinkedInLogo className="w-6 h-6" />
