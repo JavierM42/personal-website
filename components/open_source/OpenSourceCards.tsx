@@ -11,8 +11,8 @@ export default function OpenSourceCards() {
         name="tailwind-material-colors"
         content="A TailwindCSS Plugin to generate dynamic color themes according to the Material Design guidelines."
         cta={<TryDynamicColor />}
-        stripClass="bg-gradient-to-r from-red-container to-green-container via-purple-container"
-        className="shadow-primary-container/40"
+        borderClass="bg-gradient-to-r from-red-container to-green-container via-purple-container"
+        className="shadow-purple-container/50 dark:shadow-purple/20"
       />
       <OpenSourceCard
         name="tailwind-material-surfaces"
@@ -27,7 +27,7 @@ export default function OpenSourceCards() {
             <GitHubLogo className="w-5 h-5" />
           </a>
         }
-        stripClass="bg-gradient-to-r to-primary-container-press from-primary"
+        borderClass="bg-gradient-to-r to-primary-container-press from-primary"
         className="shadow-primary/20"
       />
       <OpenSourceCard
@@ -43,7 +43,7 @@ export default function OpenSourceCards() {
             <GitHubLogo className="w-5 h-5" />
           </a>
         }
-        stripClass="bg-gradient-to-l from-tertiary-container-dark to-tertiary-container-light"
+        borderClass="bg-gradient-to-l from-tertiary-container-dark to-tertiary-container-light"
         className="shadow-tertiary/20"
       />
       <OpenSourceCard
@@ -66,7 +66,7 @@ export default function OpenSourceCards() {
             <GitHubLogo className="w-5 h-5" />
           </a>
         }
-        stripClass="bg-gradient-to-r from-outline to-outline/20"
+        borderClass="bg-gradient-to-r from-outline to-tertiary-container"
         className="shadow-outline/20"
         notes={
           <DevNote className="absolute w-72 top-20 -right-14 rotate-[4deg]">
@@ -95,13 +95,13 @@ export default function OpenSourceCards() {
             <GitHubLogo className="w-5 h-5" />
           </a>
         }
-        stripClass="bg-gradient-to-l to-secondary-container from-primary/40"
+        borderClass="bg-gradient-to-l to-secondary/60 from-primary/40"
         className="shadow-secondary-container/80"
       />
       <OpenSourceCard
         name="MTGBarato"
         content="I built a simple web app to help my local trading card game community."
-        stripClass="bg-[#f6ad55] dark:bg-[#88501d]"
+        borderClass="bg-[#f6ad55] dark:bg-[#88501d]"
         className="shadow-[#f6ad55]/20"
         cta={
           <a
