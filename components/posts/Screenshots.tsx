@@ -99,8 +99,9 @@ export default function Screenshots() {
     <div className="relative z-10 w-48 h-48">
       <svg
         stroke="currentColor"
+        fill="none"
         viewBox="0 0 100 100"
-        className="absolute inset-0 stroke-primary fill-primary-container"
+        className="absolute inset-0 stroke-primary"
         strokeWidth="1.5"
         strokeLinejoin="round"
         strokeLinecap="round"
@@ -109,20 +110,28 @@ export default function Screenshots() {
           <clipPath id="frame">
             <polygon points="8,26 72,26 72,74, 8,74" />
           </clipPath>
+          <clipPath id="shutter">
+            <path d="M 75 20 l 0 -6 l 19 0 l 0 6 z" />
+          </clipPath>
         </defs>
         {/* shutter */}
-        <motion.path
-          d="M 77 20 l 0 -4 l 15 0 l 0 4"
-          fill="none"
-          animate={shutter}
-        />
+        <g clipPath="url(#shutter)">
+          <motion.path
+            d="M 77 20 l 0 -4 l 15 0 l 0 4"
+            fill="none"
+            animate={shutter}
+          />
+        </g>
         {/* camera */}
-        <path d="M 2 80 l 96 0 l 0 -60 l -96 0 z" className="fill-surface" />
+        <path d="M 2 80 l 96 0 l 0 -60 l -96 0 z" />
         {/* controls */}
         <circle r="8" cx="85" cy="60" fill="none" />
         <circle r="4" cx="85" cy="60" fill="none" />
         {/* picture */}
-        <polygon points="8,26 72,26 72,74, 8,74" />
+        <polygon
+          points="8,26 72,26 72,74, 8,74"
+          className="fill-primary-container"
+        />
         <motion.g animate={picture}>
           <path
             d="M 8 74 l 0 -14 l 15 -15 l 10 10 l 5 -5 l 24 24"
@@ -140,7 +149,6 @@ export default function Screenshots() {
             points="8,50 72,50 72,74, 8,74"
             className="fill-surface"
             animate={bottom}
-            mask="url(#mask)"
           />
         </g>
         <polygon points="8,26 72,26 72,74, 8,74" fill="none" />
