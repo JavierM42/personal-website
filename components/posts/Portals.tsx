@@ -67,30 +67,38 @@ export default function Portals() {
         strokeLinejoin="round"
         strokeLinecap="round"
       >
+        <defs>
+          <clipPath id="top">
+            <path
+              d="M 90 5 a 4 20 0 0 1 0 40 l -50 0 l 0 -40 z"
+              strokeWidth="0"
+            />
+          </clipPath>
+          <clipPath id="bottom">
+            <path
+              d="M 10 55 a 4 20 0 0 0 0 40 l 50 0 l 0 -40 z"
+              strokeWidth="0"
+            />
+          </clipPath>
+        </defs>
         <motion.ellipse cx="90" cy="25" rx="4" ry="20" fill="none" />
-        <motion.polygon
-          points="50,10 80,10 80,40 50,40"
-          className="fill-primary-container"
-          animate={cube1}
-        />
-        <path
-          d="M 90 5 a 4 20 0 0 1 0 40 l 20 0 l 0 -40 z"
-          strokeWidth="0"
-          className="fill-surface"
-        />
+        <g clip-path="url(#top)">
+          <motion.polygon
+            points="50,10 80,10 80,40 50,40"
+            className="fill-primary-container"
+            animate={cube1}
+          />
+        </g>
         <path d="M 90 5 a 4 20 0 0 1 0 40" fill="none" />
 
         <motion.ellipse cx="10" cy="75" rx="4" ry="20" fill="none" />
-        <motion.polygon
-          points="20,60 50,60 50,90 20,90"
-          className="fill-primary-container"
-          animate={cube2}
-        />
-        <path
-          d="M 10 55 a 4 20 0 0 0 0 40 l -20 0 l 0 -40 z"
-          strokeWidth="0"
-          className="fill-surface"
-        />
+        <g clip-path="url(#bottom)">
+          <motion.polygon
+            points="20,60 50,60 50,90 20,90"
+            className="fill-primary-container"
+            animate={cube2}
+          />
+        </g>
         <path d="M 10 55 a 4 20 0 0 0 0 40" fill="none" />
       </svg>
     </div>
