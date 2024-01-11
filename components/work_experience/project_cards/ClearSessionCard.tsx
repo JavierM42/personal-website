@@ -64,22 +64,22 @@ const ClearSessionCard = ({
     techs={[
       {
         name: "TypeScript",
-        placementInitial: { top: 200, left: 50, rotate: 0 },
+        placementInitial: { top: 105, left: -20, rotate: 0 },
         placement: { top: 135, left: -30, rotate: 5 },
       },
       {
         name: "React",
-        placementInitial: { top: 200, left: 50, rotate: 0 },
+        placementInitial: { top: 135, left: -30, rotate: 0 },
         placement: { top: 165, left: -50, rotate: -15 },
       },
       {
         name: "NextJS",
-        placementInitial: { top: 200, left: 50, rotate: 0 },
+        placementInitial: { top: 165, left: -50, rotate: 0 },
         placement: { top: 190, left: -30, rotate: -4 },
       },
       {
         name: "TailwindCSS",
-        placementInitial: { top: 200, left: 50, rotate: 0 },
+        placementInitial: { top: 190, left: -30, rotate: 0 },
         placement: { top: 215, left: -50, rotate: 6 },
       },
     ]}

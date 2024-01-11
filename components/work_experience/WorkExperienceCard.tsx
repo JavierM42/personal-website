@@ -136,7 +136,7 @@ const WorkExperienceCard: FC<Props> = ({
                                 opacity: 1,
                                 ...tech.placement,
                                 transition: {
-                                  delay: shouldReduceMotion ? 0 : index * 0.08,
+                                  delay: shouldReduceMotion ? 0 : index * 0.2,
                                   duration: shouldReduceMotion ? 0 : 0.4,
                                   ease: "easeOut",
                                 },

@@ -73,12 +73,12 @@ const EmeritusCard = ({
     techs={[
       {
         name: "Ruby",
-        placementInitial: { bottom: 50, left: 250, rotate: 0 },
+        placementInitial: { bottom: -30, left: 180, rotate: 0 },
         placement: { bottom: -30, left: 210, rotate: 28 },
       },
       {
         name: "Rails",
-        placementInitial: { bottom: 50, left: 250, rotate: 0 },
+        placementInitial: { bottom: -30, left: 210, rotate: 0 },
         placement: { bottom: -32, left: 245, rotate: 6 },
       },
     ]}
