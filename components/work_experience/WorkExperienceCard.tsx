@@ -162,7 +162,7 @@ const WorkExperienceCard: FC<Props> = ({
             {!isExpanded && (
               <button
                 className={classNames(
-                  "block lg:hidden absolute z-20 bottom-6 interactive-bg-surface shadow-lg px-4 py-2 rounded-xl",
+                  "block lg:hidden absolute z-20 bottom-6 interactive-bg-surface shadow-lg px-4 py-2 rounded-xl bg-opacity-80",
                   className,
                   initialPerspective.y < 0 ? "left-6" : "right-6"
                 )}
