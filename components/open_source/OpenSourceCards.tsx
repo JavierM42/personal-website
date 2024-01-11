@@ -13,6 +13,16 @@ export default function OpenSourceCards() {
         cta={<TryDynamicColor />}
         borderClass="bg-gradient-to-r from-red-container to-green-container via-purple-container"
         className="shadow-purple-container/50 dark:shadow-purple/20"
+        notes={
+          <DevNote className="absolute w-72 top-52 right-64 rotate-[-4deg]">
+            Rounded gradient borders on translucent containers re quite tricky,
+            especially when the color stops are CSS variables.
+            <p className="pt-2">
+              I couldn't find any solutions online but eventually I came up with
+              this one, leveraging the CSS <code>mask</code> property.
+            </p>
+          </DevNote>
+        }
       />
       <OpenSourceCard
         name="tailwind-material-surfaces"
