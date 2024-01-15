@@ -82,7 +82,7 @@ export default function Portals() {
           </clipPath>
         </defs>
         <motion.ellipse cx="90" cy="25" rx="4" ry="20" fill="none" />
-        <g clip-path="url(#top)">
+        <g clipPath="url(#top)">
           <motion.polygon
             points="50,10 80,10 80,40 50,40"
             className="fill-primary-container"
@@ -92,7 +92,7 @@ export default function Portals() {
         <path d="M 90 5 a 4 20 0 0 1 0 40" fill="none" />
 
         <motion.ellipse cx="10" cy="75" rx="4" ry="20" fill="none" />
-        <g clip-path="url(#bottom)">
+        <g clipPath="url(#bottom)">
           <motion.polygon
             points="20,60 50,60 50,90 20,90"
             className="fill-primary-container"
