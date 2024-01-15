@@ -18,8 +18,8 @@ export default function OpenSourceCards() {
             Rounded gradient borders on translucent containers re quite tricky,
             especially when the color stops are CSS variables.
             <p className="pt-2">
-              I couldn't find any solutions online but eventually I came up with
-              this one, leveraging the CSS <code>mask</code> property.
+              This solution uses a pseudoelement and the CSS <code>mask</code>{" "}
+              property.
             </p>
           </DevNote>
         }
