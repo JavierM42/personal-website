@@ -71,3 +71,20 @@ aside {
 code {
   @apply rounded bg-on-surface/10;
 }
+
+.gradient-border {
+  position: relative;
+  border-radius: var(--border-radius);
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  inset: 0;
+  border-radius: var(--border-radius);
+  padding: var(--border-width);
+  background: var(--border-gradient);
+  mask: linear-gradient(#fff 0 0) content-box subtract,
+    linear-gradient(#fff 0 0);
+}
