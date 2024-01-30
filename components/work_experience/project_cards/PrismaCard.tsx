@@ -75,22 +75,22 @@ const PrismaCard = ({
     techs={[
       {
         name: "TypeScript",
-        placementInitial: { top: 50, right: 50, rotate: 0 },
+        placementInitial: { top: 20, right: -30, rotate: 0 },
         placement: { top: -28, right: 5, rotate: -5 },
       },
       {
         name: "TailwindCSS",
-        placementInitial: { top: 50, right: 50, rotate: 0 },
+        placementInitial: { top: 20, right: -30, rotate: 0 },
         placement: { top: -50, right: -35, rotate: -15 },
       },
       {
         name: "React",
-        placementInitial: { top: 50, right: 50, rotate: 0 },
+        placementInitial: { top: 20, right: -30, rotate: 0 },
         placement: { top: -15, right: -59, rotate: 12 },
       },
       {
         name: "NextJS",
-        placementInitial: { top: 50, right: 50, rotate: 0 },
+        placementInitial: { top: 20, right: -30, rotate: 0 },
         placement: { top: 60, right: -30, rotate: 20 },
       },
     ]}

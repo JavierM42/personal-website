@@ -11,9 +11,18 @@ export default function OpenSourceCards() {
         name="tailwind-material-colors"
         content="A TailwindCSS Plugin to generate dynamic color themes according to the Material Design guidelines."
         cta={<TryDynamicColor />}
-        stripClass="bg-gradient-to-r from-red-container to-green-container via-purple-container"
-        className="shadow-primary-container/40"
-        rotateY={3}
+        borderClass="from-red-container to-green-container via-purple/20"
+        className="shadow-purple-container/50 dark:shadow-purple/20"
+        notes={
+          <DevNote className="absolute w-72 top-52 right-64 rotate-[-4deg]">
+            Rounded gradient borders on translucent containers re quite tricky,
+            especially when the color stops are CSS variables.
+            <p className="pt-2">
+              This solution uses a pseudoelement and the CSS <code>mask</code>{" "}
+              property.
+            </p>
+          </DevNote>
+        }
       />
       <OpenSourceCard
         name="tailwind-material-surfaces"
@@ -28,9 +37,8 @@ export default function OpenSourceCards() {
             <GitHubLogo className="w-5 h-5" />
           </a>
         }
-        stripClass="bg-gradient-to-r to-primary-container-press from-primary"
+        borderClass="to-primary-container-press from-primary"
         className="shadow-primary/20"
-        rotateY={-3}
       />
       <OpenSourceCard
         name="tailwind-mode-aware-colors"
@@ -45,9 +53,8 @@ export default function OpenSourceCards() {
             <GitHubLogo className="w-5 h-5" />
           </a>
         }
-        stripClass="bg-gradient-to-l from-tertiary-container-dark to-tertiary-container-light"
+        borderClass="to-tertiary-container-dark from-tertiary-container-light"
         className="shadow-tertiary/20"
-        rotateY={5}
       />
       <OpenSourceCard
         name={
@@ -69,9 +76,8 @@ export default function OpenSourceCards() {
             <GitHubLogo className="w-5 h-5" />
           </a>
         }
-        stripClass="bg-gradient-to-r from-outline to-outline/20"
+        borderClass="from-outline to-tertiary-container"
         className="shadow-outline/20"
-        rotateY={-5}
         notes={
           <DevNote className="absolute w-72 top-20 -right-14 rotate-[4deg]">
             Too often I needed an input field that wraps when it gets to a
@@ -99,14 +105,13 @@ export default function OpenSourceCards() {
             <GitHubLogo className="w-5 h-5" />
           </a>
         }
-        stripClass="bg-gradient-to-l to-secondary-container from-primary/40"
+        borderClass="from-secondary/60 to-primary/40"
         className="shadow-secondary-container/80"
-        rotateY={3}
       />
       <OpenSourceCard
         name="MTGBarato"
         content="I built a simple web app to help my local trading card game community."
-        stripClass="bg-[#f6ad55] dark:bg-[#88501d]"
+        borderClass="from-[#f6ad55] dark:from-bg-[#88501d] to-[#f6ad55] dark:to-bg-[#88501d]"
         className="shadow-[#f6ad55]/20"
         cta={
           <a
@@ -118,7 +123,6 @@ export default function OpenSourceCards() {
             <GitHubLogo className="w-5 h-5" />
           </a>
         }
-        rotateY={-3}
       />
     </ol>
   );

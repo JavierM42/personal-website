@@ -73,17 +73,17 @@ const RetroAllyCard = ({
     techs={[
       {
         name: "TailwindCSS",
-        placementInitial: { bottom: 50, right: 30, rotate: 0 },
+        placementInitial: { bottom: 20, right: -30, rotate: 0 },
         placement: { bottom: 70, right: -30, rotate: -18 },
       },
       {
         name: "Vue",
-        placementInitial: { bottom: 50, right: 30, rotate: 0 },
+        placementInitial: { bottom: 70, right: -30, rotate: 0 },
         placement: { bottom: 100, right: -40, rotate: -10 },
       },
       {
         name: "Elixir",
-        placementInitial: { bottom: 50, right: 30, rotate: 0 },
+        placementInitial: { bottom: 100, right: -40, rotate: 0 },
         placement: { bottom: 134, right: -30, rotate: -8 },
       },
     ]}

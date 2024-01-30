@@ -10,7 +10,7 @@ export const DevNotesSection: FC = () => {
 
   return (
     <>
-      <div className="relative z-10 max-w-md px-6 pt-3 pb-6 mx-auto shadow-xl shadow-tertiary-container bg-surface rounded-xl">
+      <div className="relative z-10 max-w-md px-6 pt-3 pb-6 mx-auto shadow-xl shadow-tertiary-container bg-surface/50 rounded-xl">
         <p>
           I had a lot of fun building this website and getting to use a few
           techniques I've learned through the years, as well as some new browser
