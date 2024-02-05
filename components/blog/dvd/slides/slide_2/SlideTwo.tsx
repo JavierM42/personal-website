@@ -6,9 +6,8 @@ export default function SlideTwo() {
   return (
     <Slide className="flex flex-col items-center justify-center gap-4">
       <Paragraph>
-        I hope the retro monitor effect you just saw wasn't too much of an
-        eyesore. No more of that, I promise. It was just a fun little extra for
-        the title slide.
+        I hope the retro monitor effect wasn't too hard on your eyes. No more of
+        that, I promise. It was just a fun little extra for the title slide.
       </Paragraph>
       <Paragraph>
         The story of this article starts with some random conversation at the

@@ -12,7 +12,7 @@ export default function SlideThree() {
         territory.
       </Paragraph>
       <Paragraph>
-        My first thought was that I would need Javascript to figure out when the
+        My first thought was that Javascript was required to figure out when the
         collisions with the edges of the screen would happen, otherwise I would
         not be able to change the color.
       </Paragraph>
