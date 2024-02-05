@@ -1,3 +1,4 @@
+import ChevronRight from "../../public/chevron-right.svg";
 import classNames from "classnames";
 import Slide from "../../components/blog/dvd/Slide";
 import styles from "../../components/blog/dvd/dvd.module.css";
@@ -16,9 +17,12 @@ import SlideEleven from "../../components/blog/dvd/slides/slide_11/SlideEleven";
 import SlideTwelve from "../../components/blog/dvd/slides/slide_12/SlideTwelve";
 import SlideThirteen from "../../components/blog/dvd/slides/slide_13/SlideThirteen";
 import { useRef, useState } from "react";
+import { SquareButton } from "../../components/SquareButton";
+import { useWindowSize } from "@uidotdev/usehooks";
 
 export default function DvdBlogPost() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { height: windowHeight } = useWindowSize();
 
   const [finalY, setFinalY] = useState<number>();
 
@@ -36,8 +40,7 @@ export default function DvdBlogPost() {
           <NavBar />
         </header>
 
-        {/* TODO next/prev slide buttons */}
-        <main>
+        <main className="max-w-4xl mx-auto">
           <SlideOne />
           <SlideTwo />
           {/* TODO Animate the five minutes later into the other one, or add a spongebob reference */}
@@ -57,6 +60,34 @@ export default function DvdBlogPost() {
             https://aleclownes.com/2017/02/01/crt-display.html
           </Slide>
         </main>
+        <div className="fixed space-y-10 -translate-y-1/2 right-12 top-1/2">
+          <SquareButton
+            tooltip="Previous slide"
+            tooltipPlacement="right"
+            onClick={() =>
+              containerRef.current?.scrollBy({
+                top: -(windowHeight || 0),
+                behavior: "smooth",
+              })
+            }
+            label="Previous slide"
+          >
+            <ChevronRight style={{ transform: `rotate(-90deg)` }} />
+          </SquareButton>
+          <SquareButton
+            tooltip="Next slide"
+            tooltipPlacement="right"
+            onClick={() =>
+              containerRef.current?.scrollBy({
+                top: windowHeight || 0,
+                behavior: "smooth",
+              })
+            }
+            label="Next slide"
+          >
+            <ChevronRight style={{ transform: `rotate(90deg)` }} />
+          </SquareButton>
+        </div>
       </div>
     </>
   );

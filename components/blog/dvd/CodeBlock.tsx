@@ -24,5 +24,6 @@ export default function CodeBlock({
       </pre>
       {!isLast && <hr className="w-full h-px border-outline/20" />}
     </div>
+    // TODO code color
   );
 }
