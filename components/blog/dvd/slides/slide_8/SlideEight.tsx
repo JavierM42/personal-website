@@ -13,7 +13,7 @@ export default function SlideEight() {
       <Paragraph inCode>
         First, define keyframes to change color at regular intervals, five of
         them in this case. I'm using equispaced hue values on the HSL color
-        spectrum. later).
+        spectrum.
       </Paragraph>
       <CodeBlock>
         {`@keyframes `}

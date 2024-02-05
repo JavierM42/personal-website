@@ -7,7 +7,7 @@ export default function SlideEleven() {
     <Slide className="flex flex-col items-center justify-center">
       <Paragraph>
         Thing is... we don't need smooth interpolation, we're using{" "}
-        <code>step-start</code> timing!
+        <code>step-start</code> timing anyway.
       </Paragraph>
       <CodeBlock isFirst isLast>
         {`@keyframes `}
@@ -38,7 +38,7 @@ export default function SlideEleven() {
         {`: hsl(`}
         <span className="text-primary-container-light">3</span>
         {`); }
-}`}
+}\n\n`}
         {`@keyframes `}
         <span className="text-primary-container-light">colorY</span>
         {` {
@@ -131,7 +131,7 @@ export default function SlideEleven() {
       <Paragraph>
         There's a total of <code>5x5=25</code> possible colors, equispaced hue
         values ranging from <code>0deg</code> when <code>--color-x</code> and{" "}
-        <code>--color-y</code> are both <code>0</code> to <code>345.6deg</code>{" "}
+        <code>--color-y</code> are both <code>0</code>, to <code>345.6deg</code>{" "}
         when they're both <code>4</code>.
       </Paragraph>
       <Paragraph>

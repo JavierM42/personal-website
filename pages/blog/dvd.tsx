@@ -93,3 +93,5 @@ export default function DvdBlogPost() {
 }
 // TODO date
 // TODO page title
+
+// TODO responsive

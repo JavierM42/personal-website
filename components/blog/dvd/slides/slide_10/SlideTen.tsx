@@ -17,7 +17,8 @@ export default function SlideTen() {
   `}
         <span className="text-purple-dark">width</span>
         {": calc(var("}
-        <span className="text-primary-container-light">--width</span>{" "}
+        <span className="text-primary-container-light">--width</span>
+        {") "}
         <span className="text-purple-dark">* </span>
         <span className="text-primary-container-light">1%</span>
         {");\n  "}
