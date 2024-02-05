@@ -48,8 +48,8 @@ export default function SlideNine() {
       </CodeBlock>
       <Paragraph inCode>
         Then we just need to add a new animation with the appropriate duration
-        and the <code>step-start</code> timing function so the values are not
-        interpolated.
+        and the <code>step-start</code> timing function so the value "jumps"
+        once every <code>--duration-x</code>.
       </Paragraph>
       <CodeBlock isLast>
         {`.logo {
