@@ -16,13 +16,17 @@ export default function SlideSix() {
         {": "}
         <span className="text-primary-container-light">320</span>
         {"; "}
-        <span className="text-outline">/* no units! */</span>
+        <span className="text-outline">
+          /* no units so we can do division */
+        </span>
         {`\n  `}
         <span className="text-purple-dark">--container-h</span>
         {": "}
         <span className="text-primary-container-light">180</span>
         {"; "}
-        <span className="text-outline">/* no units! */</span>
+        <span className="text-outline">
+          /* no units so we can do division */
+        </span>
         {`\n  `}
         <span className="text-purple-dark">--logo-w</span>
         {": "}
