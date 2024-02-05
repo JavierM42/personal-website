@@ -15,8 +15,13 @@ import SlideTen from "../../components/blog/dvd/slides/slide_10/SlideTen";
 import SlideEleven from "../../components/blog/dvd/slides/slide_11/SlideEleven";
 import SlideTwelve from "../../components/blog/dvd/slides/slide_12/SlideTwelve";
 import SlideThirteen from "../../components/blog/dvd/slides/slide_13/SlideThirteen";
+import { useRef, useState } from "react";
 
 export default function DvdBlogPost() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const [finalY, setFinalY] = useState<number>();
+
   return (
     <>
       <div className="fixed inset-0 bg-gradient-to-br from-primary-container to-tertiary-container -z-1 dark:from-primary-container/40 dark:to-tertiary-container/40" />
@@ -25,6 +30,7 @@ export default function DvdBlogPost() {
           "relative w-full h-screen px-4 overflow-auto leading-loose snap-y snap-mandatory text-on-background",
           styles.variables
         )}
+        ref={containerRef}
       >
         <header>
           <NavBar />
@@ -36,8 +42,8 @@ export default function DvdBlogPost() {
           <SlideTwo />
           {/* TODO Animate the five minutes later into the other one, or add a spongebob reference */}
           <SlideThree />
-          <SlideFour />
-          <SlideFive />
+          <SlideFour containerRef={containerRef} finalY={finalY} />
+          <SlideFive containerRef={containerRef} setFinalY={setFinalY} />
           <SlideSix />
           <SlideSeven />
           <SlideEight />
