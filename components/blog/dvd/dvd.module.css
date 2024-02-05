@@ -1,0 +1,129 @@
+.variables {
+  --container-width: 320; /* px */
+  --container-height: 180; /* px */
+  --logo-width: 20%;
+  --logo-height: 15%;
+  --y-duration: 2s; /* time it takes for the logo to bounce vertically */
+  --x-duration: calc(
+    var(--y-duration) * var(--container-width) / var(--container-height)
+  ); /* time it takes for the logo to bounce horizontally */
+  --color-x: 0;
+  --color-y: 0;
+  animation: colorY calc(var(--y-duration) * 5) step-start infinite,
+    colorX calc(var(--x-duration) * 5) step-start infinite;
+}
+
+.container {
+  position: relative;
+  width: calc(var(--container-width) * 1px);
+  height: calc(var(--container-height) * 1px);
+}
+
+.logo {
+  --color-x: 0;
+  --color-y: 0;
+  position: absolute;
+  width: var(--logo-width);
+  height: var(--logo-height);
+  color: hsl(
+    calc(360deg / 25 * (var(--color-y) * 5 + var(--color-x))) 100% 50%
+  );
+  animation: x var(--x-duration) linear infinite alternate,
+    y var(--y-duration) linear infinite alternate,
+    colorY calc(var(--y-duration) * 5) step-start infinite,
+    colorX calc(var(--x-duration) * 5) step-start infinite;
+  top: 0;
+  left: 0;
+}
+
+.logoMovement {
+  position: absolute;
+  width: var(--logo-width);
+  height: var(--logo-height);
+  animation: x var(--x-duration) linear infinite alternate,
+    y var(--y-duration) linear infinite alternate;
+  top: 0;
+  left: 0;
+}
+
+.logoColor {
+  background: hsl(
+    calc(360deg / 25 * (var(--color-y) * 5 + var(--color-x))) 100% 50%
+  );
+}
+
+.colorNeedle {
+  transform: rotate(
+    calc((var(--color-y) * 5 + var(--color-x)) * (360 / 25) * 1deg)
+  );
+}
+
+.xAxisMovement {
+  position: absolute;
+  width: var(--logo-width);
+  height: var(--logo-height);
+  animation: x var(--x-duration) linear infinite alternate;
+  left: 0;
+}
+
+.yAxisMovement {
+  position: absolute;
+  width: var(--logo-width);
+  height: var(--logo-height);
+  animation: y var(--y-duration) linear infinite alternate;
+  top: 0;
+}
+
+@keyframes x {
+  from {
+    left: 0;
+  }
+  to {
+    left: calc(100% - var(--logo-width));
+  }
+}
+
+@keyframes y {
+  from {
+    top: 0;
+  }
+  to {
+    top: calc(100% - var(--logo-height));
+  }
+}
+
+@keyframes colorY {
+  from {
+    --color-y: 0;
+  }
+  20% {
+    --color-y: 2;
+  }
+  40% {
+    --color-y: 4;
+  }
+  60% {
+    --color-y: 1;
+  }
+  80% {
+    --color-y: 3;
+  }
+}
+
+@keyframes colorX {
+  from {
+    --color-x: 0;
+  }
+  20% {
+    --color-x: 2;
+  }
+  40% {
+    --color-x: 4;
+  }
+  60% {
+    --color-x: 1;
+  }
+  80% {
+    --color-x: 3;
+  }
+}

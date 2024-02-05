@@ -1,0 +1,13 @@
+.do-not-do-this {
+  width: calc(var(--width) * 1%);
+  animation: frames 1s linear infinite alternate;
+}
+
+@keyframes frames {
+  from {
+    --width: 10;
+  }
+  to {
+    --width: 100;
+  }
+}
