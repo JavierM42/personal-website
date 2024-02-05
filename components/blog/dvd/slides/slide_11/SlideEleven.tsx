@@ -13,17 +13,33 @@ export default function SlideEleven() {
         <code>visibility</code>.
       </Paragraph>
       <CodeBlock isFirst isLast>
-        {`
-.animate-width-variable {
-  width: calc(var(--width) * 1%);
-  animation: frames 1s linear infinite alternate;
-}
-
-@keyframes frames {
-  from { --width: 10; }
-  to { --width: 100; }
-}
-            `}
+        {`.animate-width-variable {
+  `}
+        <span className="text-purple-dark">width</span>
+        {": calc(var("}
+        <span className="text-primary-container-light">--width</span>{" "}
+        <span className="text-purple-dark">* </span>
+        <span className="text-primary-container-light">1%</span>
+        {");\n  "}
+        <span className="text-purple-dark">animation</span>
+        {": "}
+        <span className="text-primary-container-light">
+          frames 1s linear infinite alternate
+        </span>
+        {";\n}\n\n"}
+        {`@keyframes `}
+        <span className="text-primary-container-light">frames</span>
+        {` {
+  from { `}
+        <span className="text-purple-dark">--width</span>
+        {`: `}
+        <span className="text-primary-container-light">10</span>
+        {`; }
+  to { `}
+        <span className="text-purple-dark">--width</span>
+        {`: `}
+        <span className="text-primary-container-light">100</span>
+        {`;\n}`}
       </CodeBlock>
 
       <Paragraph>This is the result:</Paragraph>
@@ -38,8 +54,8 @@ export default function SlideEleven() {
       </div>
 
       <Paragraph>
-        As you can see, it's not a smooth one. It just jumps from one value to
-        the next.
+        As you can see, it's not a smooth one. It just goes from one value to
+        the next with no interpolation.
       </Paragraph>
     </Slide>
   );

@@ -10,32 +10,123 @@ export default function SlideTwelve() {
         <code>step-start</code> timing!
       </Paragraph>
       <CodeBlock isFirst isLast>
-        {`
-@keyframes colorX {
-  from { --color-x: 0; }
-  20% { --color-x: 2; }
-  40% { --color-x: 4; }
-  60% { --color-x: 1; }
-  80% { --color-x: 3; }
-}
-
-@keyframes colorY {
-  from { --color-y: 0; }
-  20% { --color-y: 2; }
-  40% { --color-y: 4; }
-  60% { --color-y: 1; }
-  80% { --color-y: 3; }
-}
-
-.logo {
-  animation:
-    /* Movement animations omitted */
-    colorX calc(var(--x-duration) * 5) step-start infinite,
-    colorY calc(var(--y-duration) * 5) step-start infinite;
-  color: hsl(calc(
-    360deg / 25 * (var(--color-y) * 5 + var(--color-x))
-  ) 100% 50%);
+        {`@keyframes `}
+        <span className="text-primary-container-light">colorX</span>
+        {` {
+  from { `}
+        <span className="text-purple-dark">--color--x</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">0</span>
+        {`); }
+  20% { `}
+        <span className="text-purple-dark">--color-x</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">2</span>
+        {`); }
+  40% { `}
+        <span className="text-purple-dark">--color-x</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">4</span>
+        {`); }
+  60% { `}
+        <span className="text-purple-dark">--color-x</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">1</span>
+        {`); }
+  80% { `}
+        <span className="text-purple-dark">--color-x</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">3</span>
+        {`); }
 }`}
+        {`@keyframes `}
+        <span className="text-primary-container-light">colorY</span>
+        {` {
+  from { `}
+        <span className="text-purple-dark">--color-y</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">0</span>
+        {`); }
+  20% { `}
+        <span className="text-purple-dark">--color-y</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">2</span>
+        {`); }
+  40% { `}
+        <span className="text-purple-dark">--color-y</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">4</span>
+        {`); }
+  60% { `}
+        <span className="text-purple-dark">--color-y</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">1</span>
+        {`); }
+  80% { `}
+        <span className="text-purple-dark">--color-y</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">3</span>
+        {`); }
+}\n\n`}
+        {`.logo {
+  `}
+        <span className="text-purple-dark">animation</span>
+        {":\n    "}
+        <span className="text-primary-container-light">x</span>
+        {" var("}
+        <span className="text-primary-container-light">--duration-x</span>
+        {") "}
+        <span className="text-primary-container-light">
+          linear infinite alternate
+        </span>
+        {`,\n    `}
+        <span className="text-primary-container-light">y</span>
+        {" var("}
+        <span className="text-primary-container-light">--duration-y</span>
+        {") "}
+        <span className="text-primary-container-light">
+          linear infinite alternate
+        </span>
+        {`,\n    `}
+        <span className="text-primary-container-light">colorX</span>
+        {" calc(var("}
+        <span className="text-primary-container-light">--duration-x</span>
+        {") "}
+        <span className="text-purple-dark">* </span>
+        <span className="text-primary-container-light">5</span>
+        {") "}
+        <span className="text-primary-container-light">
+          step-start infinite
+        </span>
+        {`,\n    `}
+        <span className="text-primary-container-light">colorY</span>
+        {" calc(var("}
+        <span className="text-primary-container-light">--duration-y</span>
+        {") "}
+        <span className="text-purple-dark">* </span>
+        <span className="text-primary-container-light">5</span>
+        {") "}
+        <span className="text-primary-container-light">
+          step-start infinite
+        </span>
+        {`;\n  `}
+        <span className="text-purple-dark">color</span>
+        {`:\n    hsl(calc(\n      `}
+        <span className="text-primary-container-light">360</span>
+        <span className="text-purple-dark"> / </span>
+        <span className="text-primary-container-light">25</span>
+        <span className="text-purple-dark"> * </span>
+        {"(var("}
+        <span className="text-primary-container-light">--color-y</span>
+        {")"}
+        <span className="text-purple-dark"> * </span>
+        <span className="text-primary-container-light">5</span>
+        <span className="text-purple-dark"> + </span>
+        {"var("}
+        <span className="text-primary-container-light">--color-x</span>
+        {"))\n    ) "}
+        <span className="text-primary-container-light">100% 50%</span>
+        {`);\n}`}
       </CodeBlock>
       <Paragraph>
         There's a total of <code>5x5=25</code> possible colors, equispaced hue

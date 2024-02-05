@@ -32,9 +32,8 @@ export default function SlideTen() {
         <div className="flex items-end justify-end gap-2 pl-20">
           <p className="px-4 py-2 mb-8 rounded-br-none shadow-lg shadow-primary-light/20 rounded-3xl bg-primary-container">
             Well, yes, but it's something you hardly ever see because they don't
-            behave how you expect [TODO exceptions].
+            behave how you expect.
           </p>
-          {/* <p>(Unless you use the new @property rule and only on some browsers)</p> */}
           <div className="w-16 h-16 rounded-full shadow-md shrink-0">
             <Image
               src="/javi.jpg"
@@ -45,6 +44,8 @@ export default function SlideTen() {
           </div>
         </div>
       </div>
+      {/* TODO */}
+      {/* <p>(Unless you use the new @property rule and only on some browsers)</p> */}
       {/* https://caniuse.com/mdn-css_at-rules_property */}
     </Slide>
   );
