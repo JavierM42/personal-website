@@ -11,19 +11,54 @@ export default function SlideSix() {
         of the vertical animation, using CSS variables:
       </Paragraph>
       <CodeBlock>
-        {`  --container-w: 320; /* no units! */
-  --container-h: 180; /* no units! */
-  --logo-w: 40px;
-  --logo-h: 20px;
-  --y-duration: 2s;`}
+        {`  `}
+        <span className="text-purple-dark">--container-w</span>
+        {": "}
+        <span className="text-primary-container-light">320</span>
+        {"; "}
+        <span className="text-outline">/* no units! */</span>
+        {`\n  `}
+        <span className="text-purple-dark">--container-h</span>
+        {": "}
+        <span className="text-primary-container-light">180</span>
+        {"; "}
+        <span className="text-outline">/* no units! */</span>
+        {`\n  `}
+        <span className="text-purple-dark">--logo-w</span>
+        {": "}
+        <span className="text-primary-container-light">40px</span>
+        {`;\n  `}
+        <span className="text-purple-dark">--logo-h</span>
+        {": "}
+        <span className="text-primary-container-light">20px</span>
+        {`;\n  `}
+        <span className="text-purple-dark">--y-duration</span>
+        {": "}
+        <span className="text-primary-container-light">2s</span>
+        {`;`}
       </CodeBlock>
       <Paragraph inCode>
         The logo moves horizontally as fast as it does vertically, we calculate
         the horizontal duration based on our container's aspect ratio:
       </Paragraph>
       <CodeBlock>
-        {`  --aspect: calc(var(--container-w) / var(--container-h));
-  --x-duration: calc(var(--y-duration) * var(--aspect));
+        {`  `}
+        <span className="text-purple-dark">--aspect</span>
+        {": calc(var("}
+        <span className="text-primary-container-light">--container-w</span>
+        {") "}
+        <span className="text-purple-dark">/</span>
+        {" var("}
+        <span className="text-primary-container-light">--container-h</span>
+        {`));\n  `}
+        <span className="text-purple-dark">--x-duration</span>
+        {": calc(var("}
+        <span className="text-primary-container-light">--y-duration</span>
+        {") "}
+        <span className="text-purple-dark">*</span>
+        {" var("}
+        <span className="text-primary-container-light">--aspect</span>
+        {`));
 }`}
       </CodeBlock>
       <Paragraph inCode>
@@ -32,19 +67,60 @@ export default function SlideSix() {
       </Paragraph>
       <CodeBlock isLast>
         {`.logo {
-  animation:
-    x var(—duration-y) linear infinite alternate,
-    y var(—duration-y) linear infinite alternate;
+  `}
+        <span className="text-purple-dark">animation</span>
+        {":\n    "}
+        <span className="text-primary-container-light">x</span>
+        {" var("}
+        <span className="text-primary-container-light">--duration-x</span>
+        {") "}
+        <span className="text-primary-container-light">
+          linear infinite alternate
+        </span>
+        {`,\n    `}
+        <span className="text-primary-container-light">y</span>
+        {" var("}
+        <span className="text-primary-container-light">--duration-y</span>
+        {") "}
+        <span className="text-primary-container-light">
+          linear infinite alternate
+        </span>
+        {`;\n}
+
+@keyframes `}
+        <span className="text-primary-container-light">y</span>
+        {` {
+  from { `}
+        <span className="text-purple-dark">top</span>
+        {`: `}
+        <span className="text-primary-container-light">0</span>
+        {`; }
+  to { `}
+        <span className="text-purple-dark">top</span>
+        {`: calc(`}
+        <span className="text-primary-container-light">100%</span>
+        <span className="text-purple-dark"> - </span>
+        {`var(`}
+        <span className="text-primary-container-light">--logo-h</span>
+        {`)); }
 }
 
-@keyframes y {
-  from { top: 0; }
-  to { top: calc(100% - var(--logo-h)); }
-}
-
-@keyframes x {
-  from { left: 0; }
-  to { left: calc(100% - var(--logo-w)); }
+@keyframes `}
+        <span className="text-primary-container-light">x</span>
+        {` {
+  from { `}
+        <span className="text-purple-dark">left</span>
+        {`: `}
+        <span className="text-primary-container-light">0</span>
+        {`; }
+  to { `}
+        <span className="text-purple-dark">left</span>
+        {`: calc(`}
+        <span className="text-primary-container-light">100%</span>
+        <span className="text-purple-dark"> - </span>
+        {`var(`}
+        <span className="text-primary-container-light">--logo-w</span>
+        {`)); }
 }`}
       </CodeBlock>
     </Slide>
