@@ -1,90 +1,52 @@
-import CodeBlock from "../../CodeBlock";
-import Paragraph from "../../Paragraph";
+import Image from "next/image";
 import Slide from "../../Slide";
 
 export default function SlideNine() {
   return (
-    <Slide className="flex flex-col items-center">
-      <Paragraph>
-        If we only needed to change colors when the logo hits the left or right
-        walls, we could use this idea:
-      </Paragraph>
-      <CodeBlock isFirst />
-      <Paragraph inCode>
-        First, define keyframes to change color at regular intervals, five of
-        them in this case. I'm using equispaced hue values on the HSL color
-        spectrum. later).
-      </Paragraph>
-      <CodeBlock>
-        {`@keyframes `}
-        <span className="text-primary-container-light">colorX</span>
-        {` {
-  from { `}
-        <span className="text-purple-dark">background</span>
-        {`: hsl(`}
-        <span className="text-primary-container-light">0deg 100% 50%</span>
-        {`); }
-  20% { `}
-        <span className="text-purple-dark">background</span>
-        {`: hsl(`}
-        <span className="text-primary-container-light">72deg 100% 50%</span>
-        {`); }
-  40% { `}
-        <span className="text-purple-dark">background</span>
-        {`: hsl(`}
-        <span className="text-primary-container-light">144deg 100% 50%</span>
-        {`); }
-  60% { `}
-        <span className="text-purple-dark">background</span>
-        {`: hsl(`}
-        <span className="text-primary-container-light">216deg 100% 50%</span>
-        {`); }
-  80% { `}
-        <span className="text-purple-dark">background</span>
-        {`: hsl(`}
-        <span className="text-primary-container-light">288deg 100% 50%</span>
-        {`); }
-}`}
-      </CodeBlock>
-      <Paragraph inCode>
-        Then we just need to add a new animation with the appropriate duration
-        and the <code>step-start</code> timing function so the value "jumps"
-        once every <code>--duration-x</code>.
-      </Paragraph>
-      <CodeBlock isLast>
-        {`.logo {
-  `}
-        <span className="text-purple-dark">animation</span>
-        {":\n    "}
-        <span className="text-primary-container-light">x</span>
-        {" var("}
-        <span className="text-primary-container-light">--duration-x</span>
-        {") "}
-        <span className="text-primary-container-light">
-          linear infinite alternate
-        </span>
-        {`,\n    `}
-        <span className="text-primary-container-light">y</span>
-        {" var("}
-        <span className="text-primary-container-light">--duration-y</span>
-        {") "}
-        <span className="text-primary-container-light">
-          linear infinite alternate
-        </span>
-        {`,\n    `}
-        <span className="text-primary-container-light">colorX</span>
-        {" calc(var("}
-        <span className="text-primary-container-light">--duration-x</span>
-        {") "}
-        <span className="text-purple-dark">* </span>
-        <span className="text-primary-container-light">5</span>
-        {") "}
-        <span className="text-primary-container-light">
-          step-start infinite
-        </span>
-        {`;\n}`}
-      </CodeBlock>
-      <Paragraph>But... how can we do this for all four walls?</Paragraph>
+    <Slide className="flex flex-col items-center justify-center">
+      <div className="max-w-xl space-y-4">
+        <div className="flex items-end gap-2 pr-20">
+          <p className="flex items-center px-4 py-2 rounded-bl-none shadow-lg rounded-3xl bg-surface/90">
+            How can we do this for all four walls?
+          </p>
+        </div>
+        <div className="flex items-end justify-end gap-2 pl-20">
+          <p className="px-4 py-2 mb-8 rounded-br-none shadow-lg shadow-primary-light/20 rounded-3xl bg-primary-container">
+            We animate two CSS variables, then define our <code>hue</code> based
+            on a linear combination of both.
+          </p>
+          <div className="w-16 h-16 rounded-full shadow-md shrink-0">
+            <Image
+              src="/javi.jpg"
+              width="64"
+              height="64"
+              className="w-16 h-16 rounded-full"
+            />
+          </div>
+        </div>
+        <div className="flex items-end gap-2 pr-20">
+          <p className="flex items-center px-4 py-2 rounded-bl-none shadow-lg rounded-3xl bg-surface/90">
+            Animate CSS variables? Can you even do that?
+          </p>
+        </div>
+        <div className="flex items-end justify-end gap-2 pl-20">
+          <p className="px-4 py-2 mb-8 rounded-br-none shadow-lg shadow-primary-light/20 rounded-3xl bg-primary-container">
+            Well, yes, but it's something you hardly ever see because they don't
+            behave how you expect.
+          </p>
+          <div className="w-16 h-16 rounded-full shadow-md shrink-0">
+            <Image
+              src="/javi.jpg"
+              width="64"
+              height="64"
+              className="w-16 h-16 rounded-full"
+            />
+          </div>
+        </div>
+      </div>
+      {/* TODO */}
+      {/* <p>(Unless you use the new @property rule and only on some browsers)</p> */}
+      {/* https://caniuse.com/mdn-css_at-rules_property */}
     </Slide>
   );
 }

@@ -1,61 +1,143 @@
-import Slide from "../../Slide";
-import Paragraph from "../../Paragraph";
 import CodeBlock from "../../CodeBlock";
-import styles from "./bad.module.css";
-import classNames from "classnames";
+import Paragraph from "../../Paragraph";
+import Slide from "../../Slide";
 
 export default function SlideEleven() {
   return (
     <Slide className="flex flex-col items-center justify-center">
       <Paragraph>
-        In most cases, animating a CSS variable is about as useful as animating
-        any non-interpolable property such as <code>display</code> or{" "}
-        <code>visibility</code>.
+        Thing is... we don't need smooth interpolation, we're using{" "}
+        <code>step-start</code> timing!
       </Paragraph>
       <CodeBlock isFirst isLast>
-        {`.animate-width-variable {
-  `}
-        <span className="text-purple-dark">width</span>
-        {": calc(var("}
-        <span className="text-primary-container-light">--width</span>{" "}
-        <span className="text-purple-dark">* </span>
-        <span className="text-primary-container-light">1%</span>
-        {");\n  "}
-        <span className="text-purple-dark">animation</span>
-        {": "}
-        <span className="text-primary-container-light">
-          frames 1s linear infinite alternate
-        </span>
-        {";\n}\n\n"}
         {`@keyframes `}
-        <span className="text-primary-container-light">frames</span>
+        <span className="text-primary-container-light">colorX</span>
         {` {
   from { `}
-        <span className="text-purple-dark">--width</span>
-        {`: `}
-        <span className="text-primary-container-light">10</span>
-        {`; }
-  to { `}
-        <span className="text-purple-dark">--width</span>
-        {`: `}
-        <span className="text-primary-container-light">100</span>
-        {`;\n}`}
+        <span className="text-purple-dark">--color--x</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">0</span>
+        {`); }
+  20% { `}
+        <span className="text-purple-dark">--color-x</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">2</span>
+        {`); }
+  40% { `}
+        <span className="text-purple-dark">--color-x</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">4</span>
+        {`); }
+  60% { `}
+        <span className="text-purple-dark">--color-x</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">1</span>
+        {`); }
+  80% { `}
+        <span className="text-purple-dark">--color-x</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">3</span>
+        {`); }
+}`}
+        {`@keyframes `}
+        <span className="text-primary-container-light">colorY</span>
+        {` {
+  from { `}
+        <span className="text-purple-dark">--color-y</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">0</span>
+        {`); }
+  20% { `}
+        <span className="text-purple-dark">--color-y</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">2</span>
+        {`); }
+  40% { `}
+        <span className="text-purple-dark">--color-y</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">4</span>
+        {`); }
+  60% { `}
+        <span className="text-purple-dark">--color-y</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">1</span>
+        {`); }
+  80% { `}
+        <span className="text-purple-dark">--color-y</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">3</span>
+        {`); }
+}\n\n`}
+        {`.logo {
+  `}
+        <span className="text-purple-dark">animation</span>
+        {":\n    "}
+        <span className="text-primary-container-light">x</span>
+        {" var("}
+        <span className="text-primary-container-light">--duration-x</span>
+        {") "}
+        <span className="text-primary-container-light">
+          linear infinite alternate
+        </span>
+        {`,\n    `}
+        <span className="text-primary-container-light">y</span>
+        {" var("}
+        <span className="text-primary-container-light">--duration-y</span>
+        {") "}
+        <span className="text-primary-container-light">
+          linear infinite alternate
+        </span>
+        {`,\n    `}
+        <span className="text-primary-container-light">colorX</span>
+        {" calc(var("}
+        <span className="text-primary-container-light">--duration-x</span>
+        {") "}
+        <span className="text-purple-dark">* </span>
+        <span className="text-primary-container-light">5</span>
+        {") "}
+        <span className="text-primary-container-light">
+          step-start infinite
+        </span>
+        {`,\n    `}
+        <span className="text-primary-container-light">colorY</span>
+        {" calc(var("}
+        <span className="text-primary-container-light">--duration-y</span>
+        {") "}
+        <span className="text-purple-dark">* </span>
+        <span className="text-primary-container-light">5</span>
+        {") "}
+        <span className="text-primary-container-light">
+          step-start infinite
+        </span>
+        {`;\n  `}
+        <span className="text-purple-dark">color</span>
+        {`:\n    hsl(calc(\n      `}
+        <span className="text-primary-container-light">360</span>
+        <span className="text-purple-dark"> / </span>
+        <span className="text-primary-container-light">25</span>
+        <span className="text-purple-dark"> * </span>
+        {"(var("}
+        <span className="text-primary-container-light">--color-y</span>
+        {")"}
+        <span className="text-purple-dark"> * </span>
+        <span className="text-primary-container-light">5</span>
+        <span className="text-purple-dark"> + </span>
+        {"var("}
+        <span className="text-primary-container-light">--color-x</span>
+        {"))\n    ) "}
+        <span className="text-primary-container-light">100% 50%</span>
+        {`);\n}`}
       </CodeBlock>
-
-      <Paragraph>This is the result:</Paragraph>
-
-      <div className="w-48 h-4 mb-4 border rounded-sm border-primary">
-        <div
-          className={classNames(
-            styles["do-not-do-this"],
-            "h-full bg-primary/80"
-          )}
-        />
-      </div>
-
       <Paragraph>
-        As you can see, it's not a smooth one. It just goes from one value to
-        the next with no interpolation.
+        There's a total of <code>5x5=25</code> possible colors, equispaced hue
+        values ranging from <code>0deg</code> when <code>--color-x</code> and{" "}
+        <code>--color-y</code> are both <code>0</code> to <code>345.6deg</code>{" "}
+        when they're both <code>4</code>.
+      </Paragraph>
+      <Paragraph>
+        I could've used <code>0-1-2-3-4</code> for the variables, but if we
+        increment in a star pattern (<code>0-2-4-1-3</code>), each color jump is
+        a bit more noticeable.
       </Paragraph>
     </Slide>
   );

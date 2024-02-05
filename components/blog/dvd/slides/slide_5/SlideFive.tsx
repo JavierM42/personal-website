@@ -54,5 +54,3 @@ export default function SlideFive({
     </Slide>
   );
 }
-
-// TODO the bouncing animation could come in from the last slide

@@ -1,52 +1,62 @@
-import Image from "next/image";
 import Slide from "../../Slide";
+import Paragraph from "../../Paragraph";
+import CodeBlock from "../../CodeBlock";
+import styles from "./bad.module.css";
+import classNames from "classnames";
 
 export default function SlideTen() {
   return (
     <Slide className="flex flex-col items-center justify-center">
-      <div className="max-w-xl space-y-4">
-        <div className="flex items-end gap-2 pr-20">
-          <p className="flex items-center px-4 py-2 rounded-bl-none shadow-lg rounded-3xl bg-surface/90">
-            How can we do this for all four walls?
-          </p>
-        </div>
-        <div className="flex items-end justify-end gap-2 pl-20">
-          <p className="px-4 py-2 mb-8 rounded-br-none shadow-lg shadow-primary-light/20 rounded-3xl bg-primary-container">
-            We animate two CSS variables, then define our <code>hue</code> based
-            on a linear combination of both.
-          </p>
-          <div className="w-16 h-16 rounded-full shadow-md shrink-0">
-            <Image
-              src="/javi.jpg"
-              width="64"
-              height="64"
-              className="w-16 h-16 rounded-full"
-            />
-          </div>
-        </div>
-        <div className="flex items-end gap-2 pr-20">
-          <p className="flex items-center px-4 py-2 rounded-bl-none shadow-lg rounded-3xl bg-surface/90">
-            Animate CSS variables? Can you even do that?
-          </p>
-        </div>
-        <div className="flex items-end justify-end gap-2 pl-20">
-          <p className="px-4 py-2 mb-8 rounded-br-none shadow-lg shadow-primary-light/20 rounded-3xl bg-primary-container">
-            Well, yes, but it's something you hardly ever see because they don't
-            behave how you expect.
-          </p>
-          <div className="w-16 h-16 rounded-full shadow-md shrink-0">
-            <Image
-              src="/javi.jpg"
-              width="64"
-              height="64"
-              className="w-16 h-16 rounded-full"
-            />
-          </div>
-        </div>
+      <Paragraph>
+        In most cases, animating a CSS variable is about as useful as animating
+        any non-interpolable property such as <code>display</code> or{" "}
+        <code>visibility</code>.
+      </Paragraph>
+      <CodeBlock isFirst isLast>
+        {`.animate-width-variable {
+  `}
+        <span className="text-purple-dark">width</span>
+        {": calc(var("}
+        <span className="text-primary-container-light">--width</span>{" "}
+        <span className="text-purple-dark">* </span>
+        <span className="text-primary-container-light">1%</span>
+        {");\n  "}
+        <span className="text-purple-dark">animation</span>
+        {": "}
+        <span className="text-primary-container-light">
+          frames 1s linear infinite alternate
+        </span>
+        {";\n}\n\n"}
+        {`@keyframes `}
+        <span className="text-primary-container-light">frames</span>
+        {` {
+  from { `}
+        <span className="text-purple-dark">--width</span>
+        {`: `}
+        <span className="text-primary-container-light">10</span>
+        {`; }
+  to { `}
+        <span className="text-purple-dark">--width</span>
+        {`: `}
+        <span className="text-primary-container-light">100</span>
+        {`;\n}`}
+      </CodeBlock>
+
+      <Paragraph>This is the result:</Paragraph>
+
+      <div className="w-48 h-4 mb-4 border rounded-sm border-primary">
+        <div
+          className={classNames(
+            styles["do-not-do-this"],
+            "h-full bg-primary/80"
+          )}
+        />
       </div>
-      {/* TODO */}
-      {/* <p>(Unless you use the new @property rule and only on some browsers)</p> */}
-      {/* https://caniuse.com/mdn-css_at-rules_property */}
+
+      <Paragraph>
+        As you can see, it's not a smooth one. It just goes from one value to
+        the next with no interpolation.
+      </Paragraph>
     </Slide>
   );
 }

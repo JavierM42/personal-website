@@ -54,7 +54,6 @@ export default function DvdBlogPost() {
           <SlideTen />
           <SlideEleven />
           <SlideTwelve />
-          <SlideThirteen />
           <Slide>
             CRT effect on first slide from
             https://aleclownes.com/2017/02/01/crt-display.html

@@ -32,8 +32,8 @@ export default function SlideTwo() {
             E.M.
           </div>
           <p className="flex items-center px-4 py-2 mb-8 rounded-bl-none shadow-lg rounded-3xl bg-surface/90">
-            Well... yeah, but five minutes later, you've got those divs bouncing
-            around like the old DVD screensaver.
+            Yeah, but five minutes later, you've got those divs bouncing around
+            like the old DVD screensaver.
           </p>
         </div>
       </div>
