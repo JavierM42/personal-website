@@ -29,7 +29,7 @@ export default function SlideSeven({
         <Fade>
           Well... colors are a bit harder. It's not straightforward to divide
           the color change into <i>x</i> and <i>y</i> because the color is
-        </Fade>
+        </Fade>{" "}
         s<Fade>up</Fade>
         po
         <Fade>sed to change every t</Fade>i<Fade>me there's a co</Fade>l

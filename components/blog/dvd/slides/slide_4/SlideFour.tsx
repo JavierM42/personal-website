@@ -64,21 +64,21 @@ export default function SlideFour({
         My strategy to reverse engineer an animation is always the same: good
         old <span className="italic">divide and conquer</span>:
       </Paragraph>
-      <div className="grid grid-cols-[auto_auto_auto_auto_auto] gap-4 items-center my-12">
+      <div className="grid md:grid-cols-[auto_auto_auto_auto_auto] gap-1 md:gap-4 place-items-center my-12">
         <div className="space-y-2">
           <div className="border shadow w-fit h-fit bg-surface/30 border-surface">
             <DvdScreensaver width={180} height={135} />
           </div>
           <div className="text-center">The whole thing</div>
         </div>
-        <div className="mb-10 text-3xl font-bold text-on-surface">=</div>
+        <div className="text-3xl font-bold md:mb-10 text-on-surface">=</div>
         <div className="space-y-2">
           <div className="border shadow w-fit h-fit bg-surface/30 border-surface">
             <DvdScreensaver width={180} height={135} colors={false} />
           </div>
           <div className="text-center">Bounce around</div>
         </div>
-        <div className="mb-10 text-3xl font-bold text-on-surface">+</div>
+        <div className="text-3xl font-bold md:mb-10 text-on-surface">+</div>
         <div className="space-y-2">
           <ColorAnimation width={135} height={135} />
           <div className="text-center">Change colors</div>

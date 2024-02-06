@@ -14,11 +14,11 @@ export default function SlideTwo() {
         office:
       </Paragraph>
       <div className="max-w-xl space-y-4">
-        <div className="flex items-end justify-end gap-2 pl-20">
-          <p className="px-4 py-2 mb-8 rounded-br-none shadow-lg shadow-primary-light/20 rounded-3xl bg-primary-container">
+        <div className="flex items-end justify-end gap-2 pl-4 md:pl-20">
+          <p className="px-4 py-2 rounded-br-none shadow-lg md:mb-8 shadow-primary-light/20 rounded-3xl bg-primary-container">
             I just center divs for a living
           </p>
-          <div className="w-16 h-16 rounded-full shadow-md shrink-0">
+          <div className="w-8 h-8 rounded-full shadow-md md:w-16 md:h-16 shrink-0">
             <Image
               src="/javi.jpg"
               width="64"
@@ -27,11 +27,11 @@ export default function SlideTwo() {
             />
           </div>
         </div>
-        <div className="flex items-end gap-2 pr-20">
-          <div className="flex items-center justify-center w-16 h-16 text-lg rounded-full shadow-md bg-surface/90 shrink-0 text-on-surface/60">
+        <div className="flex items-end gap-2 pr-4 md:pr-20">
+          <div className="flex items-center justify-center w-8 h-8 text-xs rounded-full shadow-md md:text-lg md:w-16 md:h-16 bg-surface/90 shrink-0 text-on-surface/60">
             E.M.
           </div>
-          <p className="flex items-center px-4 py-2 mb-8 rounded-bl-none shadow-lg rounded-3xl bg-surface/90">
+          <p className="flex items-center px-4 py-2 rounded-bl-none shadow-lg md:mb-8 rounded-3xl bg-surface/90">
             Yeah, but five minutes later, you've got those divs bouncing around
             like the old DVD screensaver.
           </p>

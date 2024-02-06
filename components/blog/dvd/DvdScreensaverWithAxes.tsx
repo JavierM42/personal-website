@@ -4,15 +4,15 @@ import classNames from "classnames";
 import DvdLogo from "./DvdLogo";
 
 const DvdScreensaverWithAxes = ({
-  width = 320,
-  height = 240,
+  width = 300,
+  height = 225,
 }: {
   width?: number;
   height?: number;
 }) => {
   return (
     <div
-      className="grid grid-cols-[40px,1fr,40px] grid-rows-[20px,1fr] gap-4"
+      className="grid grid-cols-[40px,1fr] md:grid-cols-[40px,1fr,40px] grid-rows-[20px,1fr] gap-4"
       style={
         {
           "--container-width": width,

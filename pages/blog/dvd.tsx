@@ -38,7 +38,7 @@ export default function DvdBlogPost() {
       <div className="fixed inset-0 bg-gradient-to-br from-primary-container to-tertiary-container -z-1 dark:from-primary-container/40 dark:to-tertiary-container/40" />
       <div
         className={classNames(
-          "relative w-full h-screen px-4 overflow-auto leading-loose snap-y snap-mandatory text-on-background",
+          "relative w-full h-screen md:px-4 overflow-y-auto leading-loose snap-y snap-mandatory text-on-background",
           styles.variables
         )}
         ref={containerRef}
@@ -72,7 +72,7 @@ export default function DvdBlogPost() {
             https://aleclownes.com/2017/02/01/crt-display.html
           </Slide>
         </main>
-        <div className="fixed space-y-10 -translate-y-1/2 right-12 top-1/2">
+        <div className="fixed hidden space-y-10 -translate-y-1/2 md:block right-12 top-1/2">
           <SquareButton
             tooltip="Previous slide"
             tooltipPlacement="right"
@@ -105,6 +105,4 @@ export default function DvdBlogPost() {
   );
 }
 // TODO date
-
-// TODO responsive
 // TODO hydration problem

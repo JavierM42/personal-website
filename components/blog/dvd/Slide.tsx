@@ -11,12 +11,17 @@ type Props = {
 const Slide = forwardRef<HTMLDivElement, Props>(
   ({ children, className, transparent = false, noPadding = false }, ref) => {
     return (
-      <div className="flex items-center w-full h-screen snap-center" ref={ref}>
+      <div
+        className={classNames(
+          "flex items-center w-full min-h-screen snap-center bg-surface/40 md:bg-transparent"
+        )}
+        ref={ref}
+      >
         <div
           className={classNames(
-            "w-full shadow-xl -surface/40 md:aspect-[4/3] rounded-xl",
-            !transparent && "bg-surface/40",
-            !noPadding && "px-8 py-4",
+            "w-full md:shadow-xl md:aspect-[4/3] md:rounded-xl py-20",
+            !transparent && "md:bg-surface/40",
+            !noPadding && "px-8 md:py-4",
             className
           )}
         >

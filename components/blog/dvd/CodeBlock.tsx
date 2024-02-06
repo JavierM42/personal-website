@@ -15,7 +15,7 @@ export default function CodeBlock({
       {!isFirst && <hr className="w-full h-px border-outline/20" />}
       <pre
         className={classNames(
-          "bg-on-surface-variant-light text-surface-variant-light dark:bg-surface w-full max-w-md px-4 py-2 text-xs shadow-inner shadow-black/50 mx-auto",
+          "bg-on-surface-variant-light text-surface-variant-light dark:bg-surface w-full max-w-md px-4 py-2 text-xs shadow-inner shadow-black/50 mx-auto overflow-x-auto",
           isFirst && "rounded-t-lg",
           isLast && "rounded-b-lg mb-4"
         )}
