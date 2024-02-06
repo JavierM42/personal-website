@@ -18,6 +18,7 @@ import SlideTwelve from "../../components/blog/dvd/slides/slide_12/SlideTwelve";
 import { useRef, useState } from "react";
 import { SquareButton } from "../../components/SquareButton";
 import { useWindowSize } from "@uidotdev/usehooks";
+import Head from "next/head";
 
 export default function DvdBlogPost() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -31,6 +32,9 @@ export default function DvdBlogPost() {
 
   return (
     <>
+      <Head>
+        <title>CSS-only DVD Screensaver animation | Javier Morales</title>
+      </Head>
       <div className="fixed inset-0 bg-gradient-to-br from-primary-container to-tertiary-container -z-1 dark:from-primary-container/40 dark:to-tertiary-container/40" />
       <div
         className={classNames(
@@ -101,7 +105,6 @@ export default function DvdBlogPost() {
   );
 }
 // TODO date
-// TODO page title
 
 // TODO responsive
 // TODO hydration problem
