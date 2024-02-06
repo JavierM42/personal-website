@@ -15,58 +15,58 @@ export default function SlideEleven() {
         {` {
   from { `}
         <span className="text-purple-dark">--color--x</span>
-        {`: hsl(`}
+        {`: `}
         <span className="text-primary-container-light">0</span>
-        {`); }
+        {`; }
   20% { `}
         <span className="text-purple-dark">--color-x</span>
-        {`: hsl(`}
+        {`: `}
         <span className="text-primary-container-light">2</span>
-        {`); }
+        {`; }
   40% { `}
         <span className="text-purple-dark">--color-x</span>
-        {`: hsl(`}
+        {`: `}
         <span className="text-primary-container-light">4</span>
-        {`); }
+        {`; }
   60% { `}
         <span className="text-purple-dark">--color-x</span>
-        {`: hsl(`}
+        {`: `}
         <span className="text-primary-container-light">1</span>
-        {`); }
+        {`; }
   80% { `}
         <span className="text-purple-dark">--color-x</span>
-        {`: hsl(`}
+        {`: `}
         <span className="text-primary-container-light">3</span>
-        {`); }
+        {`; }
 }\n\n`}
         {`@keyframes `}
         <span className="text-primary-container-light">colorY</span>
         {` {
   from { `}
         <span className="text-purple-dark">--color-y</span>
-        {`: hsl(`}
+        {`: `}
         <span className="text-primary-container-light">0</span>
-        {`); }
+        {`; }
   20% { `}
         <span className="text-purple-dark">--color-y</span>
-        {`: hsl(`}
+        {`: `}
         <span className="text-primary-container-light">2</span>
-        {`); }
+        {`; }
   40% { `}
         <span className="text-purple-dark">--color-y</span>
-        {`: hsl(`}
+        {`: `}
         <span className="text-primary-container-light">4</span>
-        {`); }
+        {`; }
   60% { `}
         <span className="text-purple-dark">--color-y</span>
-        {`: hsl(`}
+        {`: `}
         <span className="text-primary-container-light">1</span>
-        {`); }
+        {`; }
   80% { `}
         <span className="text-purple-dark">--color-y</span>
-        {`: hsl(`}
+        {`: `}
         <span className="text-primary-container-light">3</span>
-        {`); }
+        {`; }
 }\n\n`}
         {`.logo {
   `}
