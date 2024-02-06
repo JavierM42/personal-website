@@ -23,7 +23,11 @@ export default function DvdBlogPost() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { height: windowHeight } = useWindowSize();
 
-  const [finalY, setFinalY] = useState<number>();
+  const [finalYSlide4, setFinalYSlide4] = useState<number>();
+  const [finalPositionSlide8, setFinalPositionSlide8] = useState<{
+    x: number;
+    y: number;
+  }>();
 
   return (
     <>
@@ -44,12 +48,18 @@ export default function DvdBlogPost() {
           <SlideTwo />
           {/* TODO Animate the five minutes later into the other one, or add a spongebob reference */}
           <SlideThree />
-          <SlideFour containerRef={containerRef} finalY={finalY} />
-          <SlideFive containerRef={containerRef} setFinalY={setFinalY} />
+          <SlideFour containerRef={containerRef} finalY={finalYSlide4} />
+          <SlideFive containerRef={containerRef} setFinalY={setFinalYSlide4} />
           <SlideSix />
           <SlideSeven containerRef={containerRef} />
-          <SlideEight />
-          <SlideNine />
+          <SlideEight
+            containerRef={containerRef}
+            finalPosition={finalPositionSlide8}
+          />
+          <SlideNine
+            containerRef={containerRef}
+            setFinalPosition={setFinalPositionSlide8}
+          />
           <SlideTen />
           <SlideEleven />
           <SlideTwelve />

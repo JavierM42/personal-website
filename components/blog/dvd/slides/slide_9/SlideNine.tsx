@@ -1,13 +1,52 @@
+import { useWindowSize } from "@uidotdev/usehooks";
 import Image from "next/image";
+import { RefObject, useEffect, useRef } from "react";
 import Slide from "../../Slide";
 
-export default function SlideNine() {
+export default function SlideNine({
+  containerRef,
+  setFinalPosition,
+}: {
+  containerRef: RefObject<HTMLDivElement>;
+  setFinalPosition: (value: { x: number; y: number }) => void;
+}) {
+  const { width: windowWidth, height: windowHeight } = useWindowSize();
+  const textRef = useRef<HTMLDivElement>(null);
+  const finalPositionSet = useRef(false);
+
+  if (!finalPositionSet.current && textRef.current && containerRef.current) {
+    setFinalPosition({
+      x:
+        textRef.current.getBoundingClientRect().left +
+        containerRef.current.scrollLeft,
+      y:
+        textRef.current.getBoundingClientRect().top +
+        containerRef.current.scrollTop,
+    });
+    finalPositionSet.current = true;
+  }
+  useEffect(() => {
+    if (textRef.current && containerRef.current) {
+      setFinalPosition({
+        x:
+          textRef.current.getBoundingClientRect().left +
+          containerRef.current.scrollLeft,
+        y:
+          textRef.current.getBoundingClientRect().top +
+          containerRef.current.scrollTop,
+      });
+      finalPositionSet.current = true;
+    }
+  }, [windowWidth, windowHeight]);
+
   return (
     <Slide className="flex flex-col items-center justify-center">
       <div className="max-w-xl space-y-4">
         <div className="flex items-end gap-2 pr-20">
           <p className="flex items-center px-4 py-2 rounded-bl-none shadow-lg rounded-3xl bg-surface/90">
-            How can we do this for all four walls?
+            <div ref={textRef} className="opacity-0">
+              How can we do this for all four walls?
+            </div>
           </p>
         </div>
         <div className="flex items-end justify-end gap-2 pl-20">

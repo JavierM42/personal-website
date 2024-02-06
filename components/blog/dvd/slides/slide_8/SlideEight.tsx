@@ -1,10 +1,83 @@
+import { useWindowSize } from "@uidotdev/usehooks";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { RefObject, useEffect, useRef, useState } from "react";
 import CodeBlock from "../../CodeBlock";
 import Paragraph from "../../Paragraph";
 import Slide from "../../Slide";
 
-export default function SlideEight() {
+const AnimatedText = ({
+  slideRef,
+  containerRef,
+  finalOffset,
+}: {
+  slideRef: RefObject<HTMLDivElement>;
+  containerRef: RefObject<HTMLDivElement>;
+  finalOffset: { x: number; y: number };
+}) => {
+  const { scrollYProgress: exitProgress } = useScroll({
+    target: slideRef,
+    container: containerRef,
+    offset: ["end end", "end start"],
+  });
+  const x = useTransform(exitProgress, [0, 1], [0, finalOffset.x]);
+  const y = useTransform(exitProgress, [0, 1], [0, finalOffset.y]);
+
   return (
-    <Slide className="flex flex-col items-center">
+    <motion.div style={{ x, y }}>
+      How can we do this for all four walls?
+    </motion.div>
+  );
+};
+
+export default function SlideEight({
+  containerRef,
+  finalPosition,
+}: {
+  finalPosition?: { x: number; y: number };
+  containerRef: RefObject<HTMLDivElement>;
+}) {
+  const { width: windowWidth, height: windowHeight } = useWindowSize();
+  const textRef = useRef<HTMLDivElement>(null);
+  const [initialPosition, setInitialPosition] = useState<{
+    x: number;
+    y: number;
+  }>();
+
+  if (!initialPosition && textRef.current && containerRef.current) {
+    setInitialPosition({
+      x:
+        textRef.current.getBoundingClientRect().left +
+        containerRef.current.scrollLeft,
+      y:
+        textRef.current.getBoundingClientRect().top +
+        containerRef.current.scrollTop,
+    });
+  }
+  useEffect(() => {
+    if (textRef.current && containerRef.current) {
+      setInitialPosition({
+        x:
+          textRef.current.getBoundingClientRect().left +
+          containerRef.current.scrollLeft,
+        y:
+          textRef.current.getBoundingClientRect().top +
+          containerRef.current.scrollTop,
+      });
+    }
+  }, [windowWidth, windowHeight]);
+
+  const slideRef = useRef<HTMLDivElement>(null);
+
+  const finalOffset =
+    finalPosition && initialPosition
+      ? {
+          x: finalPosition.x - initialPosition.x,
+          y: finalPosition.y - initialPosition.y,
+        }
+      : { x: 0, y: 0 };
+
+  return (
+    <Slide className="flex flex-col items-center" ref={slideRef}>
       <Paragraph>
         If we only needed to change colors when the logo hit the left or right
         wall, we could use this idea:
@@ -84,7 +157,18 @@ export default function SlideEight() {
         </span>
         {`;\n}`}
       </CodeBlock>
-      <Paragraph>But... how can we do this for all four walls?</Paragraph>
+      {/* TODO But... How */}
+      <Paragraph>
+        But...{" "}
+        <div ref={textRef} className="inline-block">
+          <AnimatedText
+            slideRef={slideRef}
+            containerRef={containerRef}
+            finalOffset={finalOffset}
+            key={`x${finalOffset.x}y4{finalOffset.y}`}
+          />
+        </div>
+      </Paragraph>
     </Slide>
   );
 }
