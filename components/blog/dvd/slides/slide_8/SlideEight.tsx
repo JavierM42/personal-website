@@ -6,8 +6,8 @@ export default function SlideEight() {
   return (
     <Slide className="flex flex-col items-center">
       <Paragraph>
-        If we only needed to change colors when the logo hits the left or right
-        walls, we could use this idea:
+        If we only needed to change colors when the logo hit the left or right
+        wall, we could use this idea:
       </Paragraph>
       <CodeBlock isFirst />
       <Paragraph inCode>
