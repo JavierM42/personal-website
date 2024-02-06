@@ -117,6 +117,11 @@ export default function SlideEight({
         {`: hsl(`}
         <span className="text-primary-container-light">288deg 100% 50%</span>
         {`); }
+  to { `}
+        <span className="text-purple-dark">background</span>
+        {`: hsl(`}
+        <span className="text-primary-container-light">0deg 100% 50%</span>
+        {`); }
 }`}
       </CodeBlock>
       <Paragraph inCode>

@@ -55,9 +55,9 @@ export default function SlideSix() {
         {" var("}
         <span className="text-primary-container-light">--container-h</span>
         {`));\n  `}
-        <span className="text-purple-dark">--x-duration</span>
+        <span className="text-purple-dark">--duration-x</span>
         {": calc(var("}
-        <span className="text-primary-container-light">--y-duration</span>
+        <span className="text-primary-container-light">--duration-y</span>
         {") "}
         <span className="text-purple-dark">*</span>
         {" var("}
@@ -66,12 +66,26 @@ export default function SlideSix() {
 }`}
       </CodeBlock>
       <Paragraph inCode>
-        We then animate <code>left</code> and <code>top</code> in a linear
-        fashion, forever, alternating back and forth.
+        Assume the container element has <code>relative</code> positioning and
+        the appropriate size. We then animate <code>left</code> and{" "}
+        <code>top</code> in a linear fashion, forever, alternating back and
+        forth.
       </Paragraph>
       <CodeBlock isLast>
         {`.logo {
   `}
+        <span className="text-purple-dark">position</span>
+        {": "}
+        <span className="text-primary-container-light">absolute</span>
+        {";\n  "}
+        <span className="text-purple-dark">width</span>
+        {": var("}
+        <span className="text-primary-container-light">--logo-w</span>
+        {");\n  "}
+        <span className="text-purple-dark">height</span>
+        {": var("}
+        <span className="text-primary-container-light">--logo-h</span>
+        {");\n  "}
         <span className="text-purple-dark">animation</span>
         {":\n    "}
         <span className="text-primary-container-light">x</span>

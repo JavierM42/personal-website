@@ -1,3 +1,4 @@
+import ExternalLink from "../../../../ExternalLink";
 import Paragraph from "../../Paragraph";
 import Slide from "../../Slide";
 
@@ -5,18 +6,21 @@ export default function SlideTwelve() {
   return (
     <Slide className="flex flex-col items-center justify-center">
       <Paragraph>
-        That's all for today's article. I hope you both enjoyed the visuals and
-        learned something you might use for a more practical project.
+        I hope you both enjoyed the article and learned something you might use
+        for a more practical project.
       </Paragraph>
       <Paragraph>
-        {/* TODO */}
-        Here's a CODEPEN link to the final result, in case you want to play
-        around with it.
+        Here's a{" "}
+        <ExternalLink href="https://codepen.io/JavierM42/pen/wvOxaRK">
+          Codepen link
+        </ExternalLink>{" "}
+        to the final result.
       </Paragraph>
       <Paragraph>
         And because I can't fathom finishing this article without even
         mentioning corner hits, I've made a version with interactive parameters
-        and a corner collision timer.
+        and a corner collision timer. See it in the next slide.
+        {/* TODO */}
       </Paragraph>
       {/* TODO */}
     </Slide>

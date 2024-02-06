@@ -38,6 +38,11 @@ export default function SlideEleven() {
         {`: `}
         <span className="text-primary-container-light">3</span>
         {`; }
+  to { `}
+        <span className="text-purple-dark">--color-x</span>
+        {`: `}
+        <span className="text-primary-container-light">0</span>
+        {`; }
 }\n\n`}
         {`@keyframes `}
         <span className="text-primary-container-light">colorY</span>
@@ -66,6 +71,11 @@ export default function SlideEleven() {
         <span className="text-purple-dark">--color-y</span>
         {`: `}
         <span className="text-primary-container-light">3</span>
+        {`; }
+  to { `}
+        <span className="text-purple-dark">--color-y</span>
+        {`: `}
+        <span className="text-primary-container-light">0</span>
         {`; }
 }\n\n`}
         {`.logo {
