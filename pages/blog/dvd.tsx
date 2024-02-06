@@ -15,7 +15,6 @@ import SlideNine from "../../components/blog/dvd/slides/slide_9/SlideNine";
 import SlideTen from "../../components/blog/dvd/slides/slide_10/SlideTen";
 import SlideEleven from "../../components/blog/dvd/slides/slide_11/SlideEleven";
 import SlideTwelve from "../../components/blog/dvd/slides/slide_12/SlideTwelve";
-import SlideThirteen from "../../components/blog/dvd/slides/slide_13/SlideThirteen";
 import { useRef, useState } from "react";
 import { SquareButton } from "../../components/SquareButton";
 import { useWindowSize } from "@uidotdev/usehooks";
@@ -48,7 +47,7 @@ export default function DvdBlogPost() {
           <SlideFour containerRef={containerRef} finalY={finalY} />
           <SlideFive containerRef={containerRef} setFinalY={setFinalY} />
           <SlideSix />
-          <SlideSeven />
+          <SlideSeven containerRef={containerRef} />
           <SlideEight />
           <SlideNine />
           <SlideTen />

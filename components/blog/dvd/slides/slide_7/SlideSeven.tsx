@@ -1,21 +1,50 @@
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ReactNode, RefObject, useRef } from "react";
 import Paragraph from "../../Paragraph";
 import Slide from "../../Slide";
 
-export default function SlideSeven() {
+export default function SlideSeven({
+  containerRef,
+}: {
+  containerRef: RefObject<HTMLDivElement>;
+}) {
+  const slideRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: exitProgress } = useScroll({
+    target: slideRef,
+    container: containerRef,
+    offset: ["end end", "end start"],
+  });
+  const opacity = useTransform(exitProgress, [0, 1], [1, -3]);
+
+  const Fade = ({ children }: { children: ReactNode }) => (
+    <motion.span style={{ opacity }}>{children}</motion.span>
+  );
+
   return (
-    <Slide className="flex flex-col items-center justify-center">
+    <Slide className="flex flex-col items-center justify-center" ref={slideRef}>
       <Paragraph>
         We've sorted out the bouncing. Now, on to the colors.
       </Paragraph>
       <Paragraph>
-        Well... colors are a bit harder. All four walls trigger a color change.
-        It's not so easy to divide the color change into <i>x</i> and <i>y</i>{" "}
-        if the color is supposed to change every time there's a collision with
-        any of the four walls. We can't really do two independent animations as
-        we did for movement, because there's a single <code>color</code>{" "}
-        property.
+        <Fade>
+          Well... colors are a bit harder. It's not straightforward to divide
+          the color change into <i>x</i> and <i>y</i> because the color is
+        </Fade>
+        s<Fade>up</Fade>
+        po
+        <Fade>sed to change every t</Fade>i<Fade>me there's a co</Fade>l
+        <Fade>lision with any of th</Fade>e<Fade> fou</Fade>r<Fade> w</Fade>
+        al
+        <Fade>ls. W</Fade>e<Fade> can 't </Fade>r<Fade>eally do </Fade>t
+        <Fade>wo independent animations as </Fade>
+        we
+        <Fade> did for movement, be</Fade>
+        ca
+        <Fade>use there's a si</Fade>n
+        <Fade>
+          gle <code>color</code> property.
+        </Fade>
       </Paragraph>
-      {/* TODO animation words move into spoiler alert: we can */}
     </Slide>
   );
 }
