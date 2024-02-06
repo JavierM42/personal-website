@@ -157,7 +157,6 @@ export default function SlideEight({
         </span>
         {`;\n}`}
       </CodeBlock>
-      {/* TODO But... How */}
       <Paragraph>
         But...{" "}
         <div ref={textRef} className="inline-block">
