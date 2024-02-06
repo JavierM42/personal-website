@@ -1,5 +1,5 @@
 import { useWindowSize } from "@uidotdev/usehooks";
-import { RefObject, useEffect, useRef, useState } from "react";
+import { RefObject, useEffect, useRef } from "react";
 import DvdScreensaverWithAxes from "../../DvdScreensaverWithAxes";
 import Paragraph from "../../Paragraph";
 import Slide from "../../Slide";
