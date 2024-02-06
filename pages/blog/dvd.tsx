@@ -95,3 +95,4 @@ export default function DvdBlogPost() {
 // TODO page title
 
 // TODO responsive
+// TODO hydration problem

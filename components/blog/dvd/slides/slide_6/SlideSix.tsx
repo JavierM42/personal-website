@@ -42,8 +42,8 @@ export default function SlideSix() {
         {`;`}
       </CodeBlock>
       <Paragraph inCode>
-        The logo moves horizontally as fast as it does vertically, we calculate
-        the horizontal duration based on our container's aspect ratio:
+        The logo moves horizontally as fast as it does vertically, we can
+        calculate the horizontal duration based on our container's aspect ratio:
       </Paragraph>
       <CodeBlock>
         {`  `}
@@ -92,24 +92,6 @@ export default function SlideSix() {
         {`;\n}
 
 @keyframes `}
-        <span className="text-primary-container-light">y</span>
-        {` {
-  from { `}
-        <span className="text-purple-dark">top</span>
-        {`: `}
-        <span className="text-primary-container-light">0</span>
-        {`; }
-  to { `}
-        <span className="text-purple-dark">top</span>
-        {`: calc(`}
-        <span className="text-primary-container-light">100%</span>
-        <span className="text-purple-dark"> - </span>
-        {`var(`}
-        <span className="text-primary-container-light">--logo-h</span>
-        {`)); }
-}
-
-@keyframes `}
         <span className="text-primary-container-light">x</span>
         {` {
   from { `}
@@ -124,6 +106,24 @@ export default function SlideSix() {
         <span className="text-purple-dark"> - </span>
         {`var(`}
         <span className="text-primary-container-light">--logo-w</span>
+        {`)); }
+}
+
+@keyframes `}
+        <span className="text-primary-container-light">y</span>
+        {` {
+  from { `}
+        <span className="text-purple-dark">top</span>
+        {`: `}
+        <span className="text-primary-container-light">0</span>
+        {`; }
+  to { `}
+        <span className="text-purple-dark">top</span>
+        {`: calc(`}
+        <span className="text-primary-container-light">100%</span>
+        <span className="text-purple-dark"> - </span>
+        {`var(`}
+        <span className="text-primary-container-light">--logo-h</span>
         {`)); }
 }`}
       </CodeBlock>
