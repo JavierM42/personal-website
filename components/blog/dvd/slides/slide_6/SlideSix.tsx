@@ -7,8 +7,8 @@ export default function SlideSix() {
     <Slide className="flex flex-col items-center">
       <CodeBlock isFirst>{`:root {`}</CodeBlock>
       <Paragraph inCode>
-        Let's set our desired container and logo sizes, as well as the duration
-        of the vertical animation, using CSS variables:
+        Let's set our desired container and logo sizes, as well as the animation
+        speed, using CSS variables:
       </Paragraph>
       <CodeBlock>
         {`  `}
@@ -24,46 +24,55 @@ export default function SlideSix() {
         {": "}
         <span className="text-primary-container-light">180</span>
         {"; "}
-        <span className="text-outline">
-          /* no units so we can do division */
-        </span>
         {`\n  `}
         <span className="text-purple-dark">--logo-w</span>
         {": "}
-        <span className="text-primary-container-light">40px</span>
+        <span className="text-primary-container-light">40</span>
         {`;\n  `}
         <span className="text-purple-dark">--logo-h</span>
         {": "}
-        <span className="text-primary-container-light">20px</span>
+        <span className="text-primary-container-light">20</span>
         {`;\n  `}
-        <span className="text-purple-dark">--y-duration</span>
+        <span className="text-purple-dark">--speed</span>
         {": "}
-        <span className="text-primary-container-light">2s</span>
-        {`;`}
+        <span className="text-primary-container-light">90</span>
+        {`; `}
+        <span className="text-outline">/* pixels per second */</span>
       </CodeBlock>
       <Paragraph inCode>
-        The logo moves horizontally as fast as it does vertically, we can
-        calculate the horizontal duration based on our container's aspect ratio:
+        We can easily calculate how long it takes for the logo to move through
+        the screen, both horizontally and vertically.
       </Paragraph>
       <CodeBlock>
         {`  `}
-        <span className="text-purple-dark">--aspect</span>
-        {": calc(var("}
-        <span className="text-primary-container-light">--container-w</span>
-        {") "}
-        <span className="text-purple-dark">/</span>
-        {" var("}
-        <span className="text-primary-container-light">--container-h</span>
-        {`));\n  `}
         <span className="text-purple-dark">--duration-x</span>
-        {": calc(var("}
-        <span className="text-primary-container-light">--duration-y</span>
-        {") "}
-        <span className="text-purple-dark">*</span>
-        {" var("}
-        <span className="text-primary-container-light">--aspect</span>
-        {`));
-}`}
+        {": calc(\n    var("}
+        <span className="text-primary-container-light">--container-w</span>
+        <span className="text-purple-dark"> - </span>
+        {"var("}
+        <span className="text-primary-container-light">--logo-w</span>
+        {")"}
+        <span className="text-purple-dark"> / </span>
+        {"var("}
+        <span className="text-primary-container-light">--speed</span>
+        {")"}
+        <span className="text-purple-dark"> * </span>
+        <span className="text-primary-container-light">1s</span>
+        {`\n  );\n  `}
+        <span className="text-purple-dark">--duration-y</span>
+        {": calc(\n    var("}
+        <span className="text-primary-container-light">--container-h</span>
+        <span className="text-purple-dark"> - </span>
+        {"var("}
+        <span className="text-primary-container-light">--logo-h</span>
+        {")"}
+        <span className="text-purple-dark"> / </span>
+        {"var("}
+        <span className="text-primary-container-light">--speed</span>
+        {")"}
+        <span className="text-purple-dark"> * </span>
+        <span className="text-primary-container-light">1s</span>
+        {`\n  );\n}`}
       </CodeBlock>
       <Paragraph inCode>
         Assume the container element has <code>relative</code> positioning and

@@ -19,6 +19,7 @@ import { useRef, useState } from "react";
 import { SquareButton } from "../../components/SquareButton";
 import { useWindowSize } from "@uidotdev/usehooks";
 import Head from "next/head";
+import SlideThirteen from "../../components/blog/dvd/slides/slide_13/SlideThirteen";
 
 export default function DvdBlogPost() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -67,6 +68,7 @@ export default function DvdBlogPost() {
           <SlideTen />
           <SlideEleven />
           <SlideTwelve />
+          <SlideThirteen />
           <Slide>
             CRT effect on first slide from
             https://aleclownes.com/2017/02/01/crt-display.html

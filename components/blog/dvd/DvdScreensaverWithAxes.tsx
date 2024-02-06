@@ -17,8 +17,8 @@ const DvdScreensaverWithAxes = ({
         {
           "--container-width": width,
           "--container-height": height,
-          "--logo-width": "40px",
-          "--logo-height": "20px",
+          "--logo-width": 40,
+          "--logo-height": 20,
         } as CSSProperties
       }
     >
@@ -37,8 +37,8 @@ const DvdScreensaverWithAxes = ({
           {
             "--container-width": width,
             "--container-height": height,
-            "--logo-width": "40px",
-            "--logo-height": "20px",
+            "--logo-width": 40,
+            "--logo-height": 20,
           } as CSSProperties
         }
       >

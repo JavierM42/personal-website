@@ -40,14 +40,22 @@ a {
   @apply transition-colors;
 }
 
-.slider::-webkit-slider-thumb {
+.color-slider::-webkit-slider-thumb {
   @apply w-5 h-5 rounded-md appearance-none cursor-pointer ring ring-surface;
   background: hsl(var(--hue) 100% 50%);
 }
 
-.slider::-moz-range-thumb {
+.color-slider::-moz-range-thumb {
   @apply w-5 h-5 rounded-md appearance-none cursor-pointer ring ring-surface;
   background: hsl(var(--hue) 100 50%);
+}
+
+.slider::-webkit-slider-thumb {
+  @apply w-2 h-2 rounded-md appearance-none cursor-pointer bg-on-surface ring-2 ring-surface;
+}
+
+.slider::-moz-range-thumb {
+  @apply w-2 h-2 rounded-md appearance-none cursor-pointer bg-on-surface ring-2 ring-surface;
 }
 
 @layer utilities {

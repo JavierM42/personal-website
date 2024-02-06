@@ -24,7 +24,7 @@ const ThemePicker = () => {
       type="range"
       min="0"
       max="360"
-      className="w-full h-2 rounded-full appearance-none focus:outline-none slider"
+      className="w-full h-2 rounded-full appearance-none focus:outline-none color-slider"
       style={
         {
           background:

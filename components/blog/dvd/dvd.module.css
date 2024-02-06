@@ -1,12 +1,17 @@
 .variables {
   --container-width: 320; /* px */
   --container-height: 180; /* px */
-  --logo-width: 20%;
-  --logo-height: 15%;
-  --y-duration: 2s; /* time it takes for the logo to bounce vertically */
+  --logo-width: 64;
+  --logo-height: 32;
+
+  /* FIXME This is not so easy! use speed instead of hardcoding duration */
+  --speed: 90; /* pixels per second */
+  --y-duration: calc(
+    (var(--container-height) - var(--logo-height)) / var(--speed) * 1s
+  );
   --x-duration: calc(
-    var(--y-duration) * var(--container-width) / var(--container-height)
-  ); /* time it takes for the logo to bounce horizontally */
+    (var(--container-width) - var(--logo-width)) / var(--speed) * 1s
+  );
   --color-x: 0;
   --color-y: 0;
   animation: colorY calc(var(--y-duration) * 5) step-start infinite,
@@ -23,8 +28,8 @@
   --color-x: 0;
   --color-y: 0;
   position: absolute;
-  width: var(--logo-width);
-  height: var(--logo-height);
+  width: calc(var(--logo-width) * 1px);
+  height: calc(var(--logo-height) * 1px);
   color: hsl(
     calc(360deg / 25 * (var(--color-y) * 5 + var(--color-x))) 100% 50%
   );
@@ -38,8 +43,8 @@
 
 .logoMovement {
   position: absolute;
-  width: var(--logo-width);
-  height: var(--logo-height);
+  width: calc(var(--logo-width) * 1px);
+  height: calc(var(--logo-height) * 1px);
   animation: x var(--x-duration) linear infinite alternate,
     y var(--y-duration) linear infinite alternate;
   top: 0;
@@ -60,16 +65,16 @@
 
 .xAxisMovement {
   position: absolute;
-  width: var(--logo-width);
-  height: var(--logo-height);
+  width: calc(var(--logo-width) * 1px);
+  height: calc(var(--logo-height) * 1px);
   animation: x var(--x-duration) linear infinite alternate;
   left: 0;
 }
 
 .yAxisMovement {
   position: absolute;
-  width: var(--logo-width);
-  height: var(--logo-height);
+  width: calc(var(--logo-width) * 1px);
+  height: calc(var(--logo-height) * 1px);
   animation: y var(--y-duration) linear infinite alternate;
   top: 0;
 }
@@ -79,7 +84,7 @@
     left: 0;
   }
   to {
-    left: calc(100% - var(--logo-width));
+    left: calc(100% - var(--logo-width) * 1px);
   }
 }
 
@@ -88,7 +93,7 @@
     top: 0;
   }
   to {
-    top: calc(100% - var(--logo-height));
+    top: calc(100% - var(--logo-height) * 1px);
   }
 }
 
