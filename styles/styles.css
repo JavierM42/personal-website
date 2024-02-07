@@ -88,3 +88,36 @@ code {
   mask: linear-gradient(#fff 0 0) content-box subtract,
     linear-gradient(#fff 0 0);
 }
+
+@property --gradient-offset {
+  initial-value: 0;
+  inherits: false;
+  syntax: "<number>";
+}
+
+@property --range {
+  initial-value: 50;
+  inherits: false;
+  syntax: "<number>";
+}
+
+@keyframes animate-gradient-offset {
+  from {
+    --gradient-offset: calc(var(--range) * -1 / 2);
+  }
+  to {
+    --gradient-offset: calc(var(--range) * 1 / 2);
+  }
+}
+
+.bg-animated-gradient {
+  background-image: linear-gradient(
+    to bottom right,
+    var(--tw-gradient-from)
+      calc((var(--gradient-offset) - var(--range) / 2) * 1%),
+    var(--tw-gradient-via) calc((50 + var(--gradient-offset)) * 1%),
+    var(--tw-gradient-to)
+      calc((100 + var(--gradient-offset) + var(--range) / 2) * 1%)
+  );
+  animation: animate-gradient-offset 10s ease-in-out infinite alternate;
+}

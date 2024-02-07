@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import GitHubLogo from "../assets/github.svg";
 import LinkedInLogo from "../assets/linkedin.svg";
 import BlogPostCards from "../components/BlogPostCards";
@@ -13,7 +14,14 @@ import WorkExperienceCards from "../components/work_experience/WorkExperienceCar
 export default function Home() {
   return (
     <>
-      <div className="fixed inset-0 bg-gradient-to-br from-primary-container to-tertiary-container -z-1 dark:from-primary-container/40 dark:to-tertiary-container/40" />
+      <div
+        className="fixed inset-0 bg-animated-gradient bg-gradient-to-br from-primary-container to-primary-container -z-1 dark:opacity-40"
+        style={
+          {
+            "--tw-gradient-via": "rgb(var(--color-tertiary-container) / 1)",
+          } as CSSProperties
+        }
+      />
       <div className="relative w-full px-4">
         <div className="flex flex-col max-w-4xl pt-16 mx-auto leading-loose text-on-background">
           <DevNote className="absolute w-60 top-20 left-12 rotate-[-3deg]">
