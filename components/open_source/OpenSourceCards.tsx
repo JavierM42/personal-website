@@ -11,7 +11,7 @@ export default function OpenSourceCards() {
         name="tailwind-material-colors"
         content="A TailwindCSS Plugin to generate dynamic color themes according to the Material Design guidelines."
         cta={<TryDynamicColor />}
-        borderClass="from-red-container to-green-container via-purple/20"
+        gradientColorStops="from-red-container to-green-container via-purple/20"
         className="shadow-purple-container/50 dark:shadow-purple/20"
         notes={
           <DevNote className="absolute w-72 top-52 right-64 rotate-[-4deg]">
@@ -37,7 +37,7 @@ export default function OpenSourceCards() {
             <GitHubLogo className="w-5 h-5" />
           </a>
         }
-        borderClass="to-primary-container-press from-primary"
+        gradientColorStops="to-primary-container-press from-primary"
         className="shadow-primary/20"
       />
       <OpenSourceCard
@@ -53,7 +53,7 @@ export default function OpenSourceCards() {
             <GitHubLogo className="w-5 h-5" />
           </a>
         }
-        borderClass="to-tertiary-container-dark from-tertiary-container-light"
+        gradientColorStops="to-tertiary-container-dark from-tertiary-container-light"
         className="shadow-tertiary/20"
       />
       <OpenSourceCard
@@ -76,7 +76,7 @@ export default function OpenSourceCards() {
             <GitHubLogo className="w-5 h-5" />
           </a>
         }
-        borderClass="from-outline to-tertiary-container"
+        gradientColorStops="from-outline to-tertiary-container"
         className="shadow-outline/20"
         notes={
           <DevNote className="absolute w-72 top-20 -right-14 rotate-[4deg]">
@@ -105,13 +105,13 @@ export default function OpenSourceCards() {
             <GitHubLogo className="w-5 h-5" />
           </a>
         }
-        borderClass="from-secondary/60 to-primary/40"
+        gradientColorStops="from-secondary/60 to-primary/40"
         className="shadow-secondary-container/80"
       />
       <OpenSourceCard
         name="MTGBarato"
         content="I built a simple web app to help my local trading card game community."
-        borderClass="from-[#f6ad55] dark:from-bg-[#88501d] to-[#f6ad55] dark:to-bg-[#88501d]"
+        gradientColorStops="from-[#f6ad55] dark:from-bg-[#88501d] to-[#f6ad55] dark:to-bg-[#88501d]"
         className="shadow-[#f6ad55]/20"
         cta={
           <a

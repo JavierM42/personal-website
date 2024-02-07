@@ -5,8 +5,7 @@ type Props = {
   name: ReactNode;
   content: string;
   cta: ReactNode;
-  // TODO rename to gradientColorStops
-  borderClass: string;
+  gradientColorStops: string;
   className?: string;
   notes?: ReactNode;
 };
@@ -15,7 +14,7 @@ const OpenSourceCard: FC<Props> = ({
   name,
   content,
   cta,
-  borderClass,
+  gradientColorStops,
   className,
   notes,
 }: Props) => {
@@ -23,7 +22,7 @@ const OpenSourceCard: FC<Props> = ({
     <li
       className={classNames(
         "gradient-border bg-surface/40 shadow-xl h-[212px]",
-        borderClass
+        gradientColorStops
       )}
       style={
         {
