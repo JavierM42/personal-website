@@ -85,7 +85,9 @@ export default function SlideThirteen() {
       <Paragraph>
         <i>Warning:</i> while you drag, the logo may flash rapidly.
       </Paragraph>
-      <Paragraph>Corner hit every {cycleTime.toFixed(2)}s.</Paragraph>
+      <Paragraph>Corner hit every {cycleTime.toFixed(2)} seconds.</Paragraph>
+      {/* tooltip */}
+      {/* TODO corner hit timer? */}
       <div
         className={classNames(
           styles.variables,
@@ -103,6 +105,7 @@ export default function SlideThirteen() {
         }
       >
         <DvdLogo className={styles.logo} />
+        {/* https://lostmathlessons.blogspot.com/2016/03/bouncing-dvd-logo.html */}
       </div>
     </Slide>
   );
