@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { FC, ReactNode } from "react";
+import { CSSProperties, FC, ReactNode } from "react";
 
 type Props = {
   name: ReactNode;
@@ -30,7 +30,7 @@ const OpenSourceCard: FC<Props> = ({
           "--border-radius": "16px",
           "--border-gradient":
             "linear-gradient(to right, var(--tw-gradient-stops))",
-        } as any
+        } as CSSProperties
       }
     >
       <div className={classNames("flex flex-col overflow-clip", className)}>

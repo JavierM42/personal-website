@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { FC, useState } from "react";
+import { CSSProperties, FC, useState } from "react";
 import ThemePicker from "./ThemePicker";
 
 const TryDynamicColor: FC = () => {
@@ -19,12 +19,16 @@ const TryDynamicColor: FC = () => {
             <ThemePicker />
           </motion.div>
         ) : (
-          // TODO transition colors
           <motion.button
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="px-6 py-3 text-sm font-bold rounded-lg shadow text-on-surface bg-gradient-to-r from-red-container to-green-container via-purple-container hover:from-red-container-hover hover:to-green-container-hover hover:via-purple-container-hover"
+            className="px-6 py-3 text-sm font-bold transition-all rounded-lg shadow text-on-surface gradient-button from-red-container to-green-container hover:scale-[1.02] hover:shadow-md dark:shadow-black"
             onClick={() => setIsExpanded(true)}
+            style={
+              {
+                "--tw-gradient-via": "rgb(var(--color-purple-container) / 1)",
+              } as CSSProperties
+            }
           >
             Try it, live on this page
           </motion.button>
