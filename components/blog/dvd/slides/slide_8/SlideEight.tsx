@@ -1,4 +1,4 @@
-import { useWindowSize } from "@uidotdev/usehooks";
+import { useWindowSize } from "usehooks-ts";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { RefObject, useEffect, useRef, useState } from "react";
 import CodeBlock from "../../CodeBlock";
@@ -36,7 +36,9 @@ export default function SlideEight({
   finalPosition?: { x: number; y: number };
   containerRef: RefObject<HTMLDivElement>;
 }) {
-  const { width: windowWidth, height: windowHeight } = useWindowSize();
+  const { width: windowWidth, height: windowHeight } = useWindowSize({
+    initializeWithValue: false,
+  });
   const textRef = useRef<HTMLDivElement>(null);
   const [initialPosition, setInitialPosition] = useState<{
     x: number;
@@ -162,17 +164,17 @@ export default function SlideEight({
         </span>
         {`;\n}`}
       </CodeBlock>
-      <Paragraph>
+      <div className="max-w-lg">
         But...{" "}
         <div ref={textRef} className="inline-block">
           <AnimatedText
             slideRef={slideRef}
             containerRef={containerRef}
             finalOffset={finalOffset}
-            key={`x${finalOffset.x}y4{finalOffset.y}`}
+            key={`x${finalOffset.x}y${finalOffset.y}`}
           />
         </div>
-      </Paragraph>
+      </div>
     </Slide>
   );
 }

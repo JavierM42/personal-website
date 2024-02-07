@@ -1,4 +1,4 @@
-import { useWindowSize } from "@uidotdev/usehooks";
+import { useWindowSize } from "usehooks-ts";
 import { RefObject, useEffect, useRef } from "react";
 import DvdScreensaverWithAxes from "../../DvdScreensaverWithAxes";
 import Paragraph from "../../Paragraph";
@@ -11,7 +11,9 @@ export default function SlideFive({
   containerRef: RefObject<HTMLDivElement>;
   setFinalY: (y: number) => void;
 }) {
-  const { height: windowHeight } = useWindowSize();
+  const { height: windowHeight } = useWindowSize({
+    initializeWithValue: false,
+  });
   const textRef = useRef<HTMLDivElement>(null);
   const finalYSet = useRef(false);
 

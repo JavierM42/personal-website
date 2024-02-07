@@ -3,27 +3,11 @@ import ColorAnimation from "../../ColorAnimation";
 import DvdScreensaver from "../../DvdScreensaver";
 import Paragraph from "../../Paragraph";
 import Slide from "../../Slide";
-import { useWindowSize } from "@uidotdev/usehooks";
+import { useWindowSize } from "usehooks-ts";
 import { RefObject, useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 
-const AnimatedText = ({
-  slideRef,
-  containerRef,
-  finalOffset,
-}: {
-  slideRef: RefObject<HTMLDivElement>;
-  containerRef: RefObject<HTMLDivElement>;
-  finalOffset: number;
-}) => {
-  const { scrollYProgress: exitProgress } = useScroll({
-    target: slideRef,
-    container: containerRef,
-    offset: ["end end", "end start"],
-  });
-  const y = useTransform(exitProgress, [0, 1], [0, finalOffset]);
-
-  return <motion.div style={{ y }}>Can we divide it further?</motion.div>;
-};
+const AnimatedText = dynamic(() => import("./AnimatedText"));
 
 export default function SlideFour({
   containerRef,
@@ -32,7 +16,9 @@ export default function SlideFour({
   finalY?: number;
   containerRef: RefObject<HTMLDivElement>;
 }) {
-  const { height: windowHeight } = useWindowSize();
+  const { height: windowHeight } = useWindowSize({
+    initializeWithValue: false,
+  });
   const textRef = useRef<HTMLDivElement>(null);
   const [initialY, setInitialY] = useState<number | null>(null);
 
@@ -42,6 +28,7 @@ export default function SlideFour({
         containerRef.current.scrollTop
     );
   }
+
   useEffect(() => {
     if (textRef.current && containerRef.current) {
       setInitialY(
@@ -85,16 +72,14 @@ export default function SlideFour({
         </div>
       </div>
       <Paragraph>Let's focus on the movement.</Paragraph>
-      <Paragraph>
-        <div ref={textRef} className="flex gap-1">
-          <AnimatedText
-            slideRef={slideRef}
-            containerRef={containerRef}
-            finalOffset={finalOffset}
-            key={finalOffset}
-          />
-        </div>
-      </Paragraph>
+      <div ref={textRef} className="w-full max-w-lg text-justify">
+        <AnimatedText
+          slideRef={slideRef}
+          containerRef={containerRef}
+          finalOffset={finalOffset}
+          key={finalOffset}
+        />
+      </div>
     </Slide>
   );
 }

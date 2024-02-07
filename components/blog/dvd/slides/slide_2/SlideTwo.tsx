@@ -36,7 +36,6 @@ export default function SlideTwo() {
             like the old DVD screensaver.
           </p>
         </div>
-        {/* TODO chat animation */}
       </div>
     </Slide>
   );

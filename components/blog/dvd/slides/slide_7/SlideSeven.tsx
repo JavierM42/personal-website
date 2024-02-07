@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ReactNode, RefObject, useRef } from "react";
+import { ReactNode, RefObject, useEffect, useRef, useState } from "react";
 import Paragraph from "../../Paragraph";
 import Slide from "../../Slide";
 
@@ -25,7 +25,7 @@ export default function SlideSeven({
       <Paragraph>
         We've sorted out the bouncing. Now, on to the colors.
       </Paragraph>
-      <Paragraph>
+      <div className="w-full max-w-lg text-justify">
         <Fade>
           Well... colors are a bit harder. It's not straightforward to divide
           the color change into <i>x</i> and <i>y</i> because the color is
@@ -44,8 +44,8 @@ export default function SlideSeven({
         <Fade>
           gle <code>color</code> property.
         </Fade>
-      </Paragraph>
+      </div>
     </Slide>
   );
-  // FIXME broken animation, maybe fixable with TODO hydration error
+  // FIXME broken animation
 }
