@@ -46,12 +46,13 @@ export default function SlideSix() {
       <CodeBlock>
         {`  `}
         <span className="text-purple-dark">--duration-x</span>
-        {": calc(\n    var("}
+        {": calc(\n    (var("}
         <span className="text-primary-container-light">--container-w</span>
+        {")"}
         <span className="text-purple-dark"> - </span>
         {"var("}
         <span className="text-primary-container-light">--logo-w</span>
-        {")"}
+        {"))"}
         <span className="text-purple-dark"> / </span>
         {"var("}
         <span className="text-primary-container-light">--speed</span>
@@ -60,12 +61,13 @@ export default function SlideSix() {
         <span className="text-primary-container-light">1s</span>
         {`\n  );\n  `}
         <span className="text-purple-dark">--duration-y</span>
-        {": calc(\n    var("}
+        {": calc(\n    (var("}
         <span className="text-primary-container-light">--container-h</span>
+        {")"}
         <span className="text-purple-dark"> - </span>
         {"var("}
         <span className="text-primary-container-light">--logo-h</span>
-        {")"}
+        {"))"}
         <span className="text-purple-dark"> / </span>
         {"var("}
         <span className="text-primary-container-light">--speed</span>
@@ -76,9 +78,9 @@ export default function SlideSix() {
       </CodeBlock>
       <Paragraph inCode>
         Assume the container element has <code>relative</code> positioning and
-        the appropriate size. We then animate <code>left</code> and{" "}
-        <code>top</code> in a linear fashion, forever, alternating back and
-        forth.
+        the appropriate size. We then set the properties for the logo and
+        animate <code>left</code> and <code>top</code> in a linear fashion,
+        forever, alternating back and forth.
       </Paragraph>
       <CodeBlock isLast>
         {`.logo {
@@ -88,12 +90,18 @@ export default function SlideSix() {
         <span className="text-primary-container-light">absolute</span>
         {";\n  "}
         <span className="text-purple-dark">width</span>
-        {": var("}
+        {": calc(var("}
         <span className="text-primary-container-light">--logo-w</span>
+        {")"}
+        <span className="text-purple-dark"> * </span>
+        <span className="text-primary-container-light">1px</span>
         {");\n  "}
         <span className="text-purple-dark">height</span>
-        {": var("}
+        {": calc(var("}
         <span className="text-primary-container-light">--logo-h</span>
+        {")"}
+        <span className="text-purple-dark"> * </span>
+        <span className="text-primary-container-light">1px</span>
         {");\n  "}
         <span className="text-purple-dark">animation</span>
         {":\n    "}

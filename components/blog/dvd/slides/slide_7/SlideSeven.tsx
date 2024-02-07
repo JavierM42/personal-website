@@ -35,7 +35,7 @@ export default function SlideSeven({
         <Fade>sed to change every t</Fade>i<Fade>me there's a co</Fade>l
         <Fade>lision with any of th</Fade>e<Fade> fou</Fade>r<Fade> w</Fade>
         al
-        <Fade>ls. W</Fade>e<Fade> can 't </Fade>r<Fade>eally do </Fade>t
+        <Fade>ls. W</Fade>e<Fade> can't </Fade>r<Fade>eally do </Fade>t
         <Fade>wo independent animations as </Fade>
         we
         <Fade> did for movement, be</Fade>
@@ -47,4 +47,5 @@ export default function SlideSeven({
       </Paragraph>
     </Slide>
   );
+  // FIXME broken animation, maybe fixable with TODO hydration error
 }

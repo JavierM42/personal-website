@@ -31,7 +31,6 @@ const DvdScreensaver = ({
       <DvdLogo className={colors ? styles.logo : styles.logoMovement} />
     </div>
   );
-  // TODO size looks awful
 };
 
 export default DvdScreensaver;

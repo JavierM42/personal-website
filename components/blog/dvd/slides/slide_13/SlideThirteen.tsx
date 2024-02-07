@@ -61,7 +61,7 @@ export default function SlideThirteen() {
         <input
           type="range"
           min="1"
-          max="100"
+          max="99"
           className="float-right h-1 mt-1.5 rounded-full appearance-none w-44 focus:outline-none slider"
           value={logoWidthPercentage}
           onChange={(event) =>
@@ -87,7 +87,7 @@ export default function SlideThirteen() {
       </Paragraph>
       <Paragraph>Corner hit every {cycleTime.toFixed(2)} seconds.</Paragraph>
       {/* tooltip */}
-      {/* TODO corner hit timer? */}
+      {/* TODO show corner hit countdown with CSS? */}
       <div
         className={classNames(
           styles.variables,

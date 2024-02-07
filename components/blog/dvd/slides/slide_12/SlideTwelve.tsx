@@ -17,12 +17,10 @@ export default function SlideTwelve() {
         to the final result.
       </Paragraph>
       <Paragraph>
-        And because I can't fathom finishing this article without even
+        And just because I can't fathom finishing this article without even
         mentioning corner hits, I've made a version with interactive parameters
-        and a corner collision timer. See it in the next slide.
-        {/* TODO */}
+        and a corner collision calculator. See it in the next slide.
       </Paragraph>
-      {/* TODO */}
     </Slide>
   );
 }
