@@ -1,12 +1,12 @@
-import { useRouter } from "next/router";
-import { FC } from "react";
+import Link from "next/link";
+import { FC, useState } from "react";
 import Switch from "../Switch";
 import { DevNote } from "./DevNote";
 import { useDevNotesState } from "./useDevNotesState";
-import Link from "next/link";
 
 export const DevNotesSection: FC = () => {
   const showDevNotes = useDevNotesState();
+  const [fastAnimation, setFastAnimation] = useState(false);
 
   return (
     <>
@@ -32,6 +32,34 @@ export const DevNotesSection: FC = () => {
             />
           </Link>
         </div>
+        <DevNote className="absolute w-72 -top-40 -right-64 rotate-[-3deg]">
+          There's a very subtle animation on the gradient background. Animating
+          gradients was not possible until recently. The new{" "}
+          <code>@property</code> rule can now animate CSS variables (not in
+          Firefox yet, though).
+          <div className="mt-4">
+            If you're having trouble seeing the animation, toggle the switch to
+            speed it up.
+          </div>
+          <div className="flex justify-center mt-4">
+            <Switch
+              isOn={fastAnimation}
+              tooltip="Fast background animation"
+              tooltipPlacement={"right"}
+              noIcon
+              onClick={() => {
+                setFastAnimation((isFast) => {
+                  const newValue = !isFast;
+                  document.documentElement.style.setProperty(
+                    "--gradient-animation-duration",
+                    newValue ? "1s" : "10s"
+                  );
+                  return newValue;
+                });
+              }}
+            />
+          </div>
+        </DevNote>
       </div>
       <div className="flex justify-center w-full h-24 gap-10 mt-12">
         <DevNote className="w-48 rotate-[-2deg] h-fit -mt-5">

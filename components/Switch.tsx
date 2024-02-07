@@ -9,6 +9,7 @@ export type Props = {
   onClick?: MouseEventHandler;
   tooltip: string;
   tooltipPlacement: Placement;
+  noIcon?: boolean;
 };
 
 const Switch: FC<Props> = ({
@@ -16,6 +17,7 @@ const Switch: FC<Props> = ({
   onClick,
   tooltip,
   tooltipPlacement,
+  noIcon,
 }: Props) => {
   const shouldReduceMotion = useReducedMotion();
 
@@ -41,25 +43,27 @@ const Switch: FC<Props> = ({
           transition={{ duration: shouldReduceMotion ? 0 : 0.3 }}
           className="w-8 h-8 p-1.5 rounded-full shadow-md bg-surface dark:bg-surface-hover text-tertiary"
         >
-          <motion.svg
-            viewBox="-1 -1 12 12"
-            className="stroke-current"
-            strokeWidth={1.5}
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            transition={{ duration: 0.3 }}
-            animate={
-              shouldReduceMotion ? undefined : { rotate: isOn ? 180 : 0 }
-            }
-          >
-            {/* < */}
-            <path d="M2,3 l-2,2 l2,2" />
-            {/* / */}
-            <path d="M6,2 l-2,6" />
-            {/* > */}
-            <path d="M8,3 l2,2 l-2,2" />
-          </motion.svg>
+          {!noIcon && (
+            <motion.svg
+              viewBox="-1 -1 12 12"
+              className="stroke-current"
+              strokeWidth={1.5}
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              transition={{ duration: 0.3 }}
+              animate={
+                shouldReduceMotion ? undefined : { rotate: isOn ? 180 : 0 }
+              }
+            >
+              {/* < */}
+              <path d="M2,3 l-2,2 l2,2" />
+              {/* / */}
+              <path d="M6,2 l-2,6" />
+              {/* > */}
+              <path d="M8,3 l2,2 l-2,2" />
+            </motion.svg>
+          )}
         </motion.div>
       </div>
     </WithTooltip>

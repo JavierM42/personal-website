@@ -101,6 +101,10 @@ code {
   syntax: "<number>";
 }
 
+:root {
+  --gradient-animation-duration: 10s;
+}
+
 @keyframes animate-gradient-offset {
   from {
     --gradient-offset: calc(var(--range) * -1 / 2);
@@ -119,5 +123,12 @@ code {
     var(--tw-gradient-to)
       calc((100 + var(--gradient-offset) + var(--range) / 2) * 1%)
   );
-  animation: animate-gradient-offset 10s ease-in-out infinite alternate;
+  animation: animate-gradient-offset var(--gradient-animation-duration)
+    ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-animated-gradient {
+    animation: none;
+  }
 }

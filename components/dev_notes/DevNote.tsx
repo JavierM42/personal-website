@@ -72,7 +72,7 @@ export const DevNote: FC<Props> = ({ children, className }) => {
           <AnimatePresence>
             {isExpanded && (
               <motion.div
-                className="w-full h-full p-4 origin-top-right rounded shadow-xl bg-tertiary-container"
+                className="w-full h-full p-4 origin-top-right rounded-md shadow-xl bg-surface"
                 initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0 }}
