@@ -113,18 +113,20 @@ code {
   background-image: linear-gradient(
     to bottom right,
     var(--tw-gradient-from)
-      calc((var(--range) * var(--gradient-progress) - var(--range) / 2) * 1%),
+      calc((var(--range) * var(--gradient-progress, 1) - var(--range) / 2) * 1%),
     var(--tw-gradient-via)
       calc(
-        (50 + var(--range) * var(--gradient-progress) - var(--range) / 2) * 1%
+        (50 + var(--range) * var(--gradient-progress, 1) - var(--range) / 2) *
+          1%
       ),
     var(--tw-gradient-to)
       calc(
-        (100 + var(--range) * var(--gradient-progress) - var(--range) / 2) * 1%
+        (100 + var(--range) * var(--gradient-progress, 1) - var(--range) / 2) *
+          1%
       )
   );
-  animation: animate-gradient var(--gradient-animation-duration) ease-in-out
-    infinite alternate;
+  -webkit-animation: animate-gradient var(--gradient-animation-duration)
+    ease-in-out infinite alternate;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -137,14 +139,14 @@ code {
   --duration: 6s;
   background-image: linear-gradient(
     to right,
-    var(--tw-gradient-from) calc(-150 * var(--gradient-progress) * 1%),
-    var(--tw-gradient-via) calc((50 - 150 * var(--gradient-progress)) * 1%),
-    var(--tw-gradient-to) calc((100 - 150 * var(--gradient-progress)) * 1%),
-    var(--tw-gradient-from) calc((150 - 150 * var(--gradient-progress)) * 1%),
-    var(--tw-gradient-via) calc((200 - 150 * var(--gradient-progress)) * 1%),
-    var(--tw-gradient-to) calc((250 - 150 * var(--gradient-progress)) * 1%)
+    var(--tw-gradient-from) calc(-150 * var(--gradient-progress, 0) * 1%),
+    var(--tw-gradient-via) calc((50 - 150 * var(--gradient-progress, 0)) * 1%),
+    var(--tw-gradient-to) calc((100 - 150 * var(--gradient-progress, 0)) * 1%),
+    var(--tw-gradient-from) calc((150 - 150 * var(--gradient-progress, 0)) * 1%),
+    var(--tw-gradient-via) calc((200 - 150 * var(--gradient-progress, 0)) * 1%),
+    var(--tw-gradient-to) calc((250 - 150 * var(--gradient-progress, 0)) * 1%)
   );
-  animation: animate-gradient var(--duration) linear infinite;
+  -webkit-animation: animate-gradient var(--duration) linear infinite;
 }
 .gradient-button:hover {
   --duration: 3s;

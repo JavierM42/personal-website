@@ -88,35 +88,12 @@ const PerspectiveCard: FC<Props> = ({
           rotateY: shouldReduceMotion ? 0 : dy,
         }}
       >
-        <div
-          className="block w-full h-full"
-          style={{
-            perspective: "1200px",
-            transformStyle: "flat",
-          }}
+        <motion.div
+          transition={spring}
+          className="absolute block w-full h-full"
         >
-          <motion.div
-            transition={spring}
-            className="absolute block w-full h-full"
-            style={{ backfaceVisibility: "hidden" }}
-          >
-            {children}
-          </motion.div>
-          <motion.div
-            className="block"
-            initial={{ rotateY: 180 }}
-            transition={spring}
-            style={{
-              width: "100%",
-              height: "100%",
-              zIndex: 0,
-              backfaceVisibility: "hidden",
-              position: "absolute",
-            }}
-          >
-            <div className="w-full h-full" />
-          </motion.div>
-        </div>
+          {children}
+        </motion.div>
       </motion.div>
     </motion.div>
   );
