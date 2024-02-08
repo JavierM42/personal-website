@@ -52,13 +52,12 @@ export default function DvdBlogPost() {
 
         <main className="max-w-4xl mx-auto">
           <SlideOne />
-          <SlideTwo />
-          {/* TODO Animate the five minutes later into the other one, or add a spongebob reference */}
+          {windowHeight && <SlideTwo containerRef={containerRef} />}
           <SlideThree />
           <SlideFour containerRef={containerRef} finalY={finalYSlide4} />
           <SlideFive containerRef={containerRef} setFinalY={setFinalYSlide4} />
           <SlideSix />
-          <SlideSeven containerRef={containerRef} />
+          {windowHeight && <SlideSeven containerRef={containerRef} />}
           <SlideEight
             containerRef={containerRef}
             finalPosition={finalPositionSlide8}

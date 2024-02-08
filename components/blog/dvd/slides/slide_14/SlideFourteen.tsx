@@ -41,6 +41,13 @@ export default function SlideFourteen() {
             .
           </Paragraph>
         </li>
+        <li>
+          "Five minutes later" card made with{" "}
+          <ExternalLink href="https://spongebob.gavinr.com/">
+            SpongeBob Time Cards Generator
+          </ExternalLink>{" "}
+          by Gavin Rehkemper
+        </li>
       </ul>
     </Slide>
   );

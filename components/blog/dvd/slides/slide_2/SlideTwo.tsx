@@ -1,10 +1,29 @@
 import Image from "next/image";
 import Slide from "../../Slide";
 import Paragraph from "../../Paragraph";
+import { RefObject, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import FiveMinutesLater from "./five-minutes-later.png";
 
-export default function SlideTwo() {
+export default function SlideTwo({
+  containerRef,
+}: {
+  containerRef: RefObject<HTMLDivElement>;
+}) {
+  const slideRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: exitProgress } = useScroll({
+    target: slideRef,
+    container: containerRef,
+    offset: ["end end", "end start"],
+  });
+  const opacity = useTransform(exitProgress, [0, 0.5, 1], [0, 1, 0]);
+
   return (
-    <Slide className="flex flex-col items-center justify-center gap-4">
+    <Slide
+      className="flex flex-col items-center justify-center gap-4"
+      containerClassName="relative"
+      ref={slideRef}
+    >
       <Paragraph>
         I hope the retro monitor effect wasn't too hard on your eyes. No more of
         that, I promise. It was just a fun little extra for the title slide.
@@ -37,6 +56,12 @@ export default function SlideTwo() {
           </p>
         </div>
       </div>
+      <motion.div
+        className="absolute aspect-[4/3] w-64 -translate-y-[calc(50%-32px)] top-[100%] pointer-events-none"
+        style={{ opacity: opacity }}
+      >
+        <Image src={FiveMinutesLater} className="rounded-lg" />
+      </motion.div>
     </Slide>
   );
 }

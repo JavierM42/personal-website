@@ -3,17 +3,28 @@ import { ReactNode, forwardRef } from "react";
 
 type Props = {
   children: ReactNode;
+  containerClassName?: string;
   className?: string;
   transparent?: boolean;
   noPadding?: boolean;
 };
 
 const Slide = forwardRef<HTMLDivElement, Props>(
-  ({ children, className, transparent = false, noPadding = false }, ref) => {
+  (
+    {
+      children,
+      className,
+      containerClassName,
+      transparent = false,
+      noPadding = false,
+    },
+    ref
+  ) => {
     return (
       <div
         className={classNames(
-          "flex items-center w-full min-h-screen snap-center bg-surface/40 md:bg-transparent pt-16 pb-2"
+          "flex items-center w-full min-h-screen snap-center bg-surface/40 md:bg-transparent pt-16 pb-2",
+          containerClassName
         )}
         ref={ref}
       >

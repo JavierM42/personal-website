@@ -47,5 +47,4 @@ export default function SlideSeven({
       </div>
     </Slide>
   );
-  // FIXME broken animation
 }
