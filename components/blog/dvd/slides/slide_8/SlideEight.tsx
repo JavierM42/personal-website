@@ -1,4 +1,4 @@
-import { useWindowSize } from "usehooks-ts";
+import { useWindowSize } from "@uidotdev/usehooks";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { RefObject, useEffect, useRef, useState } from "react";
 import CodeBlock from "../../CodeBlock";
@@ -36,9 +36,7 @@ export default function SlideEight({
   finalPosition?: { x: number; y: number };
   containerRef: RefObject<HTMLDivElement>;
 }) {
-  const { width: windowWidth, height: windowHeight } = useWindowSize({
-    initializeWithValue: false,
-  });
+  const { width: windowWidth, height: windowHeight } = useWindowSize();
   const textRef = useRef<HTMLDivElement>(null);
   const [initialPosition, setInitialPosition] = useState<{
     x: number;

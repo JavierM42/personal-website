@@ -3,7 +3,7 @@ import ColorAnimation from "../../ColorAnimation";
 import DvdScreensaver from "../../DvdScreensaver";
 import Paragraph from "../../Paragraph";
 import Slide from "../../Slide";
-import { useWindowSize } from "usehooks-ts";
+import { useWindowSize } from "@uidotdev/usehooks";
 import { RefObject, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
@@ -16,9 +16,7 @@ export default function SlideFour({
   finalY?: number;
   containerRef: RefObject<HTMLDivElement>;
 }) {
-  const { height: windowHeight } = useWindowSize({
-    initializeWithValue: false,
-  });
+  const { height: windowHeight } = useWindowSize();
   const textRef = useRef<HTMLDivElement>(null);
   const [initialY, setInitialY] = useState<number | null>(null);
 

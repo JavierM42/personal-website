@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import Head from "next/head";
 import { useRef, useState } from "react";
-import { useWindowSize } from "usehooks-ts";
+import { useWindowSize } from "@uidotdev/usehooks";
 import { SquareButton } from "../../components/SquareButton";
 import styles from "../../components/blog/dvd/dvd.module.css";
 import SlideOne from "../../components/blog/dvd/slides/slide_1/SlideOne";
@@ -23,9 +23,7 @@ import ChevronRight from "../../public/chevron-right.svg";
 
 export default function DvdBlogPost() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { height: windowHeight } = useWindowSize({
-    initializeWithValue: false,
-  });
+  const { height: windowHeight } = useWindowSize();
 
   const [finalYSlide4, setFinalYSlide4] = useState<number>();
   const [finalPositionSlide8, setFinalPositionSlide8] = useState<{
