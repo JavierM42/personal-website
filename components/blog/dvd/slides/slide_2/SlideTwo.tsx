@@ -17,6 +17,7 @@ export default function SlideTwo({
     offset: ["end end", "end start"],
   });
   const opacity = useTransform(exitProgress, [0, 0.5, 1], [0, 1, 0]);
+  const y = useTransform(exitProgress, [0, 1], ["100%", "-100%"]);
 
   return (
     <Slide
@@ -57,8 +58,8 @@ export default function SlideTwo({
         </div>
       </div>
       <motion.div
-        className="absolute aspect-[4/3] w-64 -translate-y-[calc(50%-32px)] top-[100%] pointer-events-none"
-        style={{ opacity: opacity }}
+        className="absolute aspect-[4/3] w-64 top-[calc(100%-72px)] pointer-events-none"
+        style={{ opacity, y }}
       >
         <Image src={FiveMinutesLater} className="rounded-lg" />
       </motion.div>
