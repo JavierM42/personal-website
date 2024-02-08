@@ -39,7 +39,7 @@ export const DevNote: FC<Props> = ({ children, className }) => {
             strokeLinejoin="round"
             animate={isExpanded ? "minus" : "code"}
           >
-            {/* open */}
+            {/* < */}
             <motion.path
               d="M2,3 l-2,2 l2,2"
               variants={{
@@ -48,7 +48,7 @@ export const DevNote: FC<Props> = ({ children, className }) => {
               }}
               transition={shouldReduceMotion ? { duration: 0 } : undefined}
             />
-            {/* slash */}
+            {/* / */}
             <motion.path
               d="M6,2 l-2,6"
               variants={{
@@ -57,7 +57,7 @@ export const DevNote: FC<Props> = ({ children, className }) => {
               }}
               transition={shouldReduceMotion ? { duration: 0 } : undefined}
             />
-            {/* close */}
+            {/* > */}
             <motion.path
               d="M8,3 l2,2 l-2,2"
               variants={{

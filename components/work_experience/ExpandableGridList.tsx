@@ -44,9 +44,9 @@ const ExpandableGridList: FC<Props> = ({
         className,
         "grid transition-all motion-reduce:transition-none duration-300 lg:aspect-[16/10] grid-cols-[1fr]",
         {
-          "lg:grid-cols-[1fr_1fr]": expandedIndex === null,
-          "grid-rows-[300px_300px_300px_300px]": expandedIndex === null,
-          // Manually adjusted height
+          "grid-rows-[300px_300px_300px_300px] lg:grid-cols-[1fr_1fr]":
+            expandedIndex === null,
+          // Row height adjusted manually for visual balance TODO find a cleaner solution
           "grid-rows-[546px_224px_224px_224px] sm:grid-rows-[420px_260px_260px_260px]":
             expandedIndex === 0,
           "grid-rows-[208px_576px_208px_208px] sm:grid-rows-[270px_390px_270px_270px]":
