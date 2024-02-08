@@ -1,4 +1,3 @@
-import Link from "next/link";
 import ExternalLink from "../../../../ExternalLink";
 import Paragraph from "../../Paragraph";
 import Slide from "../../Slide";
@@ -19,7 +18,6 @@ export default function SlideFourteen() {
         As a matter of fact, I'm already using CSS variable interpolation in the
         animated background of this site. The background defaults to a static
         version on browsers that don't support it.
-        {/* TODO actually do that */}
       </Paragraph>
       <hr className="w-full h-px max-w-md mb-4 bg-on-surface" />
       <h2 className="mb-2">Sources</h2>
@@ -52,6 +50,7 @@ export default function SlideFourteen() {
       </ul>
       <hr className="w-full h-px max-w-md mb-4 bg-on-surface" />
       <Paragraph>Published on February 9, 2024.</Paragraph>
+      {/* TODO update date */}
     </Slide>
   );
 }

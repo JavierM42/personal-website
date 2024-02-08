@@ -1,7 +1,6 @@
 import { CSSProperties } from "react";
-import styles from "./dvd.module.css";
-import classNames from "classnames";
 import DvdLogo from "./DvdLogo";
+import styles from "./dvd.module.css";
 
 const DvdScreensaver = ({
   width = 320,
