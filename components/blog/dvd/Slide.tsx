@@ -30,7 +30,7 @@ const Slide = forwardRef<HTMLDivElement, Props>(
       >
         <div
           className={classNames(
-            "w-full md:shadow-xl md:aspect-[4/3] md:rounded-xl py-20 max-h-[calc(100vh-72px)]",
+            "w-full md:shadow-xl md:aspect-[4/3] md:rounded-xl py-20",
             !transparent && "md:bg-surface/40",
             !noPadding && "px-8 md:py-6",
             className
