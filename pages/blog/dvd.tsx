@@ -39,7 +39,7 @@ export default function DvdBlogPost() {
       <div className="fixed inset-0 bg-gradient-to-br from-primary-container to-tertiary-container -z-1 dark:from-primary-container/40 dark:to-tertiary-container/40" />
       <div
         className={classNames(
-          "relative w-full h-screen md:px-4 overflow-y-auto leading-loose snap-y snap-mandatory text-on-background",
+          "relative w-full h-screen md:px-4 overflow-y-auto leading-loose md:snap-y md:snap-mandatory text-on-background",
           styles.variables
         )}
         ref={containerRef}
