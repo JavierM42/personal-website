@@ -19,7 +19,7 @@ export default function SlideThirteen() {
   const logoWidth = logoHeight * 2;
 
   const cycleTime =
-    lcm(containerHeight - logoHeight, containerWidth - logoWidth) / speed;
+    lcm(containerHeight - logoHeight, containerWidth - logoWidth)! / speed;
 
   return (
     <Slide className="flex flex-col items-center justify-center">
