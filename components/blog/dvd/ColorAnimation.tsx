@@ -21,7 +21,7 @@ const ColorAnimation = ({
               "--border-width": "10%",
               "--border-radius": "50%",
               "--border-gradient":
-                "conic-gradient(in hsl longer hue, hsl(0deg 100% 50%), hsl(360deg 100% 50))",
+                "conic-gradient(in hsl longer hue, hsl(0deg 100% 50%), hsl(360deg 100% 50%))",
             } as CSSProperties
           }
         >
@@ -43,7 +43,6 @@ const ColorAnimation = ({
         </div>
       </div>
     </div>
-    // lines that see the future would be cool
   );
 };
 
