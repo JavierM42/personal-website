@@ -1,5 +1,5 @@
 import { motion, useAnimation, useReducedMotion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function ModeAwareColors() {
   const light = useAnimation();
@@ -37,6 +37,7 @@ export default function ModeAwareColors() {
         delay: 1,
       },
     });
+    if (!ref.current) return;
     darkTop.set({ opacity: 1 });
     light.start({
       x: "32%",
@@ -59,6 +60,7 @@ export default function ModeAwareColors() {
         duration: 0.9,
       },
     });
+    if (!ref.current) return;
     light.start({
       x: "0%",
       y: "0%",
@@ -83,6 +85,7 @@ export default function ModeAwareColors() {
         delay: 1,
       },
     });
+    if (!ref.current) return;
     darkTop.set({ opacity: 0 });
     light.start({
       x: "18%",
@@ -105,6 +108,7 @@ export default function ModeAwareColors() {
         duration: 0.9,
       },
     });
+    if (!ref.current) return;
     animate();
   };
 
@@ -116,8 +120,10 @@ export default function ModeAwareColors() {
     }
   }, [shouldReduceMotion]);
 
+  const ref = useRef<HTMLDivElement>(null);
+
   return (
-    <div className="relative z-10 w-48 h-48">
+    <div className="relative z-10 w-48 h-48" ref={ref}>
       <svg
         stroke="currentColor"
         viewBox="0 0 100 100"

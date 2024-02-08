@@ -1,5 +1,5 @@
 import { motion, useAnimation, useReducedMotion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Screenshots() {
   const shutter = useAnimation();
@@ -26,6 +26,7 @@ export default function Screenshots() {
         delay: 1,
       },
     });
+    if (!ref.current) return;
     await shutter.start({
       y: "0%",
       transition: {
@@ -42,6 +43,7 @@ export default function Screenshots() {
         delay: 1.2,
       },
     });
+    if (!ref.current) return;
     await picture.start({
       opacity: 1,
       transition: {
@@ -49,6 +51,7 @@ export default function Screenshots() {
         delay: 0.1,
       },
     });
+    if (!ref.current) return;
     animate();
   };
 
@@ -67,6 +70,7 @@ export default function Screenshots() {
         delay: 1.1,
       },
     });
+    if (!ref.current) return;
     bottom.start({
       y: "24%",
       transition: {
@@ -95,8 +99,10 @@ export default function Screenshots() {
     }
   }, [shouldReduceMotion]);
 
+  const ref = useRef<HTMLDivElement>(null);
+
   return (
-    <div className="relative z-10 w-48 h-48">
+    <div className="relative z-10 w-48 h-48" ref={ref}>
       <svg
         stroke="currentColor"
         fill="none"

@@ -1,5 +1,5 @@
 import { motion, useAnimation, useReducedMotion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Portals() {
   const cube1 = useAnimation();
@@ -17,6 +17,7 @@ export default function Portals() {
         delay: 1,
       },
     });
+    if (!ref.current) return;
     await cube1.start({
       x: "0%",
       transition: {
@@ -34,6 +35,7 @@ export default function Portals() {
         delay: 1,
       },
     });
+    if (!ref.current) return;
     await cube2.start({
       x: "-50%",
       transition: {
@@ -41,6 +43,7 @@ export default function Portals() {
         delay: 1,
       },
     });
+    if (!ref.current) return;
     animate();
   };
 
@@ -57,8 +60,10 @@ export default function Portals() {
     }
   }, [shouldReduceMotion]);
 
+  const ref = useRef<HTMLDivElement>(null);
+
   return (
-    <div className="relative z-10 w-48 h-48">
+    <div className="relative z-10 w-48 h-48" ref={ref}>
       <svg
         stroke="currentColor"
         viewBox="0 0 100 100"
