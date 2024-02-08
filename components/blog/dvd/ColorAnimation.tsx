@@ -11,7 +11,7 @@ const ColorAnimation = ({
 }) => {
   return (
     <div className="flex items-center justify-center" style={{ width, height }}>
-      <div className="h-full border-2 rounded-full w-fit border-surface">
+      <div className="h-full border-2 rounded-full w-fit border-surface-light">
         <div
           className={classNames(
             "gradient-border h-full aspect-square flex items-center justify-center relative shadow-xl"
@@ -25,10 +25,10 @@ const ColorAnimation = ({
             } as CSSProperties
           }
         >
-          <div className="flex items-center justify-center w-4/5 border-2 rounded-full h-4/5 border-surface">
+          <div className="flex items-center justify-center w-4/5 border-2 rounded-full h-4/5 border-surface-light">
             <div
               className={classNames(
-                "rounded-full w-2/3 h-2/3 border-2 border-surface shadow-xl",
+                "rounded-full w-2/3 h-2/3 border-2 border-surface-light shadow-xl",
                 styles.logoColor
               )}
               style={{ transitionDuration: "0s" }}

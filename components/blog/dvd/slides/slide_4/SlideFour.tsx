@@ -53,14 +53,14 @@ export default function SlideFour({
       </Paragraph>
       <div className="grid md:grid-cols-[auto_auto_auto_auto_auto] gap-1 md:gap-4 place-items-center my-12">
         <div className="space-y-2">
-          <div className="border shadow w-fit h-fit bg-surface/30 border-surface">
+          <div className="border shadow w-fit h-fit bg-surface/30 border-surface-light">
             <DvdScreensaver width={180} height={135} />
           </div>
           <div className="text-center">The whole thing</div>
         </div>
         <div className="text-3xl font-bold md:mb-10 text-on-surface">=</div>
         <div className="space-y-2">
-          <div className="border shadow w-fit h-fit bg-surface/30 border-surface">
+          <div className="border shadow w-fit h-fit bg-surface/30 border-surface-light">
             <DvdScreensaver width={180} height={135} colors={false} />
           </div>
           <div className="text-center">Bounce around</div>

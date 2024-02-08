@@ -6,7 +6,7 @@ import Slide from "../../Slide";
 export default function SlideFourteen() {
   return (
     <Slide className="flex flex-col items-center justify-center">
-      <h2 className="mb-8">Note</h2>
+      <h2 className="mb-2">Note</h2>
       <Paragraph>
         In the future you may see more animated CSS properties out in the wild
         thanks to the new <code>@property</code> syntax. Interpolation is still{" "}
@@ -15,14 +15,15 @@ export default function SlideFourteen() {
         </ExternalLink>{" "}
         as of February 2024.
       </Paragraph>
-      <Paragraph>
+      <Paragraph className="mb-8">
         As a matter of fact, I'm already using CSS variable interpolation in the
         animated background of this site. The background defaults to a static
         version on browsers that don't support it.
         {/* TODO actually do that */}
       </Paragraph>
-      <h2 className="mb-8">Sources</h2>
-      <ul className="list-disc">
+      <hr className="w-full h-px max-w-md mb-4 bg-on-surface" />
+      <h2 className="mb-2">Sources</h2>
+      <ul className="max-w-lg mb-8 list-disc">
         <li>
           <Paragraph>
             CRT display effect on first slide adapted from{" "}
@@ -42,13 +43,15 @@ export default function SlideFourteen() {
           </Paragraph>
         </li>
         <li>
-          "Five minutes later" card made with{" "}
+          "Five minutes later" card from{" "}
           <ExternalLink href="https://spongebob.gavinr.com/">
             SpongeBob Time Cards Generator
           </ExternalLink>{" "}
-          by Gavin Rehkemper
+          by Gavin Rehkemper.
         </li>
       </ul>
+      <hr className="w-full h-px max-w-md mb-4 bg-on-surface" />
+      <Paragraph>Published on February 9, 2024.</Paragraph>
     </Slide>
   );
 }

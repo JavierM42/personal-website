@@ -91,7 +91,7 @@ export default function SlideThirteen() {
         className={classNames(
           styles.variables,
           styles.container,
-          "border border-surface bg-surface/20"
+          "border border-surface-light bg-surface/20"
         )}
         style={
           {

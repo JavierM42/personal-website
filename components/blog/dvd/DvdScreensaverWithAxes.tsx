@@ -22,15 +22,15 @@ const DvdScreensaverWithAxes = ({
         } as CSSProperties
       }
     >
-      <div className="relative w-full h-full col-start-2 row-start-1 text-on-surface/40 border-x border-surface">
+      <div className="relative w-full h-full col-start-2 row-start-1 text-on-surface/40 border-x border-surface-light">
         <DvdLogo className={styles.xAxisMovement} />
       </div>
-      <div className="relative w-full h-full col-start-1 row-start-2 text-on-surface/40 border-y border-surface">
+      <div className="relative w-full h-full col-start-1 row-start-2 text-on-surface/40 border-y border-surface-light">
         <DvdLogo className={styles.yAxisMovement} />
       </div>
       <div
         className={classNames(
-          "row-start-2 col-start-2 border border-surface bg-surface/20 relative",
+          "row-start-2 col-start-2 border border-surface-light bg-surface/20 relative",
           styles.container
         )}
         style={
