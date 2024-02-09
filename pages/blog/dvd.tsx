@@ -1,7 +1,7 @@
+import { useWindowSize } from "@uidotdev/usehooks";
 import classNames from "classnames";
 import Head from "next/head";
-import { useRef, useState } from "react";
-import { useWindowSize } from "@uidotdev/usehooks";
+import { useEffect, useRef, useState } from "react";
 import { SquareButton } from "../../components/SquareButton";
 import styles from "../../components/blog/dvd/dvd.module.css";
 import SlideOne from "../../components/blog/dvd/slides/slide_1/SlideOne";
@@ -30,6 +30,26 @@ export default function DvdBlogPost() {
     x: number;
     y: number;
   }>();
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.setAttribute("src", "https://utteranc.es/client.js");
+    script.setAttribute("repo", "JavierM42/personal-website");
+    script.setAttribute("issue-term", "url");
+    script.setAttribute("label", "utterances-comments");
+    script.setAttribute(
+      "theme",
+      document.body.classList.contains("dark") ? "github-dark" : "github-light"
+    );
+    script.setAttribute("crossorigin", "anonymous");
+    script.setAttribute("async", "");
+
+    const comments = document.getElementById("comments")!;
+    if (comments) {
+      comments.innerHTML = "";
+      comments.appendChild(script);
+    }
+  }, []);
 
   return (
     <>
@@ -69,6 +89,7 @@ export default function DvdBlogPost() {
           <SlideTwelve />
           <SlideThirteen />
           <SlideFourteen />
+          <div id="comments" className="w-full py-16 h-fit snap-start"></div>
         </main>
         <div className="fixed hidden space-y-10 -translate-y-1/2 md:block right-12 top-1/2">
           <SquareButton
