@@ -1,7 +1,7 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import classNames from "classnames";
 import Head from "next/head";
-import { useEffect, useRef, useState } from "react";
+import { CSSProperties, useEffect, useRef, useState } from "react";
 import { SquareButton } from "../../components/SquareButton";
 import styles from "../../components/blog/dvd/dvd.module.css";
 import SlideOne from "../../components/blog/dvd/slides/slide_1/SlideOne";
@@ -68,6 +68,7 @@ export default function DvdBlogPost() {
           } as CSSProperties
         }
       />
+      {/* TODO animated background and navbar should be a nextjs layout */}
       <div
         className={classNames(
           "relative w-full h-screen md:px-4 overflow-y-auto leading-loose md:snap-y md:snap-mandatory text-on-background",
