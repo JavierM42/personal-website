@@ -27,11 +27,11 @@ export default function SlideTwo({
     >
       <Paragraph>
         I hope the retro monitor effect wasn't too hard on your eyes. No more of
-        that, I promise. It was just a fun little extra for the title slide.
+        that, I promise. It was just a fun addition for the title slide.
       </Paragraph>
       <Paragraph>
-        The story of this article starts with some random conversation at the
-        office:
+        The story behind this article starts with some random conversation at
+        the office:
       </Paragraph>
       <div className="max-w-xl space-y-4">
         <div className="flex items-end justify-end gap-2 pl-4 md:pl-20">

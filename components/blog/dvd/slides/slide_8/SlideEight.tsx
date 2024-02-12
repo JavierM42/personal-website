@@ -80,7 +80,7 @@ export default function SlideEight({
     <Slide className="flex flex-col items-center" ref={slideRef}>
       <Paragraph>
         If we only needed to change colors when the logo hit the left or right
-        wall, we could use this idea:
+        wall, this idea would work:
       </Paragraph>
       <CodeBlock isFirst />
       <Paragraph inCode>
@@ -162,7 +162,7 @@ export default function SlideEight({
         </span>
         {`;\n}`}
       </CodeBlock>
-      <div className="max-w-lg">
+      <div className="w-full max-w-lg">
         But...{" "}
         <div ref={textRef} className="inline-block">
           <AnimatedText
