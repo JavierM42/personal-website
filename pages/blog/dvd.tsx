@@ -60,7 +60,14 @@ export default function DvdBlogPost() {
           content="An in-depth look at how I created a DVD screensaver animation without any Javascript, presented with dynamic examples and code snippets."
         ></meta>
       </Head>
-      <div className="fixed inset-0 bg-gradient-to-br from-primary-container to-tertiary-container -z-1 dark:from-primary-container/40 dark:to-tertiary-container/40" />
+      <div
+        className="fixed inset-0 bg-animated-gradient bg-gradient-to-br from-primary-container to-primary-container -z-1 dark:opacity-40"
+        style={
+          {
+            "--tw-gradient-via": "rgb(var(--color-tertiary-container) / 1)",
+          } as CSSProperties
+        }
+      />
       <div
         className={classNames(
           "relative w-full h-screen md:px-4 overflow-y-auto leading-loose md:snap-y md:snap-mandatory text-on-background",
