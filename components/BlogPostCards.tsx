@@ -9,6 +9,7 @@ import { SquareButton } from "./SquareButton";
 import { DevNote } from "./dev_notes/DevNote";
 import InteractiveSurfaces from "./posts/InteractiveSurfaces";
 import ModeAwareColors from "./posts/ModeAwareColors";
+import DvdScreensaverIllustration from "./posts/DvdScreensaverIllustration";
 
 export default function BlogPostCards() {
   const containerRef = useRef<HTMLOListElement>(null);
@@ -43,6 +44,12 @@ export default function BlogPostCards() {
             "linear-gradient(to right, rgba(0 0 0/0), black 12%, black 88%, rgba(0 0 0 /0) 100%)",
         }}
       >
+        <BlogPostCard
+          illustration={<DvdScreensaverIllustration />}
+          title="CSS-only DVD Screensaver animation: a visual walkthrough"
+          summary="An in-depth look at how I created a DVD screensaver animation without any Javascript, presented with dynamic examples and code snippets."
+          url="/blog/dvd"
+        />
         <BlogPostCard
           illustration={<Leverage />}
           title="Prioritizing High-leverage Activities"

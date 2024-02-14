@@ -1,5 +1,5 @@
 import { motion, useAnimation, useReducedMotion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Leverage() {
   const cube = useAnimation();
@@ -35,8 +35,10 @@ export default function Leverage() {
       rotate: "98deg",
       transition: { duration: 4 },
     });
-    cube.set({ rotate: "8deg" });
-    animate();
+    if (ref.current) {
+      cube.set({ rotate: "8deg" });
+      animate();
+    }
   };
 
   const animate = () => {
@@ -52,8 +54,10 @@ export default function Leverage() {
     }
   }, [shouldReduceMotion]);
 
+  const ref = useRef<HTMLDivElement>(null);
+
   return (
-    <div className="relative z-10 w-48 h-48">
+    <div className="relative z-10 w-48 h-48" ref={ref}>
       <svg
         stroke="currentColor"
         viewBox="0 0 100 100"

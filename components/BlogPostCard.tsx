@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FC, ReactNode } from "react";
 
 type Props = {
@@ -21,14 +22,22 @@ const BlogPostCard: FC<Props> = ({
       <h3 className="w-full mt-2 text-lg font-bold">{title}</h3>
       <p className="w-full mb-4 text-sm text-on-surface/80">{summary}</p>
       <div className="flex justify-end w-full">
-        <a
-          href={url}
-          target="_blank"
-          rel="noreferrer"
-          className="font-[Nunito]"
-        >
-          Read the post
-        </a>
+        {url.startsWith("http") ? (
+          <a
+            href={url}
+            target="_blank"
+            rel="noreferrer"
+            className="font-[Nunito]"
+          >
+            Read the post
+          </a>
+        ) : (
+          <Link href={url}>
+            <span className="font-bold font-[Nunito] text-primary cursor-pointer hover:underline">
+              Read the post
+            </span>
+          </Link>
+        )}
       </div>
     </li>
   );

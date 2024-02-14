@@ -20,7 +20,7 @@ const ExternalLink: FC<Props> = ({
       href={href}
       rel="noopener"
       target="_blank"
-      className={classNames(className, "underline")}
+      className={classNames(className, "hover:underline")}
       aria-label={label}
     >
       {children}
