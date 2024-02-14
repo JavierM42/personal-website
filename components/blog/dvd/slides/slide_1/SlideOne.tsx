@@ -19,7 +19,7 @@ export default function SlideOne() {
           CSS-only DVD Screensaver animation
         </h2>
         <h3 className="tracking-widest text-md md:text-2xl text-on-surface">
-          An interactive walkthrough
+          A visual walkthrough
         </h3>
       </div>
     </Slide>

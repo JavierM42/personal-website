@@ -46,7 +46,7 @@ export default function BlogPostCards() {
       >
         <BlogPostCard
           illustration={<DvdScreensaverIllustration />}
-          title="CSS-only DVD Screensaver animation: an interactive walkthrough"
+          title="CSS-only DVD Screensaver animation: a visual walkthrough"
           summary="An in-depth look at how I created a DVD screensaver animation without any Javascript, presented with dynamic examples and code snippets."
           url="/blog/dvd"
         />
