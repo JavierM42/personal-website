@@ -6,7 +6,11 @@ import Switch from "../Switch";
 import { DevNote } from "../dev_notes/DevNote";
 import Link from "next/link";
 
-export const NavBar: FC = () => {
+type Props = {
+  links?: boolean;
+};
+
+export const NavBar: FC<Props> = ({ links = true }) => {
   const router = useRouter();
 
   return (
@@ -17,18 +21,20 @@ export const NavBar: FC = () => {
             javiermorales.dev
           </span>
         </Link>
-        <div className="hidden md:contents">
-          <a href="#work-experience">Work</a>
-          <a href="#open-source">Open Source</a>
-          <a href="#blog">Blog</a>
-          <div className="relative">
-            <a href="#dev-notes">Dev Notes</a>
-            <DevNote className="absolute w-48 top-6 -left-24 -rotate-[6deg]">
-              Anchor link targets use the <code>scroll-margin</code> CSS
-              property so the sticky nav doesn't get in the way.
-            </DevNote>
+        {links && (
+          <div className="hidden md:contents">
+            <a href="#work-experience">Work</a>
+            <a href="#open-source">Open Source</a>
+            <a href="#blog">Blog</a>
+            <div className="relative">
+              <a href="#dev-notes">Dev Notes</a>
+              <DevNote className="absolute w-48 top-6 -left-24 -rotate-[6deg]">
+                Anchor link targets use the <code>scroll-margin</code> CSS
+                property so the sticky nav doesn't get in the way.
+              </DevNote>
+            </div>
           </div>
-        </div>
+        )}
       </div>
       <AnimatePresence>
         {router.query.notes && (
