@@ -4,6 +4,7 @@ import Paragraph from "../../Paragraph";
 import { RefObject, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import FiveMinutesLater from "./five-minutes-later.png";
+import ExternalLink from "../../../../ExternalLink";
 
 export default function SlideTwo({
   containerRef,
@@ -25,6 +26,14 @@ export default function SlideTwo({
       containerClassName="relative"
       ref={slideRef}
     >
+      <Paragraph className="font-bold firefox-only">
+        Firefox doesn't support{" "}
+        <ExternalLink href="https://caniuse.com/mdn-css_types_image_gradient_linear-gradient_hue_interpolation_method">
+          Hue Interpolation Method
+        </ExternalLink>{" "}
+        nor keyframes with CSS properties. I recommend using a different browser
+        to read this article.
+      </Paragraph>
       <Paragraph>
         I hope the retro monitor effect wasn't too hard on your eyes. No more of
         that, I promise. It was just a fun addition for the title slide.

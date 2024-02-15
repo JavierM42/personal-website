@@ -159,3 +159,13 @@ code {
 .gradient-button:hover {
   --duration: 3s;
 }
+
+.firefox-only {
+  display: none;
+}
+
+@-moz-document url-prefix() {
+  .firefox-only {
+    display: unset;
+  }
+}
