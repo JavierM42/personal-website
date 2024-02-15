@@ -4,7 +4,6 @@
   --logo-width: 64;
   --logo-height: 32;
 
-  /* FIXME This is not so easy! use speed instead of hardcoding duration */
   --speed: 90; /* pixels per second */
   --y-duration: calc(
     (var(--container-height) - var(--logo-height)) / var(--speed) * 1s
@@ -25,8 +24,6 @@
 }
 
 .logo {
-  --color-x: 0;
-  --color-y: 0;
   position: absolute;
   width: calc(var(--logo-width) * 1px);
   height: calc(var(--logo-height) * 1px);
@@ -34,9 +31,7 @@
     calc(360deg / 25 * (var(--color-y) * 5 + var(--color-x))) 100% 50%
   );
   animation: x var(--x-duration) linear infinite alternate,
-    y var(--y-duration) linear infinite alternate,
-    colorY calc(var(--y-duration) * 5) step-start infinite,
-    colorX calc(var(--x-duration) * 5) step-start infinite;
+    y var(--y-duration) linear infinite alternate;
   top: 0;
   left: 0;
 }

@@ -13,7 +13,7 @@ export default function SlideOne() {
       transparent
       noPadding
     >
-      <DvdScreensaver width={720} fluidSize />
+      <DvdScreensaver redefineVariables width={720} height={540} fluidSize />
       <div className="absolute inset-x-0 flex flex-col md:items-center gap-2 md:gap-6 bottom-[20%] px-4">
         <h2 className="text-xl italic normal-case md:text-4xl text-on-surface">
           CSS-only DVD Screensaver animation

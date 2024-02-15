@@ -6,18 +6,8 @@ import styles from "../blog/dvd/dvd.module.css";
 const DvdScreensaverIllustration: FC = () => {
   return (
     <div className="pt-6">
-      <div
-        className={classNames(
-          "w-48 h-36 bg-surface/20 ring-primary ring-2 rounded-lg",
-          styles.variables
-        )}
-        style={
-          {
-            "--speed": 40,
-          } as CSSProperties
-        }
-      >
-        <DvdScreensaver width={192} height={144} />
+      <div className="w-48 rounded-lg h-36 bg-surface/20 ring-primary ring-2">
+        <DvdScreensaver redefineVariables width={192} height={144} speed={40} />
       </div>
     </div>
   );
