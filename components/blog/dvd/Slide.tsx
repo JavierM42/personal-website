@@ -1,7 +1,7 @@
 import classNames from "classnames";
-import { ReactNode, forwardRef } from "react";
+import { HTMLProps, ReactNode, forwardRef } from "react";
 
-type Props = {
+type Props = Pick<HTMLProps<HTMLDivElement>, "id"> & {
   children: ReactNode;
   containerClassName?: string;
   className?: string;
@@ -17,6 +17,7 @@ const Slide = forwardRef<HTMLDivElement, Props>(
       containerClassName,
       transparent = false,
       noPadding = false,
+      ...props
     },
     ref
   ) => {
@@ -27,6 +28,7 @@ const Slide = forwardRef<HTMLDivElement, Props>(
           containerClassName
         )}
         ref={ref}
+        {...props}
       >
         <div
           className={classNames(

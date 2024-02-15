@@ -12,6 +12,7 @@ export default function SlideOne() {
       )}
       transparent
       noPadding
+      id="slide-1"
     >
       <DvdScreensaver redefineVariables width={720} height={540} fluidSize />
       <div className="absolute inset-x-0 flex flex-col md:items-center gap-2 md:gap-6 bottom-[20%] px-4">

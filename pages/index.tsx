@@ -32,7 +32,20 @@ export default function Home() {
             <code>{"<link rel=“icon”>"}</code> element.
           </DevNote>
           <header>
-            <NavBar />
+            <NavBar>
+              <div className="hidden md:contents">
+                <a href="#work-experience">Work</a>
+                <a href="#open-source">Open Source</a>
+                <a href="#blog">Blog</a>
+                <div className="relative">
+                  <a href="#dev-notes">Dev Notes</a>
+                  <DevNote className="absolute w-48 top-6 -left-24 -rotate-[6deg]">
+                    Anchor link targets use the <code>scroll-margin</code> CSS
+                    property so the sticky nav doesn't get in the way.
+                  </DevNote>
+                </div>
+              </div>
+            </NavBar>
             <div className="max-w-full mx-auto mt-24 mb-12 w-[440px] aspect-square">
               <RubikCube />
             </div>

@@ -1,40 +1,27 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import DarkModeToggle from "../DarkModeToggle";
 import Switch from "../Switch";
 import { DevNote } from "../dev_notes/DevNote";
 import Link from "next/link";
 
 type Props = {
-  links?: boolean;
+  children?: ReactNode;
 };
 
-export const NavBar: FC<Props> = ({ links = true }) => {
+export const NavBar: FC<Props> = ({ children }) => {
   const router = useRouter();
 
   return (
     <div className="fixed inset-x-0 top-0 z-40 flex items-center w-full gap-4 px-4 shadow-xl h-14 shadow-primary/10 bg-surface/40 backdrop-blur">
-      <div className="relative flex items-center flex-1 h-full gap-6">
+      <div className="relative flex items-center flex-1 h-full gap-6 overflow-x-clip">
         <Link href="/">
           <span className="font-[Nunito] text-lg hover:underline text-primary cursor-pointer">
             javiermorales.dev
           </span>
         </Link>
-        {links && (
-          <div className="hidden md:contents">
-            <a href="#work-experience">Work</a>
-            <a href="#open-source">Open Source</a>
-            <a href="#blog">Blog</a>
-            <div className="relative">
-              <a href="#dev-notes">Dev Notes</a>
-              <DevNote className="absolute w-48 top-6 -left-24 -rotate-[6deg]">
-                Anchor link targets use the <code>scroll-margin</code> CSS
-                property so the sticky nav doesn't get in the way.
-              </DevNote>
-            </div>
-          </div>
-        )}
+        {children}
       </div>
       <AnimatePresence>
         {router.query.notes && (

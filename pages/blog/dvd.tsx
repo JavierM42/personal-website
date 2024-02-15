@@ -20,6 +20,7 @@ import SlideEight from "../../components/blog/dvd/slides/slide_8/SlideEight";
 import SlideNine from "../../components/blog/dvd/slides/slide_9/SlideNine";
 import { NavBar } from "../../components/nav/NavBar";
 import ChevronRight from "../../public/chevron-right.svg";
+import Link from "next/link";
 
 export default function DvdBlogPost() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -71,13 +72,23 @@ export default function DvdBlogPost() {
       {/* TODO animated background and navbar should be a nextjs layout */}
       <div
         className={classNames(
-          "relative w-full h-screen md:px-4 overflow-y-auto leading-loose md:snap-y md:snap-mandatory text-on-background",
+          "relative w-full h-screen md:px-4 overflow-y-auto leading-loose md:snap-y md:snap-mandatory text-on-background scroll-smooth",
           styles.variables
         )}
         ref={containerRef}
       >
         <header>
-          <NavBar links={false} />
+          <NavBar>
+            <ChevronRight className="-mx-6 scale-50 shrink-0" />
+            <Link href="/#blog">Blog</Link>
+            <ChevronRight className="-mx-6 scale-50 shrink-0" />
+            <a
+              href="#slide-1"
+              className="whitespace-nowrap text-ellipsis overflow-clip"
+            >
+              CSS-only DVD Screensaver animation
+            </a>
+          </NavBar>
         </header>
 
         <main className="max-w-4xl mx-auto">
