@@ -76,6 +76,7 @@ export default function DvdBlogPost() {
           property="og:video"
           content="https://javiermorales.dev/blog/dvd/video.mp4"
         />
+        <meta name="author" content="Javier Morales" />
       </Head>
       <div
         className="fixed inset-0 bg-animated-gradient bg-gradient-to-br from-primary-container to-primary-container -z-1 dark:opacity-40"
