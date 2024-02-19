@@ -59,7 +59,23 @@ export default function DvdBlogPost() {
         <meta
           name="description"
           content="An in-depth look at how I created a DVD screensaver animation without any Javascript, presented with dynamic examples and code snippets."
-        ></meta>
+        />
+        <meta
+          property="og:title"
+          content="CSS-only DVD Screensaver animation"
+        />
+        <meta
+          property="og:description"
+          content="An in-depth look at how I created a DVD screensaver animation without any Javascript, presented with dynamic examples and code snippets."
+        />
+        <meta
+          property="og:image"
+          content="https://javiermorales.dev/blog/dvd/image.png"
+        />
+        <meta
+          property="og:video"
+          content="https://javiermorales.dev/blog/dvd/video.mp4"
+        />
       </Head>
       <div
         className="fixed inset-0 bg-animated-gradient bg-gradient-to-br from-primary-container to-primary-container -z-1 dark:opacity-40"
