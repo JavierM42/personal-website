@@ -1,23 +1,34 @@
+import X from "../../public/x.svg";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { CSSProperties, FC, useState } from "react";
 import ThemePicker from "./ThemePicker";
+import { SquareButton } from "../SquareButton";
 
 const TryDynamicColor: FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const shouldReduceMotion = useReducedMotion();
-
   return (
-    <div className="flex items-center justify-end w-full h-12">
+    <div className="flex items-center justify-end w-full h-12 gap-2">
       <AnimatePresence initial={false}>
         {isExpanded ? (
-          <motion.div
-            initial={{ opacity: 0, y: shouldReduceMotion ? "0%" : "100%" }}
-            animate={{ opacity: 1, y: "0%" }}
-            className="w-full"
-          >
-            <ThemePicker />
-          </motion.div>
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex-1 -mt-1"
+            >
+              <ThemePicker />
+            </motion.div>
+            <SquareButton
+              small
+              tooltip="Close"
+              label="Close"
+              tooltipPlacement="right"
+              onClick={() => setIsExpanded(false)}
+            >
+              <X className="w-4 h-4" />
+            </SquareButton>
+          </>
         ) : (
           <motion.button
             animate={{ opacity: 1 }}
