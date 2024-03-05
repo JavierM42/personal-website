@@ -103,6 +103,12 @@ code {
   syntax: "<number>";
 }
 
+@property --gradient-progress-hover {
+  initial-value: 0;
+  inherits: false;
+  syntax: "<number>";
+}
+
 :root {
   --gradient-animation-duration: 10s;
   --range: 50;
@@ -114,6 +120,15 @@ code {
   }
   to {
     --gradient-progress: 1;
+  }
+}
+
+@keyframes animate-gradient-hover {
+  from {
+    --gradient-progress-hover: 0;
+  }
+  to {
+    --gradient-progress-hover: 1;
   }
 }
 
@@ -144,20 +159,76 @@ code {
 }
 
 .gradient-button {
-  --duration: 6s;
   background-image: linear-gradient(
     to right,
-    var(--tw-gradient-from) calc(-150 * var(--gradient-progress, 0) * 1%),
-    var(--tw-gradient-via) calc((50 - 150 * var(--gradient-progress, 0)) * 1%),
-    var(--tw-gradient-to) calc((100 - 150 * var(--gradient-progress, 0)) * 1%),
-    var(--tw-gradient-from) calc((150 - 150 * var(--gradient-progress, 0)) * 1%),
-    var(--tw-gradient-via) calc((200 - 150 * var(--gradient-progress, 0)) * 1%),
-    var(--tw-gradient-to) calc((250 - 150 * var(--gradient-progress, 0)) * 1%)
+    var(--tw-gradient-from)
+      calc(
+        -150 * (
+            var(--gradient-progress, 0) + var(--gradient-progress-hover, 0)
+          ) * 1%
+      ),
+    var(--tw-gradient-via)
+      calc(
+        (
+            50 - 150 *
+              (var(--gradient-progress, 0) + var(--gradient-progress-hover, 0))
+          ) * 1%
+      ),
+    var(--tw-gradient-to)
+      calc(
+        (
+            100 - 150 *
+              (var(--gradient-progress, 0) + var(--gradient-progress-hover, 0))
+          ) * 1%
+      ),
+    var(--tw-gradient-from)
+      calc(
+        (
+            150 - 150 *
+              (var(--gradient-progress, 0) + var(--gradient-progress-hover, 0))
+          ) * 1%
+      ),
+    var(--tw-gradient-via)
+      calc(
+        (
+            200 - 150 *
+              (var(--gradient-progress, 0) + var(--gradient-progress-hover, 0))
+          ) * 1%
+      ),
+    var(--tw-gradient-to)
+      calc(
+        (
+            250 - 150 *
+              (var(--gradient-progress, 0) + var(--gradient-progress-hover, 0))
+          ) * 1%
+      ),
+    var(--tw-gradient-from)
+      calc(
+        (
+            300 - 150 *
+              (var(--gradient-progress, 0) + var(--gradient-progress-hover, 0))
+          ) * 1%
+      ),
+    var(--tw-gradient-via)
+      calc(
+        (
+            350 - 150 *
+              (var(--gradient-progress, 0) + var(--gradient-progress-hover, 0))
+          ) * 1%
+      ),
+    var(--tw-gradient-to)
+      calc(
+        (
+            400 - 150 *
+              (var(--gradient-progress, 0) + var(--gradient-progress-hover, 0))
+          ) * 1%
+      )
   );
-  -webkit-animation: animate-gradient var(--duration) linear infinite;
+  -webkit-animation: animate-gradient 6s linear infinite,
+    animate-gradient-hover linear infinite 1s reverse paused;
 }
 .gradient-button:hover {
-  --duration: 3s;
+  animation-play-state: running;
 }
 
 .firefox-only {
