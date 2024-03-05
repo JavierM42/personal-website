@@ -14,13 +14,10 @@ export default function OpenSourceCards() {
         gradientColorStops="from-red-container to-green-container via-purple/20"
         className="shadow-purple-container/50 dark:shadow-purple/20"
         notes={
-          <DevNote className="absolute w-72 top-52 right-64 rotate-[-4deg]">
-            Rounded gradient borders on translucent containers re quite tricky,
-            especially when the color stops are CSS variables.
-            <p className="pt-2">
-              This solution uses a pseudoelement and the CSS <code>mask</code>{" "}
-              property.
-            </p>
+          <DevNote className="firefox-hidden absolute w-72 top-48 right-24 rotate-[-4deg]">
+            Building an animated gradient background with no extra HTML elemnts,
+            no JavaScript and a smooth speed change effect on hover was a puzzle
+            I couldn't find an existing solution for. Blog post coming soon 😉
           </DevNote>
         }
       />
@@ -39,6 +36,16 @@ export default function OpenSourceCards() {
         }
         gradientColorStops="to-primary-container from-primary"
         className="shadow-primary/20"
+        notes={
+          <DevNote className="absolute w-72 top-52 right-64 rotate-[-4deg]">
+            Rounded gradient borders on translucent containers re quite tricky,
+            especially when the color stops are CSS variables.
+            <p className="pt-2">
+              This solution uses a pseudoelement and the CSS <code>mask</code>{" "}
+              property.
+            </p>
+          </DevNote>
+        }
       />
       <OpenSourceCard
         name="tailwind-mode-aware-colors"
@@ -79,7 +86,7 @@ export default function OpenSourceCards() {
         gradientColorStops="from-outline to-tertiary-container"
         className="shadow-outline/20"
         notes={
-          <DevNote className="absolute w-72 top-20 -right-14 rotate-[4deg]">
+          <DevNote className="absolute w-72 top-24 -right-3 rotate-[4deg]">
             Too often I needed an input field that wraps when it gets to a
             certain size, so I did some research and found a{" "}
             <a
