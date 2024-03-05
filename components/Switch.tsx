@@ -28,7 +28,7 @@ const Switch: FC<Props> = ({
           "rounded-full flex shadow-lg shadow-tertiary-container w-[72px] p-1 cursor-pointer",
           {
             "justify-end interactive-bg-tertiary": isOn,
-            "interactive-bg-surface bg-opacity-70 hover:bg-tertiary-container/50 active:bg-tertiary-container-press/50":
+            "interactive-bg-surface bg-opacity-70 hover:bg-tertiary-container/50 active:bg-tertiary-container/60":
               !isOn,
           }
         )}
@@ -41,7 +41,7 @@ const Switch: FC<Props> = ({
           role="presentation"
           layout="position"
           transition={{ duration: shouldReduceMotion ? 0 : 0.3 }}
-          className="w-8 h-8 p-1.5 rounded-full shadow-md bg-surface dark:bg-surface-hover text-tertiary"
+          className="w-8 h-8 p-1.5 rounded-full shadow-md bg-surface dark:bg-mix-on-surface dark:bg-mix-amount-[10%] text-tertiary"
         >
           {!noIcon && (
             <motion.svg

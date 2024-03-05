@@ -37,7 +37,7 @@ export default function OpenSourceCards() {
             <GitHubLogo className="w-5 h-5" />
           </a>
         }
-        gradientColorStops="to-primary-container-press from-primary"
+        gradientColorStops="to-primary-container from-primary"
         className="shadow-primary/20"
       />
       <OpenSourceCard
