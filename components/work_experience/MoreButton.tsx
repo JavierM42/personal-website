@@ -59,12 +59,14 @@ export default function MoreButton() {
                     />
                   </div>
                   <div className="pb-1 text-xs font-medium text-center text-on-surface/80">
-                    September 2023 - Present
+                    September 2023 - March 2024
                   </div>
                   <p>
-                    I'm currently working on UX enhancements for one of the
+                    I was hired to implement UX enhancements for one of the
                     internal tools used by this industry-leading pharmaceutical
-                    company.
+                    company. My key contribution was the design and
+                    implementation of filter and pagination state management in
+                    URLs for easy sharing.
                   </p>
                 </li>
                 <li className="pt-6 space-y-1">
