@@ -1,7 +1,9 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import classNames from "classnames";
 import Head from "next/head";
-import { CSSProperties, useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import Layout from "../../components/Layout";
 import { SquareButton } from "../../components/SquareButton";
 import styles from "../../components/blog/dvd/dvd.module.css";
 import SlideOne from "../../components/blog/dvd/slides/slide_1/SlideOne";
@@ -18,9 +20,7 @@ import SlideSix from "../../components/blog/dvd/slides/slide_6/SlideSix";
 import SlideSeven from "../../components/blog/dvd/slides/slide_7/SlideSeven";
 import SlideEight from "../../components/blog/dvd/slides/slide_8/SlideEight";
 import SlideNine from "../../components/blog/dvd/slides/slide_9/SlideNine";
-import { NavBar } from "../../components/nav/NavBar";
 import ChevronRight from "../../public/chevron-right.svg";
-import Link from "next/link";
 
 export default function DvdBlogPost() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -78,24 +78,9 @@ export default function DvdBlogPost() {
         />
         <meta name="author" content="Javier Morales" />
       </Head>
-      <div
-        className="fixed inset-0 bg-animated-gradient bg-gradient-to-br from-primary-container to-primary-container -z-1 dark:opacity-40"
-        style={
-          {
-            "--tw-gradient-via": "rgb(var(--color-tertiary-container) / 1)",
-          } as CSSProperties
-        }
-      />
-      {/* TODO animated background and navbar should be a nextjs layout */}
-      <div
-        className={classNames(
-          "relative w-full h-screen md:px-4 overflow-y-auto leading-loose md:snap-y md:snap-mandatory text-on-background scroll-smooth",
-          styles.variables
-        )}
-        ref={containerRef}
-      >
-        <header>
-          <NavBar>
+      <Layout
+        navbarContent={
+          <>
             <ChevronRight className="-mx-6 scale-50 shrink-0" />
             <Link href="/#blog">Blog</Link>
             <ChevronRight className="-mx-6 scale-50 shrink-0" />
@@ -105,61 +90,72 @@ export default function DvdBlogPost() {
             >
               CSS-only DVD Screensaver animation
             </a>
-          </NavBar>
-        </header>
-
-        <main className="max-w-4xl mx-auto">
-          <SlideOne />
-          {windowHeight && <SlideTwo containerRef={containerRef} />}
-          <SlideThree />
-          <SlideFour containerRef={containerRef} finalY={finalYSlide4} />
-          <SlideFive containerRef={containerRef} setFinalY={setFinalYSlide4} />
-          <SlideSix />
-          {windowHeight && <SlideSeven containerRef={containerRef} />}
-          <SlideEight
-            containerRef={containerRef}
-            finalPosition={finalPositionSlide8}
-          />
-          <SlideNine
-            containerRef={containerRef}
-            setFinalPosition={setFinalPositionSlide8}
-          />
-          <SlideTen />
-          <SlideEleven />
-          <SlideTwelve />
-          <SlideThirteen />
-          <SlideFourteen />
-          <div id="comments" className="w-full py-16 h-fit snap-start"></div>
-        </main>
-        <div className="fixed hidden space-y-10 -translate-y-1/2 md:block right-12 top-1/2">
-          <SquareButton
-            tooltip="Previous slide"
-            tooltipPlacement="right"
-            onClick={() =>
-              containerRef.current?.scrollBy({
-                top: -(windowHeight || 0),
-                behavior: "smooth",
-              })
-            }
-            label="Previous slide"
-          >
-            <ChevronRight style={{ transform: `rotate(-90deg)` }} />
-          </SquareButton>
-          <SquareButton
-            tooltip="Next slide"
-            tooltipPlacement="right"
-            onClick={() =>
-              containerRef.current?.scrollBy({
-                top: windowHeight || 0,
-                behavior: "smooth",
-              })
-            }
-            label="Next slide"
-          >
-            <ChevronRight style={{ transform: `rotate(90deg)` }} />
-          </SquareButton>
+          </>
+        }
+      >
+        <div
+          className={classNames(
+            "relative w-full h-screen md:px-4 overflow-y-auto leading-loose md:snap-y md:snap-mandatory text-on-background scroll-smooth",
+            styles.variables
+          )}
+          ref={containerRef}
+        >
+          <main className="max-w-4xl mx-auto">
+            <SlideOne />
+            {windowHeight && <SlideTwo containerRef={containerRef} />}
+            <SlideThree />
+            <SlideFour containerRef={containerRef} finalY={finalYSlide4} />
+            <SlideFive
+              containerRef={containerRef}
+              setFinalY={setFinalYSlide4}
+            />
+            <SlideSix />
+            {windowHeight && <SlideSeven containerRef={containerRef} />}
+            <SlideEight
+              containerRef={containerRef}
+              finalPosition={finalPositionSlide8}
+            />
+            <SlideNine
+              containerRef={containerRef}
+              setFinalPosition={setFinalPositionSlide8}
+            />
+            <SlideTen />
+            <SlideEleven />
+            <SlideTwelve />
+            <SlideThirteen />
+            <SlideFourteen />
+            <div id="comments" className="w-full py-16 h-fit snap-start"></div>
+          </main>
+          <div className="fixed hidden space-y-10 -translate-y-1/2 md:block right-12 top-1/2">
+            <SquareButton
+              tooltip="Previous slide"
+              tooltipPlacement="right"
+              onClick={() =>
+                containerRef.current?.scrollBy({
+                  top: -(windowHeight || 0),
+                  behavior: "smooth",
+                })
+              }
+              label="Previous slide"
+            >
+              <ChevronRight style={{ transform: `rotate(-90deg)` }} />
+            </SquareButton>
+            <SquareButton
+              tooltip="Next slide"
+              tooltipPlacement="right"
+              onClick={() =>
+                containerRef.current?.scrollBy({
+                  top: windowHeight || 0,
+                  behavior: "smooth",
+                })
+              }
+              label="Next slide"
+            >
+              <ChevronRight style={{ transform: `rotate(90deg)` }} />
+            </SquareButton>
+          </div>
         </div>
-      </div>
+      </Layout>
     </>
   );
 }

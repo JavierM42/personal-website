@@ -14,7 +14,7 @@ export const NavBar: FC<Props> = ({ children }) => {
   const router = useRouter();
 
   return (
-    <div className="fixed inset-x-0 top-0 z-40 flex items-center w-full gap-4 px-4 shadow-xl h-14 shadow-primary/10 bg-surface/40 backdrop-blur">
+    <header className="fixed inset-x-0 top-0 z-40 flex items-center w-full gap-4 px-4 shadow-xl h-14 shadow-primary/10 bg-surface/40 backdrop-blur">
       <div className="relative flex items-center flex-1 h-full gap-6 overflow-x-clip">
         <Link href="/">
           <span className="font-[Nunito] text-lg hover:underline text-primary cursor-pointer">
@@ -50,6 +50,6 @@ export const NavBar: FC<Props> = ({ children }) => {
         <code>tailwind-mode-aware-colors</code> plugin. I set the default mode
         with the <code>prefers-color-scheme</code> media query.
       </DevNote>
-    </div>
+    </header>
   );
 };
