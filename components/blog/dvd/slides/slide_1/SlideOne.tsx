@@ -27,4 +27,4 @@ export default function SlideOne() {
   );
 }
 
-// TODO Turn on/off effect: https://codepen.io/lbebber/pen/XJRdrV/
+// Idea: Turn on/off effect: https://codepen.io/lbebber/pen/XJRdrV/

@@ -98,7 +98,6 @@ export default function SlideThirteen() {
           <i>Warning:</i> while you drag, the logo may flash rapidly.
         </Paragraph>
         <Paragraph>Corner hit every {cycleTime.toFixed(2)} seconds.</Paragraph>
-        {/* TODO show corner hit countdown with CSS? */}
         <div
           className={classNames(
             styles.variables,

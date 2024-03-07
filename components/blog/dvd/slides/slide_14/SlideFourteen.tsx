@@ -50,7 +50,6 @@ export default function SlideFourteen() {
       </ul>
       <hr className="w-full h-px max-w-md mb-4 bg-on-surface" />
       <Paragraph>Published on February 14, 2024.</Paragraph>
-      {/* TODO update date */}
     </Slide>
   );
 }
