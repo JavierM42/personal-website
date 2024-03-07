@@ -1,11 +1,11 @@
 import { useRef } from "react";
-import BlogPostCard, { BLOG_POST_CARD_WIDTH } from "../components/BlogPostCard";
-import Grids from "../components/posts/Grids";
-import Leverage from "../components/posts/Leverage";
-import Portals from "../components/posts/Portals";
-import Screenshots from "../components/posts/Screenshots";
-import ChevronRight from "../public/chevron-right.svg";
-import { SquareButton } from "./SquareButton";
+import BlogPostCard, { BLOG_POST_CARD_WIDTH } from "./BlogPostCard";
+import Grids from "./posts/Grids";
+import Leverage from "./posts/Leverage";
+import Portals from "./posts/Portals";
+import Screenshots from "./posts/Screenshots";
+import ChevronRight from "../../public/chevron-right.svg";
+import { SquareButton } from "../SquareButton";
 import { DevNote } from "./dev_notes/DevNote";
 import InteractiveSurfaces from "./posts/InteractiveSurfaces";
 import ModeAwareColors from "./posts/ModeAwareColors";

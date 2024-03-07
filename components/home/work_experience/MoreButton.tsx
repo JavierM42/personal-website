@@ -1,11 +1,11 @@
 import classNames from "classnames";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
-import AbbVie from "../../assets/companies/abbvie.svg";
-import TheRealReal from "../../assets/companies/therealreal.svg";
-import WyeWorks from "../../assets/companies/wyeworks.svg";
-import ExternalLink from "../ExternalLink";
-import { SquareButton } from "../SquareButton";
+import AbbVie from "../../../assets/companies/abbvie.svg";
+import TheRealReal from "../../../assets/companies/therealreal.svg";
+import WyeWorks from "../../../assets/companies/wyeworks.svg";
+import ExternalLink from "../../ExternalLink";
+import { SquareButton } from "../../SquareButton";
 
 export default function MoreButton() {
   const [showMore, setShowMore] = useState(false);

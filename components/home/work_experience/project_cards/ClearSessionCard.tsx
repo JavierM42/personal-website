@@ -1,6 +1,6 @@
-import ClearSession from "../../../assets/companies/clearsession.svg";
+import ClearSession from "../../../../assets/companies/clearsession.svg";
 import { updateTheme } from "tailwind-material-colors/lib/updateTheme.esm";
-import WyeWorks from "../../../assets/companies/wyeworks.svg";
+import WyeWorks from "../../../../assets/companies/wyeworks.svg";
 import WorkExperienceCard from "../WorkExperienceCard";
 
 const ClearSessionCard = ({

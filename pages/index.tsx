@@ -1,15 +1,15 @@
 import { CSSProperties } from "react";
 import GitHubLogo from "../assets/github.svg";
 import LinkedInLogo from "../assets/linkedin.svg";
-import BlogPostCards from "../components/BlogPostCards";
+import BlogPostCards from "../components/home/BlogPostCards";
 import ExternalLink from "../components/ExternalLink";
-import { SectionHeader } from "../components/SectionHeader";
-import { DevNote } from "../components/dev_notes/DevNote";
-import { DevNotesSection } from "../components/dev_notes/DevNotesSection";
-import RubikCube from "../components/hero/RubikCube";
+import { SectionHeader } from "../components/home/SectionHeader";
+import { DevNote } from "../components/home/dev_notes/DevNote";
+import { DevNotesSection } from "../components/home/dev_notes/DevNotesSection";
+import RubikCube from "../components/home/hero/RubikCube";
 import { NavBar } from "../components/nav/NavBar";
-import OpenSourceCards from "../components/open_source/OpenSourceCards";
-import WorkExperienceCards from "../components/work_experience/WorkExperienceCards";
+import OpenSourceCards from "../components/home/open_source/OpenSourceCards";
+import WorkExperienceCards from "../components/home/work_experience/WorkExperienceCards";
 
 export default function Home() {
   return (

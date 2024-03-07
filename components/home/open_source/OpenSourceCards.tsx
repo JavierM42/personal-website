@@ -1,5 +1,5 @@
 import LineWrappingInput from "react-line-wrapping-input";
-import GitHubLogo from "../../assets/github.svg";
+import GitHubLogo from "../../../assets/github.svg";
 import OpenSourceCard from "./OpenSourceCard";
 import TryDynamicColor from "./TryDynamicColor";
 import { DevNote } from "../dev_notes/DevNote";

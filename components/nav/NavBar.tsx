@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { FC, ReactNode } from "react";
 import DarkModeToggle from "../DarkModeToggle";
 import Switch from "../Switch";
-import { DevNote } from "../dev_notes/DevNote";
+import { DevNote } from "../home/dev_notes/DevNote";
 import Link from "next/link";
 
 type Props = {

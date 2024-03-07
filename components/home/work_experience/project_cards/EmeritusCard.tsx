@@ -1,6 +1,6 @@
 import { updateTheme } from "tailwind-material-colors/lib/updateTheme.esm";
-import Emeritus from "../../../assets/companies/emeritus.svg";
-import WyeWorks from "../../../assets/companies/wyeworks.svg";
+import Emeritus from "../../../../assets/companies/emeritus.svg";
+import WyeWorks from "../../../../assets/companies/wyeworks.svg";
 import WorkExperienceCard from "../WorkExperienceCard";
 
 const EmeritusCard = ({

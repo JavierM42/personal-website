@@ -1,8 +1,8 @@
-import X from "../../public/x.svg";
+import X from "../../../public/x.svg";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { CSSProperties, FC, useState } from "react";
 import ThemePicker from "./ThemePicker";
-import { SquareButton } from "../SquareButton";
+import { SquareButton } from "../../SquareButton";
 
 const TryDynamicColor: FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);

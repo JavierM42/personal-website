@@ -6,10 +6,10 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import ChevronRight from "../../public/chevron-right.svg";
-import Reset from "../../assets/reset.svg";
+import ChevronRight from "../../../public/chevron-right.svg";
+import Reset from "../../../assets/reset.svg";
 import { Placement, useMergeRefs } from "@floating-ui/react";
-import { SquareButton } from "../SquareButton";
+import { SquareButton } from "../../SquareButton";
 import { RubikFavicon } from "./RubikFavicon";
 import { DevNote } from "../dev_notes/DevNote";
 import { useSwipeable } from "react-swipeable";

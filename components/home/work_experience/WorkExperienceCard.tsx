@@ -7,15 +7,15 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { FC, ReactNode, SVGProps, useRef } from "react";
-import ElixirLogo from "../../assets/techs/elixir.svg";
-import NextLogo from "../../assets/techs/nextjs.svg";
-import RailsLogo from "../../assets/techs/rails.svg";
-import ReactLogo from "../../assets/techs/react.svg";
-import RubyLogo from "../../assets/techs/ruby.svg";
-import TailwindLogo from "../../assets/techs/tailwind.svg";
-import TypescriptLogo from "../../assets/techs/typescript.svg";
-import VueLogo from "../../assets/techs/vue.svg";
-import WithTooltip from "../WithTooltip";
+import ElixirLogo from "../../../assets/techs/elixir.svg";
+import NextLogo from "../../../assets/techs/nextjs.svg";
+import RailsLogo from "../../../assets/techs/rails.svg";
+import ReactLogo from "../../../assets/techs/react.svg";
+import RubyLogo from "../../../assets/techs/ruby.svg";
+import TailwindLogo from "../../../assets/techs/tailwind.svg";
+import TypescriptLogo from "../../../assets/techs/typescript.svg";
+import VueLogo from "../../../assets/techs/vue.svg";
+import WithTooltip from "../../WithTooltip";
 import PerspectiveCard from "./PerspectiveCard";
 import PointerHighlightCard from "./PointerHighlightCard";
 

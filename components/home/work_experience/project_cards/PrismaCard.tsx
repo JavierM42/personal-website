@@ -1,7 +1,7 @@
-import PrismaIsotype from "../../../assets/companies/prisma-isotype.svg";
-import Prisma from "../../../assets/companies/prisma.svg";
+import PrismaIsotype from "../../../../assets/companies/prisma-isotype.svg";
+import Prisma from "../../../../assets/companies/prisma.svg";
 import { updateTheme } from "tailwind-material-colors/lib/updateTheme.esm";
-import WyeWorks from "../../../assets/companies/wyeworks.svg";
+import WyeWorks from "../../../../assets/companies/wyeworks.svg";
 import WorkExperienceCard from "../WorkExperienceCard";
 
 const PrismaCard = ({

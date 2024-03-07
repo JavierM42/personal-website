@@ -1,7 +1,7 @@
 import { updateTheme } from "tailwind-material-colors/lib/updateTheme.esm";
-import RetroAlly from "../../../assets/companies/retroally.svg";
-import RetroAllyText from "../../../assets/companies/retroallytext.svg";
-import WyeWorks from "../../../assets/companies/wyeworks.svg";
+import RetroAlly from "../../../../assets/companies/retroally.svg";
+import RetroAllyText from "../../../../assets/companies/retroallytext.svg";
+import WyeWorks from "../../../../assets/companies/wyeworks.svg";
 import WorkExperienceCard from "../WorkExperienceCard";
 
 const RetroAllyCard = ({

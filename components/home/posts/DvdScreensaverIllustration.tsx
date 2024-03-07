@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { CSSProperties, FC } from "react";
-import DvdScreensaver from "../blog/dvd/DvdScreensaver";
+import DvdScreensaver from "../../blog/dvd/DvdScreensaver";
 import styles from "../blog/dvd/dvd.module.css";
 
 const DvdScreensaverIllustration: FC = () => {

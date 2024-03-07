@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FC, useState } from "react";
-import Switch from "../Switch";
+import Switch from "../../Switch";
 import { DevNote } from "./DevNote";
 import { useDevNotesState } from "./useDevNotesState";
 

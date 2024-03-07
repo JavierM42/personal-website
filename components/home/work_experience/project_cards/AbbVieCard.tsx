@@ -3,7 +3,7 @@ import RetroAlly from "../../../assets/companies/retroally.svg";
 import AbbVie from "../../../assets/companies/abbvie.svg";
 import WyeWorks from "../../../assets/companies/wyeworks.svg";
 import WorkExperienceCard from "../WorkExperienceCard";
-import ExternalLink from "../../ExternalLink";
+import ExternalLink from "../../../ExternalLink";
 
 const AbbVieCard = ({
   isExpanded,
