@@ -88,80 +88,30 @@ export default function SlideEight({
         them in this case. I'm using equispaced hue values on the HSL color
         spectrum.
       </Paragraph>
-      <CodeBlock>
-        {`@keyframes `}
-        <span className="text-primary-container-light">colorX</span>
-        {` {
-  from { `}
-        <span className="text-purple-dark">background</span>
-        {`: hsl(`}
-        <span className="text-primary-container-light">0deg 100% 50%</span>
-        {`); }
-  20% { `}
-        <span className="text-purple-dark">background</span>
-        {`: hsl(`}
-        <span className="text-primary-container-light">72deg 100% 50%</span>
-        {`); }
-  40% { `}
-        <span className="text-purple-dark">background</span>
-        {`: hsl(`}
-        <span className="text-primary-container-light">144deg 100% 50%</span>
-        {`); }
-  60% { `}
-        <span className="text-purple-dark">background</span>
-        {`: hsl(`}
-        <span className="text-primary-container-light">216deg 100% 50%</span>
-        {`); }
-  80% { `}
-        <span className="text-purple-dark">background</span>
-        {`: hsl(`}
-        <span className="text-primary-container-light">288deg 100% 50%</span>
-        {`); }
-  to { `}
-        <span className="text-purple-dark">background</span>
-        {`: hsl(`}
-        <span className="text-primary-container-light">0deg 100% 50%</span>
-        {`); }
+      <CodeBlock
+        code={`@keyframes colorX {
+  from { background: hsl(0deg 100% 50%); }
+  20% { background: hsl(72deg 100% 50%); }
+  40% { background: hsl(144deg 100% 50%); }
+  60% { background: hsl(216deg 100% 50%); }
+  80% { background: hsl(288deg 100% 50%); }
+  to { background: hsl(0deg 100% 50%); }
 }`}
-      </CodeBlock>
+      />
       <Paragraph inCode>
         Then we just need to add a new animation with the appropriate duration
         and the <code>step-start</code> timing function so the value "jumps"
         once every <code>--duration-x</code>.
       </Paragraph>
-      <CodeBlock isLast>
-        {`.logo {
-  `}
-        <span className="text-purple-dark">animation</span>
-        {":\n    "}
-        <span className="text-primary-container-light">x</span>
-        {" var("}
-        <span className="text-primary-container-light">--duration-x</span>
-        {") "}
-        <span className="text-primary-container-light">
-          linear infinite alternate
-        </span>
-        {`,\n    `}
-        <span className="text-primary-container-light">y</span>
-        {" var("}
-        <span className="text-primary-container-light">--duration-y</span>
-        {") "}
-        <span className="text-primary-container-light">
-          linear infinite alternate
-        </span>
-        {`,\n    `}
-        <span className="text-primary-container-light">colorX</span>
-        {" calc(var("}
-        <span className="text-primary-container-light">--duration-x</span>
-        {") "}
-        <span className="text-purple-dark">* </span>
-        <span className="text-primary-container-light">5</span>
-        {") "}
-        <span className="text-primary-container-light">
-          step-start infinite
-        </span>
-        {`;\n}`}
-      </CodeBlock>
+      <CodeBlock
+        isLast
+        code={`.logo {
+  animation:
+    x var(--duration-x) linear infinite alternate,
+    y var(--duration-y) linear infinite alternate,
+    colorX calc(var(--duration-x) * 5) step-start infinite;
+}`}
+      />
       <div className="w-full max-w-lg">
         But...{" "}
         <div ref={textRef} className="inline-block">

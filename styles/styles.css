@@ -246,3 +246,19 @@ code {
     display: none;
   }
 }
+
+/* hljs */
+.hljs-attribute,
+.hljs-keyword,
+.hljs-built_in {
+  @apply text-purple-dark;
+}
+.hljs-selector-pseudo,
+.hljs-selector-class,
+.hljs-selector-tag,
+.hljs-number {
+  @apply text-primary-container-light;
+}
+.hljs-comment {
+  @apply text-outline;
+}

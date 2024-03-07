@@ -9,135 +9,39 @@ export default function SlideEleven() {
         Thing is... we don't need smooth interpolation, we're using{" "}
         <code>step-start</code> timing anyway.
       </Paragraph>
-      <CodeBlock isFirst isLast>
-        {`@keyframes `}
-        <span className="text-primary-container-light">colorX</span>
-        {` {
-  from { `}
-        <span className="text-purple-dark">--color--x</span>
-        {`: `}
-        <span className="text-primary-container-light">0</span>
-        {`; }
-  20% { `}
-        <span className="text-purple-dark">--color-x</span>
-        {`: `}
-        <span className="text-primary-container-light">2</span>
-        {`; }
-  40% { `}
-        <span className="text-purple-dark">--color-x</span>
-        {`: `}
-        <span className="text-primary-container-light">4</span>
-        {`; }
-  60% { `}
-        <span className="text-purple-dark">--color-x</span>
-        {`: `}
-        <span className="text-primary-container-light">1</span>
-        {`; }
-  80% { `}
-        <span className="text-purple-dark">--color-x</span>
-        {`: `}
-        <span className="text-primary-container-light">3</span>
-        {`; }
-  to { `}
-        <span className="text-purple-dark">--color-x</span>
-        {`: `}
-        <span className="text-primary-container-light">0</span>
-        {`; }
-}\n\n`}
-        {`@keyframes `}
-        <span className="text-primary-container-light">colorY</span>
-        {` {
-  from { `}
-        <span className="text-purple-dark">--color-y</span>
-        {`: `}
-        <span className="text-primary-container-light">0</span>
-        {`; }
-  20% { `}
-        <span className="text-purple-dark">--color-y</span>
-        {`: `}
-        <span className="text-primary-container-light">2</span>
-        {`; }
-  40% { `}
-        <span className="text-purple-dark">--color-y</span>
-        {`: `}
-        <span className="text-primary-container-light">4</span>
-        {`; }
-  60% { `}
-        <span className="text-purple-dark">--color-y</span>
-        {`: `}
-        <span className="text-primary-container-light">1</span>
-        {`; }
-  80% { `}
-        <span className="text-purple-dark">--color-y</span>
-        {`: `}
-        <span className="text-primary-container-light">3</span>
-        {`; }
-  to { `}
-        <span className="text-purple-dark">--color-y</span>
-        {`: `}
-        <span className="text-primary-container-light">0</span>
-        {`; }
-}\n\n`}
-        {`.logo {
-  `}
-        <span className="text-purple-dark">animation</span>
-        {":\n    "}
-        <span className="text-primary-container-light">x</span>
-        {" var("}
-        <span className="text-primary-container-light">--duration-x</span>
-        {") "}
-        <span className="text-primary-container-light">
-          linear infinite alternate
-        </span>
-        {`,\n    `}
-        <span className="text-primary-container-light">y</span>
-        {" var("}
-        <span className="text-primary-container-light">--duration-y</span>
-        {") "}
-        <span className="text-primary-container-light">
-          linear infinite alternate
-        </span>
-        {`,\n    `}
-        <span className="text-primary-container-light">colorX</span>
-        {" calc(var("}
-        <span className="text-primary-container-light">--duration-x</span>
-        {") "}
-        <span className="text-purple-dark">* </span>
-        <span className="text-primary-container-light">5</span>
-        {") "}
-        <span className="text-primary-container-light">
-          step-start infinite
-        </span>
-        {`,\n    `}
-        <span className="text-primary-container-light">colorY</span>
-        {" calc(var("}
-        <span className="text-primary-container-light">--duration-y</span>
-        {") "}
-        <span className="text-purple-dark">* </span>
-        <span className="text-primary-container-light">5</span>
-        {") "}
-        <span className="text-primary-container-light">
-          step-start infinite
-        </span>
-        {`;\n  `}
-        <span className="text-purple-dark">color</span>
-        {`:\n    hsl(calc(\n      `}
-        <span className="text-primary-container-light">360</span>
-        <span className="text-purple-dark"> / </span>
-        <span className="text-primary-container-light">25</span>
-        <span className="text-purple-dark"> * </span>
-        {"(var("}
-        <span className="text-primary-container-light">--color-y</span>
-        {")"}
-        <span className="text-purple-dark"> * </span>
-        <span className="text-primary-container-light">5</span>
-        <span className="text-purple-dark"> + </span>
-        {"var("}
-        <span className="text-primary-container-light">--color-x</span>
-        {"))\n    ) "}
-        <span className="text-primary-container-light">100% 50%</span>
-        {`);\n}`}
-      </CodeBlock>
+      <CodeBlock
+        isFirst
+        isLast
+        code={`@keyframes colorX {
+  from { --color--x: 0; }
+  20% { --color-x: 2; }
+  40% { --color-x: 4; }
+  60% { --color-x: 1; }
+  80% { --color-x: 3; }
+  to { --color-x: 0; }
+}
+
+@keyframes colorY {
+  from { --color-y: 0; }
+  20% { --color-y: 2; }
+  40% { --color-y: 4; }
+  60% { --color-y: 1; }
+  80% { --color-y: 3; }
+  to { --color-y: 0; }
+}
+
+.logo {
+  animation:
+    x var(--duration-x) linear infinite alternate,
+    y var(--duration-y) linear infinite alternate,
+    colorX calc(var(--duration-x) * 5) step-start infinite,
+    colorY calc(var(--duration-y) * 5) step-start infinite;
+  color:
+    hsl(calc(
+      360 / 25 * (var(--color-y) * 5 + var(--color-x))
+    ) 100% 50%);
+}`}
+      />
       <Paragraph>
         There's a total of <code>5x5=25</code> possible colors, equispaced hue
         values ranging from <code>0deg</code> when <code>--color-x</code> and{" "}

@@ -12,37 +12,19 @@ export default function SlideTen() {
         any non-interpolable property such as <code>display</code> or{" "}
         <code>visibility</code>.
       </Paragraph>
-      <CodeBlock isFirst isLast>
-        {`.animate-width-variable {
-  `}
-        <span className="text-purple-dark">width</span>
-        {": calc(var("}
-        <span className="text-primary-container-light">--width</span>
-        {") "}
-        <span className="text-purple-dark">* </span>
-        <span className="text-primary-container-light">1%</span>
-        {");\n  "}
-        <span className="text-purple-dark">animation</span>
-        {": "}
-        <span className="text-primary-container-light">
-          frames 1s linear infinite alternate
-        </span>
-        {";\n}\n\n"}
-        {`@keyframes `}
-        <span className="text-primary-container-light">frames</span>
-        {` {
-  from { `}
-        <span className="text-purple-dark">--width</span>
-        {`: `}
-        <span className="text-primary-container-light">10</span>
-        {`; }
-  to { `}
-        <span className="text-purple-dark">--width</span>
-        {`: `}
-        <span className="text-primary-container-light">100</span>
-        {`;\n}`}
-      </CodeBlock>
+      <CodeBlock
+        isFirst
+        isLast
+        code={`.animate-width-variable {
+  width: calc(var(--width) * 1%);
+  animation: frames 1s linear infinite alternate;
+}
 
+@keyframes frames {
+  from { --width: 10; }
+  to { --width: 100;
+}`}
+      />
       <Paragraph>This is the result:</Paragraph>
 
       <div className="w-48 h-4 mb-4 border rounded-sm border-primary">

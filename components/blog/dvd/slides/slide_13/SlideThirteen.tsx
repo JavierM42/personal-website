@@ -31,10 +31,8 @@ export default function SlideThirteen() {
           Use the sliders to change the animation parameters.{" "}
         </Paragraph>
         <CodeBlock>
-          {`  `}
-          <span className="text-purple-dark">--container-w</span>
-          {": "}
-          <span className="text-primary-container-light">{containerWidth}</span>
+          {"  "}--container-w:{" "}
+          <span className="hljs-number">{containerWidth}</span>
           {"; "}
           <input
             type="range"
@@ -46,12 +44,8 @@ export default function SlideThirteen() {
               setContainerWidth(parseInt(event.target.value))
             }
           />
-          {`\n  `}
-          <span className="text-purple-dark">--container-h</span>
-          {": "}
-          <span className="text-primary-container-light">
-            {containerHeight}
-          </span>
+          {`\n  `}--container-h:{" "}
+          <span className="hljs-number">{containerHeight}</span>
           {"; "}
           <input
             type="range"
@@ -63,12 +57,8 @@ export default function SlideThirteen() {
               setContainerHeight(parseInt(event.target.value))
             }
           />
-          {`\n  `}
-          <span className="text-purple-dark">--logo-w</span>
-          {": "}
-          <span className="text-primary-container-light">
-            {logoWidthPercentage}%
-          </span>
+          {`\n  `}--logo-w:{" "}
+          <span className="hljs-number">{logoWidthPercentage}%</span>
           {"; "}
           <input
             type="range"
@@ -80,10 +70,7 @@ export default function SlideThirteen() {
               setLogoWidthPercentage(parseInt(event.target.value))
             }
           />
-          {`\n  `}
-          <span className="text-purple-dark">--speed</span>
-          {": "}
-          <span className="text-primary-container-light">{speed}</span>
+          {`\n  `}--speed: <span className="hljs-number">{speed}</span>
           {`;`}
           <input
             type="range"
