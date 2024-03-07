@@ -1,6 +1,6 @@
 import classNames from "classnames";
+import Slide from "../../../Slide";
 import DvdScreensaver from "../../DvdScreensaver";
-import Slide from "../../Slide";
 import crtStyles from "./crt.module.css";
 
 export default function SlideOne() {

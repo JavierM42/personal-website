@@ -1,8 +1,8 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import { RefObject, useEffect, useRef } from "react";
+import Paragraph from "../../../Paragraph";
+import Slide from "../../../Slide";
 import DvdScreensaverWithAxes from "../../DvdScreensaverWithAxes";
-import Paragraph from "../../Paragraph";
-import Slide from "../../Slide";
 
 export default function SlideFive({
   containerRef,

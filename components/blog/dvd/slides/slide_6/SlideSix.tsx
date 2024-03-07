@@ -1,6 +1,6 @@
-import CodeBlock from "../../CodeBlock";
-import Paragraph from "../../Paragraph";
-import Slide from "../../Slide";
+import CodeBlock from "../../../CodeBlock";
+import Paragraph from "../../../Paragraph";
+import Slide from "../../../Slide";
 
 export default function SlideSix() {
   return (

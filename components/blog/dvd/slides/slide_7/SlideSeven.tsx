@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ReactNode, RefObject, useEffect, useRef, useState } from "react";
-import Paragraph from "../../Paragraph";
-import Slide from "../../Slide";
+import { ReactNode, RefObject, useRef } from "react";
+import Paragraph from "../../../Paragraph";
+import Slide from "../../../Slide";
 
 export default function SlideSeven({
   containerRef,

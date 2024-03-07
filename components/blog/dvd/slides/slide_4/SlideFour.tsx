@@ -1,11 +1,10 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useWindowSize } from "@uidotdev/usehooks";
+import dynamic from "next/dynamic";
+import { RefObject, useEffect, useRef, useState } from "react";
+import Paragraph from "../../../Paragraph";
+import Slide from "../../../Slide";
 import ColorAnimation from "../../ColorAnimation";
 import DvdScreensaver from "../../DvdScreensaver";
-import Paragraph from "../../Paragraph";
-import Slide from "../../Slide";
-import { useWindowSize } from "@uidotdev/usehooks";
-import { RefObject, useEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
 
 const AnimatedText = dynamic(() => import("./AnimatedText"));
 

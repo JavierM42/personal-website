@@ -1,8 +1,8 @@
-import Slide from "../../Slide";
-import Paragraph from "../../Paragraph";
-import CodeBlock from "../../CodeBlock";
-import styles from "./bad.module.css";
 import classNames from "classnames";
+import CodeBlock from "../../../CodeBlock";
+import Paragraph from "../../../Paragraph";
+import Slide from "../../../Slide";
+import styles from "./bad.module.css";
 
 export default function SlideTen() {
   return (

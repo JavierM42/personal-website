@@ -1,10 +1,10 @@
-import Image from "next/image";
-import Slide from "../../Slide";
-import Paragraph from "../../Paragraph";
-import { RefObject, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import FiveMinutesLater from "./five-minutes-later.png";
+import Image from "next/image";
+import { RefObject, useRef } from "react";
 import ExternalLink from "../../../../ExternalLink";
+import Paragraph from "../../../Paragraph";
+import Slide from "../../../Slide";
+import FiveMinutesLater from "./five-minutes-later.png";
 
 export default function SlideTwo({
   containerRef,

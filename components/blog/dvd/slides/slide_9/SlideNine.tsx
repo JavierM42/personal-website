@@ -1,7 +1,7 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import Image from "next/image";
 import { RefObject, useEffect, useRef } from "react";
-import Slide from "../../Slide";
+import Slide from "../../../Slide";
 
 export default function SlideNine({
   containerRef,

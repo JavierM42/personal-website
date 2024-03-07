@@ -1,11 +1,11 @@
-import { CSSProperties, useState } from "react";
-import DvdLogo from "../../DvdLogo";
-import Slide from "../../Slide";
-import styles from "../../dvd.module.css";
 import classNames from "classnames";
-import CodeBlock from "../../CodeBlock";
-import Paragraph from "../../Paragraph";
 import lcm from "compute-lcm";
+import { CSSProperties, useState } from "react";
+import CodeBlock from "../../../CodeBlock";
+import Paragraph from "../../../Paragraph";
+import Slide from "../../../Slide";
+import DvdLogo from "../../DvdLogo";
+import styles from "../../dvd.module.css";
 
 export default function SlideThirteen() {
   const [containerWidth, setContainerWidth] = useState(480);

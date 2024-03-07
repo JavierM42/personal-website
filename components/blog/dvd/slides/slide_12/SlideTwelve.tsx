@@ -1,6 +1,6 @@
 import ExternalLink from "../../../../ExternalLink";
-import Paragraph from "../../Paragraph";
-import Slide from "../../Slide";
+import Paragraph from "../../../Paragraph";
+import Slide from "../../../Slide";
 
 export default function SlideTwelve() {
   return (

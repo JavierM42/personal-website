@@ -1,9 +1,9 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { RefObject, useEffect, useRef, useState } from "react";
-import CodeBlock from "../../CodeBlock";
-import Paragraph from "../../Paragraph";
-import Slide from "../../Slide";
+import CodeBlock from "../../../CodeBlock";
+import Paragraph from "../../../Paragraph";
+import Slide from "../../../Slide";
 
 const AnimatedText = ({
   slideRef,
