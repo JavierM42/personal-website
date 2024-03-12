@@ -60,7 +60,7 @@ export default function Home() {
             <WorkExperienceCards />
           </div>
           <div>
-            <SectionHeader id="open-source" heading="Open Source" count={6} />
+            <SectionHeader id="open-source" heading="Open Source" count={7} />
             <OpenSourceCards />
           </div>
           <div>

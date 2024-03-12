@@ -48,7 +48,7 @@ export default function OpenSourceCards() {
           name="tailwind-material-colors"
           content="A TailwindCSS Plugin to generate dynamic color themes according to the Material Design guidelines."
           cta={<TryDynamicColor />}
-          gradientColorStops="from-red-container to-green-container via-purple/20"
+          gradientColorStops="from-red/50 to-green/50 via-purple/50"
           className="shadow-purple-container/50 dark:shadow-purple/20"
           notes={
             <DevNote className="firefox-hidden absolute w-72 top-10 -right-1 rotate-[4deg]">
@@ -95,6 +95,22 @@ export default function OpenSourceCards() {
           }
         />
         <OpenSourceCard
+          name="tailwindcss-color-mix"
+          content="A TailwindCSS Plugin to mix colors at runtime using the CSS color-mix function."
+          cta={
+            <a
+              className="flex items-center gap-3 mx-2 my-3 text-sm font-bold flex-nowrap font-[Nunito]"
+              href="https://github.com/JavierM42/tailwindcss-color-mix"
+              target="_blank"
+            >
+              View on GitHub
+              <GitHubLogo className="w-5 h-5" />
+            </a>
+          }
+          gradientColorStops="to-purple/50 from-red/50"
+          className="shadow-red/20"
+        />
+        <OpenSourceCard
           name="tailwind-material-surfaces"
           content="A TailwindCSS Plugin that integrates Material Design interaction states into Tailwind."
           cta={
@@ -139,7 +155,7 @@ export default function OpenSourceCards() {
               <GitHubLogo className="w-5 h-5" />
             </a>
           }
-          gradientColorStops="from-secondary/60 to-primary/40"
+          gradientColorStops="from-secondary/40 to-primary/60"
           className="shadow-secondary-container/80"
         />
         <OpenSourceCard
