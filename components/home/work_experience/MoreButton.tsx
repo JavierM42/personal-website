@@ -4,7 +4,6 @@ import { useState } from "react";
 import AbbVie from "../../../assets/companies/abbvie.svg";
 import TheRealReal from "../../../assets/companies/therealreal.svg";
 import WyeWorks from "../../../assets/companies/wyeworks.svg";
-import ExternalLink from "../../ExternalLink";
 import { SquareButton } from "../../SquareButton";
 
 export default function MoreButton() {
@@ -62,11 +61,11 @@ export default function MoreButton() {
                     September 2023 - March 2024
                   </div>
                   <p>
-                    I was hired to implement UX enhancements for one of the
-                    internal tools used by this industry-leading pharmaceutical
-                    company. My key contribution was the design and
-                    implementation of filter and pagination state management in
-                    URLs for easy sharing.
+                    I was hired by this industry-leading pharmaceutical company
+                    to implement UX enhancements on their internal tools. One of
+                    my key contributions was the refactor of filter and
+                    pagination state management into the URLs, which allows easy
+                    sharing of complex queries.
                   </p>
                 </li>
                 <li className="pt-6 space-y-1">
