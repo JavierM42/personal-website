@@ -4,7 +4,7 @@ export default function Grids() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div className="relative z-10 w-48 h-48">
+    <div className="relative z-10 w-32 h-32">
       <motion.div
         className="absolute rounded-full bg-primary w-[1.5%]"
         animate={

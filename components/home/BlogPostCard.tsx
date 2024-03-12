@@ -8,7 +8,7 @@ type Props = {
   url: string;
 };
 
-export const BLOG_POST_CARD_WIDTH = 372;
+export const BLOG_POST_CARD_WIDTH = 424;
 
 const BlogPostCard: FC<Props> = ({
   illustration,
@@ -17,11 +17,15 @@ const BlogPostCard: FC<Props> = ({
   url,
 }: Props) => {
   return (
-    <li className="[&>*]:whitespace-normal rounded-xl py-2 snap-center px-4 shadow-xl shadow-primary-container/40 space-y-6 first:ml-0 last:mr-0 mx-1.5 sm:mx-4 bg-surface/40 w-[372px] max-w-[calc(100vw-42px)] flex-shrink-0">
-      <div className="w-48 h-48 mx-auto">{illustration}</div>
-      <h3 className="w-full mt-2 text-lg font-bold">{title}</h3>
-      <p className="w-full mb-4 text-sm text-on-surface/80">{summary}</p>
-      <div className="flex justify-end w-full">
+    <li className="[&>*]:whitespace-normal rounded-xl snap-center shadow-xl shadow-primary-container/40 first:ml-12 last:mr-12 lg:first:ml-0 lg:last:mr-0 mx-1.5 sm:mx-6 bg-surface/40 w-[424px] max-w-[calc(100vw-42px)] flex-shrink-0">
+      <div className="flex flex-col items-end min-h-[216px] px-4 py-2">
+        <div className="flex-1 w-full">
+          <div className="float-left h-32 pr-4 mx-auto w-36">
+            {illustration}
+          </div>
+          <h3 className="w-full mt-2 text-lg font-bold">{title}</h3>
+          <p className="w-full mb-4 text-sm text-on-surface/80">{summary}</p>
+        </div>
         {url.startsWith("http") ? (
           <a
             href={url}

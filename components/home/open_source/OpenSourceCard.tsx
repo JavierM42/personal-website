@@ -1,6 +1,8 @@
 import classNames from "classnames";
 import { CSSProperties, FC, ReactNode } from "react";
 
+export const OPEN_SOURCE_CARD_WIDTH = 424;
+
 type Props = {
   name: ReactNode;
   content: string;
@@ -21,7 +23,7 @@ const OpenSourceCard: FC<Props> = ({
   return (
     <li
       className={classNames(
-        "gradient-border bg-surface/40 shadow-xl h-[212px]",
+        "gradient-border bg-surface/40 shadow-xl [&>*]:whitespace-normal snap-center shadow-primary-container/40 first:ml-12 last:mr-12 lg:first:ml-0 lg:last:mr-0 mx-1.5 sm:mx-6 w-[424px] max-w-[calc(100vw-42px)] flex-shrink-0",
         gradientColorStops
       )}
       style={

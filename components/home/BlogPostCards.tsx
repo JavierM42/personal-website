@@ -1,15 +1,15 @@
 import { useRef } from "react";
-import BlogPostCard, { BLOG_POST_CARD_WIDTH } from "./BlogPostCard";
-import Grids from "./posts/Grids";
-import Leverage from "./posts/Leverage";
-import Portals from "./posts/Portals";
-import Screenshots from "./posts/Screenshots";
 import ChevronRight from "../../public/chevron-right.svg";
 import { SquareButton } from "../SquareButton";
+import BlogPostCard, { BLOG_POST_CARD_WIDTH } from "./BlogPostCard";
 import { DevNote } from "./dev_notes/DevNote";
-import InteractiveSurfaces from "./posts/InteractiveSurfaces";
-import ModeAwareColors from "./posts/ModeAwareColors";
 import DvdScreensaverIllustration from "./posts/DvdScreensaverIllustration";
+import Grids from "./posts/Grids";
+import InteractiveSurfaces from "./posts/InteractiveSurfaces";
+import Leverage from "./posts/Leverage";
+import ModeAwareColors from "./posts/ModeAwareColors";
+import Portals from "./posts/Portals";
+import Screenshots from "./posts/Screenshots";
 
 export default function BlogPostCards() {
   const containerRef = useRef<HTMLOListElement>(null);
@@ -39,9 +39,9 @@ export default function BlogPostCards() {
         className="w-screen [&>*]:align-top [&>*]:inline-block overflow-x-auto pb-8 snap-x snap-mandatory ml-[50%] -translate-x-1/2 whitespace-nowrap px-[calc(50vw-50%)] scrollbar-none"
         style={{
           WebkitMaskImage:
-            "linear-gradient(to right, rgba(0 0 0/0), black 12%, black 88%, rgba(0 0 0 /0) 100%)",
+            "linear-gradient(to right, rgba(0 0 0/0), black 8%, black 92%, rgba(0 0 0 /0) 100%)",
           maskImage:
-            "linear-gradient(to right, rgba(0 0 0/0), black 12%, black 88%, rgba(0 0 0 /0) 100%)",
+            "linear-gradient(to right, rgba(0 0 0/0), black 8%, black 92%, rgba(0 0 0 /0) 100%)",
         }}
       >
         <BlogPostCard

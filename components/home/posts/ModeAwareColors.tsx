@@ -123,7 +123,7 @@ export default function ModeAwareColors() {
   const ref = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="relative z-10 w-48 h-48" ref={ref}>
+    <div className="relative z-10 w-32 h-32" ref={ref}>
       <svg
         stroke="currentColor"
         viewBox="0 0 100 100"
