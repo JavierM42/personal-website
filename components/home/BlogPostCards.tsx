@@ -31,8 +31,8 @@ export default function BlogPostCards() {
   return (
     <div className="relative">
       <DevNote className="absolute w-64 -top-14 left-1/2 rotate-[-3deg]">
-        I used <code>framer-motion</code> for these animations, with some simple
-        SVG paths and sometimes a mask.
+        I used <code>framer-motion</code> for these illustrations, with some
+        simple SVG paths and sometimes a mask.
       </DevNote>
       <ol
         ref={containerRef}
