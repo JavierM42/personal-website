@@ -1,14 +1,14 @@
 import GitHubLogo from "../assets/github.svg";
 import LinkedInLogo from "../assets/linkedin.svg";
-import BlogPostCards from "../components/home/BlogPostCards";
 import ExternalLink from "../components/ExternalLink";
+import Layout from "../components/Layout";
+import BlogPostCards from "../components/home/BlogPostCards";
 import { SectionHeader } from "../components/home/SectionHeader";
 import { DevNote } from "../components/home/dev_notes/DevNote";
 import { DevNotesSection } from "../components/home/dev_notes/DevNotesSection";
 import RubikCube from "../components/home/hero/RubikCube";
 import OpenSourceCards from "../components/home/open_source/OpenSourceCards";
 import WorkExperienceCards from "../components/home/work_experience/WorkExperienceCards";
-import Layout from "../components/Layout";
 
 export default function Home() {
   return (
@@ -60,15 +60,15 @@ export default function Home() {
             <WorkExperienceCards />
           </div>
           <div>
-            <SectionHeader id="open-source" heading="Open Source" />
+            <SectionHeader id="open-source" heading="Open Source" count={6} />
             <OpenSourceCards />
           </div>
           <div>
-            <SectionHeader id="blog" heading="Blog posts" />
+            <SectionHeader id="blog" heading="Blog posts" count={7} />
             <BlogPostCards />
           </div>
           <div>
-            <SectionHeader id="dev-notes" heading="Dev notes" />
+            <SectionHeader id="dev-notes" heading="Dev notes" count={18} />
             <DevNotesSection />
           </div>
           <div>
