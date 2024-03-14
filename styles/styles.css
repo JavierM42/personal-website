@@ -138,62 +138,37 @@ code {
 /* end animated gradient bg */
 
 /* animated gradient button */
-@property --progress {
-  initial-value: 0;
-  inherits: false;
-  syntax: "<number>";
-}
-
-@property --progress-2 {
-  initial-value: 0;
-  inherits: false;
-  syntax: "<number>";
-}
-
-@keyframes progress {
+@keyframes animate-gradient-button {
   from {
-    --progress: 0;
+    transform: translateX(0);
   }
   to {
-    --progress: 1;
-  }
-}
-
-@keyframes progress-2 {
-  from {
-    --progress-2: 0;
-  }
-  to {
-    --progress-2: 1;
+    transform: translateX(-33%);
   }
 }
 
 .gradient-button {
-  background-image: linear-gradient(
-    to right,
-    var(--tw-gradient-from)
-      calc(-150 * (var(--progress, 0) + var(--progress-2, 0)) * 1%),
-    var(--tw-gradient-via)
-      calc((50 - 150 * (var(--progress, 0) + var(--progress-2, 0))) * 1%),
-    var(--tw-gradient-to)
-      calc((100 - 150 * (var(--progress, 0) + var(--progress-2, 0))) * 1%),
-    var(--tw-gradient-from)
-      calc((150 - 150 * (var(--progress, 0) + var(--progress-2, 0))) * 1%),
-    var(--tw-gradient-via)
-      calc((200 - 150 * (var(--progress, 0) + var(--progress-2, 0))) * 1%),
-    var(--tw-gradient-to)
-      calc((250 - 150 * (var(--progress, 0) + var(--progress-2, 0))) * 1%),
-    var(--tw-gradient-from)
-      calc((300 - 150 * (var(--progress, 0) + var(--progress-2, 0))) * 1%),
-    var(--tw-gradient-via)
-      calc((350 - 150 * (var(--progress, 0) + var(--progress-2, 0))) * 1%),
-    var(--tw-gradient-to)
-      calc((400 - 150 * (var(--progress, 0) + var(--progress-2, 0))) * 1%)
-  );
-  -webkit-animation: progress 6s linear infinite,
-    progress-2 linear infinite 1s reverse paused;
+  @apply relative z-10 bg-transparent overflow-clip;
 }
-.gradient-button:hover {
+
+.gradient-button::after {
+  content: "";
+  @apply absolute inset-y-0 left-0;
+  z-index: -1;
+  width: 450%;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--tw-gradient-from) 0%,
+    var(--tw-gradient-via) 33.33%,
+    var(--tw-gradient-to) 66.67%,
+    var(--tw-gradient-from) 100%
+  );
+  background-size: 33.33% 100%;
+  animation: animate-gradient-button 6s linear infinite,
+    animate-gradient-button linear infinite 1s reverse paused;
+  animation-composition: add;
+}
+.gradient-button:hover::after {
   animation-play-state: running;
 }
 /* end animated gradient button */
@@ -205,12 +180,6 @@ code {
 @-moz-document url-prefix() {
   .firefox-only {
     display: unset;
-  }
-}
-
-@-moz-document url-prefix() {
-  .firefox-hidden {
-    display: none;
   }
 }
 

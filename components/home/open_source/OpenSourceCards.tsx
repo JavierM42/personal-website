@@ -51,10 +51,9 @@ export default function OpenSourceCards() {
           gradientColorStops="from-red/50 to-green/50 via-purple/50"
           className="shadow-purple-container/50 dark:shadow-purple/20"
           notes={
-            <DevNote className="firefox-hidden absolute w-72 top-10 -right-1 rotate-[4deg]">
-              The animated gradient button uses only a single HTML element and
-              no Javascript. This was a self-imposed challenge and I must say
-              I'm happy with the results.
+            <DevNote className="absolute w-72 top-10 -right-1 rotate-[4deg]">
+              This animated gradient button uses no Javascript. This was a
+              self-imposed challenge and I must say I'm happy with the results.
             </DevNote>
           }
         />
