@@ -33,10 +33,7 @@ export const DevNotesSection: FC = () => {
           </Link>
         </div>
         <DevNote className="absolute w-72 -top-40 -right-64 rotate-[-3deg]">
-          There's a very subtle animation on the gradient background. Animating
-          gradients was not possible until recently. The new{" "}
-          <code>@property</code> rule can now animate CSS variables (not in
-          Firefox yet, though).
+          There's a very subtle animation on the gradient background.
           <div className="mt-4">
             If you're having trouble seeing the animation, toggle the switch to
             speed it up.
