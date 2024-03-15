@@ -15,8 +15,8 @@ export default function AnimatedGradientButtonBlogPost() {
   return (
     <BlogPost
       title="CSS Animated Gradient Button"
-      description="TODO"
-      metaImage="TODO"
+      description="A step-by-step walkthrough on how to create a CSS animated gradient button that reverses animation direction on hover."
+      metaImage="https://javiermorales.dev/blog/animated-gradient-button/image.png"
       handle={handle}
     >
       <SlideOne onNextSlide={() => handle.current?.nextSlide?.()} />

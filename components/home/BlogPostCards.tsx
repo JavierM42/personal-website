@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { CSSProperties, useRef } from "react";
 import ChevronRight from "../../public/chevron-right.svg";
 import { SquareButton } from "../SquareButton";
 import BlogPostCard, { BLOG_POST_CARD_WIDTH } from "./BlogPostCard";
@@ -44,6 +44,21 @@ export default function BlogPostCards() {
             "linear-gradient(to right, rgba(0 0 0/0), black 8%, black 92%, rgba(0 0 0 /0) 100%)",
         }}
       >
+        <BlogPostCard
+          illustration={
+            <div
+              className="w-full h-10 mt-12 transition-all rounded-lg shadow pointer-events-none text-on-surface gradient-button from-red-container to-green-container dark:shadow-black"
+              style={
+                {
+                  "--tw-gradient-via": "rgb(var(--color-purple-container) / 1)",
+                } as CSSProperties
+              }
+            />
+          }
+          title="CSS Animated Gradient Button"
+          summary="The method behind the animated gradient button on this page, with a detailed step-by-step walkthrough."
+          url="/blog/animated-gradient-button"
+        />
         <BlogPostCard
           illustration={<DvdScreensaverIllustration />}
           title="CSS-only DVD Screensaver animation: a visual walkthrough"
