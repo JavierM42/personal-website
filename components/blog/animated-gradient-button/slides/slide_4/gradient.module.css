@@ -1,0 +1,71 @@
+.dualCycleGradient {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--tw-gradient-from) 0%,
+    var(--tw-gradient-via) 16.7%,
+    var(--tw-gradient-to) 33.3%,
+    var(--tw-gradient-from) 50%
+  );
+  animation: flowLeft 6s linear infinite;
+}
+
+.tripleCycleGradient {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--tw-gradient-from) 0%,
+    var(--tw-gradient-via) 11.1%,
+    var(--tw-gradient-to) 22.2%,
+    var(--tw-gradient-from) 33.3%
+  );
+  animation: tripleFlowLeft 6s linear infinite,
+    tripleFlowLeft 1s linear infinite reverse paused;
+  animation-composition: add;
+}
+
+.tripleCycleGradientMarker {
+  position: absolute;
+  width: 55.5%;
+  height: 100%;
+  left: calc(var(--triple-progress) * 33.3%);
+  top: 0;
+  animation: markerAnimation 1s linear infinite paused;
+}
+
+.tripleCycleGradient:hover .tripleCycleGradientMarker {
+  animation-play-state: running;
+}
+
+.awfulHover:hover div {
+  animation: flowLeft 3s linear infinite reverse;
+}
+
+@keyframes markerAnimation {
+  from {
+    left: 33%;
+  }
+  to {
+    left: 0%;
+  }
+}
+
+@keyframes flowLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes tripleFlowLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.3%);
+  }
+}
+
+.goodHover:hover div {
+  animation-play-state: running;
+}
