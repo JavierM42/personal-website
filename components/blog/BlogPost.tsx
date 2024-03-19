@@ -1,10 +1,21 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import Head from "next/head";
 import Link from "next/link";
-import { ReactNode, RefObject, forwardRef, useEffect, useRef } from "react";
+import {
+  ReactNode,
+  RefObject,
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+} from "react";
 import ChevronRight from "../../public/chevron-right.svg";
 import Layout from "../Layout";
 import { SquareButton } from "../SquareButton";
+
+export type PaginationControls = {
+  nextSlide: () => void;
+};
 
 type Props = {
   title: string;
@@ -12,14 +23,31 @@ type Props = {
   metaImage: string;
   metaVideo?: string;
   children: ReactNode;
+  handle?: RefObject<PaginationControls>;
 };
 
 const BlogPost = forwardRef<HTMLDivElement, Props>(
-  ({ title, description, metaImage, metaVideo, children }, forwardedRef) => {
+  (
+    { title, description, metaImage, metaVideo, children, handle },
+    forwardedRef
+  ) => {
     const localRef = useRef<HTMLDivElement>();
     const ref: RefObject<HTMLDivElement> = (forwardedRef as any) || localRef;
 
     const { height: windowHeight } = useWindowSize();
+
+    useImperativeHandle(
+      handle,
+      () => ({
+        nextSlide: () => {
+          ref.current?.scrollBy({
+            top: windowHeight || 0,
+            behavior: "smooth",
+          });
+        },
+      }),
+      [windowHeight]
+    );
 
     useEffect(() => {
       const script = document.createElement("script");

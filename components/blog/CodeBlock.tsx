@@ -39,7 +39,7 @@ export default function CodeBlock({
         )}
       >
         {children}
-        {code && <code dangerouslySetInnerHTML={{ __html: trimmedValue }} />}
+        {code && <span dangerouslySetInnerHTML={{ __html: trimmedValue }} />}
       </pre>
       {!isLast && <hr className="w-full h-px border-outline/20" />}
     </div>

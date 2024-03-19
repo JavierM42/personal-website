@@ -64,7 +64,7 @@ export default function Home() {
             <OpenSourceCards />
           </div>
           <div>
-            <SectionHeader id="blog" heading="Blog posts" count={7} />
+            <SectionHeader id="blog" heading="Blog posts" count={8} />
             <BlogPostCards />
           </div>
           <div>
