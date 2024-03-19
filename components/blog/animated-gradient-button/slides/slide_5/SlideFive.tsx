@@ -16,8 +16,8 @@ export default function SlideFive({ onNextSlide }: Props) {
   return (
     <Slide className="flex flex-col items-center justify-center gap-4">
       <Paragraph>
-        For the hover effect: when the button is hovered, the animation should
-        move faster and in the opposite direction.
+        Now, we can focus on the hover effect: when the mouse is over the
+        button, the animation should move faster and in the opposite direction.
       </Paragraph>
       <Paragraph>
         On hover, we replace the <code>animation</code> property with a shorter

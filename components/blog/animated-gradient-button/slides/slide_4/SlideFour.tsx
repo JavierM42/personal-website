@@ -16,12 +16,12 @@ export default function SlideFour({ onNextSlide }: Props) {
   return (
     <Slide className="flex flex-col items-center justify-center gap-4">
       <Paragraph>
-        Let's start with the base movement. We can't really do a gradient that
-        indefinitely moves to the left, but we can fake it.
+        Let's start with the basic movement. We can't really do a gradient that
+        indefinitely moves to the left, so we're going to fake it.
       </Paragraph>
       <Paragraph>
         We can define a repeating gradient as easily as we do a regular one with{" "}
-        <code>repeating-linear-gradient</code>. I chose a gradient that starts
+        <code>repeating-linear-gradient</code>. I chose a pattern that starts
         and ends at the same <span className="bg-red-container">color</span>,
         with <span className="bg-purple-container">two</span>{" "}
         <span className="bg-green-container">stops</span> in between. This way,

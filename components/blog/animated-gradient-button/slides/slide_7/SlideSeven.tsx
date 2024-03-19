@@ -16,6 +16,7 @@ export default function SlideSeven({ onNextSlide }: Props) {
         <code>transition-property: all</code> and a subtle scale transform on
         hover, as well as a larger shadow.
       </Paragraph>
+      <Paragraph>Done!</Paragraph>
       <button
         className={classNames(
           "grid w-64 h-16 overflow-clip rounded-2xl shadow-lg dark:shadow-black transition-all hover:scale-[1.05] hover:shadow-xl",
