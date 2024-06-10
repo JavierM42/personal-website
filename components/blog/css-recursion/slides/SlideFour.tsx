@@ -141,21 +141,95 @@ export default function SlideFour() {
                                             }
                                           >
                                             <div
-                                              className={classNames(
-                                                "absolute text-center text-xl flex items-center justify-center",
+                                              className={
                                                 styles.euclideanAlgorithmNode2
-                                              )}
-                                              style={{
-                                                width: containerWidth,
-                                                height: containerHeight,
-                                              }}
+                                              }
                                             >
                                               <div
-                                                className={classNames(
-                                                  styles.timerTest,
-                                                  "text-[300px] font-bold opacity-10 text-primary font-variant-numeric leading-none -mt-6"
-                                                )}
-                                              />
+                                                className={
+                                                  styles.euclideanAlgorithmNode
+                                                }
+                                              >
+                                                <div
+                                                  className={
+                                                    styles.euclideanAlgorithmNode2
+                                                  }
+                                                >
+                                                  <div
+                                                    className={
+                                                      styles.euclideanAlgorithmNode
+                                                    }
+                                                  >
+                                                    <div
+                                                      className={
+                                                        styles.euclideanAlgorithmNode2
+                                                      }
+                                                    >
+                                                      <div
+                                                        className={
+                                                          styles.euclideanAlgorithmNode
+                                                        }
+                                                      >
+                                                        <div
+                                                          className={
+                                                            styles.euclideanAlgorithmNode2
+                                                          }
+                                                        >
+                                                          <div
+                                                            className={
+                                                              styles.euclideanAlgorithmNode
+                                                            }
+                                                          >
+                                                            <div
+                                                              className={
+                                                                styles.euclideanAlgorithmNode2
+                                                              }
+                                                            >
+                                                              <div
+                                                                className={
+                                                                  styles.euclideanAlgorithmNode
+                                                                }
+                                                              >
+                                                                <div
+                                                                  className={
+                                                                    styles.euclideanAlgorithmNode2
+                                                                  }
+                                                                >
+                                                                  <div
+                                                                    className={
+                                                                      styles.euclideanAlgorithmNode
+                                                                    }
+                                                                  >
+                                                                    <div
+                                                                      className={classNames(
+                                                                        "absolute text-center text-xl flex items-center justify-center",
+                                                                        styles.euclideanAlgorithmNode2
+                                                                      )}
+                                                                      style={{
+                                                                        width:
+                                                                          containerWidth,
+                                                                        height:
+                                                                          containerHeight,
+                                                                      }}
+                                                                    >
+                                                                      <div
+                                                                        className={classNames(
+                                                                          styles.timerTest,
+                                                                          "text-[300px] font-bold opacity-10 text-primary font-variant-numeric leading-none -mt-6"
+                                                                        )}
+                                                                      />
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
                                             </div>
                                           </div>
                                         </div>
@@ -179,4 +253,3 @@ export default function SlideFour() {
     </Slide>
   );
 }
-// TODO check number of iterations
