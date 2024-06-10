@@ -34,7 +34,7 @@ export default function SlideFourteen() {
         <li>
           <Paragraph>
             Corner hit calculations by David Vreken at{" "}
-            <ExternalLink href="https://aleclownes.com/2017/02/01/crt-display.html">
+            <ExternalLink href="https://lostmathlessons.blogspot.com/2016/03/bouncing-dvd-logo.html">
               The Lost Math Lessons
             </ExternalLink>
             .
