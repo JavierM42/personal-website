@@ -1,10 +1,12 @@
 import { useWindowSize } from "@uidotdev/usehooks";
+import classNames from "classnames";
 import dynamic from "next/dynamic";
 import { RefObject, useEffect, useRef, useState } from "react";
 import Paragraph from "../../../Paragraph";
 import Slide from "../../../Slide";
 import ColorAnimation from "../../ColorAnimation";
 import DvdScreensaver from "../../DvdScreensaver";
+import styles from "../../dvd.module.css";
 
 const AnimatedText = dynamic(() => import("./AnimatedText"));
 
@@ -41,7 +43,10 @@ export default function SlideFour({
 
   return (
     <Slide
-      className="flex flex-col items-center justify-center gap-4"
+      className={classNames(
+        "flex flex-col items-center justify-center gap-4",
+        styles.variables
+      )}
       ref={slideRef}
     >
       <Paragraph>

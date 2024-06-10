@@ -1,7 +1,7 @@
-import { CSSProperties } from "react";
-import styles from "./dvd.module.css";
 import classNames from "classnames";
+import { CSSProperties } from "react";
 import DvdLogo from "./DvdLogo";
+import styles from "./dvd.module.css";
 
 const DvdScreensaverWithAxes = ({
   width = 300,
@@ -12,7 +12,10 @@ const DvdScreensaverWithAxes = ({
 }) => {
   return (
     <div
-      className="grid grid-cols-[40px,1fr] md:grid-cols-[40px,1fr,40px] grid-rows-[20px,1fr] gap-4"
+      className={classNames(
+        "grid grid-cols-[40px,1fr] md:grid-cols-[40px,1fr,40px] grid-rows-[20px,1fr] gap-4",
+        styles.variables
+      )}
       style={
         {
           "--container-width": width,
