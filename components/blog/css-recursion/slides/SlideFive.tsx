@@ -14,13 +14,12 @@ export default function SlideFive() {
             excellent article
           </ExternalLink>{" "}
           at CSS tricks that explains how to leverage <code>@property</code>{" "}
-          animations and <code>counter-reset</code> to achieve a countdown
-          timer.
+          animations and <code>counter-reset</code> to build a timer.
         </li>
         <li>
           Calculating the corner hit cycle time: this is definitely the main
           challenge, as I wanted to do it without any JavaScript. Let's get to
-          work.
+          it.
         </li>
       </ol>
     </Slide>

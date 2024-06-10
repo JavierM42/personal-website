@@ -17,8 +17,8 @@ export default function SlideTwo() {
         to calculate how often the bouncing logo hits a corner of the screen.
       </Paragraph>
       <Paragraph>
-        However, I didn't want to stop at the formula, I a working CSS corner
-        hit <em className="italic">timer</em>.
+        However, I didn't want to stop at the formula, I wanted a working
+        CSS-only corner hit <em className="italic">timer</em>.
       </Paragraph>
       <Paragraph>
         I played with a few ideas, but browser support simply wasn't there yet.

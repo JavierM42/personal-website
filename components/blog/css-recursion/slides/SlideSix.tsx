@@ -12,13 +12,15 @@ export default function SlideSix() {
         height minus the logo height.
       </Paragraph>
       <Paragraph>
-        <code>lcm(a, b)</code> (lowest common multiple of <code>a</code> and{" "}
-        <code>b</code>) can be expressed as <code>a * b / gcd(a, b)</code>,
-        where <code>gcd</code> stands for{" "}
+        <code>lcm(a, b)</code> (
+        <em className="italic">Lowest Common Multiple</em> of <code>a</code> and{" "}
+        <code>b</code>) can be expressed as{" "}
+        <code className="whitespace-nowrap">a * b / gcd(a, b)</code>, where{" "}
+        <code>gcd</code> stands for{" "}
         <em className="italic">Greatest Common Divisor</em>.
       </Paragraph>
       <Paragraph>
-        That's good, we've distilled our corner hit cycle problem into the GCD
+        We've distilled our corner hit cycle problem into the more generic GCD
         problem. However, calculating the greatest common divisor of two
         integers is a{" "}
         <ExternalLink href="https://en.wikipedia.org/wiki/Greatest_common_divisor?useskin=vector#Complexity">

@@ -17,7 +17,7 @@ import SlideTwo from "../../components/blog/css-recursion/slides/SlideTwo";
 export default function CSSRecursionBlogPost() {
   return (
     <BlogPost
-      title="Experimenting with CSS Recursion"
+      title="Recursion in CSS: The Corner Hit Timer Experiment"
       description="TODO description"
       // TODO image
       metaImage="https://javiermorales.dev/blog/animated-gradient-button/image.png"
