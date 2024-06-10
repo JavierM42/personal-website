@@ -10,6 +10,14 @@ import Screenshots from "./illustrations/Screenshots";
 
 export const posts: BlogPostCardProps[] = [
   {
+    illustration: <DvdScreensaverIllustration withTimer />,
+    title: "Recursion in CSS: The Corner Hit Timer Experiment",
+    summary:
+      "An in-depth look at how I created a DVD screensaver animation without any Javascript, presented with dynamic examples and code snippets.",
+    url: "/blog/css-recursion",
+    tags: ["CSS"],
+  },
+  {
     illustration: (
       <div
         className="w-full h-10 mt-12 transition-all rounded-lg shadow pointer-events-none text-on-surface gradient-button from-red-container to-green-container dark:shadow-black"
