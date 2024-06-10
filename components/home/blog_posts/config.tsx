@@ -13,7 +13,7 @@ export const posts: BlogPostCardProps[] = [
     illustration: <DvdScreensaverIllustration withTimer />,
     title: "Recursion in CSS: The Corner Hit Timer Experiment",
     summary:
-      "An in-depth look at how I created a DVD screensaver animation without any Javascript, presented with dynamic examples and code snippets.",
+      "Can we calculate the Greatest Common Divisor of two integers with CSS?",
     url: "/blog/css-recursion",
     tags: ["CSS"],
   },

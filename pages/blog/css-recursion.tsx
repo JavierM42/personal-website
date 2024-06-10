@@ -18,9 +18,9 @@ export default function CSSRecursionBlogPost() {
   return (
     <BlogPost
       title="Recursion in CSS: The Corner Hit Timer Experiment"
-      description="TODO description"
-      // TODO image
-      metaImage="https://javiermorales.dev/blog/animated-gradient-button/image.png"
+      description="Can we calculate the Greatest Common Divisor of two integers with CSS?"
+      metaImage="https://javiermorales.dev/blog/dvd/image.png"
+      metaVideo="https://javiermorales.dev/blog/dvd/video.mp4"
     >
       <SlideOne />
       <SlideTwo />
