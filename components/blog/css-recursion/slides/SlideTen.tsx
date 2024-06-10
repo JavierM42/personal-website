@@ -32,8 +32,10 @@ export default function SlideTen() {
         following element we assign the original ones back, then repeat the
         process.
       </Paragraph>
-      <CodeBlock isFirst isLast>
-        {`.step {
+      <CodeBlock
+        isFirst
+        isLast
+        code={`.step {
   --a2: var(--b);
   --b2: mod(var(--a), var(--b));
 }
@@ -42,7 +44,7 @@ export default function SlideTen() {
   --a: var(--a2);
   --b: var(--b2);
 }`}
-      </CodeBlock>
+      />
     </Slide>
   );
 }

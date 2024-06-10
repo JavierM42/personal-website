@@ -15,8 +15,10 @@ export default function SlideThirteen() {
         the <code>@container</code> directive will query the nearest{" "}
         <em className="italic">container</em> ancestor.
       </Paragraph>
-      <CodeBlock isFirst isLast>
-        {`@container (min-width: 1px) {
+      <CodeBlock
+        isFirst
+        isLast
+        code={`@container (min-width: 1px) {
   .step {
     --a2: var(--b);
     --b2: mod(var(--a), var(--b));
@@ -28,7 +30,7 @@ export default function SlideThirteen() {
   --a: var(--a2);
   --b: var(--b2);
 }`}
-      </CodeBlock>
+      />
       <Paragraph>
         Each <code>.step</code> element defines itself as a container and sets
         its own <code>width</code> to the value of <code>b</code>. Visually,

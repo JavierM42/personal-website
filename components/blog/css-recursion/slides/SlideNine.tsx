@@ -29,12 +29,14 @@ export default function SlideNine() {
         algorithm over two CSS variables <code>--a</code> and <code>--b</code>,
         we could be onto something.
       </Paragraph>
-      <CodeBlock isFirst isLast>
-        {`.step {
+      <CodeBlock
+        isFirst
+        isLast
+        code={`.step {
   --a: var(--b);
   --b: mod(var(--a), var(--b));
 }`}
-      </CodeBlock>
+      />
     </Slide>
   );
 }
