@@ -28,6 +28,10 @@ body {
   @apply w-screen bg-background overflow-x-clip;
 }
 
+.font-pt-sans {
+  font-family: "PT Sans", sans-serif;
+}
+
 h2 {
   @apply text-xl tracking-widest uppercase text-on-primary-container;
 }

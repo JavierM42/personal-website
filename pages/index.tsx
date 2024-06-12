@@ -2,8 +2,8 @@ import GitHubLogo from "../assets/github.svg";
 import LinkedInLogo from "../assets/linkedin.svg";
 import ExternalLink from "../components/ExternalLink";
 import Layout from "../components/Layout";
-import BlogPostCards from "../components/home/BlogPostCards";
 import { SectionHeader } from "../components/home/SectionHeader";
+import { BlogPosts } from "../components/home/blog_posts";
 import { DevNote } from "../components/home/dev_notes/DevNote";
 import { DevNotesSection } from "../components/home/dev_notes/DevNotesSection";
 import RubikCube from "../components/home/hero/RubikCube";
@@ -63,10 +63,7 @@ export default function Home() {
             <SectionHeader id="open-source" heading="Open Source" count={7} />
             <OpenSourceCards />
           </div>
-          <div>
-            <SectionHeader id="blog" heading="Blog posts" count={8} />
-            <BlogPostCards />
-          </div>
+          <BlogPosts />
           <div>
             <SectionHeader id="dev-notes" heading="Dev notes" count={18} />
             <DevNotesSection />

@@ -6,35 +6,43 @@ export default function Leverage() {
   const lever = useAnimation();
 
   const animateLever = async () => {
-    await lever.start({
-      rotate: "-10deg",
-      transition: {
-        duration: 0.6,
-        ease: "easeIn",
-      },
-    });
-    await lever.start({
-      rotate: "25deg",
-      transition: {
-        duration: 1.5,
-        ease: "easeOut",
-        delay: 1.9,
-      },
-    });
+    if (ref.current) {
+      await lever.start({
+        rotate: "-10deg",
+        transition: {
+          duration: 0.6,
+          ease: "easeIn",
+        },
+      });
+    }
+    if (ref.current) {
+      await lever.start({
+        rotate: "25deg",
+        transition: {
+          duration: 1.5,
+          ease: "easeOut",
+          delay: 1.9,
+        },
+      });
+    }
   };
 
   const animateCube = async () => {
-    cube.start({
-      y: ["0%", "-22%", "0%"],
-      transition: {
-        duration: 4,
-        easings: ["easeInOut", "easeIn"],
-      },
-    });
-    await cube.start({
-      rotate: "98deg",
-      transition: { duration: 4 },
-    });
+    if (ref.current) {
+      cube.start({
+        y: ["0%", "-22%", "0%"],
+        transition: {
+          duration: 4,
+          easings: ["easeInOut", "easeIn"],
+        },
+      });
+    }
+    if (ref.current) {
+      await cube.start({
+        rotate: "98deg",
+        transition: { duration: 4 },
+      });
+    }
     if (ref.current) {
       cube.set({ rotate: "8deg" });
       animate();

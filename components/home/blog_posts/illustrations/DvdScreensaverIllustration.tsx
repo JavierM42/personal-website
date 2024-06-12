@@ -1,5 +1,5 @@
 import { FC } from "react";
-import DvdScreensaver from "../../blog/dvd/DvdScreensaver";
+import DvdScreensaver from "../../../blog/dvd/DvdScreensaver";
 
 const DvdScreensaverIllustration: FC = () => {
   return (
