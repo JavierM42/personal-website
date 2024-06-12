@@ -1,3 +1,4 @@
+import { Placement, useMergeRefs } from "@floating-ui/react";
 import {
   AnimatePresence,
   AnimationControls,
@@ -6,13 +7,12 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import ChevronRight from "../../../public/chevron-right.svg";
-import Reset from "../../../assets/reset.svg";
-import { Placement, useMergeRefs } from "@floating-ui/react";
-import { SquareButton } from "../../SquareButton";
-import { RubikFavicon } from "./RubikFavicon";
-import { DevNote } from "../dev_notes/DevNote";
 import { useSwipeable } from "react-swipeable";
+import Reset from "../../../assets/reset.svg";
+import ChevronRight from "../../../public/chevron-right.svg";
+import { SquareButton } from "../../SquareButton";
+import { DevNote } from "../dev_notes/DevNote";
+import { RubikFavicon } from "./RubikFavicon";
 
 type CubeState = Record<Face, Record<Tile, FaceColor>>;
 
@@ -865,7 +865,7 @@ export default function RubikCube() {
           how a real cube works. Did you notice it?
           <hr className="w-full h-px my-1 border-outline/30" />
           Answer:
-          <span className="text-tertiary-container selection:on-tertiary-container selection:bg-on-tertiary-container">
+          <span className="text-surface selection:on-tertiary-container selection:bg-on-tertiary-container">
             I'm not keeping track of rotation, so my picture always shows my
             face in the upright orientation.
           </span>{" "}
