@@ -23,7 +23,7 @@ export default function SlideFourteen() {
         going through it. Thanks for reading!
       </Paragraph>
       <hr className="w-full h-px max-w-md mb-4 bg-on-surface" />
-      <Paragraph>Published on June 10, 2024.</Paragraph>
+      <Paragraph>Published on June 13, 2024.</Paragraph>
     </Slide>
   );
 }
