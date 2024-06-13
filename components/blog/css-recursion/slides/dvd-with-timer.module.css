@@ -1,0 +1,180 @@
+.variables {
+  --container-width: 320; /* px */
+  --container-height: 180; /* px */
+  --logo-width: 64;
+  --logo-height: 32;
+
+  --speed: 90; /* pixels per second */
+  --y-duration: calc(
+    (var(--container-height) - var(--logo-height)) / var(--speed) * 1s
+  );
+  --x-duration: calc(
+    (var(--container-width) - var(--logo-width)) / var(--speed) * 1s
+  );
+  --color-x: 0;
+  --color-y: 0;
+  animation: colorY calc(var(--y-duration) * 5) step-start infinite,
+    colorX calc(var(--x-duration) * 5) step-start infinite;
+
+  /* I know that gcd-a is larger than gcd-b  but that might not always be true */
+  --gcd-a: calc(var(--container-width) - var(--logo-width));
+  --gcd-b: calc(var(--container-height) - var(--logo-height));
+  container-type: inline-size;
+}
+
+.container {
+  position: relative;
+  width: calc(var(--container-width) * 1px);
+  height: calc(var(--container-height) * 1px);
+}
+
+@property --seconds {
+  inherits: false;
+  initial-value: 100;
+  syntax: "<integer>";
+}
+
+@keyframes count {
+  from {
+    --seconds: var(--cycle);
+  }
+  to {
+    --seconds: 0;
+  }
+}
+
+.logo {
+  position: absolute;
+  width: calc(var(--logo-width) * 1px);
+  height: calc(var(--logo-height) * 1px);
+  color: hsl(
+    calc(360deg / 25 * (var(--color-y) * 5 + var(--color-x))) 100% 50%
+  );
+  animation: x var(--x-duration) linear infinite alternate,
+    y var(--y-duration) linear infinite alternate;
+  top: 0;
+  left: 0;
+}
+
+.timerTest {
+  top: 0;
+  left: 0;
+  --gcd: max(var(--gcd-a), var(--gcd-b));
+
+  --cycle: calc(
+    (var(--container-width) - var(--logo-width)) *
+      (var(--container-height) - var(--logo-height)) / var(--gcd) / var(--speed)
+  );
+  animation: count calc(var(--cycle) * 1s) steps(var(--cycle)) infinite;
+  counter-reset: timer var(--seconds);
+}
+
+.timerTest::after {
+  content: counter(timer);
+}
+
+@container (min-width: 1px) {
+  .euclideanAlgorithmNode {
+    --gcd-a2: var(--gcd-b);
+    --gcd-b2: mod(var(--gcd-a), var(--gcd-b));
+    width: calc(var(--gcd-b2) * 1px);
+    container-type: inline-size;
+  }
+}
+
+.euclideanAlgorithmNode2 {
+  --gcd-a: var(--gcd-a2);
+  --gcd-b: var(--gcd-b2);
+}
+
+.logoMovement {
+  position: absolute;
+  width: calc(var(--logo-width) * 1px);
+  height: calc(var(--logo-height) * 1px);
+  animation: x var(--x-duration) linear infinite alternate,
+    y var(--y-duration) linear infinite alternate;
+  top: 0;
+  left: 0;
+}
+
+.logoColor {
+  background: hsl(
+    calc(360deg / 25 * (var(--color-y) * 5 + var(--color-x))) 100% 50%
+  );
+}
+
+.colorNeedle {
+  transform: rotate(
+    calc((var(--color-y) * 5 + var(--color-x)) * (360 / 25) * 1deg)
+  );
+}
+
+.xAxisMovement {
+  position: absolute;
+  width: calc(var(--logo-width) * 1px);
+  height: calc(var(--logo-height) * 1px);
+  animation: x var(--x-duration) linear infinite alternate;
+  left: 0;
+}
+
+.yAxisMovement {
+  position: absolute;
+  width: calc(var(--logo-width) * 1px);
+  height: calc(var(--logo-height) * 1px);
+  animation: y var(--y-duration) linear infinite alternate;
+  top: 0;
+}
+
+@keyframes x {
+  from {
+    left: 0;
+  }
+  to {
+    left: calc(100% - var(--logo-width) * 1px);
+  }
+}
+
+@keyframes y {
+  from {
+    top: 0;
+  }
+  to {
+    top: calc(100% - var(--logo-height) * 1px);
+  }
+}
+
+@keyframes colorY {
+  from {
+    --color-y: 0;
+  }
+  20% {
+    --color-y: 2;
+  }
+  40% {
+    --color-y: 4;
+  }
+  60% {
+    --color-y: 1;
+  }
+  80% {
+    --color-y: 3;
+  }
+}
+
+@keyframes colorX {
+  from {
+    --color-x: 0;
+  }
+  20% {
+    --color-x: 2;
+  }
+  40% {
+    --color-x: 4;
+  }
+  60% {
+    --color-x: 1;
+  }
+  80% {
+    --color-x: 3;
+  }
+}

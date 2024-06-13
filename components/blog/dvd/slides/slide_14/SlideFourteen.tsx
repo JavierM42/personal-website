@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ExternalLink from "../../../../ExternalLink";
 import Paragraph from "../../../Paragraph";
 import Slide from "../../../Slide";
@@ -50,6 +51,10 @@ export default function SlideFourteen() {
       </ul>
       <hr className="w-full h-px max-w-md mb-4 bg-on-surface" />
       <Paragraph>Published on February 14, 2024.</Paragraph>
+      <Paragraph>
+        <Link href="/blog/css-recursion">Read the sequel</Link> where I build a
+        corner hit timer.
+      </Paragraph>
     </Slide>
   );
 }
