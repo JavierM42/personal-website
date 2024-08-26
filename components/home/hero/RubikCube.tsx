@@ -901,7 +901,7 @@ export default function RubikCube() {
                 y="20"
                 width="60"
                 height="60"
-                className="mix-blend-luminosity"
+                className="mix-blend-color-burn"
               />
             </pattern>
           </defs>
