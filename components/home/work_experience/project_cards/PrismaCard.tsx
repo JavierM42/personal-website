@@ -1,6 +1,6 @@
+import { updateTheme } from "tailwind-material-colors/lib/updateTheme.esm";
 import PrismaIsotype from "../../../../assets/companies/prisma-isotype.svg";
 import Prisma from "../../../../assets/companies/prisma.svg";
-import { updateTheme } from "tailwind-material-colors/lib/updateTheme.esm";
 import WyeWorks from "../../../../assets/companies/wyeworks.svg";
 import WorkExperienceCard from "../WorkExperienceCard";
 
@@ -97,7 +97,7 @@ const PrismaCard = ({
     isExpanded={isExpanded}
     isThumbnail={isOtherExpanded}
     onExpand={() => {
-      updateTheme({ primary: "#6f22f8" }, "class");
+      updateTheme({ primary: "#6f22f8" }, "class", "vibrant");
       onExpand();
     }}
     hoverGradientStops="from-purple/20 to-purple/0"

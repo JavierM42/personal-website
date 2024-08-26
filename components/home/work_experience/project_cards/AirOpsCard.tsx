@@ -77,7 +77,7 @@ const ClearSessionCard = ({
     isExpanded={isExpanded}
     isThumbnail={isOtherExpanded}
     onExpand={() => {
-      updateTheme({ primary: "#09090b" }, "class");
+      updateTheme({ primary: "#09090b" }, "class", "monochrome");
       onExpand();
     }}
     hoverGradientStops="from-black/20 to-black/0 dark:from-white/20 dark:to-white/0"

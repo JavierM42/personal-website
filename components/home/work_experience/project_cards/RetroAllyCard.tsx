@@ -90,7 +90,7 @@ const RetroAllyCard = ({
     isExpanded={isExpanded}
     isThumbnail={isOtherExpanded}
     onExpand={() => {
-      updateTheme({ primary: "#ff7645" }, "class");
+      updateTheme({ primary: "#ff7645" }, "class", "content", -0.5);
       onExpand();
     }}
     hoverGradientStops="from-red/20 to-red/0"

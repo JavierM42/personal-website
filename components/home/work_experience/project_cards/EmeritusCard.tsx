@@ -85,7 +85,7 @@ const EmeritusCard = ({
     isExpanded={isExpanded}
     isThumbnail={isOtherExpanded}
     onExpand={() => {
-      updateTheme({ primary: "#006634" }, "class");
+      updateTheme({ primary: "#006634" }, "class", "tonalSpot");
       onExpand();
     }}
     hoverGradientStops="from-green/20 to-green/0"

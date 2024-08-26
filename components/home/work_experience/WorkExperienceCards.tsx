@@ -8,7 +8,8 @@ import EmeritusCard from "./project_cards/EmeritusCard";
 import PrismaCard from "./project_cards/PrismaCard";
 import RetroAllyCard from "./project_cards/RetroAllyCard";
 
-const resetTheme = () => updateTheme({ primary: "#416900" }, "class");
+const resetTheme = () =>
+  updateTheme({ primary: "#416900" }, "class", "tonalSpot");
 
 export default function WorkExperienceCards() {
   const [isAnyCardExpanded, setIsAnyCardExpanded] = useState(false);
