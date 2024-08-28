@@ -1,5 +1,5 @@
-import ClearSession from "../../../../assets/companies/clearsession.svg";
 import { updateTheme } from "tailwind-material-colors/lib/updateTheme.esm";
+import ClearSession from "../../../../assets/companies/clearsession.svg";
 import WyeWorks from "../../../../assets/companies/wyeworks.svg";
 import WorkExperienceCard from "../WorkExperienceCard";
 
@@ -86,7 +86,7 @@ const ClearSessionCard = ({
     isExpanded={isExpanded}
     isThumbnail={isOtherExpanded}
     onExpand={() => {
-      updateTheme({ primary: "#2972f1" }, "class");
+      updateTheme({ primary: "#2972f1" }, "class", "tonalSpot");
       onExpand();
     }}
     hoverGradientStops="from-blue/20 to-blue/0"

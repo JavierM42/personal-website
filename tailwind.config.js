@@ -3,7 +3,7 @@ const { withMaterialColors } = require("tailwind-material-colors");
 module.exports = withMaterialColors(
   {
     content: ["components/**/*", "pages/**/*"],
-    darkMode: "class",
+    darkMode: "selector",
     plugins: [],
     theme: {
       extend: {
@@ -23,5 +23,8 @@ module.exports = withMaterialColors(
     green: { hex: "#006634", harmonize: false },
     red: { hex: "#ff7645", harmonize: false },
     blue: { hex: "#2972f1", harmonize: false },
+  },
+  {
+    scheme: "tonalSpot",
   }
 );

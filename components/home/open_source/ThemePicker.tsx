@@ -1,7 +1,7 @@
-import { useState } from "react";
-import useDebouncedEffect from "use-debounced-effect";
-import { updateTheme } from "tailwind-material-colors/lib/updateTheme.esm";
 import hsl from "hsl-to-hex";
+import { useState } from "react";
+import { updateTheme } from "tailwind-material-colors/lib/updateTheme.esm";
+import useDebouncedEffect from "use-debounced-effect";
 
 const ThemePicker = () => {
   const [hue, setHue] = useState(83);
@@ -12,7 +12,8 @@ const ThemePicker = () => {
         {
           primary: hsl(hue, 20, 50),
         },
-        "class"
+        "class",
+        "tonalSpot"
       );
     },
     100,

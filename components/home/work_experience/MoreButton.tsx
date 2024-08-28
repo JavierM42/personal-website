@@ -19,7 +19,7 @@ export default function MoreButton() {
         className={classNames("mx-auto md:rotate-45 transition-opacity mt-4")}
         onClick={() => setShowMore(true)}
       >
-        <div className="md:-rotate-45">+2</div>
+        <div className="md:-rotate-45">+3</div>
       </SquareButton>
       <AnimatePresence>
         {showMore && (
@@ -58,14 +58,35 @@ export default function MoreButton() {
                     />
                   </div>
                   <div className="pb-1 text-xs font-medium text-center text-on-surface/80">
-                    September 2023 - March 2024
+                    September 2023 - June 2024
                   </div>
                   <p>
                     I was hired by this industry-leading pharmaceutical company
                     to implement UX enhancements on their internal tools. One of
-                    my key contributions was the refactor of filter and
-                    pagination state management into the URLs, which allows easy
-                    sharing of complex queries.
+                    my key contributions was to move filter and pagination state
+                    into the URLs to allow easy sharing of complex queries.
+                  </p>
+                </li>
+                <li className="pt-6 space-y-1">
+                  <div className="flex justify-center items-center gap-1.5">
+                    <span className="text-[20px] font-bold leading-none text-blue dark:text-white">
+                      ClearSession
+                    </span>
+                    <span>at</span>
+                    <WyeWorks
+                      aria-label="WyeWorks"
+                      className="inline-block h-3 text-[#0B0B0B] dark:text-white"
+                    />
+                  </div>
+                  <div className="pb-1 text-xs font-medium text-center text-on-surface/80">
+                    November 2022 - August 2023
+                  </div>
+                  <p>
+                    ClearSession improves how doctors and patients interact,
+                    focusing on data visualization. I joined the team in late
+                    2022, six months after development started. Interesting
+                    technical aspects of the project include working with HTML
+                    canvas and recording user actions to replay at a later time.
                   </p>
                 </li>
                 <li className="pt-6 space-y-1">
