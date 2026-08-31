@@ -13,7 +13,7 @@ export default function SlideEleven() {
         isFirst
         isLast
         code={`@keyframes colorX {
-  from { --color--x: 0; }
+  from { --color-x: 0; }
   20% { --color-x: 2; }
   40% { --color-x: 4; }
   60% { --color-x: 1; }
